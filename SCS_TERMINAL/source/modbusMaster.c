@@ -10,10 +10,10 @@
 #define WAITING_FOR_REPLY 2
 #define WAITING_FOR_TURNAROUND 3
 
-#define BUFFER_SIZE 64
+#define BUFFER_SIZE 32
 
 
-#pragma udata MODBUS_DATA
+#pragma idata MODBUS_DATA
 unsigned char state;
 unsigned char retry_count;
 unsigned char TxEnablePin;
@@ -21,7 +21,7 @@ unsigned char TxEnablePin;
 // frame[] is used to receive and transmit packages. 
 // The maximum number of bytes in a modbus packet is 256 bytes
 // This is limited to the serial buffer of 64 bytes
-unsigned char frame[BUFFER_SIZE]; 
+unsigned char frame[BUFFER_SIZE] = {0}; 
 static unsigned char buffer = 0;
 long timeout; // timeout interval
 long polling; // turnaround delay interval
@@ -32,20 +32,22 @@ unsigned int total_no_of_packets;
 Packet* packetArray; // packet starting address
 Packet* packet; // current packet
 unsigned int* register_array; // pointer to masters register array
-#pragma udata
+
+MBErrorCode MB_STATUS = MB_TXDONE;
+#pragma idata
 
 // function definitions
 void idle(void);
 void constructPacket(void);
 unsigned char construct_F15(void);
 unsigned char construct_F16(void);
-void waiting_for_reply(void);
-void processReply(void);
+MBErrorCode waiting_for_reply(void);
+MBErrorCode processReply(void);
 void waiting_for_turnaround(void);
 void process_F1_F2(void);
 void process_F3_F4(void);
-void process_F5_F6_F15_F16(void);
-void processError(void);
+MBErrorCode process_F5_F6_F15_F16(void);
+MBErrorCode processError(void);
 void processSuccess(void);
 unsigned int calculateCRC(unsigned char bufferSize);
 void sendPacket(unsigned char bufferSize);
@@ -56,7 +58,7 @@ void sendPacket(unsigned char bufferSize);
 ************************************/
 
 // Modbus Master State Machine
-void modbus_update() 
+void MB_task() 
 {
 	switch (state)
 	{
@@ -64,17 +66,20 @@ void modbus_update()
 		idle();
 		break;
 		case WAITING_FOR_REPLY:
-		waiting_for_reply();
+		MB_STATUS = waiting_for_reply();
 		break;
 		case WAITING_FOR_TURNAROUND:
-		waiting_for_turnaround();
+		{
+			waiting_for_turnaround();
+			MB_STATUS = MB_NOERR;
+		}
 		break;
 	}
 }
 
 void idle(void)
 {
-  static unsigned int packet_index;	
+  static unsigned int packet_index = 0;	
 	
 	unsigned int failed_connections = 0;
 	
@@ -212,12 +217,15 @@ unsigned char construct_F16()
   	for (i = 0; i < no_of_registers; i++)
   	{
     	//temp = register_array[packet->local_start_address + i]; // get the data
-		temp = register_array[i];
+		temp = (UINT16)register_array[i];
+//		frame[index] = temp;
+//		index++;
     	frame[index] = temp >> 8;
     	index++;
     	frame[index] = temp & 0xFF;
     	index++;
   	}
+
 	frameSize = (9 + no_of_bytes); // first 7 bytes of the array + 2 bytes CRC + noOfBytes 
 	return frameSize;
 }
@@ -229,9 +237,9 @@ void waiting_for_turnaround()
 }
 
 // get the serial data from the buffer
-void waiting_for_reply()
+MBErrorCode waiting_for_reply(void)
 {
-
+	MBErrorCode status = MB_SENDING;
 #if defined (__18f4520)
 	if(UART_hasData())
 #else
@@ -290,14 +298,18 @@ void waiting_for_reply()
 	}
 	else if ((GetAppTime() - delayStart) > timeout) // check timeout
 	{
-		processError();
+		status = processError();
 		buffer = 0;
 		state = IDLE; //state change, override processError() state
 	}
+
+	return status;
 }
 
-void processReply()
+MBErrorCode processReply(void)
 {
+	MBErrorCode status;
+
 	// combine the crc Low & High bytes
   	unsigned int received_crc = ((frame[buffer - 2] << 8) | frame[buffer - 1]); 
   	unsigned int calculated_crc = calculateCRC(buffer - 2);
@@ -310,6 +322,7 @@ void processReply()
 		{
 			packet->exception_errors++;
 			processError();
+			status = MB_EXCEPTION;
 		}
 		else
 		{
@@ -327,18 +340,20 @@ void processReply()
 				case PRESET_SINGLE_REGISTER:
         		case FORCE_MULTIPLE_COILS:
         		case PRESET_MULTIPLE_REGISTERS:
-        			process_F5_F6_F15_F16();
+        			status = process_F5_F6_F15_F16();
         		break;
         		default: // illegal function returned
-        			processError();
+        			status = processError();
         		break;
       		}
 		}
 	} 
 	else // checksum failed
 	{
-		processError();
+		status = processError();
 	}
+
+	return status;
 }
 
 void process_F1_F2()
@@ -381,7 +396,6 @@ void process_F1_F2()
 
 void process_F3_F4()
 {
-
 	unsigned char index = 3;
 	unsigned char i;
 
@@ -401,8 +415,10 @@ void process_F3_F4()
     processError();  
 }
 
-void process_F5_F6_F15_F16()
+MBErrorCode process_F5_F6_F15_F16(void)
 {
+	MBErrorCode status = MB_TXDONE;
+
 	// The repsonse of functions 5,6,15 & 16 are just an echo of the query
   unsigned int recieved_address = ((frame[2] << 8) | frame[3]);
   unsigned int recieved_data = ((frame[4] << 8) | frame[5]);
@@ -410,11 +426,13 @@ void process_F5_F6_F15_F16()
   if ((recieved_address == packet->address) && (recieved_data == packet->data))
     processSuccess();
   else
-    processError();
+    status = processError();
 }
 
-void processError()
+MBErrorCode processError(void)
 {
+	MBErrorCode status = MB_SENDING;
+
 	packet->retries++;
 	packet->failed_requests++;
 	
@@ -424,9 +442,15 @@ void processError()
 	{
     	packet->connection = 0;
 		packet->retries = 0;
+		status = MB_TIMEDOUT;
 	}
+	else 
+		status = MB_SENDING;
+
 	state = WAITING_FOR_TURNAROUND;
 	delayStart = GetAppTime(); // start the turnaround delay
+
+	return status;
 }
 
 void processSuccess()
@@ -437,7 +461,7 @@ void processSuccess()
 	delayStart = GetAppTime(); // start the turnaround delay
 }
   
-void modbus_configure(long baud,
+void MB_init(long baud,
 											long _timeout, 
 											long _polling, 
 											unsigned char _retry_count,  
@@ -486,7 +510,7 @@ void modbus_configure(long baud,
 
 } 
 
-void modbus_construct(Packet *_packet, 
+void MB_construct(Packet *_packet, 
 											unsigned char id, 
 											unsigned char function, 
 											unsigned int address, 
@@ -554,3 +578,8 @@ void sendPacket(unsigned char bufferSize)
 	delayStart = GetAppTime(); // start the timeout delay	
 }
 
+
+MBErrorCode MB_getStatus(void)
+{
+	return MB_STATUS;
+}

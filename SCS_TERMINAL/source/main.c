@@ -164,7 +164,6 @@ enum
 void main(void)
 {
 	UINT8 i;
-
 #ifdef KEYPAD_TEST
 	UINT8 scancode, duration;
 #endif
@@ -185,11 +184,40 @@ void main(void)
 #endif
 
 
+#ifdef TOWER_LAMP_TEST
+	GREEN = 1;
+	DelayMs(1000);
+	GREEN = 0;
+
+	YELLOW = 1;
+	DelayMs(1000);
+	YELLOW = 0;
+
+	RED = 1;
+	DelayMs(1000);
+	RED = 0;
+
+
+	BUZZER = 1;
+	DelayMs(1000);
+	BUZZER = 0;
+
+#endif
+
+
 	KEYPAD_init();
+	
+
 
 	UI_init();			//MUST BE DONE AFTER IAS INIT
 
 	APP_init();
+
+
+#ifdef __UART_TEST__
+	COM_txStr("IDEONICS ANDON TERMINAL ");
+#endif	
+
 
 	EnableInterrupts();
 
@@ -213,31 +241,28 @@ void main(void)
 			keypadUpdateCount = 0;
 		}
 
+		if( appUpdateCount >= 500 )
+		{
+			//MB_task();
+			APP_task();
+			appUpdateCount = 0;
+		}
 		//ClrWdt();
-
-	if( appUpdateCount >= 500 )
-	{
-		APP_task();
-		appUpdateCount = 0;
-	}
-	//ClrWdt();
 	
-
-
+			MB_task();
+	
 #ifdef KEYPAD_TEST
 		if( KEYPAD_read(&scancode, &duration) == TRUE )
 			LCD_putChar(scancode);
 #else
-	if( uiUpdateCount >=40 )
-	{
-		
-		UI_task();
-		uiUpdateCount = 0;
-	}
+		if( uiUpdateCount >=40 )
+		{
+			
+			UI_task();
+			uiUpdateCount = 0;
+		}
 #endif
 
-
-		ClrWdt();
 				
     }
 }

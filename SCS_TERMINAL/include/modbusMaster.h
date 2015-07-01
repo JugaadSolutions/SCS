@@ -123,10 +123,19 @@ typedef struct
   
 }Packet;
 
-// function definitions
-void modbus_update();
+typedef enum
+{
+	MB_NOERR,
+    MB_TXDONE,                  /*!< no error. */
+	MB_SENDING,
+	MB_EXCEPTION,
+    MB_TIMEDOUT                /*!< timeout error occurred. */
+} MBErrorCode;
 
-void modbus_construct(Packet *_packet, 
+// function definitions
+void MB_task();
+
+void MB_construct(Packet *_packet, 
 											unsigned char id, 
 											unsigned char function, 
 											unsigned int address, 
@@ -134,12 +143,14 @@ void modbus_construct(Packet *_packet,
 											unsigned int *dataBuffer
 											);
 											
-void modbus_configure(long baud,
+void MB_init(long baud,
 											long _timeout, 
 											long _polling, 
 											unsigned char _retry_count,  
 											Packet* _packets, 
 											unsigned int _total_no_of_packets,
 											unsigned int* _register_array);
+
+MBErrorCode MB_getStatus(void);
 
 #endif

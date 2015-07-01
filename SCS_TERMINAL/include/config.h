@@ -12,7 +12,7 @@
 
 
 
-#define DEVICE_ADDRESS			(1)
+#define DEVICE_ADDRESS			(0xFA)
 
 //#define __FACTORY_CONFIGURATION__
 
@@ -41,20 +41,19 @@
 //COM module configuration
 #define __BCC_XOR__
 #define __RESPONSE_ENABLED__
-#define __UART_TEST__
+//#define __UART_TEST__
 //#define __LOOP_BACK__
 #define BROADCAST_ADDRESS		0xFA
 #define CMD_SOP	0xAA
 #define CMD_EOP 0xBB
 #define RESP_SOP	0xCC
 #define RESP_EOP	0xDD
-#define __RS485__
 
 
 enum
 {
-	RX_PACKET_SIZE = 128,
-	TX_PACKET_SIZE = 128
+	RX_PACKET_SIZE = 64,
+	TX_PACKET_SIZE = 64
 };
 
 #define 	RECEIVER_MAX_PAKET_SIZE		(RX_PACKET_SIZE)	
@@ -64,7 +63,7 @@ enum
 
 enum
 {
-	MAX_INPUT_CHARS = 4,
+	MAX_INPUT_CHARS = 32,
 	MAX_KEYS = 16,
 	MAX_CHAR_PER_KEY = 1,
 	MIN_KEYPRESS_DURATION = 20 
@@ -77,6 +76,19 @@ enum
 // Comment out this line if internal eeprom access required
 #define EEP_EXTERRNAL
 
+/*---------------------------------
+*	MODBUS MASTER CONFIGURATION
+----------------------------------*/
+#define BAUD_RATE	 		9600
+#define TIMEOUT		 		1
+#define POLLING 			200 // the scan rate
+#define RETRY_COUNT			10
+#define SLAVE_ID			1
+#define STARTING_ADDRESS	0
+
+
+// The total amount of available memory on the master to store data
+#define TOTAL_NO_OF_REGISTERS 1
 
 /*
 *------------------------------------------------------------------------------

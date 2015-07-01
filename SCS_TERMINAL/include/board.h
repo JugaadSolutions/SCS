@@ -43,17 +43,14 @@
 
 
 // HeartBeat Association
-#define		HEART_BEAT				PORTEbits.RE2			// high - OFF, Low - ON
-#define		HEART_BEAT_DIR			TRISEbits.TRISE2
+#define		HEART_BEAT				PORTEbits.RE0			// high - OFF, Low - ON
+#define		HEART_BEAT_DIR			TRISEbits.TRISE0
 
 
 
 
 //  UART  Association
-#define 	TX1_EN					PORTCbits.RC0 		// serial transmit
-#define		TX1_EN_DIR				TRISCbits.TRISC0
-#define 	TX2_EN					PORTCbits.RC4 		// serial transmit
-#define		TX2_EN_DIR				TRISCbits.TRISC4
+
 #define 	SER1_TX					PORTCbits.RC6 		// serial transmit
 #define		SER1_TX_DIR				TRISCbits.TRISC6
 #define 	SER1_RX					PORTCbits.RC7			// serial receive
@@ -75,40 +72,41 @@
 #define		LCD_D5_DIR				TRISDbits.TRISD5
 #define		LCD_D4					PORTDbits.RD4			
 #define		LCD_D4_DIR				TRISDbits.TRISD4
-#define		LCD_E					PORTDbits.RD1 			
-#define		LCD_E_DIR				TRISDbits.TRISD1
+#define		LCD_E					PORTDbits.RD3 			
+#define		LCD_E_DIR				TRISDbits.TRISD3
 #define		LCD_RW					PORTDbits.RD2 			
 #define		LCD_RW_DIR				TRISDbits.TRISD2
-#define		LCD_RS					PORTDbits.RD3			
-#define		LCD_RS_DIR				TRISDbits.TRISD3
+#define		LCD_RS					PORTDbits.RD1			
+#define		LCD_RS_DIR				TRISDbits.TRISD1
 
 /* Keypad Association */
-
-#define		KEYPAD_DEC_INT			PORTAbits.RA1		
-#define		KEYPAD_DEC_INT_DIR		TRISAbits.TRISA1
-#define		KEYPAD_BCD3				PORTAbits.RA4	
-#define		KEYPAD_BCD3_DIR			TRISAbits.TRISA4
-#define		KEYPAD_BCD2				PORTAbits.RA5
-#define		KEYPAD_BCD2_DIR			TRISAbits.TRISA5
-#define		KEYPAD_BCD1				PORTEbits.RE0		
-#define		KEYPAD_BCD1_DIR			TRISEbits.TRISE0
-#define		KEYPAD_BCD0				PORTEbits.RE1		
-#define		KEYPAD_BCD0_DIR			TRISEbits.TRISE1
+#define		KEYPAD_PORT				PORTB
+#define		KEYPAD_PORT_DIR			TRISB
+#define		KEYPAD_DEC_INT			PORTBbits.RB7		
+#define		KEYPAD_DEC_INT_DIR		TRISBbits.TRISB7
+#define		KEYPAD_BCD3				PORTBbits.RB3		
+#define		KEYPAD_BCD3_DIR			TRISBbits.TRISB3
+#define		KEYPAD_BCD2				PORTBbits.RB4		
+#define		KEYPAD_BCD2_DIR			TRISBbits.TRISB4
+#define		KEYPAD_BCD1				PORTBbits.RB2		
+#define		KEYPAD_BCD2_DI1			TRISBbits.TRISB2
+#define		KEYPAD_BCD0				PORTBbits.RB5		
+#define		KEYPAD_BCD2_DI0			TRISBbits.TRISB5
 
 //Tower Lamp Association
 
-#define LAMP_GREEN						PORTBbits.RB5
-#define LAMP_GREEN_DIR					TRISBbits.TRISB5
+#define LAMP_GREEN						PORTAbits.RA0
+#define LAMP_GREEN_DIR					TRISAbits.TRISA0
 
-#define LAMP_YELLOW 						PORTBbits.RB4 
-#define LAMP_YELLOW_DIR					TRISBbits.TRISB4
+#define LAMP_YELLOW 						PORTAbits.RA1 
+#define LAMP_YELLOW_DIR					TRISAbits.TRISA1
 
 
-#define LAMP_RED							PORTBbits.RB3
-#define LAMP_RED_DIR						TRISBbits.TRISB3
+#define LAMP_RED							PORTAbits.RA2
+#define LAMP_RED_DIR						TRISAbits.TRISA2
 
-#define BUZZER 						PORTDbits.RD0
-#define BUZZER_DIR					TRISDbits.TRISD0
+#define BUZZER 						PORTAbits.RA3 
+#define BUZZER_DIR					TRISAbits.TRISA3
 
 
 

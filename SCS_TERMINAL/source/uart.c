@@ -251,7 +251,7 @@ void UART1_init(unsigned long baudRate)
 				USART_EIGHT_BIT &
 				USART_CONT_RX &
 				USART_BRGH_HIGH;
-	//Calculate baud rate
+
 	baudRate += (unsigned long)1;
 	baudRate *= (unsigned long)16;
 	baudRate = GetSystemClock() / 	baudRate;
