@@ -39,7 +39,7 @@ const rom UINT8 *UI_MSG[] = {
 
 								{"ADMIN ACTIVITY:"},
 			
-								{"TIMINGS:"},
+								{"SCH:"},
 								{"HOOTER OFF"},
 								{"CANCEL TRUCK:"},
 								{"SET RTC:"},
@@ -451,30 +451,43 @@ void UI_task(void)
 		case UI_SET_TIMINGS:
 
 		if( keypressed == '\x08')
-		{	
-			setUImsg(UI_MSG_ADMIN_ACTIVITY);
-			clearUIBuffer();
-			clearUIInput();
-			ui.state = UI_ADMIN_ACTIVITY;
+		{
+			if(ui.bufferIndex > 0 )
+			{
+				LCD_putChar(keypressed);
+				ui.bufferIndex--;
+				if( ui.inputIndex > 0 )
+					ui.inputIndex--;
+			}
+			else
+			{	
+				setUImsg(UI_MSG_ADMIN_ACTIVITY);
+				clearUIBuffer();
+				clearUIInput();
+				ui.state = UI_ADMIN_ACTIVITY;
+			}
 		}
 
 		else if( keypressed == '\x0E')
 		{
-			ui.buffer[ui.bufferIndex] = '\0';	
-
-			storeCMDinBuffer(ui.buffer, CMD_TRUCK_TIMINGS);
-		
-			//store into log
-			App_updateLog(ui.buffer);			
-
-			setUImsg(UI_MSG_TRUCK_NO);
-			clearUIBuffer();
-			clearUIInput();
-			ui.state = UI_GET_TRUCK_NO;
+			if(ui.bufferIndex > 0)
+			{
+				ui.buffer[ui.bufferIndex] = '\0';	
+	
+				storeCMDinBuffer(ui.buffer, CMD_TRUCK_TIMINGS);
+			
+				//store into log
+				App_updateLog(ui.buffer);			
+	
+				setUImsg(UI_MSG_TRUCK_NO);
+				clearUIBuffer();
+				clearUIInput();
+				ui.state = UI_GET_TRUCK_NO;
+			}
 		}
 		else 
 		{
-			if( ui.bufferIndex < 24)
+			if( ui.bufferIndex < 26)
 			{
 				ui.buffer[ui.bufferIndex] = keypressed;
 				LCD_putChar(ui.buffer[ui.bufferIndex]);
@@ -495,6 +508,7 @@ void UI_task(void)
 		}
 		else if( keypressed == '\x0E')
 		{
+
 			ui.buffer[0] = '\0';	
 
 			storeCMDinBuffer(ui.buffer, CMD_HOOTER_OFF);
@@ -523,24 +537,38 @@ void UI_task(void)
 		}
 		else if( keypressed == '\x0E')
 		{
-			ui.buffer[ui.bufferIndex] = '\0';	
+			ui.buffer[ui.bufferIndex] = '\0';
 
-			storeCMDinBuffer(ui.buffer, CMD_CANCEL_TRUCK);
-		
-			//store into log
-			App_updateLog(ui.buffer);	
-
-			setUImsg(UI_MSG_TRUCK_NO);
-			clearUIBuffer();
-			clearUIInput();
-			ui.state = UI_GET_TRUCK_NO;
+			if(APP_activityValid(ui.buffer) == VALID)
+			{	
+				APP_cancelTruck(ui.buffer);
+				storeCMDinBuffer(ui.buffer, CMD_CANCEL_TRUCK);
+			
+				//store into log
+				App_updateLog(ui.buffer);	
+	
+				setUImsg(UI_MSG_TRUCK_NO);
+				clearUIBuffer();
+				clearUIInput();
+				ui.state = UI_GET_TRUCK_NO;
+			}
+			else
+			{
+				setUImsg(UI_MSG_CANCEL_TRUCK);
+				clearUIBuffer();
+				clearUIInput();
+				ui.state = UI_CANCEL_TRUCK;
+			}
 		}
 		//store truck number
 		else 
 		{
-			ui.buffer[ui.bufferIndex] = keypressed;
-			LCD_putChar(ui.buffer[ui.bufferIndex]);
-			ui.bufferIndex++;
+			if( ui.bufferIndex < 2)
+			{
+				ui.buffer[ui.bufferIndex] = keypressed;
+				LCD_putChar(ui.buffer[ui.bufferIndex]);
+				ui.bufferIndex++;
+			}
 		}
 		break;
 
@@ -548,25 +576,38 @@ void UI_task(void)
 
 		if( keypressed == '\x08')
 		{	
-			setUImsg(UI_MSG_ADMIN_ACTIVITY);
-			clearUIBuffer();
-			clearUIInput();
-			ui.state = UI_ADMIN_ACTIVITY;
+			if(ui.bufferIndex > 0 )
+			{
+				LCD_putChar(keypressed);
+				ui.bufferIndex--;
+				if( ui.inputIndex > 0 )
+					ui.inputIndex--;
+			}
+			else
+			{
+				setUImsg(UI_MSG_ADMIN_ACTIVITY);
+				clearUIBuffer();
+				clearUIInput();
+				ui.state = UI_ADMIN_ACTIVITY;
+			}
 		}
 
 		else if( keypressed == '\x0E')
 		{
-			ui.buffer[ui.bufferIndex] = '\0';	
-
-			storeCMDinBuffer(ui.buffer, CMD_SET_RTC);
-		
-			//store into log
-			App_updateLog(ui.buffer);	
-
-			setUImsg(UI_MSG_TRUCK_NO);
-			clearUIBuffer();
-			clearUIInput();
-			ui.state = UI_GET_TRUCK_NO;
+			if(ui.bufferIndex > 0)
+			{
+				ui.buffer[ui.bufferIndex] = '\0';	
+	
+				storeCMDinBuffer(ui.buffer, CMD_SET_RTC);
+			
+				//store into log
+				App_updateLog(ui.buffer);	
+	
+				setUImsg(UI_MSG_TRUCK_NO);
+				clearUIBuffer();
+				clearUIInput();
+				ui.state = UI_GET_TRUCK_NO;
+			}
 		}
 		//store RTC data
 		else 

@@ -16,18 +16,11 @@
 *	Enumerations
 *-----------------------------------------------------------------------------------------------------------------
 */
-typedef enum 
+enum 
 {
-	OFF,
-	ON
-}INDICATOR_STATE;
-
-typedef enum _ISSUE_TYPE
-{
-	NO_ISSUE,
-	RAISED,
-	RESOLVED
-}ISSUE_TYPE;
+	RUNNING = 0,
+	CANCELLED
+};
 
 
 
@@ -40,39 +33,6 @@ typedef enum _APP_PARAM
 	LOG_BUFF_SIZE = 16
 
 }APP_PARAM;
-
-typedef enum _LOGDATA
-{
-	HW_TMEOUT = 10,
-	APP_TIMEOUT = 1000,
-	TIMESTAMP_UPDATE_VALUE = (APP_TIMEOUT/HW_TMEOUT)
-}LOGDATA;
-
-typedef enum
-{
-	ISSUE_RESOLVED,
-	ISSUE_RAISED,
-	ISSUE_ACKNOWLEDGED,
-	ISSUE_CRITICAL
-}APP_STATE;
-
-enum
-{
-	CMD_GET_STATUS = 0x80,
-	CMD_GET_ADMIN_PASSWORD = 0x81,
-	CMD_GET_LOGON_PASSWORD = 0x82,
-	CMD_GET_BUZZER_TIMEOUT = 0x83,
-
-
-	CMD_SET_ADMIN_PASSWORD = 0x91,
-	CMD_SET_LOGON_PASSWORD = 0x92,
-	CMD_SET_BUZZER_TIMEOUT = 0x93,
-
-
-	CMD_PING = 0xA0,
-	CMD_CLEAR_ISSUES = 0xA1,
-	CMD_RESOLVE_ISSUE = 0xA2
-};
 
 typedef enum
 {
@@ -100,5 +60,7 @@ UINT8 APP_validateStaging(UINT8 *buffer);
 
 void APP_manageLoading(UINT8 *buffer);
 UINT8 APP_validateLoading(UINT8 *buffer);
+
+void APP_cancelTruck(UINT8 *buffer);
 
 #endif

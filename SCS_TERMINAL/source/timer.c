@@ -12,12 +12,13 @@ typedef struct _TMR
 TMR tmr[3] = { 0 , 0 };
 
 
-UINT16 count = 0;
-UINT16 heartBeatCount  =0 ;
-UINT16 keypadUpdateCount  =0 ;
-UINT16 comUpdateCount = 0;
-UINT16 appUpdateCount = 0;
-UINT16 uiUpdateCount = 0;
+UINT16 	count = 0;
+UINT16 	heartBeatCount  =0 ;
+UINT16 	keypadUpdateCount  =0 ;
+UINT16 	comUpdateCount = 0;
+UINT16 	appUpdateCount = 0;
+UINT16	uiUpdateCount = 0;
+UINT8	mbUpdateCount = 0;
 INT16 timeStampUpdateCount = TIMESTAMP_DURATION;
 UINT32 AppTimestamp = 0;
 
@@ -48,6 +49,7 @@ void TIMER0_ISR(void)
 	++comUpdateCount;
 	++appUpdateCount;
 	++uiUpdateCount;
+	++mbUpdateCount;
 
 	--timeStampUpdateCount;
 

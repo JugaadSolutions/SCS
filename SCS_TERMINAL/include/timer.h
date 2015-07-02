@@ -49,6 +49,7 @@ extern UINT16 keypadUpdateCount  ;
 extern UINT16 comUpdateCount ;
 extern UINT16 appUpdateCount ;
 extern UINT16 uiUpdateCount ;
+extern UINT8  mbUpdateCount;
 /*
 *------------------------------------------------------------------------------
 * Public Constants (extern)

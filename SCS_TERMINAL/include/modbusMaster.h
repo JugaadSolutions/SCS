@@ -135,7 +135,7 @@ typedef enum
 // function definitions
 void MB_task();
 
-void MB_construct(Packet *_packet, 
+void MB_construct(far Packet *_packet, 
 											unsigned char id, 
 											unsigned char function, 
 											unsigned int address, 

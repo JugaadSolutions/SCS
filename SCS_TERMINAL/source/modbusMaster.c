@@ -10,7 +10,7 @@
 #define WAITING_FOR_REPLY 2
 #define WAITING_FOR_TURNAROUND 3
 
-#define BUFFER_SIZE 32
+#define BUFFER_SIZE 64
 
 
 #pragma idata MODBUS_DATA
@@ -63,7 +63,12 @@ void MB_task()
 	switch (state)
 	{
 		case IDLE:
-		idle();
+		{
+			if(MB_STATUS == MB_NOERR)
+				MB_STATUS = MB_TXDONE;
+
+			idle();
+		}
 		break;
 		case WAITING_FOR_REPLY:
 		MB_STATUS = waiting_for_reply();
@@ -96,7 +101,8 @@ void idle(void)
 		// get the current connection status
 		current_connection = packet->connection;
 		
-		if (!current_connection)
+		//if (!current_connection)
+		if( current_connection != 1 )
 		{			
 			// If all the connection attributes are false return
 			// immediately to the main sketch
@@ -247,33 +253,40 @@ MBErrorCode waiting_for_reply(void)
 #endif
 	{
 		unsigned char overflowFlag = 0;
-	// The maximum number of bytes is limited to the serial buffer size 
-      // of BUFFER_SIZE. If more bytes is received than the BUFFER_SIZE the 
-      // overflow flag will be set and the serial buffer will be read until
-      // all the data is cleared from the receive buffer, while the slave is 
-      // still responding.
-
-		if (buffer == BUFFER_SIZE)
-			overflowFlag = 1;
-
-#if defined (__18f4520)			
-		frame[buffer] = UART_read();
+#if defined (__18f4520)
+		while(UART_hasData())
 #else
-		frame[buffer] = UART1_read();
+		while(UART1_hasData())
 #endif
-		buffer++;
-		
-		// This is not 100% correct but it will suffice.
-		// worst case scenario is if more than one character time expires
-		// while reading from the buffer then the buffer is most likely empty
-		// If there are more bytes after such a delay it is not supposed to
-		// be received and thus will force a frame_error.
-		//delayMicroseconds(T1_5); // inter character time out
-		Delay10us(T1_5/10);
+		{
+		  // The maximum number of bytes is limited to the serial buffer size 
+	      // of BUFFER_SIZE. If more bytes is received than the BUFFER_SIZE the 
+	      // overflow flag will be set and the serial buffer will be read until
+	      // all the data is cleared from the receive buffer, while the slave is 
+	      // still responding.
+	
+			if (buffer == BUFFER_SIZE)
+				overflowFlag = 1;
+	
+	#if defined (__18f4520)			
+			frame[buffer] = UART_read();
+	#else
+			frame[buffer] = UART1_read();
+	#endif
+			buffer++;
+			
+			// This is not 100% correct but it will suffice.
+			// worst case scenario is if more than one character time expires
+			// while reading from the buffer then the buffer is most likely empty
+			// If there are more bytes after such a delay it is not supposed to
+			// be received and thus will force a frame_error.
+			//delayMicroseconds(T1_5); // inter character time out
+			Delay10us(T1_5/10);
+		}
 		
 			
 		// The minimum buffer size from a slave can be an exception response of
-    // 5 bytes. If the buffer was partially filled set a frame_error.
+    	// 5 bytes. If the buffer was partially filled set a frame_error.
 		// The maximum number of bytes in a modbus packet is 256 bytes.
 		// The serial buffer limits this to 64 bytes.
 	
@@ -281,10 +294,10 @@ MBErrorCode waiting_for_reply(void)
 			processError();       
       
 		// Modbus over serial line datasheet states that if an unexpected slave 
-    // responded the master must do nothing and continue with the time out.
+    	// responded the master must do nothing and continue with the time out.
 		// This seems silly cause if an incorrect slave responded you would want to
-    // have a quick turnaround and poll the right one again. If an unexpected 
-    // slave responded it will most likely be a frame error in any event
+    	// have a quick turnaround and poll the right one again. If an unexpected 
+   		// slave responded it will most likely be a frame error in any event
 		else if (frame[0] != packet->id) // check id returned
 		{
 			processError();
@@ -310,9 +323,12 @@ MBErrorCode processReply(void)
 {
 	MBErrorCode status;
 
+	UINT16 temp = (UINT16)(frame[buffer - 2]);
+  	UINT16 calculated_crc = calculateCRC(buffer - 2);
+
 	// combine the crc Low & High bytes
-  	unsigned int received_crc = ((frame[buffer - 2] << 8) | frame[buffer - 1]); 
-  	unsigned int calculated_crc = calculateCRC(buffer - 2);
+  	UINT16 received_crc = temp << 8; //(UINT16)(frame[buffer - 2] << 8); 
+	received_crc |= (UINT16)frame[buffer - 1]; 
 	
 	if (calculated_crc == received_crc) // verify checksum
 	{
@@ -419,14 +435,25 @@ MBErrorCode process_F5_F6_F15_F16(void)
 {
 	MBErrorCode status = MB_TXDONE;
 
+	unsigned int received_address = 0;
+	unsigned int received_data = 0;
+	
 	// The repsonse of functions 5,6,15 & 16 are just an echo of the query
-  unsigned int recieved_address = ((frame[2] << 8) | frame[3]);
-  unsigned int recieved_data = ((frame[4] << 8) | frame[5]);
+  	received_address = frame[2];
+	received_address <<= 8;
+	received_address |= frame[3];
+
+	received_data = frame[4];
+	received_data <<= 8;
+	received_data = frame[5];
+
 		
-  if ((recieved_address == packet->address) && (recieved_data == packet->data))
-    processSuccess();
-  else
-    status = processError();
+	if ((received_address == packet->address) && (received_data == packet->data))
+		processSuccess();
+	else
+		status = processError();
+
+	return status;
 }
 
 MBErrorCode processError(void)
@@ -456,6 +483,9 @@ MBErrorCode processError(void)
 void processSuccess()
 {
 	packet->successful_requests++; // transaction sent successfully
+
+	//added for testing
+	packet->connection = 0;
 	packet->retries = 0; // if a request was successful reset the retry counter
 	state = WAITING_FOR_TURNAROUND;
 	delayStart = GetAppTime(); // start the turnaround delay
@@ -510,7 +540,7 @@ void MB_init(long baud,
 
 } 
 
-void MB_construct(Packet *_packet, 
+void MB_construct(far Packet *_packet, 
 											unsigned char id, 
 											unsigned char function, 
 											unsigned int address, 

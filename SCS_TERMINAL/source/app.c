@@ -60,13 +60,11 @@ typedef struct _LOG
 
 typedef struct _APP
 {
-	UINT32 preAppTime,curAppTime;
-	UINT8 stationCount[2];
 	UINT8 password[5];
 	UINT8 logonPassword[5];
-	UINT8 logonStatus;
-	UINT8 openIssue;
 	UINT8 truckState[MAX_NO_OF_TRUCKS][MAX_STATES];	//used to store the state of each truck
+	UINT8 regCount[MAX_LOG_ENTRIES];     // Buffer used to hold the number of 16bits counts in data pack
+	UINT8 cancelTruck[MAX_NO_OF_TRUCKS]; // Buffer used to hold the truck status
 }APP;																			//This object contains all the varibles used in this application
 
 
@@ -78,7 +76,7 @@ typedef struct _APP
 *------------------------------------------------------------------------------
 */
 #pragma idata APP_DATA
-APP ias = {0};
+APP app = {0};
 #pragma idata
 
 #pragma idata LOG_DATA
@@ -95,7 +93,6 @@ static rom UINT16 timeout = (UINT16)150;
 */
 
 
-UINT8 getRegCount(void);
 
 
 /*
@@ -111,11 +108,11 @@ void APP_init(void)
 	UINT8 regCount;
 	UINT8 ackStatus = 0;
 
-	ias.password[0] = '1';
-	ias.password[1] = '0';
-	ias.password[2] = '0';
-	ias.password[3] = '3';
-	ias.password[4] = '\0';
+	app.password[0] = '1';
+	app.password[1] = '0';
+	app.password[2] = '0';
+	app.password[3] = '3';
+	app.password[4] = '\0';
 
 	regCount = strlen(buffer);
 
@@ -147,14 +144,9 @@ void APP_task(void)
 		
 		//check for log entry, if yes write it to modbus			
 		if(log.readIndex != log.writeIndex)
-		{
-			regCount = getRegCount();
-
-			if(regCount == 0)
-				return;
-			
+		{			
 			MB_construct(&packets[PACKET1], SLAVE_ID, PRESET_MULTIPLE_REGISTERS, 
-								STARTING_ADDRESS, regCount, log.entries[log.readIndex]);	
+								STARTING_ADDRESS, app.regCount[log.readIndex], log.entries[log.readIndex]);	
 
 			log.readIndex++;
 		
@@ -189,7 +181,8 @@ void App_updateLog(far UINT8 *data)
 		data++;
 		i++;
 	}
-	log.entries[log.writeIndex][i]= (UINT16)'\0';
+	log.entries[log.writeIndex][i]= '\0';
+	app.regCount[log.writeIndex] = i;
 	log.writeIndex++;
 	if( log.writeIndex >= MAX_LOG_ENTRIES)
 		log.writeIndex = 0;
@@ -200,7 +193,7 @@ void App_updateLog(far UINT8 *data)
 BOOL APP_checkPassword(UINT8 *password)
 {
 
-	if( strcmp(ias.password , password) )
+	if( strcmp(app.password , password) )
 		return FALSE;
 	return TRUE;
 }
@@ -216,6 +209,9 @@ BOOL APP_activityValid(UINT8 *buffer)
 	UINT8 result = FALSE;
 	
 	UINT8 truckNo = atoi(buffer);
+
+	if(app.cancelTruck[truckNo] == CANCELLED)
+		return result;
 
 	if(truckNo <= MAX_NO_OF_TRUCKS && truckNo > 0)
 		result = TRUE;
@@ -236,14 +232,14 @@ void APP_managePicking(UINT8 *buffer)
 	buffer[2] = buffer[1];
 	buffer[1] = buffer[0];
 
-	if(ias.truckState[truckNo][PICKING_START] == TRUE)
+	if(app.truckState[truckNo][PICKING_START] == TRUE)
 	{
-		ias.truckState[truckNo][PICKING_END] = TRUE;
+		app.truckState[truckNo][PICKING_END] = TRUE;
 		buffer[0] = CMD_PICKING_END;
 	}
 	else
 	{
-		ias.truckState[truckNo][PICKING_START] = TRUE;
+		app.truckState[truckNo][PICKING_START] = TRUE;
 		buffer[0] = CMD_PICKING_START;
 	}
 }
@@ -252,10 +248,10 @@ UINT8 APP_validatePicking(UINT8 *buffer)
 {
 	UINT8 truckNo = atoi(buffer);
 
-	if	(ias.truckState[truckNo][PICKING_END] == TRUE)
+	if	(app.truckState[truckNo][PICKING_END] == TRUE)
 		return FALSE;
 
-	if	(ias.truckState[truckNo][PICKING_START] == TRUE)
+	if	(app.truckState[truckNo][PICKING_START] == TRUE)
 		return CMD_PICKING_END;
 	else
 		return CMD_PICKING_START;
@@ -275,14 +271,14 @@ void APP_manageStaging(UINT8 *buffer)
 	buffer[2] = buffer[1];
 	buffer[1] = buffer[0];
 
-	if(ias.truckState[truckNo][STAGING_START] == TRUE)
+	if(app.truckState[truckNo][STAGING_START] == TRUE)
 	{
-		ias.truckState[truckNo][STAGING_END] = TRUE;
+		app.truckState[truckNo][STAGING_END] = TRUE;
 		buffer[0] = CMD_STAGING_END;
 	}
 	else
 	{
-		ias.truckState[truckNo][STAGING_START] = TRUE;
+		app.truckState[truckNo][STAGING_START] = TRUE;
 		buffer[0] = CMD_STAGING_START;
 	}
 }
@@ -291,10 +287,10 @@ UINT8 APP_validateStaging(UINT8 *buffer)
 {
 	UINT8 truckNo = atoi(buffer);
 
-	if	(ias.truckState[truckNo][STAGING_END] == TRUE)
+	if	(app.truckState[truckNo][STAGING_END] == TRUE)
 		return FALSE;
 
-	if	(ias.truckState[truckNo][STAGING_START] == TRUE)
+	if	(app.truckState[truckNo][STAGING_START] == TRUE)
 		return CMD_STAGING_END;
 	else
 		return CMD_STAGING_START;
@@ -315,15 +311,15 @@ void APP_manageLoading(UINT8 *buffer)
 	buffer[2] = buffer[1];
 	buffer[1] = buffer[0];
 
-	if(ias.truckState[truckNo][LOADING_START] == TRUE)
+	if(app.truckState[truckNo][LOADING_START] == TRUE)
 	{
-		ias.truckState[truckNo][LOADING_END] = TRUE;
+		app.truckState[truckNo][LOADING_END] = TRUE;
 		buffer[0] = CMD_LOADING_END;
 		
 	}
 	else
 	{
-		ias.truckState[truckNo][LOADING_START] = TRUE;
+		app.truckState[truckNo][LOADING_START] = TRUE;
 		buffer[0] = CMD_LOADING_START;
 	}
 }
@@ -332,38 +328,27 @@ UINT8 APP_validateLoading(UINT8 *buffer)
 {
 	UINT8 truckNo = atoi(buffer);
 
-	if	(ias.truckState[truckNo][LOADING_END] == TRUE)
+	if	(app.truckState[truckNo][LOADING_END] == TRUE)
 		return FALSE;
 
-	if	(ias.truckState[truckNo][LOADING_START] == TRUE)
+	if	(app.truckState[truckNo][LOADING_START] == TRUE)
 		return CMD_LOADING_END;
 	else
 		return CMD_LOADING_START;
 }
 		
+
+
 /*---------------------------------------------------------------------------------------------------------------
-*	UINT8 APP_manageLoading(UINT8 *buffer)
-*	used to calculate data count in the buffer.
-* 	If the data count is odd, add+1 to it.
+*	void APP_cancelTruck(UINT8 *buffer)
+*	Used to store the status of truck i.e., running or cancelled
 *----------------------------------------------------------------------------------------------------------------
 */
-UINT8 getRegCount(void) 
+
+void APP_cancelTruck(UINT8 *buffer)
 {
-	UINT8 i,regCount = 0;
-	UINT16 hooterOff;
-
-	regCount = strlen(log.entries[log.readIndex]);
-
-	if(regCount == 0)
-	{
-		hooterOff = log.entries[log.readIndex][0];
-		hooterOff >>= 8;
-		
-		if(hooterOff == (UINT16)CMD_HOOTER_OFF)
-			regCount = 1;
-	}
+	UINT8 truckNo = atoi(buffer);
 	
-	return regCount;
+	app.cancelTruck[truckNo] = CANCELLED;
+
 }
-	
-

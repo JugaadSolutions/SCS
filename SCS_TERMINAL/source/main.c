@@ -249,7 +249,11 @@ void main(void)
 		}
 		//ClrWdt();
 	
+		if( mbUpdateCount >= 20 )
+		{
 			MB_task();
+			mbUpdateCount = 0;
+		}
 	
 #ifdef KEYPAD_TEST
 		if( KEYPAD_read(&scancode, &duration) == TRUE )

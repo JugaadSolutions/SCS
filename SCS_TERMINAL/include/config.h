@@ -81,7 +81,7 @@ enum
 ----------------------------------*/
 #define BAUD_RATE	 		9600
 #define TIMEOUT		 		1
-#define POLLING 			200 // the scan rate
+#define POLLING 			1 // the scan rate
 #define RETRY_COUNT			10
 #define SLAVE_ID			1
 #define STARTING_ADDRESS	0
