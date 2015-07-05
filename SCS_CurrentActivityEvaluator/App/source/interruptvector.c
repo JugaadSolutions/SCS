@@ -39,6 +39,10 @@ void high_interrupt (void)
 	}
 #endif
 
+	if(PIR2bits.TMR3IF == 1)
+	{
+		_asm GOTO prvvTIMERExpiredISR _endasm
+	}
 
 
 }

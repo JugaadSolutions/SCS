@@ -13,33 +13,47 @@ void APP_resetCounter_Buffer(void);
 * app - the app structure. 
 *------------------------------------------------------------------------------
 */
+
 typedef struct _APP
 {
 
 	//Modbus buffer
-	UINT8 eMBdata[NO_OF_DIGITS];
+	UINT8 eMBdata[NO_OF_DATA];
 	UINT8 Update;
 
-	//Variables to handle dot matrix display
-	UINT8 model[MSG_LENGTH];
-	UINT8 eepUpdate;
+	UINT16 curMinute;
+	UINT16 prevMinute;
+	UINT8 breakID;
+	UINT8 delayPercentage;
+	UINT8 alarmPercentage;
+	UINT8 secON;
+	
 
-	//Variables to handle seven segment display
-    APP_STATE state;
-    UINT16 Actual_Count;
-    UINT8 Actual[NO_OF_DIGITS];
-    UINT8 Plan[NO_OF_DIGITS];
-	UINT8 Input_Recieved;
-	UINT8 plan_eepUpdate;
-	UINT8 plan_eepModify;
-	UINT8 actual_eepUpdate;
+
 }APP;
 
+
+
 #pragma idata APP_DATA
-APP app = {{0},0};
+
+APP app = {{0}, 0} ;
 MMD_Config mmdConfig = {0};
 #pragma idata
 
+
+UINT8 readTimeDateBuffer[6] = {0};
+UINT8 writeTimeDateBuffer[] = {0X00, 0X02, 0X06, 0X03, 0x027, 0X12, 0X13};
+
+
+/*
+*------------------------------------------------------------------------------
+* Private Functions	Prototypes
+*------------------------------------------------------------------------------
+*/
+
+void updateTime(void);
+void updateReceivedData(void);
+UINT8 time_backlight[TIME_SEGMENT_CHARS + BACKLIGHT_SEGMENT_CHARS];
 
 
 /*
@@ -56,25 +70,19 @@ MMD_Config mmdConfig = {0};
 
 void APP_init(void)
 {
-	UINT8 i = 0;
 
-	//Dot matrix initialization
-	do
-	{
-			app.model[i] = Read_b_eep(EEPROM_ADDRESS+i);
-			Busy_eep();	
-	}while(app.model[i++]);
+	UINT16 sbaudrate , saddress;
 
-	MMD_clearSegment(0);
-	mmdConfig.startAddress = 0;
-	mmdConfig.length = MMD_MAX_CHARS;
-	mmdConfig.symbolCount = strlen(app.model);
-	mmdConfig.symbolBuffer = app.model;
-	mmdConfig.scrollSpeed = 0;//SCROLL_SPEED_LOW;
-	MMD_configSegment( 0 , &mmdConfig);
+//	updateTime();
+	eMBErrorCode    eStatus;
 
+	WriteRtcTimeAndDate(writeTimeDateBuffer);	
+	sbaudrate = 19200;	//set baudrate
+	saddress = DEVICE_ADDRESS;		//slave address
 
-
+	//modbus configuration
+	eStatus = eMBInit( MB_RTU, ( UCHAR )saddress, 0, sbaudrate, MB_PAR_NONE);
+	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
 
 }
 
@@ -92,11 +100,25 @@ void APP_init(void)
 
 void APP_task(void)
 {
+	UINT8 i,j;
+	
+	updateTime();
+	DISABLE_UART_RX_INTERRUPT();
 
+	if(app.Update == TRUE)
+	{
+		ENABLE_UART_RX_INTERRUPT();
 
+		updateReceivedData();
+
+		DISABLE_UART_RX_INTERRUPT();
+		app.Update = FALSE;	
+		ENABLE_UART_RX_INTERRUPT();	
+	}
+
+	ENABLE_UART_RX_INTERRUPT();	
 
 }
-
 
 
 /*
@@ -110,14 +132,7 @@ void APP_task(void)
 * Output	: None
 *------------------------------------------------------------------------------
 */
-void APP_resetCounter_Buffer(void)
-{
-	UINT8 i;
-	for(i = 0; i < NO_OF_DIGITS; i++)			//reset all digits
-	{
-		app.Actual[i] = '0';
-	}
-}
+
 
 UINT8 APP_comCallBack( far UINT8 *rxPacket, far UINT8* txCode,far UINT8** txPacket)
 {
@@ -127,40 +142,6 @@ UINT8 APP_comCallBack( far UINT8 *rxPacket, far UINT8* txCode,far UINT8** txPack
 	UINT8 rxCode = rxPacket[0];
 	UINT8 length = 0;
 
-	switch( rxCode )
-	{
-		case CMD_SET_MODEL:
-			app.eepUpdate = TRUE;
-			strcpy(app.model,&rxPacket[1]);
-			MMD_clearSegment(0);
-			mmdConfig.startAddress = 0;
-			mmdConfig.length = MMD_MAX_CHARS;
-			mmdConfig.symbolCount = strlen(app.model);
-			mmdConfig.symbolBuffer = app.model;
-			mmdConfig.scrollSpeed = 0;//SCROLL_SPEED_LOW;
-			MMD_configSegment( 0 , &mmdConfig);
-
-			*txCode = CMD_SET_MODEL;
-			break;
-
-	  	case SET_PLAN:
-			app.plan_eepUpdate= TRUE;
-			*txCode = SET_PLAN;
-		   
-		break;
-	
-
-        case MODIFY_PLAN:
-
-			app.plan_eepModify = TRUE;
-
-			*txCode = MODIFY_PLAN;
-		break;
-
-		default:
-		break;
-
-	}
 
 	return length;
 
@@ -224,10 +205,7 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
 				
 				* pucRegBuffer++ = 'C';
 				* pucRegBuffer++ = 'D';
-	
-							
-	
-	
+
 	
 			starting_add++;
 			no_regs	--;	
@@ -251,3 +229,74 @@ eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
 {
     return MB_ENOREG;
 }
+
+
+void resetAlarm()
+{
+	HOOTER = SWITCH_OFF;
+}
+
+void updateTime(void)
+{
+	UINT8 i;
+	UINT16 hour ,minute;
+	hour= RTC_getHour();
+	minute = RTC_getMinute();
+#ifdef TIME_DEBUG
+	app.curMinute = hour*60 + minute;
+	UTL_binaryToBCDASCII(hour , &time_backlight[TIME_HOUR_INDEX]);
+	UTL_binaryToBCDASCII(minute , &time_backlight[TIME_MINUTE_INDEX]);
+#else
+	app.curMinute = ((UINT16)BCDtoBin(hour))*60 + (UINT16)BCDtoBin(minute);
+	UTL_binaryToBCDASCII(BCDtoBin(hour) , &time_backlight[TIME_HOUR_INDEX]);
+	UTL_binaryToBCDASCII(BCDtoBin(minute) , &time_backlight[TIME_MINUTE_INDEX]);
+#endif
+	
+	if( app.secON == TRUE)
+	{
+		time_backlight[TIME_SECOND_INDEX] = SYM_SEC_LEFT;
+		time_backlight[TIME_SECOND_INDEX+1] = SYM_SEC_RIGHT;
+		app.secON = FALSE;
+	}
+	else
+	{
+		time_backlight[TIME_SECOND_INDEX] = ' ';
+		time_backlight[TIME_SECOND_INDEX+1] = ' ';
+		app.secON = TRUE;
+	}
+
+
+	mmdConfig.startAddress =TIME_SEGMENT_START_ADDRESS ;
+	mmdConfig.length = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
+	mmdConfig.symbolBuffer = time_backlight;
+	mmdConfig.symbolCount = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
+	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
+
+	MMD_configSegment(1, &mmdConfig);
+
+
+}
+
+
+
+void updateReceivedData (void)
+{
+	int cmd = app.eMBdata[0];
+	
+	switch(cmd)
+	{
+		case CMD_RTC	:
+			writeTimeDateBuffer[0] = 0;
+			writeTimeDateBuffer[1] = ((app.eMBdata[1] - '0' ) << 4) | (app.eMBdata[2] - '0' ); //store minutes
+			writeTimeDateBuffer[2] = ((app.eMBdata[3] - '0') << 4) | (app.eMBdata[4] - '0'); //store houres
+		
+			WriteRtcTimeAndDate(writeTimeDateBuffer);  //update RTC
+
+		case CMD_HOOTER_OFF	:
+			
+			resetAlarm();
+		default:
+		break;
+	}
+}
+

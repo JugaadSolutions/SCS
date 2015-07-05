@@ -182,7 +182,8 @@ void BRD_init(void)
 	DIGIT_PORT_B_DIRECTION = PORT_OUT;
 
 
-
+	HOOTER_DIR       = PORT_OUT;
+	HOOTER  		 = SWITCH_OFF;
 
 	OSCTUNEbits.PLLEN = 1;
 	DelayMs(100);

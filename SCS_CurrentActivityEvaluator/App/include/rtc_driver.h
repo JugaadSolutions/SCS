@@ -139,6 +139,17 @@ extern void ConvertTime12to24Format(DATE_TIME *pstRtcData12,DATE_TIME *pstRtcDat
 extern UINT8 ConvertHour12to24Format(UINT8 hour12,UINT8 amPm);
 extern void ReadRtcEEPROM(UINT8 * buff);
 extern void WriteRtcEEPROM(UINT8 *buff);
+
+extern UINT16 RTC_getMinuteOfDay(void);
+extern UINT8* RTC_getMonthStr(void);
+extern UINT8* RTC_getDayStr(void);
+extern UINT8 RTC_getSecond(void);
+extern UINT8 RTC_getMinute(void);
+extern UINT8 RTC_getHour(void);
+extern UINT8 RTC_getDate(void);
+extern UINT8 RTC_getMonth(void);
+extern UINT8 RTC_getDay(void);
+
 #endif
 /*
 *  End of rtc_driver.h

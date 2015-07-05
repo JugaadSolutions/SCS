@@ -12,11 +12,11 @@
 
 
 //MMD module configuration
-#define MMD_MAX_CHARS		28
-#define MMD_MAX_SEGMENTS	1
+#define MMD_MAX_CHARS		11
+#define MMD_MAX_SEGMENTS	2
 #define MMD_MAX_ADDRESS		32
 //#define __MMD_STATIC__
-#define MMD_TEST
+//#define MMD_TEST
 
 /*----------------------------------------
 *	TIMER Configuration
@@ -74,7 +74,7 @@ enum
 
 
 //RTC CONFIGURATION
-//#define TIME_DEBUG
+#define TIME_DEBUG
 
 //#define RTC_DS1307
 #define RTC_DS3232
@@ -100,7 +100,7 @@ enum
 #define SET_PLAN 			0x81
 #define MODIFY_PLAN 		0x82
 
-#define NO_OF_DIGITS		(0x04)
+#define NO_OF_DATA			25
 #define MAX_COUNT			(9999)
 
 /*

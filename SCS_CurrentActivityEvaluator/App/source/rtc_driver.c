@@ -538,11 +538,11 @@ void InitializeRtc(void)
 	stRtcRegs.mHour  	= 6;
 #endif
 	// Setup task to run
-#ifdef TIME_DEBUG
-	SCH_AddTask(UpdateRealTimeClockTask ,0,TASK_10MSEC_PERIOD);
-#else
+//#ifdef TIME_DEBUG
+//	SCH_AddTask(UpdateRealTimeClockTask ,0,TASK_10MSEC_PERIOD);
+//#else
 //	SCH_AddTask(UpdateRealTimeClockTask ,0,TASK_100MSEC_PERIOD);
-#endif
+//#endif
 }
 
 /*
@@ -599,6 +599,56 @@ void UpdateRealTimeClockTask(void)
 * Private Functions
 *------------------------------------------------------------------------------
 */
+
+UINT8 RTC_getDay(void)
+{
+	return stRtcRegs.mDay;
+}
+UINT8 RTC_getMonth(void)
+{
+
+	return stRtcRegs.mMonth;
+}
+
+UINT8 RTC_getDate(void)
+{
+
+	return stRtcRegs.mDate;
+}
+
+UINT8 RTC_getHour(void)
+{
+
+	return stRtcRegs.mHour;
+}
+
+UINT8 RTC_getMinute(void)
+{
+
+	return stRtcRegs.mMinute;
+}
+
+UINT8 RTC_getSecond(void)
+{
+
+	return stRtcRegs.mSeconds;
+}
+
+UINT16 RTC_getMinuteOfDay(void)
+{
+	return  (((UINT16 )stRtcRegs.mHour * 60) + stRtcRegs.mMinute) ;
+}
+	  
+
+UINT8* RTC_getDayStr(void)
+{
+	return DayStr[stRtcRegs.mDay];
+}
+
+UINT8* RTC_getMonthStr(void)
+{
+	return MonthStr[stRtcRegs.mMonth];
+}
 
 /*
 *  End of rtc_driver.c

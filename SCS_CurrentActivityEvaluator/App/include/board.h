@@ -116,7 +116,9 @@
 //#define	DATA_PORT_B    	           PORTJ
 //#define DATA_PORT_B_DIRECTION  	   TRISJ
 
-
+					
+#define 	HOOTER					PORTCbits.RC0 		// serial transmit
+#define		HOOTER_DIR				TRISCbits.TRISC0
 			
 /*
 *------------------------------------------------------------------------------

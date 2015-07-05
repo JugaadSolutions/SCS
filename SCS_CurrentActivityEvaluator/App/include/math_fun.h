@@ -100,7 +100,7 @@ extern UINT16 BinToBCD(UINT8 temp);
 extern void ConvertAndDisplay8BitValue(UINT8 inValue, UINT8 *pNewVal);
 extern UINT16 ConvertUnPackedAsciiToPacked16BitHexValue(UINT8 *inArray, UINT8 numOfDigits);
 extern void ConvertAndDisplay32BitValue(UINT32 inValue, UINT8 *pNewVal);
-
+extern void UTL_binaryToBCDASCII(UINT8 data , UINT8* asciiStr );
 #endif
 /*
 *  End of math_fun.h

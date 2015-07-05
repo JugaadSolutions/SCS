@@ -210,9 +210,9 @@ void main(void)
 	while(1)
 	{
 
-		if(  heartBeatCount >= 500)
+		if(  heartBeatCount >= 550)
 		{
-			//APP_task();
+		
 			HB_task();
 			heartBeatCount = 0;
 		}
@@ -223,14 +223,14 @@ void main(void)
 			mmdUpdateCount = 0;
 		}
 
-		if(AppUpdate_count >=50 )
+		if(AppUpdate_count >=550 )
 		{
 		  APP_task();
           AppUpdate_count = 0;
 		
 		}
 
-		COM1_task();
+	//	COM1_task();
 		//ClrWdt();	
 
 		if(eMBUpdate_count >= 10)

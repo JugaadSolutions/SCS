@@ -368,6 +368,13 @@ UINT16 ConvertUnPackedAsciiToPacked16BitHexValue(UINT8 *inArray, UINT8 numOfDigi
 	}
  }
 
+
+void UTL_binaryToBCDASCII(UINT8 data , UINT8* asciiStr )
+{
+	asciiStr[1] = data%10 + '0';
+	asciiStr[0] = data/10 + '0';
+}
+
 /*
 *------------------------------------------------------------------------------
 * Private Functions
