@@ -17,7 +17,8 @@
 #define MMD_MAX_ADDRESS		32
 //#define __MMD_STATIC__
 //#define MMD_TEST
-
+//#define __DISPLAY_TEST__
+//#define COMMON_CATHODE
 /*----------------------------------------
 *	TIMER Configuration
 *----------------------------------------*/
@@ -65,26 +66,21 @@ enum
 
 //#define __FACTORY_CONFIGURATION__
 //#define __SIMULATION__
+
 /*----------------------------------------
-*	App Configurations
+*	RTC CONFIGURATION
 *----------------------------------------*/
 
 
-
-
-
 //RTC CONFIGURATION
-#define TIME_DEBUG
+//#define TIME_DEBUG
 
 //#define RTC_DS1307
 #define RTC_DS3232
 
 //#define __SET_RTC__
+//#define RTC_DATA_ON_UART
 
-
-//APPLICATION CONFIGURATION
-#define MSG_MAX_CHARS 60
-#define MAX_TRANSITIONS 20
 
 //#define __ERROR_DEBUG__
 
@@ -92,16 +88,13 @@ enum
 *	APP CONFIGURATION
 *----------------------------------------*/
 #define MSG_LENGTH 		20
-#define EEPROM_ADDRESS 	(0X10)
 
-
-#define EPROM_ADD_PLAN  	0
-#define EPROM_ADD_ACTUAL 	4
-#define SET_PLAN 			0x81
-#define MODIFY_PLAN 		0x82
 
 #define NO_OF_DATA			25
-#define MAX_COUNT			(9999)
+
+#define MSG_MAX_CHARS 60
+#define MAX_TRANSITIONS 20
+
 
 /*
 *------------------------------------------------------------------------------

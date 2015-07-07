@@ -63,9 +63,10 @@ typedef struct _DigitDisplay
 * Private Variables (static) 
 *------------------------------------------------------------------------------
 */
-
+//0,1,2,3,4,5,6,7,8,9,A,C,P,L,_
 static const UINT8 SEVENSEGMENT[] ={0x3f,0x06,0x5b,0x4f,0x66,
-							  0x6d,0x7d,0x07,0x7f,0x6f,0x00};
+									0x6d,0x7d,0x07,0x7f,0x6f,
+									0x77,0x39,0x73,0x38,0x08,0x00};
 
 #pragma idata	DISPLAY_DATA
 DigitDisplay digitDisplay = {0};
@@ -110,7 +111,7 @@ BOOL DigitDisplay_init( UINT8 noDigits )
 	digitDisplay.noDigits = noDigits;				//set no of digits 
 	for( i = 0; i < digitDisplay.noDigits; i++)
 	{
-		digitDisplay.buffer[BLINK][i] = SEVENSEGMENT[10];		//clear buffer to be used  during blink mode
+		digitDisplay.buffer[BLINK][i] = SEVENSEGMENT[15];		//clear buffer to be used  during blink mode
 	}
 	digitDisplay.dispBuffer = digitDisplay.buffer[STATIC];	//set initial display buffer to data(i.e. buffer[0])
 
@@ -134,10 +135,10 @@ BOOL DigitDisplay_init( UINT8 noDigits )
 
 for(j = 0; j < 16 ; j++)
 {
-	for( i = 0; i < 11 ; i++)
+	for( i = 0; i < 16 ; i++)
 	{
-		writeToDisplayPort( SEVENSEGMENT[i]| (0x80) )	;
-		DelayMs(200);
+		writeToDisplayPort( SEVENSEGMENT[i] | (0x80) )	;//
+		DelayMs(400);
 	}
 	digitDisplay.digitIndex++;
 }
@@ -238,7 +239,7 @@ BOOL DigitDisplay_updateBuffer(UINT8 *buffer)
 	{
 		if( buffer[i] == ' ')
 		{
-			digitDisplay.buffer[STATIC][i] = SEVENSEGMENT[10];
+			digitDisplay.buffer[STATIC][i] = SEVENSEGMENT[15];
 		}
 		else
 		{
@@ -307,7 +308,7 @@ BOOL DigitDisplay_updateDigit(UINT8 index , UINT8 value)
 
 	if( value == ' ')
 	{
-		digitDisplay.buffer[STATIC][index] = SEVENSEGMENT[10];
+		digitDisplay.buffer[STATIC][index] = SEVENSEGMENT[15];
 	}
 	else
 	{
@@ -388,7 +389,7 @@ void DigitDisplay_clear()
 	UINT8 i;
 	for( i = 0 ; i < digitDisplay.noDigits ; i++)
 	{
-		digitDisplay.buffer[STATIC][i] = SEVENSEGMENT[10];
+		digitDisplay.buffer[STATIC][i] = SEVENSEGMENT[15];
 	}
 	digitDisplay.digitIndex = 0;
 }
@@ -430,13 +431,18 @@ static void writeToDisplayPort( UINT8 value )
 			
 
 	DATA_1_PORT = ~value;
-//	DATA_PORT_B = ~value2;
 
+	if(digitDisplay.digitIndex < 8)
+	{
+		shift <<= digitDisplay.digitIndex;	
+		DIGIT_PORT_A = ~shift;
 
-	shift <<= digitDisplay.digitIndex;
-
-	DIGIT_PORT_A = ~shift;
-	DIGIT_PORT_B = ~shift;
+	}
+	else if( digitDisplay.digitIndex >= 8)
+	{
+		shift <<= digitDisplay.digitIndex;
+		DIGIT_PORT_B = ~shift;
+	}
 
 
 
@@ -453,12 +459,18 @@ static void writeToDisplayPort( UINT8 value )
 	Delay10us(1);
 
 	DATA_1_PORT = value;
-//	DATA_PORT_B = value2;
 
-	shift <<= digitDisplay.digitIndex;
-	
+	if(digitDisplay.digitIndex < 8)
+	{
+		shift <<= digitDisplay.digitIndex;	
 		DIGIT_PORT_A = shift;
+
+	}
+	else if( digitDisplay.digitIndex >= 8)
+	{
+		shift <<= digitDisplay.digitIndex;
 		DIGIT_PORT_B = shift;
+	}
 
 	
 	Delay10us(1);

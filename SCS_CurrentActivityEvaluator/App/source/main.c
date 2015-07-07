@@ -174,13 +174,13 @@ void main(void)
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
-	UINT8 line[10] ="        "; 
+	UINT8 line[10] ="ABCDEFGH"; 
 #endif
 
 
 	BRD_init();
 	HB_init();
-	DigitDisplay_init(16);
+	DigitDisplay_init(8);
 	MMD_init();  // Display initialization
 
 

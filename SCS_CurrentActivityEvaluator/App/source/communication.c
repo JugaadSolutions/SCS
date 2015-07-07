@@ -502,4 +502,26 @@ void COM_txCMD_CHAN1(UINT8 deviceAddress,
 	UART1_transmit();
 
 }
-	
+
+UINT8 COM_txBuffer(UINT8 *txData, UINT8 length)
+{
+	UINT8 i;
+
+	communication1.txPacketLength = length;
+	communication1.txCode = 0X0A;
+
+//	communication.txPacketBuffer[COM_DEVICE_ADDRESS_INDEX] = DEVICE_ADDRESS;	//store device address
+//	++communication.txPacketLength;
+
+//	communication.txPacketBuffer[COM_TX_CODE_INDEX] = communication.txCode;	//store tx code
+//	++communication.txPacketLength;
+
+	for( i = COM_TX_DATA_START_INDEX ; i < communication1.txPacketLength ; i++)	//store data
+	{
+		communication1.txPacketBuffer[i] = *txData;
+		txData++;
+	}
+
+	COM_txData();
+
+}	
