@@ -8,7 +8,7 @@ dir_src=
 dir_bin=output
 dir_tmp=obj
 dir_sin=
-dir_inc=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu;C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus;C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\include;C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h
+dir_inc=.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h
 dir_lib=C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib
 dir_lkr=
 [CAT_FILTERS]
