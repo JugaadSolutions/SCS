@@ -39,10 +39,12 @@
 #include "communication.h"
 #include "heartBeat.h"
 #include "app.h"
+#include "string.h"
 #include "mmd.h"
 #include "mb.h"
 #include "digitdisplay.h"
 #include "rtc_driver.h"
+#include "digit_driver.h"
 
 /*
 *------------------------------------------------------------------------------
@@ -169,18 +171,18 @@ extern UINT16 AppUpdate_count;
 
 void main(void)
 {
-	UINT8 i,j, count;
+	UINT8 i,j,k, count;
 	BOOL ledStrip_On = 0;
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
-	UINT8 line[10] ="ABCDEFGH"; 
+	UINT8 line[16] ="DENSO - BREAK "; 
 #endif
 
 
 	BRD_init();
 	HB_init();
-	DigitDisplay_init(8);
+	DigitDisplay_init(16);
 	MMD_init();  // Display initialization
 
 
@@ -195,16 +197,31 @@ void main(void)
 
 	EnableInterrupts();
 
+#ifdef __DIGIT_DISPLAY_TEST__
+
+	for(i = 32; i < 128 ; i++ )
+	{
+		for( k = 0; k < 10 ; k++)
+			{
+				DDR_loadDigit(i,k);
+				DelayMs(75);
+			}
+	}
+#endif
+
 #if defined (MMD_TEST)
 	MMD_clearSegment(0);
 	mmdConfig.startAddress = 0;
 	mmdConfig.length = MMD_MAX_CHARS;
 	mmdConfig.symbolCount = strlen(line);
 	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = 0;
+	mmdConfig.scrollSpeed = SCROLL_SPEED_HIGH;
 			
 	MMD_configSegment( 0 , &mmdConfig);
+
 #endif
+
+
 
 
 	while(1)

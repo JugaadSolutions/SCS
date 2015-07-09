@@ -1,16 +1,28 @@
 #ifndef APP_H
 #define APP_H
 
+/*
+*------------------------------------------------------------------------------
+* Include Files
+*------------------------------------------------------------------------------
+*/
+
 #include "config.h"
 #include "mb.h"
 #include "communication.h"
 #include "mmd.h"
 #include "string.h"
-#include "string.h"
 #include "typedefs.h"
 #include "eep.h"
 #include "rtc_driver.h"
 #include "math_fun.h"
+#include "digit_driver.h"
+
+/*
+*------------------------------------------------------------------------------
+* Private Macros
+*------------------------------------------------------------------------------
+*/
 
 #define	MARQUEE_SEGMENT_START_ADDRESS		0
 #define	MARQUEE_SEGMENT_CHARS				30
@@ -46,27 +58,24 @@
 #define ACTIVITY_PARAMETER_BUFFER_SIZE			20
 #define MARQUEES_SUPPORTED				(BREAKS_SUPPORTED)
 
-enum
-{
-	CURRENT_ACTIVITY_DEVICE_START_ADDRESS = 5
-};
-
-
-typedef struct _ACTIVITY_SCHEDULE
-{
-	UINT16 startMinute;
-	UINT16 endMinute;
-	UINT16 duration;
-}ACTIVITY_SCHEDULE;
-
-
-
 #define EEP_DEVICE_ID							(UINT16)(0000)
 #define EEP_TIME_FORMAT							(UINT16)(0001)
 #define EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS		(UINT16)(0002)
 #define EEP_BREAK_SCHEDULE_BASE_ADDRESS 		(UINT16)(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + (sizeof(ACTIVITY_SCHEDULE) * ACTIVITIES_SUPPORTED*(TRUCKS_SUPPORTED+1)))
 #define EEP_DELAY_PERCENTAGE					(UINT16)(EEP_BREAK_SCHEDULE_BASE_ADDRESS + (sizeof(ACTIVITY_SCHEDULE) *TRUCKS_SUPPORTED))
 #define	EEP_ALARM_PERCENTAGE					(UINT16)(EEP_DELAY_PERCENTAGE + 1)
+
+/*
+*------------------------------------------------------------------------------
+* Private Enumeration
+*------------------------------------------------------------------------------
+*/
+
+enum
+{
+	CURRENT_ACTIVITY_DEVICE_START_ADDRESS = 5
+};
+
 
 enum
 {
@@ -120,11 +129,6 @@ typedef enum
 }STATUS;
 
 
-
-
-
-
-
 typedef enum
 {
 	CMD_PICKING_START	= 0x80,
@@ -142,7 +146,65 @@ typedef enum
 
 };
 
+/*
+*------------------------------------------------------------------------------
+* app - the app structure. 
+*------------------------------------------------------------------------------
+*/
 
+typedef struct _ACTIVITY_SCHEDULE
+{
+	UINT16 startMinute;
+	UINT16 endMinute;
+	UINT16 duration;
+}ACTIVITY_SCHEDULE;
+
+typedef struct _TRUCK_SCHEDULE
+{
+	ACTIVITY_SCHEDULE schedule[ACTIVITIES_SUPPORTED];
+}TRUCK_SCHEDULE;
+
+typedef struct _SCHEDULE_UPDATE_INFO
+{
+	UINT8 truck;
+	ACTIVITY activity;
+	MILESTONE milestone;
+	STATUS status;
+	UINT8 startMinute_MSB;
+	UINT8 startMinute_LSB;
+	UINT8 endMinute_MSB;
+	UINT8 endMinute_LSB;
+	UINT8 curMinute_MSB;
+	UINT8 curMinute_LSB;
+}SCHEDULE_UPDATE_INFO;
+ 
+
+typedef struct _SCHEDULE_DATA
+{
+	UINT8 truck;
+	ACTIVITY_SCHEDULE schedule[ACTIVITIES_SUPPORTED];
+}SCHEDULE_DATA;
+
+typedef struct _SCHEDULE_STATUS
+{
+	ACTIVITY_STATUS activityStatus;
+	STATUS status;
+}SCHEDULE_STATUS;
+
+typedef struct _TRUCK_INDICATOR_DATA
+{
+	UINT8 indicatorRed[4];
+	UINT8 indicatorGreen[4];
+}TRUCK_INDICATOR_DATA;
+
+
+
+
+/*
+*------------------------------------------------------------------------------
+* Public Functions	Prototypes
+*------------------------------------------------------------------------------
+*/
 UINT8 APP_comCallBack( far UINT8 *rxPacket,  far UINT8* txCode, far UINT8** txPacket);
 void APP_init(void);
 void APP_task(void);

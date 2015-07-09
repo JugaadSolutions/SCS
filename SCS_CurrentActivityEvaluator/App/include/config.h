@@ -11,14 +11,18 @@
 #define DEVICE_ADDRESS			0x01
 
 
+/*----------------------------------------
+* Display Configuration (MMD , Scan Digit , Latch Digit)
+*----------------------------------------*/
 //MMD module configuration
-#define MMD_MAX_CHARS		11
+#define MMD_MAX_CHARS		16
 #define MMD_MAX_SEGMENTS	2
 #define MMD_MAX_ADDRESS		32
 //#define __MMD_STATIC__
-//#define MMD_TEST
-//#define __DISPLAY_TEST__
+#define MMD_TEST
+#define __DISPLAY_TEST__
 //#define COMMON_CATHODE
+#define __DIGIT_DISPLAY_TEST__
 /*----------------------------------------
 *	TIMER Configuration
 *----------------------------------------*/
@@ -70,13 +74,10 @@ enum
 /*----------------------------------------
 *	RTC CONFIGURATION
 *----------------------------------------*/
-
-
-//RTC CONFIGURATION
 //#define TIME_DEBUG
 
 //#define RTC_DS1307
-#define RTC_DS3232
+//#define RTC_DS3232
 
 //#define __SET_RTC__
 //#define RTC_DATA_ON_UART

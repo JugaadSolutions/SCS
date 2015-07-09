@@ -77,25 +77,25 @@
 
 #define		DATA_PORT				PORTA	//LATD	 				// 7seg display data (DB0-DB7)
 #define 	DATA_PORT_DIR			TRISA
-#define		DIGIT_PORT				PORTJ	//LATB	 				// digit drivers(upto 128 digits)
-#define		DIGIT_PORT_DIR			TRISJ	//LATB	 				// digit drivers(upto 128 digits)
+#define		DIGIT_PORT				PORTB	//LATB	 				// digit drivers(upto 128 digits)
+#define		DIGIT_PORT_DIR			TRISB	//LATB	 				// digit drivers(upto 128 digits)
 
-#define		ROW_SEL_A				PORTBbits.RB0			// decoder digit sel A
-#define		ROW_SEL_A_DIR			TRISBbits.TRISB0
-#define		ROW_SEL_B				PORTBbits.RB1		// decoder digit sel B
-#define		ROW_SEL_B_DIR			TRISBbits.TRISB1
-#define		ROW_SEL_C				PORTBbits.RB2		// decoder digit sel C
-#define		ROW_SEL_C_DIR			TRISBbits.TRISB2
-#define		ROW_SEL_D				PORTBbits.RB3		// decoder digit sel D
-#define		ROW_SEL_D_DIR			TRISBbits.TRISB3
-#define		ROW_SEL_E				PORTBbits.RB4		// decoder digit sel E
-#define		ROW_SEL_E_DIR			TRISBbits.TRISB4
-#define		ROW_SEL_F				PORTBbits.RB5		// decoder digit sel F
-#define		ROW_SEL_F_DIR			TRISBbits.TRISB5
-#define		ROW_SEL_G				PORTBbits.RB6	// decoder digit sel G
-#define		ROW_SEL_G_DIR			TRISBbits.TRISB6
-#define		ROW_SEL_H				PORTBbits.RB7	// decoder digit sel G
-#define		ROW_SEL_H_DIR			TRISBbits.TRISB7
+#define		ROW_SEL_A				PORTJbits.RJ0			// decoder digit sel A
+#define		ROW_SEL_A_DIR			TRISJbits.TRISJ0
+#define		ROW_SEL_B				PORTJbits.RJ1		// decoder digit sel B
+#define		ROW_SEL_B_DIR			TRISJbits.TRISJ1
+#define		ROW_SEL_C				PORTJbits.RJ2		// decoder digit sel C
+#define		ROW_SEL_C_DIR			TRISJbits.TRISJ2
+#define		ROW_SEL_D				PORTJbits.RJ3		// decoder digit sel D
+#define		ROW_SEL_D_DIR			TRISJbits.TRISJ3
+#define		ROW_SEL_E				PORTJbits.RJ4		// decoder digit sel E
+#define		ROW_SEL_E_DIR			TRISJbits.TRISJ4
+#define		ROW_SEL_F				PORTJbits.RJ5		// decoder digit sel F
+#define		ROW_SEL_F_DIR			TRISJbits.TRISJ5
+#define		ROW_SEL_G				PORTJbits.RJ6	// decoder digit sel G
+#define		ROW_SEL_G_DIR			TRISJbits.TRISJ6
+#define		ROW_SEL_H				PORTJbits.RJ7	// decoder digit sel G
+#define		ROW_SEL_H_DIR			TRISJbits.TRISJ7
 
 //Seven segment digit
 #define	DIGIT_PORT_A               PORTD
@@ -109,8 +109,8 @@
 #define DATA_1_PORT_DIRECTION  	   TRISH
 
 					
-//#define 	HOOTER					PORTCbits.RC0 		// serial transmit
-//#define		HOOTER_DIR				TRISCbits.TRISC0
+#define 	HOOTER					PORTGbits.RG4 		// serial transmit
+#define		HOOTER_DIR				TRISGbits.TRISG4
 
 			
 /*

@@ -478,7 +478,7 @@ void COM_txCMD_CHAN1(UINT8 deviceAddress,
 
 	i = 0;
 	cmdPacket[i++]= CMD_SOP;
-	cmdPacket[i++] = deviceAddress+2;
+	cmdPacket[i++] = deviceAddress;
 	cmdPacket[i++] = length;
 	cmdPacket[i++] = cmd;
 	for( j =0; j < length ; j++)

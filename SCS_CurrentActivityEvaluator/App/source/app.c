@@ -1,8 +1,10 @@
 
+/*
+*------------------------------------------------------------------------------
+* Include Files
+*------------------------------------------------------------------------------
+*/
 #include "app.h"
-
-
-
 
 
 /*
@@ -26,14 +28,34 @@ typedef struct _APP
 	UINT8 alarmPercentage;
 	UINT8 secON;
 
-	UINT8 timeBuffer[6];
+	UINT8 updated;
 	
 
 
 }APP;
 
 
-UINT8 txBuffer[7] = {0};
+
+static rom ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED*4+1][ACTIVITIES_SUPPORTED]
+={
+{{0, 0,0},{0 , 0,0},{0 , 0, 0}},
+{{(UINT16)1340, (UINT16)1400,(UINT16)60},{(UINT16)1350, (UINT16)1410,(UINT16)60},{(UINT16)350 ,(UINT16)385 ,(UINT16)35}},
+{{(UINT16)330 , (UINT16)380 ,(UINT16)50},{(UINT16)340 , (UINT16)390 ,(UINT16)50},{(UINT16)390 ,(UINT16)425 ,(UINT16)35}},
+{{(UINT16)380 , (UINT16)460 ,(UINT16)80},{(UINT16)390 , (UINT16)470 ,(UINT16)80},{(UINT16)485 ,(UINT16)520 ,(UINT16)35}},
+{{(UINT16)460 , (UINT16)540 ,(UINT16)80},{(UINT16)470 , (UINT16)550 ,(UINT16)80},{(UINT16)565 ,(UINT16)600 ,(UINT16)35}},
+{{(UINT16)540 , (UINT16)610 ,(UINT16)70},{(UINT16)550 , (UINT16)620 ,(UINT16)70},{(UINT16)630 ,(UINT16)665 ,(UINT16)35}},
+{{(UINT16)610 , (UINT16)670 ,(UINT16)60},{(UINT16)620 , (UINT16)680 ,(UINT16)60},{(UINT16)685 ,(UINT16)720 ,(UINT16)35}},
+{{(UINT16)670 , (UINT16)760 ,(UINT16)90},{(UINT16)680 , (UINT16)770 ,(UINT16)90},{(UINT16)770 ,(UINT16)805 ,(UINT16)35}},
+{{(UINT16)760 , (UINT16)820 ,(UINT16)60},{(UINT16)770 , (UINT16)830 ,(UINT16)60},{(UINT16)835 ,(UINT16)870 ,(UINT16)35}},
+{{(UINT16)820 , (UINT16)880 ,(UINT16)60},{(UINT16)830 , (UINT16)890 ,(UINT16)60},{(UINT16)905 ,(UINT16)940 ,(UINT16)35}},
+{{(UINT16)880 , (UINT16)950 ,(UINT16)70},{(UINT16)890 , (UINT16)960 ,(UINT16)70},{(UINT16)965 ,(UINT16)1000 ,(UINT16)35}},
+{{(UINT16)950 , (UINT16)1020 ,(UINT16)70},{(UINT16)960 , (UINT16)1030 ,(UINT16)70},{(UINT16)1030 ,(UINT16)1065,(UINT16)35}},
+{{(UINT16)1020 , (UINT16)1080,(UINT16)60},{(UINT16)1030 , (UINT16)1090,(UINT16)60},{(UINT16)1105,(UINT16)1140,(UINT16)35}},
+{{(UINT16)1080, (UINT16)1140,(UINT16)60},{(UINT16)1090, (UINT16)1150,(UINT16)60},{(UINT16)1175,(UINT16)1210,(UINT16)35}},
+{{(UINT16)1140, (UINT16)1220,(UINT16)80},{(UINT16)1150, (UINT16)1230,(UINT16)80},{(UINT16)1235,(UINT16)1270,(UINT16)35}},
+{{(UINT16)1220, (UINT16)1280,(UINT16)60},{(UINT16)1230, (UINT16)1290,(UINT16)60},{(UINT16)1305,(UINT16)1340,(UINT16)35}},
+{{(UINT16)1280, (UINT16)1340,(UINT16)60},{(UINT16)1290, (UINT16)1350,(UINT16)60},{(UINT16)1365,(UINT16)1400,(UINT16)35}},
+};
 static rom ACTIVITY_SCHEDULE  breakSchedule[BREAKS_SUPPORTED+1]={ 
 {0 , 0,0},
 {550, 560,10},
@@ -80,8 +102,8 @@ ACTIVITY_STATUS scheduleTable[TRUCKS_SUPPORTED][ACTIVITIES_SUPPORTED];
 #pragma udata
 
 UINT8 readTimeDateBuffer[6] = {0};
-UINT8 writeTimeDateBuffer[] = {0X00, 0X15, 0X18, 0X03, 0x027, 0X12, 0X13};
-
+UINT8 writeTimeDateBuffer[] = {0X00, 0X30, 0X17, 0X03, 0x027, 0X12, 0X13};
+UINT8 txBuffer[7] = {0};
 
 
 /*
@@ -89,14 +111,34 @@ UINT8 writeTimeDateBuffer[] = {0X00, 0X15, 0X18, 0X03, 0x027, 0X12, 0X13};
 * Private Functions	Prototypes
 *------------------------------------------------------------------------------
 */
+/*
+void resetActivitySegment(UINT8 i);
+void getActivitySchedule(UINT8 truck, ACTIVITY activity, ACTIVITY_SCHEDULE* activitySchedule);
+void loadActivityParameters(UINT8 segment,ACTIVITY_SCHEDULE* scheduleData,ACTIVITY_TRIGGER_DATA*data );
+BOOL processActivityTrigger( ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as);
+void setSchedule(SCHEDULE_DATA *data);
+*/
 
-void updateTime(void);
+void APP_resetCounter_Buffer(void);
+	// Function for manupilate Receive Data
 void updateReceivedData(void);
+	// Function for manupilate MMD (RTC & BREAK)
+void updateTime(void);
 void updateMarquee(void);
 void APP_ASCIIconversion(void);
-void APP_resetCounter_Buffer(void);
-void APP_conversion(void);
-
+	// Function for manupilate Truck Timing  (96 Latch Digit & 16 Scan Digit)
+//void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHEDULE *as);
+//void loadSchedule(UINT8 truck, UINT8 activity);
+//void updateSchedule(SCHEDULE_UPDATE_INFO *info);
+//void resetSchedule(UINT8 i);
+/*
+void updateCurrentActivityParameters(void);
+void updateCurrentActivityIndication(void);
+void updateBackLightIndication(void);
+void updateAlarmIndication(ACTIVITY activity);
+BOOL updatePickingInfo(void);
+void updatePickingIndication(void);
+*/
 
 /*
 *------------------------------------------------------------------------------
@@ -127,7 +169,33 @@ void APP_init(void)
 	eStatus = eMBInit( MB_RTU, ( UCHAR )saddress, 0, sbaudrate, MB_PAR_NONE);
 	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
 
+	app.secON = TRUE;
+/*
+	for(i= 0; i < ACTIVITIES_SUPPORTED; i++)
+	{
+		resetActivitySegment(i);
+	}
+	
+	app.state = APP_STATE_ACTIVE;
+	app.breakID = 0;
 
+	mmdConfig.startAddress = 0;
+	mmdConfig.length = 0;
+	mmdConfig.symbolBuffer = 0;
+	mmdConfig.symbolCount = 0;
+	mmdConfig.scrollSpeed = 0;
+
+	memset((UINT8*)scheduleTable,0,ACTIVITIES_SUPPORTED*TRUCKS_SUPPORTED);
+	memset((UINT8*)&pickingInfo,0,sizeof(PICKING_INFO));
+	
+	activityStatus = RESET ;
+	
+	updateMarquee();
+	updateTime();
+	updateBackLightIndication();
+
+
+*/
 }
 
 /*
@@ -185,7 +253,7 @@ void APP_task(void)
 				
 					app.state = APP_STATE_INACTIVE;
 					app.breakID = i;
-					updateMarquee();
+				//	updateMarquee();
 					break;
 				}
 		
@@ -199,7 +267,7 @@ void APP_task(void)
 			{
 				app.breakID =00;
 				app.state = APP_STATE_ACTIVE;
-				updateMarquee();
+			//	updateMarquee();
 				
 				
 			}
@@ -208,8 +276,35 @@ void APP_task(void)
 		default:
 			return;
 	}
+/*
+	if( app.curMinute != app.prevMinute)
+	{
 
+		if( app.curMinute == 120  )
+		{
+			memset((UINT8*)scheduleTable,0,ACTIVITIES_SUPPORTED*TRUCKS_SUPPORTED);
+			hdr.deviceAddress = BROADCAST_ADDRESS;
+			hdr.length = 0;
+			hdr.cmdID = CMD_RESET;
+			COM_sendCommand(&hdr,activityParameterBuffer);
 
+			for( i = 0 ; i < ACTIVITIES_SUPPORTED ; i++)
+			{
+				resetActivitySegment(i);
+			}
+		}
+
+		if( updatePickingInfo() == TRUE )
+		{
+			updatePickingIndication();
+		}
+
+		updateCurrentActivityParameters();
+		ClrWdt();
+		updateCurrentActivityIndication();
+		app.prevMinute = app.curMinute;
+	}
+*/
 
 }
 
@@ -323,10 +418,9 @@ eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
     return MB_ENOREG;
 }
 
-
 void resetAlarm()
 {
-//	HOOTER = SWITCH_OFF;
+	HOOTER = SWITCH_OFF;
 }
 
 void updateTime(void)
@@ -363,18 +457,77 @@ void updateTime(void)
 		app.secON = TRUE;
 	}
 
+	time_backlight[BACKLIGHT_TRUCK_INDEX] = SYM_ALL;
+	time_backlight[BACKLIGHT_STATUS_INDEX] = SYM_ALL;
+	time_backlight[BACKLIGHT_PICKING_INDEX] = SYM_ALL;
+	time_backlight[BACKLIGHT_STAGING_INDEX] = SYM_ALL;
+	time_backlight[BACKLIGHT_LOADING_INDEX] = SYM_ALL;
 
-	mmdConfig.startAddress = 0;//TIME_SEGMENT_START_ADDRESS ;
+	mmdConfig.startAddress = TIME_SEGMENT_START_ADDRESS ;
 	mmdConfig.length = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
 	mmdConfig.symbolBuffer = time_backlight;
 	mmdConfig.symbolCount = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
 	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
 
-	MMD_configSegment(0, &mmdConfig);
+	MMD_configSegment(1, &mmdConfig);
 
 
 }
+/*
 
+void updateBackLightIndication(void)
+{
+	UINT8 i;
+	BOOL picking, staging , loading;
+
+	time_backlight[BACKLIGHT_TRUCK_INDEX] = SYM_ALL;
+	time_backlight[BACKLIGHT_STATUS_INDEX] = SYM_ALL;
+
+	for( i  = 0 ; i < ACTIVITIES_SUPPORTED ; i++)
+	{
+		switch(currentActivitySegment[i].activity)
+		{
+			case ACTIVITY_PICKING:
+				picking = TRUE;
+			break;
+
+			case ACTIVITY_STAGING:
+				staging = TRUE;
+			break;			
+
+			case ACTIVITY_LOADING:
+				loading = TRUE;
+			break;	
+
+			default:
+			break;
+		}
+	}
+	if( picking == TRUE )
+		time_backlight[BACKLIGHT_PICKING_INDEX] = SYM_ALL;
+	else
+		time_backlight[BACKLIGHT_PICKING_INDEX] = ' ';
+	
+	if( staging == TRUE )
+		time_backlight[BACKLIGHT_STAGING_INDEX] = SYM_ALL;
+	else
+		time_backlight[BACKLIGHT_STAGING_INDEX] = ' ';		
+
+	if( loading == TRUE )
+		time_backlight[BACKLIGHT_LOADING_INDEX] = SYM_ALL;
+	else
+		time_backlight[BACKLIGHT_LOADING_INDEX] = ' ';	
+
+
+	mmdConfig.startAddress =TIME_SEGMENT_START_ADDRESS ;
+	mmdConfig.length = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
+	mmdConfig.symbolBuffer = time_backlight;
+	mmdConfig.symbolCount = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
+	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
+
+	MMD_configSegment(1, &mmdConfig);
+
+}
 void updateMarquee(void)
 {
 	UINT8 i;
@@ -408,12 +561,23 @@ void updateMarquee(void)
 
 	
 
-	MMD_configSegment(1, &mmdConfig);
+	MMD_configSegment(0, &mmdConfig);
 
-}	
+}
+*/	
 
-
-
+/*
+*------------------------------------------------------------------------------
+* void updateReceivedData (void)
+*
+* Summary	: 
+*
+* Input		: None
+*			  
+*
+* Output	: None
+*------------------------------------------------------------------------------
+*/
 void updateReceivedData (void)
 {
 	UINT8 cmd = app.eMBdata[0];
@@ -434,84 +598,684 @@ void updateReceivedData (void)
 			
 		//	resetAlarm();
 		break;
-/*
+
 		case CMD_PICKING_START:
 			
-			LAMP1 = 0;
-			DelayMs(500);
-			LAMP1 = 1;
 		break;
 
-		case CMD_PICKING_END:
-
-			LAMP2 = 0;
-			DelayMs(500);
-			LAMP2 = 1;			
+		case CMD_PICKING_END:		
 
 		break;
 
 		case CMD_STAGING_START:
 
-			LAMP3 = 0;
-			DelayMs(500);
-			LAMP3 = 1;
 
 		break;
 
 		case CMD_STAGING_END:
 
-			LAMP4 = 0;
-			DelayMs(500);
-			LAMP4 = 1;
-			
 
 		break;
 
 		case CMD_LOADING_START	:
 
-			LAMP5 = 0;
-			DelayMs(500);
-			LAMP5 = 1;
 			
 
 		break;
 		case CMD_LOADING_END:
 			
-			LAMP6 = 0;
-			DelayMs(200);
-			LAMP6 = 1;
 
 		break;
 
 		case CMD_TRUCK_TIMINGS	:
 			
-			LAMP7 = 0;
-			DelayMs(500);
-			LAMP7 = 1;
 
 		break;
 
 		case CMD_CANCEL_TRUCK	:
-			
-			LAMP8 = 0;
-			DelayMs(500);
-			LAMP8 = 1;
+/*
+				ACTIVITY_TRIGGER_DATA *data ;
+				data->activity == ACTIVITY_CANCEL;
+				data->truck = (app.eMBdata[1]* 10) + app.eMBdata[2];
+
+				for(i = 0 ; i < ACTIVITIES_SUPPORTED;i++)
+				{
+					scheduleTable[truck - 1][i] = ACTIVITY_CANCELLED;
+				}
+				
+				updateShipmentScheduleIndication(data , 0);
+				ClrWdt();
+*/			
 		break;
-*/
+
 
 		default:
 		break;
 	}
 }
 
-void APP_conversion(void)
+
+
+/*
+*------------------------------------------------------------------------------
+* void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHEDULE *as)
+*
+* Summary	: 
+*
+* Input		: 
+*			  
+*
+* Output	: None
+*------------------------------------------------------------------------------
+*/
+/*
+void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHEDULE *as)
 {
+	UINT8 i = 0;
+	UINT8 deviceAddress;
+	UINT8 cmd;
+	UINT8 length;
+	SCHEDULE_UPDATE_INFO *info
+	activityParameterBuffer[i++] = data->truck;
+	info->truck = data->truck;
+	activityParameterBuffer[i++] = data->activity;
+	info->activity = data->activity;
+	if( data->activity != ACTIVITY_CANCEL)
+	{
+		activityParameterBuffer[i++] = data->mileStone;
+		activityParameterBuffer[i++] = (data->mileStone == MILESTONE_START)? currentActivitySegment[data->activity-1].status : activityStatus;
+		activityParameterBuffer[i++] = (as->startMinute >> 8)&0xFF;
+		activityParameterBuffer[i++] = (as->startMinute )&0xFF;
+		activityParameterBuffer[i++] = (as->endMinute >> 8 ) & 0xFF;
+		activityParameterBuffer[i++] = (as->endMinute) & 0xFF;
+		activityParameterBuffer[i++] = (app.curMinute >> 8 )&0xFF;
+		activityParameterBuffer[i++] = (app.curMinute )&0xFF;
+	}
+
+	if ( (data->truck-1) < 4 )
+	{
+		updateSchedule(info);
+	}
+	else
+	{
+		deviceAddress = ((data->truck-1) /4) + 1;
+		length = i;
+		cmdID = CMD_UPDATE_SHIPMENT_SCHEDULE;
+		COM_txCMD_CHAN1( deviceAddress, cmd, activityParameterBuffer ,length)
+	}
+}
+*/
+
+/*
+*------------------------------------------------------------------------------
+* void updateSchedule(SCHEDULE_UPDATE_INFO *info)
+*
+* Summary	: 
+*
+* Input		: 
+*			  
+*
+* Output	: None
+*------------------------------------------------------------------------------
+*/
+/*
+void updateSchedule(SCHEDULE_UPDATE_INFO *info)
+{
+	UINT8 i;
+	UINT8 truck;
+	UINT8 activityCompleteFlag = TRUE;
+	INT8 delayedActivity = 0xFF;
+	truck = info->truck -((DEVICE_ADDRESS - 1) * 4);
+
+
+	if( info->activity == ACTIVITY_CANCEL)
+	{
+		
+		for(i = 0 ; i < ACTIVITIES_SUPPORTED;i++)
+		{
+			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)	//if activity is not scheduled ignore cmd
+				return ;
+		}
+		for(i = 0 ; i < ACTIVITIES_SUPPORTED;i++)
+		{
+			(scheduleStatus[truck][i]).activityStatus = ACTIVITY_CANCELLED;
+		}
+
+		truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
+		truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
+		truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
+		truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
+
+		truck_statusIndicator[truck][4] = SYM_CANCEL;
+		truck_statusIndicator[truck][5] = SYM_CANCEL;
+		truck_statusIndicator[truck][6] = ' ';
+		truck_statusIndicator[truck][7] = ' ';
+
+		clearScheduleTime();
+	}
+
+	else
+	{
+		switch( info->milestone)
+		{
+			case MILESTONE_START:
+			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)				//if activity is not scheduled ignore cmd
+				return ;
 			
-	app.timeBuffer[0] = (readTimeDateBuffer[0] & 0X0F) + '0';        //Seconds LSB
-	app.timeBuffer[1] = ((readTimeDateBuffer[0] & 0XF0) >> 4) + '0'; //Seconds MSB
-	app.timeBuffer[2] = (readTimeDateBuffer[1] & 0X0F) + '0';        //Minute LSB
-	app.timeBuffer[3] = ((readTimeDateBuffer[1] & 0XF0) >> 4) + '0' ; 		//Minute MSB
-	app.timeBuffer[4] = (readTimeDateBuffer[2] & 0X0F) + '0';        //Minute LSB
-	app.timeBuffer[5] = ((readTimeDateBuffer[2] & 0X30) >> 4)  + '0'; 		//Minute MSB
+			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorGreen[0];
+			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorGreen[1];
+			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorGreen[2];
+			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorGreen[3];
+
+			truck_statusIndicator[truck][4] = ' ';
+			truck_statusIndicator[truck][5] = SYM_ONGOING;
+			truck_statusIndicator[truck][6] = ' ';
+			truck_statusIndicator[truck][7] = ' ';
+
+
+			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);
+			
+						
+			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_ONGOING;
+			scheduleStatus[truck][info->activity - 1].status = info->status;
+			break;
+
+			case MILESTONE_END:
+			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_ONGOING)				//if activity is not scheduled ignore cmd
+				return ;
+
+			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
+			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
+			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
+			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
+
+
+			clearScheduleTime();
+			loadSchedule(truck,info->activity);
+
+			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_COMPLETED;
+			scheduleStatus[truck][info->activity - 1].status = info->status;
+
+			truck_statusIndicator[truck][5] = SYM_COMPLETE;
+
+			for(i = 0; i  < ACTIVITIES_SUPPORTED ; i++)
+			{
+				if( scheduleStatus[truck][i].activityStatus == ACTIVITY_ONGOING )			
+				{
+					return;
+				}
+			}
+
+			for(i = 0; i  < ACTIVITIES_SUPPORTED ; i++)
+			{
+				if( scheduleStatus[truck][i].status == DELAYED)			
+				{
+					delayedActivity = i	;
+					break;
+				}
+			}
+
+			if( i < ACTIVITIES_SUPPORTED )
+			{
+				truck_statusIndicator[truck][4] = SYM_COMPLETE;
+				truck_statusIndicator[truck][6] = i+SYM_PICKING;
+				truck_statusIndicator[truck][7] = i+SYM_PICKING;
+			}
+			else
+			{
+				truck_statusIndicator[truck][4] = ' ';
+				truck_statusIndicator[truck][6] = ' ';
+				truck_statusIndicator[truck][7] = ' ';
+			}
+			
+			break;
+
+			default:
+			break;
+		}
+
+		
+	}
+
+	mmdConfig.startAddress = (truck - 1)*32;
+	mmdConfig.length = 8;
+	mmdConfig.symbolBuffer =truck_statusIndicator[truck] ;
+	mmdConfig.symbolCount = 8;
+	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
+
+
+
+	MMD_configSegment(truck-1, &mmdConfig);
+
+
+	loadSchedule(truck,info->activity);
+}
+*/
+
+/*
+*------------------------------------------------------------------------------
+* void updateSchedule(SCHEDULE_UPDATE_INFO *info)
+*
+* Summary	: 
+*
+* Input		: 
+*			  
+*
+* Output	: None
+*------------------------------------------------------------------------------
+*/
+/*
+
+void resetSchedule(UINT8 truck)
+{
+	UINT8 j;
+	UINT8 truckNo;
+	
+	
+	truckNo = truck+((DEVICE_ADDRESS - 1) * 4);
+	for( j= 0; j < ACTIVITIES_SUPPORTED ; j++)
+	{
+		
+		scheduleStatus[truck][j].activityStatus = ACTIVITY_SCHEDULED;
+		scheduleStatus[truck][j].status = ACTIVITY_NONE;
+		
+		getScheduleTime(&scheduleTable[truck][j] ,activityTime);
+
+		loadSchedule(truck,j+1);
+
+
+	}	
+
+	truck_statusIndicator[truck][0] = truckIndicators[truckNo].indicatorRed[0];
+	truck_statusIndicator[truck][1] = truckIndicators[truckNo].indicatorRed[1];
+	truck_statusIndicator[truck][2] = truckIndicators[truckNo].indicatorRed[2];
+	truck_statusIndicator[truck][3] = truckIndicators[truckNo].indicatorRed[3];
+
+	truck_statusIndicator[truck][4] = 'F';
+	truck_statusIndicator[truck][5] = ' ';
+	truck_statusIndicator[truck][6] = 'G';
+	truck_statusIndicator[truck][7] = ' ';
+
+	mmdConfig.startAddress = (truck-1)*32;
+	mmdConfig.length = 8;
+	mmdConfig.symbolBuffer =truck_statusIndicator[truck] ;
+	mmdConfig.symbolCount = 8;
+	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
+
+	MMD_configSegment(truck-1, &mmdConfig);
+
+	
+}
+*/
+
+/*
+*------------------------------------------------------------------------------
+* void loadSchedule(UINT8 truck, UINT8 activity)
+*
+* Summary	: 
+*
+* Input		: 
+*			  
+*
+* Output	: None
+*------------------------------------------------------------------------------
+*/
+/*
+void loadSchedule(UINT8 truck, UINT8 activity)
+{
+	UINT8 i;
+	for(i = 0; i < 8 ;i++)
+	{
+		DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
+		DelayMs(1);
+	}
+}
+
+*/
+
+/*
+BOOL processActivityTrigger( ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as)
+{
+	UINT8 i , j;
+	BOOL result= FALSE;
+	if( data->truck > TRUCKS_SUPPORTED )
+	{
+		return result;
+	}
+
+	switch( data->mileStone )
+	{
+		case MILESTONE_END:
+			
+		if( data->truck  != currentActivitySegment[data->activity-1].no )			//if truck numbers don't match ignore
+			return FALSE;
+		
+		if ( scheduleTable[data->truck -1][data->activity - 1] != ACTIVITY_ONGOING) 	//if the particular activity has not started ignore
+			return FALSE;
+
+		if( currentActivitySegment[data->activity-1].planSchedule.endMinute <= app.curMinute )
+		{
+			activityStatus = DELAYED;
+		}
+		else
+		{
+			activityStatus = ON_TIME;
+		}
+		resetActivitySegment(data->activity -1 );										//reset the activity segment
+		scheduleTable[data->truck-1][data->activity-1] = ACTIVITY_COMPLETED;			//update scheduleTable
+
+		result = TRUE;								
+				
+		break;
+
+		case MILESTONE_START:
+			if(currentActivitySegment[data->activity-1].free != TRUE )			// if activity segment not free ignore
+					return FALSE;
+	
+			if( scheduleTable[data->truck -1][data->activity - 1] != ACTIVITY_SCHEDULED	)	
+					return FALSE;
+
+			loadActivityParameters(data->activity-1, &as,data );
+
+			scheduleTable[data->truck-1][data->activity-1] = ACTIVITY_ONGOING;		//update scheduleTable 
+
+
+
+			result = TRUE;
+			
+		break;
+	}
+
+	return result;
+}	
+
+
+void resetActivitySegment(UINT8 i)
+{
+	currentActivitySegment[i].no = 0;
+	currentActivitySegment[i].status = RESET;
+	currentActivitySegment[i].activity = 0;
+	currentActivitySegment[i].planProgress =0;
+	currentActivitySegment[i].planPercentage=0;
+	currentActivitySegment[i].actualProgress =0;
+	currentActivitySegment[i].actualPercentage =0;
+	currentActivitySegment[i].planSchedule = shipmentSchedule[0][0];
+	currentActivitySegment[i].actualSchedule = shipmentSchedule[0][0];
+
+	currentActivitySegment[i].free = TRUE; 
+
 
 }
+
+void getActivitySchedule(UINT8 truck, ACTIVITY activity, ACTIVITY_SCHEDULE* activitySchedule)
+{
+#ifdef __FACTORY_CONFIGURATION__
+
+	*activitySchedule = shipmentSchedule[truck][activity-1];
+#else
+	ReadBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + truck * sizeof(TRUCK_SCHEDULE) + (sizeof(ACTIVITY_SCHEDULE) * activity-1)
+							 ,(UINT8 *)activitySchedule,sizeof(ACTIVITY_SCHEDULE));
+#endif
+}
+
+void loadActivityParameters(UINT8 segment,ACTIVITY_SCHEDULE* scheduleData,ACTIVITY_TRIGGER_DATA*data )
+{
+	currentActivitySegment[segment].no = data->truck;
+	currentActivitySegment[segment].activity = data->activity;
+	currentActivitySegment[segment].planSchedule = *scheduleData;
+	currentActivitySegment[segment].actualSchedule.startMinute = app.curMinute;
+	currentActivitySegment[segment].free = FALSE;
+
+}
+
+void setSchedule(SCHEDULE_DATA *data)
+{
+	UINT8 i;
+	WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + data->truck*(sizeof(TRUCK_SCHEDULE))
+									, (UINT8*)&data,sizeof(ACTIVITY_SCHEDULE)*ACTIVITIES_SUPPORTED);
+}
+
+*/
+
+/*
+void updateAlarmIndication(ACTIVITY activity)
+{
+	UINT8 i;
+	UINT32 actualPercentage, planPercentage;
+	actualPercentage = currentActivitySegment[activity-1].actualPercentage;
+	planPercentage = currentActivitySegment[activity-1].planPercentage;
+	if((planPercentage - actualPercentage)/100 >= app.alarmPercentage)
+	{
+		HOOTER = SWITCH_ON;
+		return;
+	}
+
+}
+	
+void updateCurrentActivityParameters(void)
+{
+	UINT8 i,j;
+	UINT32 temp;
+	UINT8 progress = 0;
+	UINT16 breakDuration = 0;
+
+	if( app.state == APP_STATE_ACTIVE )			//loading active during breaks
+		i = 0;
+	else i = 2;
+
+	for(; i< ACTIVITIES_SUPPORTED ; i++)
+	{
+		progress = 0;
+		breakDuration = 0;
+		
+
+		if( currentActivitySegment[i].free == TRUE)	
+			continue;
+
+		if( i < 2 )																//only for picking and staging activity segments
+		{
+			for(j = 1; j < BREAKS_SUPPORTED; j++)
+			{
+				if( currentActivitySegment[i].planSchedule.startMinute < breaks[j].startMinute 
+					&& (currentActivitySegment[i].planSchedule.endMinute >= breaks[j].endMinute ))
+				{
+					if( app.curMinute >= breaks[j].endMinute ) 
+						breakDuration += breaks[j].duration;
+				}
+			}
+		}
+
+		if( app.curMinute < currentActivitySegment[i].planSchedule.startMinute ) 	//check for advance
+		{
+			currentActivitySegment[i].planPercentage = 0;
+		}
+		else
+		{
+				
+			currentActivitySegment[i].planPercentage = 
+				(((UINT32)app.curMinute - (UINT32)currentActivitySegment[i].planSchedule.startMinute - breakDuration ) * 100*100)/((UINT32)currentActivitySegment[i].planSchedule.duration);
+		}
+
+		currentActivitySegment[i].actualPercentage = 
+			(((UINT32)app.curMinute - (UINT32)currentActivitySegment[i].actualSchedule.startMinute - breakDuration )*100*100)/((UINT32)currentActivitySegment[i].planSchedule.duration);
+
+		
+		if( (( currentActivitySegment[i].planPercentage - currentActivitySegment[i].actualPercentage))/100 >= app.delayPercentage )
+		{
+			currentActivitySegment[i].status = DELAYED;
+		}
+		else
+			currentActivitySegment[i].status = ON_TIME;
+
+
+
+		if( currentActivitySegment[i].planPercentage >= 9900)
+			currentActivitySegment[i].planPercentage = 9900;
+
+		temp = currentActivitySegment[i].planPercentage;
+		while( temp >= 275)
+		{
+			
+			progress++;
+			temp-=275;
+		}
+		currentActivitySegment[i].planProgress = (progress>36)? 36 : progress;
+
+		progress = 0;
+			
+		if( currentActivitySegment[i].actualPercentage >= 9900)
+			currentActivitySegment[i].actualPercentage = 9900;
+		temp = currentActivitySegment[i].actualPercentage;
+		while( temp >= 275)
+		{
+			
+			progress ++;
+			temp-=275;
+		}
+
+		currentActivitySegment[i].actualProgress = (progress>36)? 36 : progress;
+		
+	}
+}
+
+void updateCurrentActivityIndication(void)
+{
+	UINT8 i,j,temp;
+	
+
+
+	if( app.state == APP_STATE_ACTIVE )
+		i = 0;
+	else i = 2;
+
+
+	for(; i < ACTIVITIES_SUPPORTED; i++)
+	{
+		if( currentActivitySegment[i].free == TRUE)	
+		{
+			hdr.deviceAddress = CURRENT_ACTIVITY_DEVICE_START_ADDRESS+i;
+			hdr.length = 0;
+			hdr.cmdID = CMD_CLEAR_SEGMENT;	
+		}
+		else
+		{
+			j = 0;
+			activityParameterBuffer[j++] = currentActivitySegment[i].no;
+			activityParameterBuffer[j++] = currentActivitySegment[i].activity;
+			activityParameterBuffer[j++] = currentActivitySegment[i].status;
+			activityParameterBuffer[j++] = currentActivitySegment[i].planProgress;
+
+			temp = (currentActivitySegment[i].planPercentage/100);
+			activityParameterBuffer[j++] = (temp >= 99) ? (99) : temp;
+
+			activityParameterBuffer[j++] = currentActivitySegment[i].actualProgress;
+
+			temp = currentActivitySegment[i].actualPercentage/100;
+			activityParameterBuffer[j++] = ( temp >= 99 ) ? (99) : temp;
+
+			hdr.deviceAddress = CURRENT_ACTIVITY_DEVICE_START_ADDRESS+i;
+			hdr.length = j;
+			hdr.cmdID = CMD_SET_SEGMENT;
+		}
+		COM_sendCommand(&hdr,activityParameterBuffer);
+		DelayMs(30);
+	}
+}
+*/
+
+
+
+/*
+BOOL updatePickingInfo()
+{
+	UINT8 i,result = FALSE;
+	switch( pickingInfo.state)
+	{
+		case 0:
+		for(i = 1; i < TRUCKS_SUPPORTED+1 ; i++)
+		{
+			if( app.curMinute != pickingStartTime[i] )
+				continue;
+			pickingInfo.truck = i;
+			pickingInfo.state = 1;
+			pickingInfo.timeout = 3;
+			result = TRUE;
+				
+		}
+
+		break;
+		case 1:
+		--pickingInfo.timeout;
+		if( pickingInfo.timeout == 0 )
+		{
+			pickingInfo.timeout = 3;
+			pickingInfo.state = 2;
+			result = TRUE;
+		}
+		break;
+
+		case 2:
+		--pickingInfo.timeout;
+		if( pickingInfo.timeout == 0 )
+		{
+			pickingInfo.state = 3;
+			result = TRUE;
+
+		}
+		break;
+
+		default:
+		break;
+	}
+	return result;
+}
+
+
+void updatePickingIndication()
+{
+	UINT8 i = 0,result = FALSE;
+	switch( pickingInfo.state)
+	{
+		case 0:
+		activityParameterBuffer[i++] = 0;	
+		activityParameterBuffer[i++] = 0;
+		activityParameterBuffer[i++] = 0;
+		activityParameterBuffer[i++] = 0;
+				
+		break;
+		case 1:
+		activityParameterBuffer[i++] = 1;	
+		activityParameterBuffer[i++] = 0;
+		activityParameterBuffer[i++] = 0;
+		activityParameterBuffer[i++] = 0;
+			
+		break;
+
+		case 2:
+		activityParameterBuffer[i++] = 0;	
+		activityParameterBuffer[i++] = 1;
+		activityParameterBuffer[i++] = 0;
+		activityParameterBuffer[i++] = 0;
+		break;
+
+
+		case 3:
+		activityParameterBuffer[i++] = 0;	
+		activityParameterBuffer[i++] = 0;
+		activityParameterBuffer[i++] = 1;
+		activityParameterBuffer[i++] = 1;
+		break;
+
+		default:
+		break;
+	}
+		
+	hdr.deviceAddress = 9;
+	hdr.length = i;
+	hdr.cmdID = CMD_UPDATE_PICKING_INDICATION;
+	COM_sendCommand(&hdr,activityParameterBuffer);
+
+}
+*/
+
+

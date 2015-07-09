@@ -137,8 +137,8 @@ for(j = 0; j < 16 ; j++)
 {
 	for( i = 0; i < 16 ; i++)
 	{
-		writeToDisplayPort( SEVENSEGMENT[i] | (0x80) )	;//
-		DelayMs(400);
+		writeToDisplayPort( SEVENSEGMENT[i] | (0x80) )	;
+		DelayMs(100);
 	}
 	digitDisplay.digitIndex++;
 }
