@@ -44,8 +44,8 @@
 // Rs485 / RS232 Serial commnunicaton port
 #define		TX1_EN					PORTGbits.RG3			// TX control for RS485 communication
 #define		TX1_EN_DIR				TRISGbits.TRISG3
-//#define		TX2_EN					PORTGbits.RG4			// TX control for RS485 communication
-//#define		TX2_EN_DIR				TRISGbits.TRISG4
+#define		TX2_EN					PORTGbits.RG4			// TX control for RS485 communication
+#define		TX2_EN_DIR				TRISGbits.TRISG4
 
 
 #define 	SER2_TX					PORTGbits.RG1 		// serial transmit
@@ -109,8 +109,8 @@
 #define DATA_1_PORT_DIRECTION  	   TRISH
 
 					
-#define 	HOOTER					PORTGbits.RG4 		// serial transmit
-#define		HOOTER_DIR				TRISGbits.TRISG4
+#define 	HOOTER					PORTCbits.RC1 		// serial transmit
+#define		HOOTER_DIR				TRISCbits.TRISC1
 
 			
 /*

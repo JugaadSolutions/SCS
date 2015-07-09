@@ -9,7 +9,7 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
@@ -22,25 +22,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File002]
-Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\communication.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=-D__DEBUG
-[File003]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\digit_driver.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -48,12 +35,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File004]
+[File003]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\digitdisplay.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -61,12 +48,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File005]
+[File004]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\heartBeat.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -74,12 +61,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File006]
+[File005]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\i2c_driver.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -87,12 +74,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File007]
+[File006]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\interruptvector.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -100,12 +87,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File008]
+[File007]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\main.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -113,12 +100,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File009]
+[File008]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\math_fun.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -126,12 +113,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File010]
+[File009]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\MMD.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -139,12 +126,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File011]
+[File010]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\rtc_driver.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -152,12 +139,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File012]
+[File011]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\timer.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -165,12 +152,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File013]
+[File012]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\uart.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -178,12 +165,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File014]
+[File013]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\porttimer.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -191,12 +178,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File015]
+[File014]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\portserial.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -204,12 +191,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File016]
+[File015]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\portevent.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -217,12 +204,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File017]
+[File016]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\mb.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -230,12 +217,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File018]
+[File017]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\mbfunccoils.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -243,12 +230,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File019]
+[File018]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\mbfuncdisc.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -256,12 +243,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File020]
+[File019]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\mbfuncholding.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -269,12 +256,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File021]
+[File020]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\mbfuncinput.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -282,12 +269,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File022]
+[File021]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\mbfuncother.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -295,12 +282,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File023]
+[File022]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\mbutils.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -308,12 +295,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File024]
+[File023]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\mbcrc.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -321,12 +308,12 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File025]
+[File024]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\mbrtu.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -334,7 +321,20 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File025]
+Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\obj\modbusMaster.o
+Folder=Intermediary
+DeviceName=PIC18F8722
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
@@ -347,7 +347,7 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={96C98149-AA1B-4CF9-B967-FAE79CAB663C}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mplink.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /W
 TraceCmdString=
@@ -360,7 +360,7 @@ LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 LanguageToolID={96C98149-AA1B-4CF9-B967-FAE79CAB663C}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mplink.exe
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|App\source\app.c|App\source\board.c|App\source\communication.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
+SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
 ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /W
 TraceCmdString=

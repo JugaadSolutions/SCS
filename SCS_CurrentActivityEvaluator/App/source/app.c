@@ -6,7 +6,30 @@
 */
 #include "app.h"
 
+/*
+*------------------------------------------------------------------------------
+* modbus master
+*------------------------------------------------------------------------------
+*/
 
+// This is the easiest way to create new packets
+// Add as many as you want. TOTAL_NO_OF_PACKETS
+// is automatically updated.
+enum
+{
+  PACKET1,
+  //PACKET2,
+  TOTAL_NO_OF_PACKETS // leave this last entry
+};
+
+// Create an array of Packets to be configured
+Packet packets[TOTAL_NO_OF_PACKETS];
+
+// Masters register array
+unsigned int regs[TOTAL_NO_OF_REGISTERS];
+
+MBErrorCode PACKET_SENT = 1;
+MBErrorCode RETRIES_DONE = 4;
 /*
 *------------------------------------------------------------------------------
 * app - the app structure. 
@@ -16,9 +39,11 @@
 typedef struct _APP
 {
 
-	//Modbus buffer
-	UINT8 eMBdata[NO_OF_DATA];
-	UINT8 Update;
+	//Modbus Slave buffer
+	UINT8 eMBdata[NO_OF_DATA];     //store modbus receive data
+	UINT8 DataReceived;				//flag for check modbus receive complete 
+	//Modbus Master
+	UINT8 regCount[MAX_LOG_ENTRIES];     // Buffer used to hold the number of 16bits counts in data pack
 
 	APP_STATE state;
 	UINT16 curMinute;
@@ -35,27 +60,6 @@ typedef struct _APP
 }APP;
 
 
-
-static rom ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED*4+1][ACTIVITIES_SUPPORTED]
-={
-{{0, 0,0},{0 , 0,0},{0 , 0, 0}},
-{{(UINT16)1340, (UINT16)1400,(UINT16)60},{(UINT16)1350, (UINT16)1410,(UINT16)60},{(UINT16)350 ,(UINT16)385 ,(UINT16)35}},
-{{(UINT16)330 , (UINT16)380 ,(UINT16)50},{(UINT16)340 , (UINT16)390 ,(UINT16)50},{(UINT16)390 ,(UINT16)425 ,(UINT16)35}},
-{{(UINT16)380 , (UINT16)460 ,(UINT16)80},{(UINT16)390 , (UINT16)470 ,(UINT16)80},{(UINT16)485 ,(UINT16)520 ,(UINT16)35}},
-{{(UINT16)460 , (UINT16)540 ,(UINT16)80},{(UINT16)470 , (UINT16)550 ,(UINT16)80},{(UINT16)565 ,(UINT16)600 ,(UINT16)35}},
-{{(UINT16)540 , (UINT16)610 ,(UINT16)70},{(UINT16)550 , (UINT16)620 ,(UINT16)70},{(UINT16)630 ,(UINT16)665 ,(UINT16)35}},
-{{(UINT16)610 , (UINT16)670 ,(UINT16)60},{(UINT16)620 , (UINT16)680 ,(UINT16)60},{(UINT16)685 ,(UINT16)720 ,(UINT16)35}},
-{{(UINT16)670 , (UINT16)760 ,(UINT16)90},{(UINT16)680 , (UINT16)770 ,(UINT16)90},{(UINT16)770 ,(UINT16)805 ,(UINT16)35}},
-{{(UINT16)760 , (UINT16)820 ,(UINT16)60},{(UINT16)770 , (UINT16)830 ,(UINT16)60},{(UINT16)835 ,(UINT16)870 ,(UINT16)35}},
-{{(UINT16)820 , (UINT16)880 ,(UINT16)60},{(UINT16)830 , (UINT16)890 ,(UINT16)60},{(UINT16)905 ,(UINT16)940 ,(UINT16)35}},
-{{(UINT16)880 , (UINT16)950 ,(UINT16)70},{(UINT16)890 , (UINT16)960 ,(UINT16)70},{(UINT16)965 ,(UINT16)1000 ,(UINT16)35}},
-{{(UINT16)950 , (UINT16)1020 ,(UINT16)70},{(UINT16)960 , (UINT16)1030 ,(UINT16)70},{(UINT16)1030 ,(UINT16)1065,(UINT16)35}},
-{{(UINT16)1020 , (UINT16)1080,(UINT16)60},{(UINT16)1030 , (UINT16)1090,(UINT16)60},{(UINT16)1105,(UINT16)1140,(UINT16)35}},
-{{(UINT16)1080, (UINT16)1140,(UINT16)60},{(UINT16)1090, (UINT16)1150,(UINT16)60},{(UINT16)1175,(UINT16)1210,(UINT16)35}},
-{{(UINT16)1140, (UINT16)1220,(UINT16)80},{(UINT16)1150, (UINT16)1230,(UINT16)80},{(UINT16)1235,(UINT16)1270,(UINT16)35}},
-{{(UINT16)1220, (UINT16)1280,(UINT16)60},{(UINT16)1230, (UINT16)1290,(UINT16)60},{(UINT16)1305,(UINT16)1340,(UINT16)35}},
-{{(UINT16)1280, (UINT16)1340,(UINT16)60},{(UINT16)1290, (UINT16)1350,(UINT16)60},{(UINT16)1365,(UINT16)1400,(UINT16)35}},
-};
 static rom ACTIVITY_SCHEDULE  breakSchedule[BREAKS_SUPPORTED+1]={ 
 {0 , 0,0},
 {550, 560,10},
@@ -81,25 +85,51 @@ const rom UINT8 marqueeData[MARQUEES_SUPPORTED+1][MARQUEE_SEGMENT_CHARS]={
 {""}
 };
 
-#pragma udata APP_DATA
+#pragma idata APP_DATA
 
-APP app ;
+ ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED]
+={
+{{0, 0,0},{0 , 0,0},{0 , 0, 0}},
+{{(UINT16)1340, (UINT16)1400,(UINT16)60},{(UINT16)1350, (UINT16)1410,(UINT16)60},{(UINT16)350 ,(UINT16)385 ,(UINT16)35}},
+{{(UINT16)330 , (UINT16)380 ,(UINT16)50},{(UINT16)340 , (UINT16)390 ,(UINT16)50},{(UINT16)390 ,(UINT16)425 ,(UINT16)35}},
+{{(UINT16)380 , (UINT16)460 ,(UINT16)80},{(UINT16)390 , (UINT16)470 ,(UINT16)80},{(UINT16)485 ,(UINT16)520 ,(UINT16)35}},
+{{(UINT16)460 , (UINT16)540 ,(UINT16)80},{(UINT16)470 , (UINT16)550 ,(UINT16)80},{(UINT16)565 ,(UINT16)600 ,(UINT16)35}},
+{{(UINT16)540 , (UINT16)610 ,(UINT16)70},{(UINT16)550 , (UINT16)620 ,(UINT16)70},{(UINT16)630 ,(UINT16)665 ,(UINT16)35}},
+{{(UINT16)610 , (UINT16)670 ,(UINT16)60},{(UINT16)620 , (UINT16)680 ,(UINT16)60},{(UINT16)685 ,(UINT16)720 ,(UINT16)35}},
+{{(UINT16)670 , (UINT16)760 ,(UINT16)90},{(UINT16)680 , (UINT16)770 ,(UINT16)90},{(UINT16)770 ,(UINT16)805 ,(UINT16)35}},
+{{(UINT16)760 , (UINT16)820 ,(UINT16)60},{(UINT16)770 , (UINT16)830 ,(UINT16)60},{(UINT16)835 ,(UINT16)870 ,(UINT16)35}},
+{{(UINT16)820 , (UINT16)880 ,(UINT16)60},{(UINT16)830 , (UINT16)890 ,(UINT16)60},{(UINT16)905 ,(UINT16)940 ,(UINT16)35}},
+{{(UINT16)880 , (UINT16)950 ,(UINT16)70},{(UINT16)890 , (UINT16)960 ,(UINT16)70},{(UINT16)965 ,(UINT16)1000 ,(UINT16)35}},
+{{(UINT16)950 , (UINT16)1020 ,(UINT16)70},{(UINT16)960 , (UINT16)1030 ,(UINT16)70},{(UINT16)1030 ,(UINT16)1065,(UINT16)35}},
+{{(UINT16)1020 , (UINT16)1080,(UINT16)60},{(UINT16)1030 , (UINT16)1090,(UINT16)60},{(UINT16)1105,(UINT16)1140,(UINT16)35}},
+{{(UINT16)1080, (UINT16)1140,(UINT16)60},{(UINT16)1090, (UINT16)1150,(UINT16)60},{(UINT16)1175,(UINT16)1210,(UINT16)35}},
+{{(UINT16)1140, (UINT16)1220,(UINT16)80},{(UINT16)1150, (UINT16)1230,(UINT16)80},{(UINT16)1235,(UINT16)1270,(UINT16)35}},
+{{(UINT16)1220, (UINT16)1280,(UINT16)60},{(UINT16)1230, (UINT16)1290,(UINT16)60},{(UINT16)1305,(UINT16)1340,(UINT16)35}},
+{{(UINT16)1280, (UINT16)1340,(UINT16)60},{(UINT16)1290, (UINT16)1350,(UINT16)60},{(UINT16)1365,(UINT16)1400,(UINT16)35}},
+};
 
-ACTIVITY_SCHEDULE breaks[BREAKS_SUPPORTED+1];
+APP app = {0};
+//Modbus Master
+LOG log = {0};
+
+ACTIVITY_SCHEDULE breaks[BREAKS_SUPPORTED+1] = {0};
 
 UINT8 marquee[MARQUEE_SEGMENT_CHARS];
 UINT8 time_backlight[TIME_SEGMENT_CHARS + BACKLIGHT_SEGMENT_CHARS];
 
-//CurrentActivitySegment currentActivitySegment[CURRENT_ACTIVITY_SEGMENTS];
+CurrentActivitySegment currentActivitySegment[CURRENT_ACTIVITY_SEGMENTS];
 
 UINT8 activityParameterBuffer[ ACTIVITY_PARAMETER_BUFFER_SIZE];
 
 MMD_Config mmdConfig;
 
 ACTIVITY_STATUS scheduleTable[TRUCKS_SUPPORTED][ACTIVITIES_SUPPORTED];
+SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED];
 
+UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8];
 
-#pragma udata
+#pragma idata
+volatile STATUS activityStatus;
 
 UINT8 readTimeDateBuffer[6] = {0};
 UINT8 writeTimeDateBuffer[] = {0X00, 0X30, 0X17, 0X03, 0x027, 0X12, 0X13};
@@ -120,16 +150,23 @@ void setSchedule(SCHEDULE_DATA *data);
 */
 
 void APP_resetCounter_Buffer(void);
-	// Function for manupilate Receive Data
-void updateReceivedData(void);
-	// Function for manupilate MMD (RTC & BREAK)
+	// Function for manipulate Receive Data
+void processReceivedData(void);
+	// Function for manipulate MMD (RTC & BREAK)
 void updateTime(void);
 void updateMarquee(void);
 void APP_ASCIIconversion(void);
+	//manipulate trucktime
+void updateTruckTime(UINT8 truck , UINT8* trucktime);
+	//manipulate hooter
+void resetAlarm(void);
+void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHEDULE *as);
 	// Function for manupilate Truck Timing  (96 Latch Digit & 16 Scan Digit)
 //void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHEDULE *as);
-//void loadSchedule(UINT8 truck, UINT8 activity);
-//void updateSchedule(SCHEDULE_UPDATE_INFO *info);
+void loadSchedule(UINT8 truck, UINT8 activity);
+void updateSchedule(SCHEDULE_UPDATE_INFO *info);
+	//Modbus Master
+void updateLog(far UINT8 *data);
 //void resetSchedule(UINT8 i);
 /*
 void updateCurrentActivityParameters(void);
@@ -154,22 +191,47 @@ void updatePickingIndication(void);
 
 void APP_init(void)
 {
-	UINT8 i;
+	UINT8 i, j, k, truck;
+	UINT16 timeStart, timeEnd;
 
 	UINT16 sbaudrate , saddress;
 
 //	updateTime();
 	eMBErrorCode    eStatus;
 
-	WriteRtcTimeAndDate(writeTimeDateBuffer);	
-	sbaudrate = 19200;	//set baudrate
-	saddress = DEVICE_ADDRESS;		//slave address
+	WriteRtcTimeAndDate(writeTimeDateBuffer);
 
 	//modbus configuration
-	eStatus = eMBInit( MB_RTU, ( UCHAR )saddress, 0, sbaudrate, MB_PAR_NONE);
+	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
 	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
 
+	//modbus master initialization
+	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
+
 	app.secON = TRUE;
+
+	//store the truck timings in the shipment schedule structure 
+	for(k = 0 ; k < TRUCKS_SUPPORTED ; k++)
+	{
+		truck = k;
+		for(i = 0 ; i < 3 ; i++)
+		{
+			for(j = 0; j < 2 ; j++ )
+			{
+				timeStart <<= 8 ;
+				timeStart |=	Read_b_eep(( (truck - 1) * 12) + ((4 * i ) + j));	
+				Busy_eep();
+				timeEnd <<= 8 ;
+				timeEnd |=	Read_b_eep(( (truck - 1) * 12) + (((4 * i ) + j) +2));	
+				Busy_eep();
+	
+			}
+			shipmentSchedule[truck + 1 ][i].startMinute = timeStart ;
+			shipmentSchedule[truck + 1 ][i].endMinute = timeEnd ;
+			shipmentSchedule[truck + 1 ][i].duration = timeEnd - timeStart;
+	
+		}
+	}
 /*
 	for(i= 0; i < ACTIVITIES_SUPPORTED; i++)
 	{
@@ -213,18 +275,42 @@ void APP_init(void)
 void APP_task(void)
 {
 	UINT8 i,j;
+	MBErrorCode status;
 	
 	updateTime();
+
+	status = MB_getStatus();
+//Modubus Master 
+	if( (status == PACKET_SENT) || (status == RETRIES_DONE) )
+	{
+		
+		//check for log entry, if yes write it to modbus			
+		if(log.readIndex != log.writeIndex)
+		{			
+			MB_construct(&packets[PACKET1], SLAVE_ID, PRESET_MULTIPLE_REGISTERS, 
+								STARTING_ADDRESS, app.regCount[log.readIndex], log.entries[log.readIndex]);	
+
+			log.readIndex++;
+		
+			// check for the overflow
+			if( log.readIndex >= MAX_LOG_ENTRIES )
+				log.readIndex = 0;
+								
+	
+		}
+	}
+
+////Modubus Slave Packet REceived
 	DISABLE_UART_RX_INTERRUPT();
 
-	if(app.Update == TRUE)
+	if(app.DataReceived == TRUE)
 	{
 		ENABLE_UART_RX_INTERRUPT();
 
-		updateReceivedData();
+		processReceivedData();
 
 		DISABLE_UART_RX_INTERRUPT();
-		app.Update = FALSE;	
+		app.DataReceived = FALSE;	
 		ENABLE_UART_RX_INTERRUPT();	
 	}
 
@@ -377,9 +463,9 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
 			no_regs	--;
 		}
 	
-	 DISABLE_UART_RX_INTERRUPT();
-		app.Update = TRUE;
-	ENABLE_UART_RX_INTERRUPT();
+//	 DISABLE_UART_RX_INTERRUPT();
+		app.DataReceived = TRUE;
+//	ENABLE_UART_RX_INTERRUPT();
 	//	app.valueBuffer[i++] = 0;
 	    break;
 	
@@ -568,9 +654,9 @@ void updateMarquee(void)
 
 /*
 *------------------------------------------------------------------------------
-* void updateReceivedData (void)
+* void processReceivedData (void)
 *
-* Summary	: 
+* Summary	: After received 
 *
 * Input		: None
 *			  
@@ -578,9 +664,12 @@ void updateMarquee(void)
 * Output	: None
 *------------------------------------------------------------------------------
 */
-void updateReceivedData (void)
+void processReceivedData (void)
 {
+	UINT8 i;
 	UINT8 cmd = app.eMBdata[0];
+	UINT8 truck ;
+	UINT16 trucktime[6];
 
 	switch(cmd)
 	{
@@ -596,7 +685,7 @@ void updateReceivedData (void)
 
 		case CMD_HOOTER_OFF	:
 			
-		//	resetAlarm();
+			resetAlarm();
 		break;
 
 		case CMD_PICKING_START:
@@ -628,14 +717,26 @@ void updateReceivedData (void)
 		break;
 
 		case CMD_TRUCK_TIMINGS	:
-			
+
+			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
+			for(i = 0 ; i < 6 ; i++)
+			{
+				trucktime[i] = (UINT16)( ( (app.eMBdata[3 + (i * 4)] - '0' )* 10 ) + (app.eMBdata[4 + (i * 4)] - '0' ) ) * 60
+				 + ( (app.eMBdata[5 + (i * 4)] - '0' )* 10 ) + (app.eMBdata[6 + (i * 4)] - '0' );
+
+			}
+
+
+
+			updateTruckTime( truck , trucktime);
 
 		break;
 
 		case CMD_CANCEL_TRUCK	:
-/*
+		{
 				ACTIVITY_TRIGGER_DATA *data ;
-				data->activity == ACTIVITY_CANCEL;
+
+				data->activity = ACTIVITY_CANCEL;
 				data->truck = (app.eMBdata[1]* 10) + app.eMBdata[2];
 
 				for(i = 0 ; i < ACTIVITIES_SUPPORTED;i++)
@@ -645,7 +746,7 @@ void updateReceivedData (void)
 				
 				updateShipmentScheduleIndication(data , 0);
 				ClrWdt();
-*/			
+		}	
 		break;
 
 
@@ -654,7 +755,57 @@ void updateReceivedData (void)
 	}
 }
 
+/*
+*------------------------------------------------------------------------------
+* void updateTruckTime(UINT8 truck , UINT8* trucktime);
+*
+* Summary	: 
+*
+* Input		: truck , ps ,pe , ss , se , ls, le
+*			  
+*
+* Output	: None
+*
+*
+*
+*
+*------------------------------------------------------------------------------
+*/
+void updateTruckTime(UINT8 truck , UINT8* trucktime)
+{
+	UINT8 i , j ,k;
+	UINT16 timeStart,timeEnd ;
 
+
+
+	for(i = 0 ; i < 6 ; i++)
+	{
+		for(j = 0 ; j < 2 ; j++)
+		{
+			Write_b_eep(( (truck - 1) * 12) + ((2 * i ) + j)  , *(trucktime +((2 * i) + (1 - j) ) ) );	
+			Busy_eep();
+		}
+	}
+
+	for(i = 0 ; i < 3 ; i++)
+	{
+		for(j = 0 , k  = 0 ; j < 2 ; j++ , k++)
+		{
+			timeStart <<= 8 ;
+			timeStart |=	Read_b_eep(( (truck - 1) * 12) + ((4 * i ) + j));	
+			Busy_eep();
+			timeEnd <<= 8 ;
+			timeEnd |=	Read_b_eep(( (truck - 1) * 12) + (((4 * i ) + j) +2));	
+			Busy_eep();
+
+		}
+		shipmentSchedule[truck ][i].startMinute = timeStart ;
+		shipmentSchedule[truck ][i].endMinute = timeEnd ;
+		shipmentSchedule[truck ][i].duration = timeEnd - timeStart;
+
+	}
+
+}
 
 /*
 *------------------------------------------------------------------------------
@@ -668,14 +819,14 @@ void updateReceivedData (void)
 * Output	: None
 *------------------------------------------------------------------------------
 */
-/*
+
 void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHEDULE *as)
 {
 	UINT8 i = 0;
 	UINT8 deviceAddress;
 	UINT8 cmd;
 	UINT8 length;
-	SCHEDULE_UPDATE_INFO *info
+	SCHEDULE_UPDATE_INFO *info;
 	activityParameterBuffer[i++] = data->truck;
 	info->truck = data->truck;
 	activityParameterBuffer[i++] = data->activity;
@@ -700,11 +851,147 @@ void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHE
 	{
 		deviceAddress = ((data->truck-1) /4) + 1;
 		length = i;
-		cmdID = CMD_UPDATE_SHIPMENT_SCHEDULE;
-		COM_txCMD_CHAN1( deviceAddress, cmd, activityParameterBuffer ,length)
+		//cmdID = CMD_UPDATE_SHIPMENT_SCHEDULE;
+		//COM_txCMD_CHAN1( deviceAddress, cmd, activityParameterBuffer ,length)
 	}
 }
+
+void updateSchedule(SCHEDULE_UPDATE_INFO *info)
+{
+	UINT8 i;
+	UINT8 truck;
+	UINT8 activityCompleteFlag = TRUE;
+	INT8 delayedActivity = 0xFF;
+	truck = info->truck -((DEVICE_ADDRESS - 1) * 4);
+
+
+	if( info->activity == ACTIVITY_CANCEL)
+	{
+		
+		for(i = 0 ; i < ACTIVITIES_SUPPORTED;i++)
+		{
+			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)	//if activity is not scheduled ignore cmd
+				return ;
+		}
+		for(i = 0 ; i < ACTIVITIES_SUPPORTED;i++)
+		{
+			(scheduleStatus[truck][i]).activityStatus = ACTIVITY_CANCELLED;
+		}
+
+/*		truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
+		truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
+		truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
+		truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
+
+		truck_statusIndicator[truck][4] = SYM_CANCEL;
+		truck_statusIndicator[truck][5] = SYM_CANCEL;
+		truck_statusIndicator[truck][6] = ' ';
+		truck_statusIndicator[truck][7] = ' ';
+		clearScheduleTime();
 */
+
+	}
+
+	else
+	{
+		switch( info->milestone)
+		{
+			case MILESTONE_START:
+			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)				//if activity is not scheduled ignore cmd
+				return ;
+			
+/*			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorGreen[0];
+			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorGreen[1];
+			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorGreen[2];
+			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorGreen[3];
+
+			truck_statusIndicator[truck][4] = ' ';
+			truck_statusIndicator[truck][5] = SYM_ONGOING;
+			truck_statusIndicator[truck][6] = ' ';
+			truck_statusIndicator[truck][7] = ' ';
+*/
+
+//			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);
+			
+						
+			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_ONGOING;
+			scheduleStatus[truck][info->activity - 1].status = info->status;
+			break;
+
+			case MILESTONE_END:
+			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_ONGOING)				//if activity is not scheduled ignore cmd
+				return ;
+
+/*			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
+			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
+			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
+			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
+
+
+			clearScheduleTime();
+*/
+			loadSchedule(truck,info->activity);
+
+			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_COMPLETED;
+			scheduleStatus[truck][info->activity - 1].status = info->status;
+
+			truck_statusIndicator[truck][5] = SYM_COMPLETE;
+
+			for(i = 0; i  < ACTIVITIES_SUPPORTED ; i++)
+			{
+				if( scheduleStatus[truck][i].activityStatus == ACTIVITY_ONGOING )			
+				{
+					return;
+				}
+			}
+
+			for(i = 0; i  < ACTIVITIES_SUPPORTED ; i++)
+			{
+				if( scheduleStatus[truck][i].status == DELAYED)			
+				{
+					delayedActivity = i	;
+					break;
+				}
+			}
+
+			if( i < ACTIVITIES_SUPPORTED )
+			{
+				truck_statusIndicator[truck][4] = SYM_COMPLETE;
+				truck_statusIndicator[truck][6] = i+SYM_PICKING;
+				truck_statusIndicator[truck][7] = i+SYM_PICKING;
+			}
+			else
+			{
+				truck_statusIndicator[truck][4] = ' ';
+				truck_statusIndicator[truck][6] = ' ';
+				truck_statusIndicator[truck][7] = ' ';
+			}
+			
+			break;
+
+			default:
+			break;
+		}
+
+		
+	}
+
+	mmdConfig.startAddress = (truck - 1)*32;
+	mmdConfig.length = 8;
+	mmdConfig.symbolBuffer =truck_statusIndicator[truck] ;
+	mmdConfig.symbolCount = 8;
+	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
+
+
+
+	MMD_configSegment(truck-1, &mmdConfig);
+
+
+	loadSchedule(truck,info->activity);
+}
+
+
+
 
 /*
 *------------------------------------------------------------------------------
@@ -920,18 +1207,18 @@ void resetSchedule(UINT8 truck)
 * Output	: None
 *------------------------------------------------------------------------------
 */
-/*
+
 void loadSchedule(UINT8 truck, UINT8 activity)
 {
 	UINT8 i;
 	for(i = 0; i < 8 ;i++)
 	{
-		DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
+//		DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
 		DelayMs(1);
 	}
 }
 
-*/
+
 
 /*
 BOOL processActivityTrigger( ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as)
@@ -1277,5 +1564,30 @@ void updatePickingIndication()
 
 }
 */
+
+
+
+/*---------------------------------------------------------------------------------------------------------------
+*	void updateLog(void)
+*----------------------------------------------------------------------------------------------------------------
+*/
+void updateLog(far UINT8 *data)
+{
+	UINT8 i = 0;
+	while( *data != '\0')
+	{
+		log.entries[log.writeIndex][i] = (UINT16)*data << 8;
+		data++;
+		log.entries[log.writeIndex][i] |= (UINT16)*data;
+		data++;
+		i++;
+	}
+	log.entries[log.writeIndex][i]= '\0';
+	app.regCount[log.writeIndex] = i;
+	log.writeIndex++;
+	if( log.writeIndex >= MAX_LOG_ENTRIES)
+		log.writeIndex = 0;
+}
+
 
 

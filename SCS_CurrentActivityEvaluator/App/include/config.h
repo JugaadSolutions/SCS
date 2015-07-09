@@ -33,7 +33,7 @@
 *	USART Configuration
 *----------------------------------------*/
 #define ACTIVE_USARTS		1
-//#define UART2_ACTIVE
+#define UART2_ACTIVE
 #define UART1_BAUD			19200
 #define UART2_BAUD			19200
 //#define PASS_THROUGH
@@ -96,7 +96,22 @@ enum
 #define MSG_MAX_CHARS 60
 #define MAX_TRANSITIONS 20
 
+/*---------------------------------
+*	MODBUS MASTER CONFIGURATION
+----------------------------------*/
+#define BAUD_RATE	 		9600
+#define TIMEOUT		 		1
+#define POLLING 			1 // the scan rate
+#define RETRY_COUNT			10
+#define SLAVE_ID			1
+#define STARTING_ADDRESS	0
 
+
+// The total amount of available memory on the master to store data
+#define TOTAL_NO_OF_REGISTERS 1
+
+#define	MAX_LOG_ENTRIES  15
+#define	LOG_BUFF_SIZE 	 16
 /*
 *------------------------------------------------------------------------------
 * Public Data Types

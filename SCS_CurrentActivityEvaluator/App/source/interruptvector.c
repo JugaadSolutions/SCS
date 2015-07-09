@@ -39,6 +39,12 @@ void high_interrupt (void)
 	}
 #endif
 
+
+	if(PIR3bits.RC2IF == 1)
+	{
+		_asm GOTO Uart2_ReceiveHandler _endasm
+	}
+
 	if(PIR2bits.TMR3IF == 1)
 	{
 		_asm GOTO prvvTIMERExpiredISR _endasm

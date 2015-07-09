@@ -9,7 +9,7 @@
 
 #include "config.h"
 #include "mb.h"
-#include "communication.h"
+#include "modbusMaster.h"
 #include "mmd.h"
 #include "string.h"
 #include "typedefs.h"
@@ -197,8 +197,41 @@ typedef struct _TRUCK_INDICATOR_DATA
 	UINT8 indicatorGreen[4];
 }TRUCK_INDICATOR_DATA;
 
+//Modbus Master
+typedef struct _LOG
+{
+	UINT8 prevIndex;
+	UINT8 writeIndex;
+	UINT8 readIndex;
+	UINT16 entries[MAX_LOG_ENTRIES][LOG_BUFF_SIZE];
+}LOG;
 
 
+/*
+*------------------------------------------------------------------------------
+* Public Functions	Prototypes
+*------------------------------------------------------------------------------
+*/
+typedef struct _ACTIVITY_TRIGGER_DATA
+{
+	UINT8 truck;
+	ACTIVITY activity;
+	MILESTONE mileStone;
+}ACTIVITY_TRIGGER_DATA;	
+
+typedef struct _CurrentActivitySegment
+{
+	UINT8 no;
+	ACTIVITY activity;
+	STATUS status;
+	UINT8 planProgress;
+	INT32 planPercentage;
+	UINT8 actualProgress;
+	INT32 actualPercentage;
+	ACTIVITY_SCHEDULE planSchedule;
+	ACTIVITY_SCHEDULE actualSchedule;
+	UINT8 free;
+}CurrentActivitySegment;
 
 /*
 *------------------------------------------------------------------------------

@@ -36,7 +36,7 @@
 #include "board.h"
 #include "timer.h"	// Timer related functions
 #include "uart.h"
-#include "communication.h"
+#include "modbusMaster.h"
 #include "heartBeat.h"
 #include "app.h"
 #include "string.h"
@@ -187,7 +187,7 @@ void main(void)
 
 
 
-	COM_init(CMD_SOP,CMD_EOP,RESP_SOP,RESP_EOP,APP_comCallBack);
+	//COM_init(CMD_SOP,CMD_EOP,RESP_SOP,RESP_EOP,APP_comCallBack);
 	
 	APP_init();
 
@@ -249,6 +249,7 @@ void main(void)
 
 	//	COM1_task();
 		//ClrWdt();	
+			MB_task();
 
 		if(eMBUpdate_count >= 10)
 		{

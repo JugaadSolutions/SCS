@@ -40,8 +40,8 @@ Packet packets[TOTAL_NO_OF_PACKETS];
 // Masters register array
 unsigned int regs[TOTAL_NO_OF_REGISTERS];
 
-MBErrorCode PACKET_SENT = 1;
-MBErrorCode RETRIES_DONE = 4;
+MBErrorCode PACKET_SENT = MB_TXDONE;
+MBErrorCode RETRIES_DONE = MB_TIMEDOUT;
 
 /*
 *------------------------------------------------------------------------------
