@@ -58,9 +58,9 @@
 #define ACTIVITY_PARAMETER_BUFFER_SIZE			20
 #define MARQUEES_SUPPORTED				(BREAKS_SUPPORTED)
 
-#define EEP_DEVICE_ID							(UINT16)(0000)
-#define EEP_TIME_FORMAT							(UINT16)(0001)
-#define EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS		(UINT16)(0002)
+//#define EEP_DEVICE_ID							(UINT16)(0000)
+//#define EEP_TIME_FORMAT							(UINT16)(0001)
+#define EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS		(UINT16)(0208)  //0xD0
 #define EEP_BREAK_SCHEDULE_BASE_ADDRESS 		(UINT16)(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + (sizeof(ACTIVITY_SCHEDULE) * ACTIVITIES_SUPPORTED*(TRUCKS_SUPPORTED+1)))
 #define EEP_DELAY_PERCENTAGE					(UINT16)(EEP_BREAK_SCHEDULE_BASE_ADDRESS + (sizeof(ACTIVITY_SCHEDULE) *TRUCKS_SUPPORTED))
 #define	EEP_ALARM_PERCENTAGE					(UINT16)(EEP_DELAY_PERCENTAGE + 1)
@@ -151,13 +151,43 @@ typedef enum
 * app - the app structure. 
 *------------------------------------------------------------------------------
 */
-
 typedef struct _ACTIVITY_SCHEDULE
 {
 	UINT16 startMinute;
 	UINT16 endMinute;
 	UINT16 duration;
 }ACTIVITY_SCHEDULE;
+
+typedef struct _CurrentActivitySegment
+{
+	UINT8 no;
+	ACTIVITY activity;
+	STATUS status;
+	UINT8 planProgress;
+	INT32 planPercentage;
+	UINT8 actualProgress;
+	INT32 actualPercentage;
+	ACTIVITY_SCHEDULE planSchedule;
+	ACTIVITY_SCHEDULE actualSchedule;
+	UINT8 free;
+}CurrentActivitySegment;
+
+
+typedef struct _ACTIVITY_TRIGGER_DATA
+{
+	UINT8 truck;
+	ACTIVITY activity;
+	MILESTONE mileStone;
+}ACTIVITY_TRIGGER_DATA;	
+
+typedef struct _PICKING_INFO
+{
+	UINT8 truck;
+	UINT8 state;
+	UINT8 timeout;
+}PICKING_INFO;
+
+
 
 typedef struct _TRUCK_SCHEDULE
 {
@@ -207,31 +237,7 @@ typedef struct _LOG
 }LOG;
 
 
-/*
-*------------------------------------------------------------------------------
-* Public Functions	Prototypes
-*------------------------------------------------------------------------------
-*/
-typedef struct _ACTIVITY_TRIGGER_DATA
-{
-	UINT8 truck;
-	ACTIVITY activity;
-	MILESTONE mileStone;
-}ACTIVITY_TRIGGER_DATA;	
 
-typedef struct _CurrentActivitySegment
-{
-	UINT8 no;
-	ACTIVITY activity;
-	STATUS status;
-	UINT8 planProgress;
-	INT32 planPercentage;
-	UINT8 actualProgress;
-	INT32 actualPercentage;
-	ACTIVITY_SCHEDULE planSchedule;
-	ACTIVITY_SCHEDULE actualSchedule;
-	UINT8 free;
-}CurrentActivitySegment;
 
 /*
 *------------------------------------------------------------------------------

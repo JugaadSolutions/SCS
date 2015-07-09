@@ -133,7 +133,7 @@ typedef enum
 } MBErrorCode;
 
 // function definitions
-void MB_task();
+void MB_task(void);
 
 void MB_construct(far Packet *_packet, 
 											unsigned char id, 

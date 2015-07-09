@@ -10,6 +10,7 @@
 
 #define DEVICE_ADDRESS			0x01
 
+#define __FACTORY_CONFIGURATION__
 
 /*----------------------------------------
 * Display Configuration (MMD , Scan Digit , Latch Digit)
@@ -68,7 +69,6 @@ enum
 *	Keypad Configurations
 *----------------------------------------*/
 
-//#define __FACTORY_CONFIGURATION__
 //#define __SIMULATION__
 
 /*----------------------------------------
