@@ -19,10 +19,10 @@
 #define MMD_MAX_SEGMENTS	2
 #define MMD_MAX_ADDRESS		32
 //#define __MMD_STATIC__
-#define MMD_TEST
-#define __DISPLAY_TEST__
+//#define MMD_TEST
+//#define __DISPLAY_TEST__
 //#define COMMON_CATHODE
-#define __DIGIT_DISPLAY_TEST__
+//#define __DIGIT_DISPLAY_TEST__
 /*----------------------------------------
 *	TIMER Configuration
 *----------------------------------------*/
@@ -91,7 +91,7 @@ enum
 #define MSG_LENGTH 		20
 
 
-#define NO_OF_DATA			25
+#define NO_OF_DATA			40
 
 #define MSG_MAX_CHARS 60
 #define MAX_TRANSITIONS 20
