@@ -35,7 +35,6 @@
 
 #include "board.h"
 #include "timer.h"	// Timer related functions
-#include "uart.h"
 #include "mb.h"
 #include "heartBeat.h"
 #include "app.h"
@@ -163,17 +162,18 @@ extern UINT16 mmdUpdateCount;
 */
 
 #define MMD_REFRESH_PERIOD	(65535 - 20000)
-#define TICK_PERIOD	(65535 - 2000) //250us
+#define TICK_PERIOD	(65535 - 8000) //250us
 
 
 void main(void)
 {
 	UINT8 i,j, count, k;
 	BOOL ledStrip_On = 0;
-
+	eMBErrorCode    eStatus;
+/*
 	MMD_Config mmdConfig= {0};
 	UINT8 line[10] ="LINE "; 
-
+*/
 
 	BRD_init();
 	HB_init();
@@ -185,6 +185,9 @@ void main(void)
 	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
 	TMR1_init(MMD_REFRESH_PERIOD,MMD_refreshDisplay);
 
+	//modbus configuration
+	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
+	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
 
 	EnableInterrupts();
 
@@ -220,9 +223,6 @@ void main(void)
 				DelayMs(100);
 			}
 
-
-
-
 #endif
 
 
@@ -248,8 +248,9 @@ void main(void)
 		  count++;
 		}
 
-		if(count >=5 )
+//		if(count >=5 )
 		{
+		  eMBPoll();
 //		  APP_task();
           count = 0;
 		

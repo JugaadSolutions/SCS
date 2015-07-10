@@ -38,7 +38,6 @@
 #include "board.h"
 #include "i2c_driver.h"
 #include "eeprom_interface.h"
-#include "uart.h"
 
 /*
 *------------------------------------------------------------------------------
