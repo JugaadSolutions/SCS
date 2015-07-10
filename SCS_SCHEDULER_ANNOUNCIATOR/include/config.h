@@ -11,13 +11,13 @@
 #define DEVICE_ADDRESS			0x01
 
 
-#define __FACTORY_CONFIGURATION__
+//#define __FACTORY_CONFIGURATION__
 
-#define __DISPLAY_TEST__ 
+//#define __DISPLAY_TEST__ 
 
 
 //MMD module configuration
-#define MMD_MAX_CHARS		28
+#define MMD_MAX_CHARS		32
 #define MMD_MAX_SEGMENTS	1
 #define MMD_MAX_ADDRESS		128
 //#define __MMD_STATIC__
@@ -34,7 +34,7 @@
 *----------------------------------------*/
 #define ACTIVE_USARTS		2
 //#define UART2_ACTIVE
-#define UART1_BAUD			19200
+#define UART1_BAUD			9600
 #define UART2_BAUD			19200
 //#define PASS_THROUGH
 #define UART_TEST
@@ -68,7 +68,7 @@ enum
 *	Keypad Configurations
 *----------------------------------------*/
 
-#define __FACTORY_CONFIGURATION__
+
 //#define __SIMULATION__
 
 //RTC CONFIGURATION

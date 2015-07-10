@@ -79,7 +79,8 @@ typedef enum
 	CMD_GET_COMM_STATUS = 0x17,
 	CMD_GET_LOG = 0x11,
 	CMD_SET_RTC = 0x18,
-	CMD_GET_RTC = 0x19
+	CMD_GET_RTC = 0x19,
+	CMD_TRUCK_TIMINGS
 };
 
 /*

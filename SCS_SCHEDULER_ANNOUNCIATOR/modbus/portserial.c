@@ -62,7 +62,7 @@ BOOL
 xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity )
 {
 	unsigned char uartConfig= USART_TX_INT_OFF &
-				USART_RX_INT_OFF &
+				USART_RX_INT_ON &
 				USART_ASYNCH_MODE &
 				USART_EIGHT_BIT &
 				USART_CONT_RX &
@@ -150,6 +150,7 @@ xMBPortSerialGetByte( CHAR * pucByte )
 #else
 	data = ReadUSART();
 #endif
+
 
 	*pucByte = data;
 

@@ -705,8 +705,6 @@ void updateTruckTime(UINT8 truck , UINT8* trucktime)
 	UINT8 i , j ,k;
 	UINT16 timeStart,timeEnd ;
 
-
-
 	for(i = 0 ; i < 6 ; i++)
 	{
 		for(j = 0 ; j < 2 ; j++)

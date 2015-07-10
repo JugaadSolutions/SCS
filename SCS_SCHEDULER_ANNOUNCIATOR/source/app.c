@@ -32,6 +32,7 @@ typedef struct _SCHEDULE_UPDATE_INFO
 	UINT8 endMinute_LSB;
 	UINT8 curMinute_MSB;
 	UINT8 curMinute_LSB;
+	UINT8 truckStatus[2];
 }SCHEDULE_UPDATE_INFO;
  
 
@@ -71,33 +72,9 @@ typedef struct _APP
 
 typedef struct _DISPLAY_SCANNING
 {
-	//stores ascii of truck number
-	UINT8 truckNoBuff[TRUCKS_SUPPORTED*2];
-	
 	//used to store status of truck
-	UINT8 truckStatus[TRUCKS_SUPPORTED*2];
+	UINT8 buffer[TRUCKS_SUPPORTED*2];
 }DISPLAY_SCANNING;
-
-static rom ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED*4+1][ACTIVITIES_SUPPORTED]
-={
-{{0, 0,0},{0 , 0,0},{0 , 0, 0}},
-{{(UINT16)1340, (UINT16)1400,(UINT16)60},{(UINT16)1350, (UINT16)1410,(UINT16)60},{(UINT16)350 ,(UINT16)385 ,(UINT16)35}},
-{{(UINT16)330 , (UINT16)380 ,(UINT16)50},{(UINT16)340 , (UINT16)390 ,(UINT16)50},{(UINT16)390 ,(UINT16)425 ,(UINT16)35}},
-{{(UINT16)380 , (UINT16)460 ,(UINT16)80},{(UINT16)390 , (UINT16)470 ,(UINT16)80},{(UINT16)485 ,(UINT16)520 ,(UINT16)35}},
-{{(UINT16)460 , (UINT16)540 ,(UINT16)80},{(UINT16)470 , (UINT16)550 ,(UINT16)80},{(UINT16)565 ,(UINT16)600 ,(UINT16)35}},
-{{(UINT16)540 , (UINT16)610 ,(UINT16)70},{(UINT16)550 , (UINT16)620 ,(UINT16)70},{(UINT16)630 ,(UINT16)665 ,(UINT16)35}},
-{{(UINT16)610 , (UINT16)670 ,(UINT16)60},{(UINT16)620 , (UINT16)680 ,(UINT16)60},{(UINT16)685 ,(UINT16)720 ,(UINT16)35}},
-{{(UINT16)670 , (UINT16)760 ,(UINT16)90},{(UINT16)680 , (UINT16)770 ,(UINT16)90},{(UINT16)770 ,(UINT16)805 ,(UINT16)35}},
-{{(UINT16)760 , (UINT16)820 ,(UINT16)60},{(UINT16)770 , (UINT16)830 ,(UINT16)60},{(UINT16)835 ,(UINT16)870 ,(UINT16)35}},
-{{(UINT16)820 , (UINT16)880 ,(UINT16)60},{(UINT16)830 , (UINT16)890 ,(UINT16)60},{(UINT16)905 ,(UINT16)940 ,(UINT16)35}},
-{{(UINT16)880 , (UINT16)950 ,(UINT16)70},{(UINT16)890 , (UINT16)960 ,(UINT16)70},{(UINT16)965 ,(UINT16)1000 ,(UINT16)35}},
-{{(UINT16)950 , (UINT16)1020 ,(UINT16)70},{(UINT16)960 , (UINT16)1030 ,(UINT16)70},{(UINT16)1030 ,(UINT16)1065,(UINT16)35}},
-{{(UINT16)1020 , (UINT16)1080,(UINT16)60},{(UINT16)1030 , (UINT16)1090,(UINT16)60},{(UINT16)1105,(UINT16)1140,(UINT16)35}},
-{{(UINT16)1080, (UINT16)1140,(UINT16)60},{(UINT16)1090, (UINT16)1150,(UINT16)60},{(UINT16)1175,(UINT16)1210,(UINT16)35}},
-{{(UINT16)1140, (UINT16)1220,(UINT16)80},{(UINT16)1150, (UINT16)1230,(UINT16)80},{(UINT16)1235,(UINT16)1270,(UINT16)35}},
-{{(UINT16)1220, (UINT16)1280,(UINT16)60},{(UINT16)1230, (UINT16)1290,(UINT16)60},{(UINT16)1305,(UINT16)1340,(UINT16)35}},
-{{(UINT16)1280, (UINT16)1340,(UINT16)60},{(UINT16)1290, (UINT16)1350,(UINT16)60},{(UINT16)1365,(UINT16)1400,(UINT16)35}},
-};
 
 
 const rom TRUCK_INDICATOR_DATA truckIndicators[TRUCKS_SUPPORTED*4 + 1]={
@@ -226,6 +203,30 @@ SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
 UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8] = {0};
 UINT8 activityTime[8 ]= {0};
 
+DISPLAY_SCANNING scanDisplay = {0};
+
+
+ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED*4+1][ACTIVITIES_SUPPORTED]
+={
+{{0, 0,0},{0 , 0,0},{0 , 0, 0}},
+{{(UINT16)1340, (UINT16)1400,(UINT16)60},{(UINT16)1350, (UINT16)1410,(UINT16)60},{(UINT16)350 ,(UINT16)385 ,(UINT16)35}},
+{{(UINT16)330 , (UINT16)380 ,(UINT16)50},{(UINT16)340 , (UINT16)390 ,(UINT16)50},{(UINT16)390 ,(UINT16)425 ,(UINT16)35}},
+{{(UINT16)380 , (UINT16)460 ,(UINT16)80},{(UINT16)390 , (UINT16)470 ,(UINT16)80},{(UINT16)485 ,(UINT16)520 ,(UINT16)35}},
+{{(UINT16)460 , (UINT16)540 ,(UINT16)80},{(UINT16)470 , (UINT16)550 ,(UINT16)80},{(UINT16)565 ,(UINT16)600 ,(UINT16)35}},
+{{(UINT16)540 , (UINT16)610 ,(UINT16)70},{(UINT16)550 , (UINT16)620 ,(UINT16)70},{(UINT16)630 ,(UINT16)665 ,(UINT16)35}},
+{{(UINT16)610 , (UINT16)670 ,(UINT16)60},{(UINT16)620 , (UINT16)680 ,(UINT16)60},{(UINT16)685 ,(UINT16)720 ,(UINT16)35}},
+{{(UINT16)670 , (UINT16)760 ,(UINT16)90},{(UINT16)680 , (UINT16)770 ,(UINT16)90},{(UINT16)770 ,(UINT16)805 ,(UINT16)35}},
+{{(UINT16)760 , (UINT16)820 ,(UINT16)60},{(UINT16)770 , (UINT16)830 ,(UINT16)60},{(UINT16)835 ,(UINT16)870 ,(UINT16)35}},
+{{(UINT16)820 , (UINT16)880 ,(UINT16)60},{(UINT16)830 , (UINT16)890 ,(UINT16)60},{(UINT16)905 ,(UINT16)940 ,(UINT16)35}},
+{{(UINT16)880 , (UINT16)950 ,(UINT16)70},{(UINT16)890 , (UINT16)960 ,(UINT16)70},{(UINT16)965 ,(UINT16)1000 ,(UINT16)35}},
+{{(UINT16)950 , (UINT16)1020 ,(UINT16)70},{(UINT16)960 , (UINT16)1030 ,(UINT16)70},{(UINT16)1030 ,(UINT16)1065,(UINT16)35}},
+{{(UINT16)1020 , (UINT16)1080,(UINT16)60},{(UINT16)1030 , (UINT16)1090,(UINT16)60},{(UINT16)1105,(UINT16)1140,(UINT16)35}},
+{{(UINT16)1080, (UINT16)1140,(UINT16)60},{(UINT16)1090, (UINT16)1150,(UINT16)60},{(UINT16)1175,(UINT16)1210,(UINT16)35}},
+{{(UINT16)1140, (UINT16)1220,(UINT16)80},{(UINT16)1150, (UINT16)1230,(UINT16)80},{(UINT16)1235,(UINT16)1270,(UINT16)35}},
+{{(UINT16)1220, (UINT16)1280,(UINT16)60},{(UINT16)1230, (UINT16)1290,(UINT16)60},{(UINT16)1305,(UINT16)1340,(UINT16)35}},
+{{(UINT16)1280, (UINT16)1340,(UINT16)60},{(UINT16)1290, (UINT16)1350,(UINT16)60},{(UINT16)1365,(UINT16)1400,(UINT16)35}},
+};
+
 #pragma idata
 
 
@@ -242,7 +243,7 @@ void loadSchedule(UINT8 truck, UINT8 activity);
 void getScheduleTime(ACTIVITY_SCHEDULE* as , UINT8* activityTime);
 void setSchedule(SCHEDULE_DATA *data);
 
-void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command);
+void updateSchedule(SCHEDULE_UPDATE_INFO *info);
 
 void resetSchedule(UINT8 truck);
 
@@ -251,54 +252,49 @@ void clearScheduleTime(void);
 //used to update truck number
 void displayTruckNumber(UINT8* buffer);
 
+void processMBdata(void);
+
+//function used to update the truck timings in the array of the structure
+void updateTruckTime(UINT8 truck , UINT8* trucktime); 
+
+
+
+
+/*
+*------------------------------------------------------------------------------
+* APP init
+*------------------------------------------------------------------------------
+*/
+
 void APP_init(void)
 {
 	UINT8 i = 0,j, k;
-
-	eMBErrorCode    eStatus;
-
+	UINT16 timeStart, timeEnd;
+	UINT8 truck;
 	UINT8 buffer[4];
 
-
-#ifdef __FACTORY_CONFIGURATION__
-
-	ACTIVITY_SCHEDULE as;
-	void *ptr = &as;
-
-	for( i = 1 ; i < TRUCKS_SUPPORTED + 1 ; i++)
+	//load truck timings from EEPROM into the shipment schedule array of struct
+	for(k = 0 ; k < TRUCKS_SUPPORTED ; k++)
 	{
-		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
+		truck = k;
+		for(i = 0 ; i < 3 ; i++)
 		{
-			as = shipmentSchedule[(i+((DEVICE_ADDRESS-1)*4))][j];
-			scheduleTable[i][j] = as;
-			for( i = 0; i < sizeof(ACTIVITY_SCHEDULE); i++)
+			for(j = 0; j < 2 ; j++ )
 			{
-				Write_b_eep(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE), *(UINT8*)(ptr+i) );
+				timeStart <<= 8 ;
+				timeStart |=	Read_b_eep(( (truck) * 12) + ((4 * i ) + j));	
 				Busy_eep();
+				timeEnd <<= 8 ;
+				timeEnd |=	Read_b_eep(( (truck) * 12) + (((4 * i ) + j) +2));	
+				Busy_eep();
+	
 			}
-//			WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE)
-//									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
-			ClrWdt();
+			shipmentSchedule[truck + 1 ][i].startMinute = timeStart ;
+			shipmentSchedule[truck + 1 ][i].endMinute = timeEnd ;
+			shipmentSchedule[truck + 1 ][i].duration = timeEnd - timeStart;
+	
 		}
 	}
-
-#else
-
-	for( i = 1 ; i < TRUCKS_SUPPORTED + 1 ; i++)
-	{
-		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
-		{
-			getActivitySchedule(i + ((DEVICE_ADDRESS -1) *4), j, &scheduleTable[i][j]);
-		}
-	}
-
-
-#endif
-
-
-	//modbus configuration
-	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
-	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
 
 	//buffer used to store truck number
 	for( i = 0; i < 4; i++ )
@@ -315,43 +311,6 @@ void APP_init(void)
 	mmdConfig.symbolCount = 0;
 	mmdConfig.scrollSpeed = 0;
 
-/*
-	MMD_clearSegment(0);
-	mmdConfig.startAddress = 0;
-	mmdConfig.length = 6;
-	mmdConfig.symbolCount = 5;
-	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
-			
-	MMD_configSegment( 0 , &mmdConfig);
-
-	MMD_clearSegment(1);
-	mmdConfig.startAddress = 6;
-	mmdConfig.length = 6;
-	mmdConfig.symbolCount = 5;
-	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
-			
-	MMD_configSegment( 1 , &mmdConfig);
-
-	MMD_clearSegment(2);
-	mmdConfig.startAddress = 12;
-	mmdConfig.length = 6;
-	mmdConfig.symbolCount = 5;
-	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
-			
-	MMD_configSegment( 2 , &mmdConfig);
-
-	MMD_clearSegment(3);
-	mmdConfig.startAddress = 18;
-	mmdConfig.length = 6;
-	mmdConfig.symbolCount = 5;
-	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
-			
-	MMD_configSegment( 3 , &mmdConfig);
-*/
 
 	for(i= 1; i < TRUCKS_SUPPORTED+1 ; i++)
 	{
@@ -371,64 +330,121 @@ void APP_task(void)
 {
 
 	UINT8 i;
- 	DISABLE_UART1_RX_INTERRUPT();
+ 	DISABLE_UART_RX_INTERRUPT();
 	if(app.MBdataReceived == TRUE )
 	{
-		ENABLE_UART1_RX_INTERRUPT();
+		ENABLE_UART_RX_INTERRUPT();
 
 
+		processMBdata();
 
-
-		DISABLE_UART1_RX_INTERRUPT();
+		DISABLE_UART_RX_INTERRUPT();
 		app.MBdataReceived = FALSE;
-		ENABLE_UART1_RX_INTERRUPT();
+		ENABLE_UART_RX_INTERRUPT();
 
 	}
 	
-	ENABLE_UART1_RX_INTERRUPT();
+	ENABLE_UART_RX_INTERRUPT();
 
 
 }
 
-UINT8 APP_comCallBack( far UINT8 *rxPacket, far UINT8* txCode,far UINT8** txPacket)
-{
-	UINT8 i;
-
-	UINT8 rxCode = rxPacket[0];
-	UINT8 length = 0;
-	
-	SCHEDULE_UPDATE_INFO *data = (SCHEDULE_UPDATE_INFO*) ((UINT8*)rxPacket+1);
-	updateSchedule(data, rxCode);
-
-
-/*		case CMD_GET_COMM_STATUS:
-
-
-
-			break;
-
-
-
-
-		case CMD_RESET:
-
-		for(i= 1; i < TRUCKS_SUPPORTED+1 ; i++)
-		{
-			resetSchedule(i);
-		}
-
-		break;
+/*
+*------------------------------------------------------------------------------
+* Function to process the data received form modbus
+*------------------------------------------------------------------------------
 */
 
+void processMBdata(void)
+{
+	UINT8 cmd = app.eMBdata[0];
+	UINT8 truck;
+	const rom UINT8* pData;
+	UINT8 i;
+	UINT16 trucktime[6];
 
-	return length;
+	switch(cmd)
+	{
+		case CMD_GET_COMM_STATUS:
+		{
+			SCHEDULE_UPDATE_INFO *data = (SCHEDULE_UPDATE_INFO*) (((UINT8*)app.eMBdata+1) + (sizeof(app.eMBdata)-1));
+			if( (data->truck <= (DEVICE_ADDRESS-1)*4 ) ||(data->truck > (DEVICE_ADDRESS)*4 ))
+				return;
+			
+			if(data->activity == ACTIVITY_NONE)
+				return;
+			
 
+			else
+			{
+				updateSchedule(data);
+			}
+		}
+			
+		break;
+
+		case CMD_RESET:
+		break;
+
+		case CMD_SET_SEGMENT:
+		{
+			SEGMENT_DATA *data = (SCHEDULE_UPDATE_INFO*) (((UINT8*)app.eMBdata+1) + (sizeof(app.eMBdata)-1));
+
+			UTL_binaryToBCDASCII( data->truck , &segmentBuffer[PARAMETER_TRUCK_INDEX] );
+
+			pData = ACTIVITY_DATA[data->activity];
+			copySrcToDst(pData, &segmentBuffer[ PARAMETER_ACTIVITY_INDEX], PARAMETER_ACTIVITY_LENGTH);
+
+			pData = STATUS_DATA[data->status];
+			copySrcToDst(pData, &segmentBuffer[ PARAMETER_STATUS_INDEX], PARAMETER_STATUS_LENGTH);
+
+			pData = PROGRESS_DATA[data->planProgress];
+			copySrcToDst(pData, &segmentBuffer[ PARAMETER_PLAN_PROGRESS_INDEX], PARAMETER_PLAN_PROGRESS_LENGTH);
+
+			UTL_binaryToBCDASCII( data->planPercentage , &segmentBuffer[PARAMETER_PLAN_PERCENTAGE_INDEX] );
+
+			pData = PROGRESS_DATA[data->actualProgress];
+			copySrcToDst(pData, &segmentBuffer[ PARAMETER_ACTUAL_PROGRESS_INDEX], PARAMETER_ACTUAL_PROGRESS_LENGTH);			
+
+			UTL_binaryToBCDASCII( data->actualPercentage , &segmentBuffer[PARAMETER_ACTUAL_PERCENTAGE_INDEX] );
+
+			mmdConfig.startAddress = 0;
+			mmdConfig.length = 28;
+			mmdConfig.symbolCount = 28;
+			mmdConfig.symbolBuffer = segmentBuffer;
+			mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
+			
+			MMD_configSegment( 0 , &mmdConfig);
+			break;	
+		}
+
+		case CMD_CLEAR_SEGMENT:
+			resetSegment();
+		break;
+
+		case CMD_TRUCK_TIMINGS	:
+
+			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
+			truck = (truck) - (DEVICE_ADDRESS-1)*4;
+			for(i = 0 ; i < 6 ; i++)
+			{
+				trucktime[i] = (UINT16)( ( (app.eMBdata[3 + (i * 4)] - '0' )* 10 ) + (app.eMBdata[4 + (i * 4)] - '0' ) ) * 60
+				 + ( (app.eMBdata[5 + (i * 4)] - '0' )* 10 ) + (app.eMBdata[6 + (i * 4)] - '0' );
+
+			}
+
+			updateTruckTime( truck , trucktime);
+
+		break;
+
+		default:
+		break;
+	}
 }
-	
 
 
 
-void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command)
+void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 {
 	UINT8 i;
 	UINT8 truck;
@@ -450,7 +466,8 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command)
 			(scheduleStatus[truck][i]).activityStatus = ACTIVITY_CANCELLED;
 		}
 
-		truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
+		
+/*		truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
 		truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
 		truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
 		truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
@@ -459,9 +476,15 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command)
 		truck_statusIndicator[truck][5] = SYM_CANCEL;
 		truck_statusIndicator[truck][6] = ' ';
 		truck_statusIndicator[truck][7] = ' ';
+*/
+		scanDisplay.buffer[truck*2] = info->truckStatus[0];
+		scanDisplay.buffer[(truck*2)+1]	= info->truckStatus[1];
+
+		DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
 
 		clearScheduleTime();
-	}	
+	}
+
 	else
 	{
 		switch( info->milestone)
@@ -470,7 +493,7 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command)
 			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)				//if activity is not scheduled ignore cmd
 				return ;
 			
-			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorGreen[0];
+/*			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorGreen[0];
 			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorGreen[1];
 			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorGreen[2];
 			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorGreen[3];
@@ -479,6 +502,14 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command)
 			truck_statusIndicator[truck][5] = SYM_ONGOING;
 			truck_statusIndicator[truck][6] = ' ';
 			truck_statusIndicator[truck][7] = ' ';
+*/
+
+			//store the status of the truck
+			scanDisplay.buffer[truck*2] = info->truckStatus[0];
+			scanDisplay.buffer[(truck*2)+1]	= info->truckStatus[1];
+	
+			//update it into display buffer
+			DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
 
 
 			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);
@@ -492,11 +523,18 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command)
 			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_ONGOING)				//if activity is not scheduled ignore cmd
 				return ;
 
-			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
+/*			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
 			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
 			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
 			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
+*/
 
+			//store the status of the truck
+			scanDisplay.buffer[truck*2] = info->truckStatus[0];
+			scanDisplay.buffer[(truck*2)+1]	= info->truckStatus[1];
+	
+			//update it into display buffer
+			DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
 
 			clearScheduleTime();
 			loadSchedule(truck,info->activity);
@@ -545,15 +583,14 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command)
 		
 	}
 
-	mmdConfig.startAddress = (truck - 1)*32;
+/*	mmdConfig.startAddress = (truck - 1)*32;
 	mmdConfig.length = 8;
 	mmdConfig.symbolBuffer =truck_statusIndicator[truck] ;
 	mmdConfig.symbolCount = 8;
 	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
 
-
-
 	MMD_configSegment(truck-1, &mmdConfig);
+*/
 
 
 	loadSchedule(truck,info->activity);
@@ -634,7 +671,8 @@ void loadSchedule(UINT8 truck, UINT8 activity)
 	UINT8 i;
 	for(i = 0; i < 8 ;i++)
 	{
-		DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
+	//	DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
+		DDR_loadDigit( ((truck-1)*24)+(activity*8)+ i + 32,activityTime[i] );
 		DelayMs(1);
 	}
 }
@@ -649,29 +687,6 @@ void clearScheduleTime()
 }
 
 
-
-
-
-void getActivitySchedule(UINT8 truck, ACTIVITY activity, ACTIVITY_SCHEDULE* activitySchedule)
-{
-#ifdef __FACTORY_CONFIGURATION__
-
-	*activitySchedule = shipmentSchedule[truck][activity-1];
-#else
-	UINT8 i;
-
-	for( i = 0; i < sizeof(ACTIVITY_SCHEDULE); i++)
-	{
-		*(activitySchedule+i) = Read_b_eep((EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + truck * sizeof(TRUCK_SCHEDULE) 
-											+ (sizeof(ACTIVITY_SCHEDULE) * activity-1))+i);
-		Busy_eep();
-	}
-/*	ReadBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + truck * sizeof(TRUCK_SCHEDULE) + (sizeof(ACTIVITY_SCHEDULE) * activity-1)
-							 ,(UINT8 *)&activitySchedule,sizeof(ACTIVITY_SCHEDULE));
-*/
-#endif
-}
-
 void setSchedule(SCHEDULE_DATA *data)
 {
 	UINT8 i;
@@ -685,6 +700,8 @@ void setSchedule(SCHEDULE_DATA *data)
 		Busy_eep();
 	}	
 }
+
+
 
 void resetSegment()
 {
@@ -755,9 +772,9 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
 			no_regs	--;
 		}
 
-DISABLE_UART1_RX_INTERRUPT();
+DISABLE_UART_RX_INTERRUPT();
 	app.MBdataReceived = TRUE;
-ENABLE_UART1_RX_INTERRUPT();
+ENABLE_UART_RX_INTERRUPT();
 
     break;
 
@@ -816,4 +833,55 @@ void displayTruckNumber(UINT8* buffer)
 	}
 
 	DigitDisplay_updateBufferPartial(displayBuf, 0, TRUCKS_SUPPORTED*2);		
+}
+
+
+/*
+*------------------------------------------------------------------------------
+* void updateTruckTime(UINT8 truck , UINT8* trucktime);
+*
+* Summary	: 
+*
+* Input		: truck , ps ,pe , ss , se , ls, le
+*			  
+*
+* Output	: None
+*
+*
+*
+*
+*------------------------------------------------------------------------------
+*/
+void updateTruckTime(UINT8 truck , UINT8* trucktime)
+{
+	UINT8 i , j ,k;
+	UINT16 timeStart,timeEnd ;
+
+	for(i = 0 ; i < 6 ; i++)
+	{
+		for(j = 0 ; j < 2 ; j++)
+		{
+			Write_b_eep(( (truck) * 12) + ((2 * i ) + j)  , *(trucktime +((2 * i) + (1 - j) ) ) );	
+			Busy_eep();
+		}
+	}
+
+	for(i = 0 ; i < 3 ; i++)
+	{
+		for(j = 0 , k  = 0 ; j < 2 ; j++ , k++)
+		{
+			timeStart <<= 8 ;
+			timeStart |=	Read_b_eep(( (truck) * 12) + ((4 * i ) + j));	
+			Busy_eep();
+			timeEnd <<= 8 ;
+			timeEnd |=	Read_b_eep(( (truck) * 12) + (((4 * i ) + j) +2));	
+			Busy_eep();
+
+		}
+		shipmentSchedule[truck+1 ][i].startMinute = timeStart ;
+		shipmentSchedule[truck+1 ][i].endMinute = timeEnd ;
+		shipmentSchedule[truck+1 ][i].duration = timeEnd - timeStart;
+
+	}
+
 }
