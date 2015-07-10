@@ -203,9 +203,8 @@ void APP_init(void)
 	UINT8 i, j, k, truck;
 	UINT16 timeStart, timeEnd;
 
-	UINT16 sbaudrate , saddress;
+	ACTIVITY_SCHEDULE as;
 
-//	updateTime();
 	eMBErrorCode    eStatus;
 
 	WriteRtcTimeAndDate(writeTimeDateBuffer);
@@ -239,6 +238,79 @@ void APP_init(void)
 	
 		}
 	}
+/*
+#ifdef __FACTORY_CONFIGURATION__
+
+
+	
+	for( i = 0 ; i < TRUCKS_SUPPORTED + 1 ; i++)
+	{
+		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
+		{
+			as = shipmentSchedule[i][j];
+			WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE)
+									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
+
+			if( j ==0 )
+			{
+				pickingStartTime[i] = as.startMinute;
+			}
+			ClrWdt();
+		}
+	}
+
+
+	for( i = 0; i < BREAKS_SUPPORTED+1 ; i++)
+	{
+		as = breakSchedule[i];
+		WriteBytesEEP(EEP_BREAK_SCHEDULE_BASE_ADDRESS + i*(sizeof(ACTIVITY_SCHEDULE))
+									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
+		breaks[i] = as;
+
+	}
+	
+	app.delayPercentage = DELAY_PERCENTAGE;
+	WriteByteEEP((UINT16)EEP_DELAY_PERCENTAGE , app.delayPercentage);
+	
+	app.alarmPercentage = ALARM_PERCENTAGE;
+	WriteByteEEP(EEP_ALARM_PERCENTAGE , app.alarmPercentage);
+	
+#else
+
+	
+	for( i = 0 ; i < TRUCKS_SUPPORTED + 1 ; i++)
+	{
+		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
+		{
+			ReadBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE)
+									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
+
+			if( j == 0 )
+			{
+				pickingStartTime[i] = as.startMinute;
+			}
+			ClrWdt();
+		}
+	}
+
+
+	for( i = 0; i < BREAKS_SUPPORTED+1 ; i++)
+	{
+		
+		ReadBytesEEP(EEP_BREAK_SCHEDULE_BASE_ADDRESS + i*(sizeof(ACTIVITY_SCHEDULE))
+									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
+		breaks[i] = as;
+
+	}
+
+	app.delayPercentage = ReadByteEEP(EEP_DELAY_PERCENTAGE);
+	app.alarmPercentage = ReadByteEEP(EEP_ALARM_PERCENTAGE);
+
+#endif
+*/
+//	updateTime();
+
+
 
 	//set the value of CurrentActivitySegment structure parameter
 	for(i= 0; i < ACTIVITIES_SUPPORTED; i++)
@@ -370,9 +442,10 @@ void APP_task(void)
 		default:
 			return;
 	}
-/*
+
 	if( app.curMinute != app.prevMinute)
 	{
+/*
 
 		if( app.curMinute == 120  )
 		{
@@ -388,17 +461,17 @@ void APP_task(void)
 			}
 		}
 
+
 		if( updatePickingInfo() == TRUE )
 		{
 			updatePickingIndication();
 		}
-
+*/
 		updateCurrentActivityParameters();
 		ClrWdt();
 		updateCurrentActivityIndication();
 		app.prevMinute = app.curMinute;
 	}
-*/
 
 }
 
@@ -515,7 +588,7 @@ void processReceivedData (void)
 				break;
 
 			activity = ACTIVITY_PICKING;
-			truck = (app.eMBdata[1]* 10) + app.eMBdata[2];
+			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
 			milestone = MILESTONE_START ;
 			updateTruckActivity(truck ,activity , milestone);
 			
@@ -527,7 +600,7 @@ void processReceivedData (void)
 				break;
 
 			activity = ACTIVITY_PICKING;
-			truck = (app.eMBdata[1]* 10) + app.eMBdata[2];
+			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
 			milestone = MILESTONE_END;
 			updateTruckActivity(truck ,activity , milestone);			
 
@@ -539,7 +612,7 @@ void processReceivedData (void)
 				break;
 
 			activity = ACTIVITY_STAGING;
-			truck = (app.eMBdata[1]* 10) + app.eMBdata[2];
+			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
 			milestone = MILESTONE_START ;
 			updateTruckActivity(truck ,activity , milestone);
 
@@ -551,7 +624,7 @@ void processReceivedData (void)
 				break;
 
 			activity = ACTIVITY_STAGING;
-			truck = (app.eMBdata[1]* 10) + app.eMBdata[2];
+			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
 			milestone = MILESTONE_END;
 			updateTruckActivity(truck ,activity , milestone);
 
@@ -563,7 +636,7 @@ void processReceivedData (void)
 				break;
 
 			activity = ACTIVITY_LOADING;
-			truck = (app.eMBdata[1]* 10) + app.eMBdata[2];
+			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
 			milestone = MILESTONE_START ;
 			updateTruckActivity(truck ,activity , milestone);			
 
@@ -574,7 +647,7 @@ void processReceivedData (void)
 				break;
 
 			activity = ACTIVITY_LOADING;
-			truck = (app.eMBdata[1]* 10) + app.eMBdata[2];
+			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
 			milestone = MILESTONE_END;
 			updateTruckActivity(truck ,activity , milestone);			
 
@@ -619,7 +692,7 @@ void processReceivedData (void)
 		{
 
 			activity = ACTIVITY_CANCEL;
-			truck = (app.eMBdata[1]* 10) + app.eMBdata[2];
+			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
 			milestone = MILESTONE_NONE;
 			updateTruckActivity(truck ,activity , milestone);
 
@@ -706,7 +779,7 @@ void updateTruckActivity(UINT8 truck ,UINT8 activity , UINT8 milestone)
 *
 * Summary	: 
 *
-* Input		: truck , ps ,pe , ss , se , ls, le
+* Input		: truck , 
 *			  
 *
 * Output	: None
@@ -1303,7 +1376,7 @@ void updateSchedule(UINT8 *data)
 	UINT8 activityCompleteFlag = TRUE;
 	INT8 delayedActivity = 0xFF;
 	info = (SCHEDULE_UPDATE_INFO*) data;
-	truck = info->truck -((DEVICE_ADDRESS - 1) * 4);
+	truck = info->truck ;
 
 
 	if( info->activity == ACTIVITY_CANCEL)
