@@ -593,7 +593,7 @@ void sendPacket(unsigned char bufferSize)
 #if defined (__18f4520)
 		UART_write(frame[i]);
 #else
-		UART1_write(frame[i]);
+		UART2_write(frame[i]);
 #endif
 
 #if defined (__18f4520)

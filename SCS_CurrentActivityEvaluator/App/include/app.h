@@ -146,6 +146,21 @@ typedef enum
 
 };
 
+typedef enum
+{
+	CMD_SET_SCHEDULE = 0x90,
+	CMD_UPDATE_SHIPMENT_SCHEDULE = 0x91,
+	CMD_SET_SEGMENT = 0x92,
+	CMD_SET_MARQUEE = 0x21,
+			//used to set the activity segment
+	CMD_CLEAR_SEGMENT = 0x24,
+
+	CMD_UPDATE_PICKING_INDICATION = 0x26,
+	CMD_RESET = 0x27,
+	CMD_GET_COMM_STATUS = 0x17
+
+};
+
 /*
 *------------------------------------------------------------------------------
 * app - the app structure. 
@@ -230,6 +245,8 @@ typedef struct _TRUCK_INDICATOR_DATA
 //Modbus Master
 typedef struct _LOG
 {
+	UINT8 slaveID[MAX_LOG_ENTRIES];
+	UINT8 regCount[MAX_LOG_ENTRIES];
 	UINT8 prevIndex;
 	UINT8 writeIndex;
 	UINT8 readIndex;

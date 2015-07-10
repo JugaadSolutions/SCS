@@ -63,10 +63,10 @@ typedef struct _DigitDisplay
 * Private Variables (static) 
 *------------------------------------------------------------------------------
 */
-//0,1,2,3,4,5,6,7,8,9,A,C,P,L,_
+//0,1,2,3,4,5,6,7,8,9,A,C,P,L,-
 static const UINT8 SEVENSEGMENT[] ={0x3f,0x06,0x5b,0x4f,0x66,
 									0x6d,0x7d,0x07,0x7f,0x6f,
-									0x77,0x39,0x73,0x38,0x08,0x00};
+									0x77,0x39,0x73,0x38,0x40,0x00};
 
 #pragma idata	DISPLAY_DATA
 DigitDisplay digitDisplay = {0};

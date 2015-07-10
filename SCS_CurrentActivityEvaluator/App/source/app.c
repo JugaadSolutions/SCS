@@ -135,7 +135,7 @@ volatile STATUS activityStatus;
 UINT8 readTimeDateBuffer[6] = {0};
 UINT8 writeTimeDateBuffer[] = {0X00, 0X30, 0X17, 0X03, 0x027, 0X12, 0X13};
 UINT8 txBuffer[7] = {0};
-
+UINT8 transmitTruncktime[30] = {0};
 
 /*
 *------------------------------------------------------------------------------
@@ -169,14 +169,18 @@ void loadSchedule(UINT8 truck, UINT8 activity);
 void updateSchedule(UINT8 *data);
 
 	//Modbus Master
-void updateLog(far UINT8 *data);
+void updateLog(far UINT8 *data,UINT8 slave);
 
 void updateCurrentActivityParameters(void);
 void updateCurrentActivityIndication(void);
+	//Function for truck no, time , status
+void resetSchedule(UINT8 truck);
+void clearScheduleTime(void);
+
+void updateBackLightIndication(void);
 //void resetSchedule(UINT8 i);
 
 /*
-void updateBackLightIndication(void);
 
 BOOL updatePickingInfo(void);
 void updatePickingIndication(void);
@@ -259,7 +263,7 @@ void APP_init(void)
 	
 //	updateMarquee();
 	updateTime();
-//	updateBackLightIndication();
+	updateBackLightIndication();
 
 
 }
@@ -291,8 +295,8 @@ void APP_task(void)
 		//check for log entry, if yes write it to modbus			
 		if(log.readIndex != log.writeIndex)
 		{			
-			MB_construct(&packets[PACKET1], SLAVE_ID, PRESET_MULTIPLE_REGISTERS, 
-								STARTING_ADDRESS, app.regCount[log.readIndex], log.entries[log.readIndex]);	
+			MB_construct(&packets[PACKET1],log.slaveID[log.readIndex], PRESET_MULTIPLE_REGISTERS, 
+								STARTING_ADDRESS,log.regCount[log.readIndex], log.entries[log.readIndex]);	
 
 			log.readIndex++;
 		
@@ -439,9 +443,9 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
 			no_regs	--;
 		}
 	
-//	 DISABLE_UART_RX_INTERRUPT();
+
 		app.DataReceived = TRUE;
-//	ENABLE_UART_RX_INTERRUPT();
+
 	//	app.valueBuffer[i++] = 0;
 	    break;
 	
@@ -500,6 +504,7 @@ void processReceivedData (void)
 	UINT8 activity;
 	UINT8 milestone;
 	UINT16 trucktime[6];
+	UINT8 slaveID = 0;
 
 
 	switch(cmd)
@@ -578,6 +583,8 @@ void processReceivedData (void)
 		case CMD_TRUCK_TIMINGS	:
 
 			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
+			slaveID = ((truck-1) /4);
+
 			for(i = 0 ; i < 6 ; i++)
 			{
 				trucktime[i] = (UINT16)( ( (app.eMBdata[3 + (i * 4)] - '0' )* 10 ) + (app.eMBdata[4 + (i * 4)] - '0' ) ) * 60
@@ -585,8 +592,17 @@ void processReceivedData (void)
 
 			}
 
-			updateTruckTime( truck , trucktime);
+			if( slaveID > 0)
+			{
+				for( i  = 0 ; i < 30 ; i++)
+				{
+					transmitTruncktime[i] = app.eMBdata[i]; 
+				}
+					updateLog (transmitTruncktime , slaveID );
+			}
 
+			updateTruckTime( truck , trucktime);
+					
 		break;
 
 		case CMD_RTC	:
@@ -677,7 +693,7 @@ void updateTruckActivity(UINT8 truck ,UINT8 activity , UINT8 milestone)
 				}
 			}
 				
-		//	updateBackLightIndication();
+			updateBackLightIndication();
 			ClrWdt();
 	
 		}
@@ -967,12 +983,6 @@ void updateTime(void)
 		app.secON = TRUE;
 	}
 
-	time_backlight[BACKLIGHT_TRUCK_INDEX] = SYM_ALL;
-	time_backlight[BACKLIGHT_STATUS_INDEX] = SYM_ALL;
-	time_backlight[BACKLIGHT_PICKING_INDEX] = SYM_ALL;
-	time_backlight[BACKLIGHT_STAGING_INDEX] = SYM_ALL;
-	time_backlight[BACKLIGHT_LOADING_INDEX] = SYM_ALL;
-
 	mmdConfig.startAddress = TIME_SEGMENT_START_ADDRESS ;
 	mmdConfig.length = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
 	mmdConfig.symbolBuffer = time_backlight;
@@ -983,7 +993,7 @@ void updateTime(void)
 
 
 }
-/*
+
 
 void updateBackLightIndication(void)
 {
@@ -1038,6 +1048,7 @@ void updateBackLightIndication(void)
 	MMD_configSegment(1, &mmdConfig);
 
 }
+
 void updateMarquee(void)
 {
 	UINT8 i;
@@ -1074,7 +1085,7 @@ void updateMarquee(void)
 	MMD_configSegment(0, &mmdConfig);
 
 }
-*/	
+	
 
 /*
 *------------------------------------------------------------------------------
@@ -1203,6 +1214,7 @@ void updateCurrentActivityIndication(void)
 	for(; i < ACTIVITIES_SUPPORTED; i++)
 	{
 		j = 0;
+		activityParameterBuffer[j++] = CMD_SET_SEGMENT ;
 		activityParameterBuffer[j++] = currentActivitySegment[i].no;
 		activityParameterBuffer[j++] = currentActivitySegment[i].activity;
 		activityParameterBuffer[j++] = currentActivitySegment[i].status;
@@ -1216,11 +1228,7 @@ void updateCurrentActivityIndication(void)
 		temp = currentActivitySegment[i].actualPercentage/100;
 		activityParameterBuffer[j++] = ( temp >= 99 ) ? (99) : temp;
 
-		//	hdr.deviceAddress = CURRENT_ACTIVITY_DEVICE_START_ADDRESS+i;
-		//	hdr.length = j;
-		//	hdr.cmdID = CMD_SET_SEGMENT;
 
-	//	COM_sendCommand(&hdr,activityParameterBuffer);
 		DelayMs(30);
 	}
 }
@@ -1244,6 +1252,10 @@ void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHE
 	UINT8 deviceAddress;
 	UINT8 cmd;
 	UINT8 length;
+	if ( (data->truck-1) >= 4 )
+	{
+		activityParameterBuffer[i++] = CMD_UPDATE_SHIPMENT_SCHEDULE;
+	}
 	activityParameterBuffer[i++] = data->truck;
 	activityParameterBuffer[i++] = data->activity;
 	if( data->activity != ACTIVITY_CANCEL)
@@ -1264,10 +1276,8 @@ void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHE
 	}
 	else
 	{
-		deviceAddress = ((data->truck-1) /4) + 1;
-		length = i;
-		//cmdID = CMD_UPDATE_SHIPMENT_SCHEDULE;
-		//COM_txCMD_CHAN1( deviceAddress, cmd, activityParameterBuffer ,length)
+		deviceAddress = ((data->truck-1) /4);
+		updateLog(activityParameterBuffer,deviceAddress);
 	}
 }
 
@@ -1610,10 +1620,10 @@ void updatePickingIndication()
 
 
 /*---------------------------------------------------------------------------------------------------------------
-*	void updateLog(void)
+*void updateLog(far UINT8 *data,UINT8 slave)
 *----------------------------------------------------------------------------------------------------------------
 */
-void updateLog(far UINT8 *data)
+void updateLog(far UINT8 *data,UINT8 slave)
 {
 	UINT8 i = 0;
 	while( *data != '\0')
@@ -1625,7 +1635,10 @@ void updateLog(far UINT8 *data)
 		i++;
 	}
 	log.entries[log.writeIndex][i]= '\0';
-	app.regCount[log.writeIndex] = i;
+	log.regCount[log.writeIndex] = i;
+
+	log.slaveID[log.writeIndex] = slave;
+
 	log.writeIndex++;
 	if( log.writeIndex >= MAX_LOG_ENTRIES)
 		log.writeIndex = 0;
