@@ -36,7 +36,7 @@
 #include "board.h"
 #include "timer.h"	// Timer related functions
 #include "uart.h"
-#include "communication.h"
+#include "mb.h"
 #include "heartBeat.h"
 #include "app.h"
 #include "mmd.h"
@@ -168,7 +168,7 @@ extern UINT16 mmdUpdateCount;
 
 void main(void)
 {
-	UINT8 i,j, count;
+	UINT8 i,j, count, k;
 	BOOL ledStrip_On = 0;
 
 	MMD_Config mmdConfig= {0};
@@ -180,10 +180,6 @@ void main(void)
 	DigitDisplay_init(16);
 	MMD_init();  // Display initialization
 
-
-
-	COM_init(CMD_SOP,CMD_EOP,RESP_SOP,RESP_EOP,APP_comCallBack);
-	
 	APP_init();
 
 	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
@@ -192,42 +188,43 @@ void main(void)
 
 	EnableInterrupts();
 
+#ifdef __DISPLAY_TEST__
 
-	MMD_clearSegment(0);
-	mmdConfig.startAddress = 0;
-	mmdConfig.length = 6;
-	mmdConfig.symbolCount = 5;
-	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
-			
-	MMD_configSegment( 0 , &mmdConfig);
+	for(i = 32; i < 56 ; i++ )
+		for( k = 0; k < 10 ; k++)
+			{
+				DDR_loadDigit(i,k);
+				DelayMs(100);
 
-	MMD_clearSegment(1);
-	mmdConfig.startAddress = 6;
-	mmdConfig.length = 6;
-	mmdConfig.symbolCount = 5;
-	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
-			
-	MMD_configSegment( 1 , &mmdConfig);
 
-	MMD_clearSegment(2);
-	mmdConfig.startAddress = 12;
-	mmdConfig.length = 6;
-	mmdConfig.symbolCount = 5;
-	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
-			
-	MMD_configSegment( 2 , &mmdConfig);
+			}
 
-	MMD_clearSegment(3);
-	mmdConfig.startAddress = 18;
-	mmdConfig.length = 6;
-	mmdConfig.symbolCount = 5;
-	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
-			
-	MMD_configSegment( 3 , &mmdConfig);
+	for(i = 56; i < 90 ; i++ )
+		for( k = 0; k < 10 ; k++)
+			{
+				DDR_loadDigit(i,k);
+				DelayMs(100);
+			}
+
+	for(i = 90; i < 114 ; i++ )
+		for( k = 0; k < 10 ; k++)
+			{
+				DDR_loadDigit(i,k);
+				DelayMs(100);
+			}
+
+	for(i = 114; i < 138 ; i++ )
+		for( k = 0; k < 10 ; k++)
+			{
+				DDR_loadDigit(i,k);
+				DelayMs(100);
+			}
+
+
+
+
+#endif
+
 
 	while(1)
 	{
@@ -248,7 +245,6 @@ void main(void)
 		if(keypadUpdate_count >=15 )
 		{
           keypadUpdate_count = 0;
-
 		  count++;
 		}
 
@@ -259,7 +255,6 @@ void main(void)
 		
 		}
 
-		COM1_task();
 		//ClrWdt();	
 	}
 }

@@ -1,1 +1,1 @@
-Error[1146] C:\Users\JO\Desktop\New folder (2)\Firmware\source\app.c 650 : type mismatch in argument 2
+Warning[2054] D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\source\app.c 678 : suspicious pointer conversion

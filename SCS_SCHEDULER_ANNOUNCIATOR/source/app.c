@@ -2,10 +2,11 @@
 #include "mmd.h"
 #include "eeprom_interface.h"
 #include "utilities.h"
-#include "communication.h"
+#include "mb.h"
 #include "digit_driver.h"
 #include <string.h>
 #include "eep.h"
+#include "digitdisplay.h"
 
 
 /*
@@ -63,8 +64,19 @@ typedef struct _APP
 	UINT8 delayPercentage;
 	UINT8 hooterOnPercentage;
 	UINT8 secON;
+	//Modbus buffer
+	UINT8 eMBdata[MAX_SIZE];
+	BOOL MBdataReceived;
 }APP;
 
+typedef struct _DISPLAY_SCANNING
+{
+	//stores ascii of truck number
+	UINT8 truckNoBuff[TRUCKS_SUPPORTED*2];
+	
+	//used to store status of truck
+	UINT8 truckStatus[TRUCKS_SUPPORTED*2];
+}DISPLAY_SCANNING;
 
 static rom ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED*4+1][ACTIVITIES_SUPPORTED]
 ={
@@ -230,32 +242,42 @@ void loadSchedule(UINT8 truck, UINT8 activity);
 void getScheduleTime(ACTIVITY_SCHEDULE* as , UINT8* activityTime);
 void setSchedule(SCHEDULE_DATA *data);
 
-void updateSchedule(SCHEDULE_UPDATE_INFO *info);
-
-
+void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command);
 
 void resetSchedule(UINT8 truck);
 
 void clearScheduleTime(void);
 
-
+//used to update truck number
+void displayTruckNumber(UINT8* buffer);
 
 void APP_init(void)
 {
-	UINT8 i = 0,j;
+	UINT8 i = 0,j, k;
+
+	eMBErrorCode    eStatus;
+
+	UINT8 buffer[4];
+
 
 #ifdef __FACTORY_CONFIGURATION__
 
 	ACTIVITY_SCHEDULE as;
-	
+	void *ptr = &as;
+
 	for( i = 1 ; i < TRUCKS_SUPPORTED + 1 ; i++)
 	{
 		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
 		{
 			as = shipmentSchedule[(i+((DEVICE_ADDRESS-1)*4))][j];
 			scheduleTable[i][j] = as;
-			WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE)
-									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
+			for( i = 0; i < sizeof(ACTIVITY_SCHEDULE); i++)
+			{
+				Write_b_eep(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE), *(UINT8*)(ptr+i) );
+				Busy_eep();
+			}
+//			WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE)
+//									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
 			ClrWdt();
 		}
 	}
@@ -274,12 +296,18 @@ void APP_init(void)
 #endif
 
 
+	//modbus configuration
+	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
+	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
+
+	//buffer used to store truck number
+	for( i = 0; i < 4; i++ )
+		buffer[i] = ((((DEVICE_ADDRESS-1)*4)+i) + 1);
+
+	//update the truck number 
+	displayTruckNumber(buffer);
+
 	
-	COM_init(CMD_SOP , CMD_EOP ,RESP_SOP , RESP_EOP , APP_comCallBack);
-
-
-
-
 	
 	mmdConfig.startAddress = 0;
 	mmdConfig.length = 0;
@@ -333,8 +361,34 @@ void APP_init(void)
 	resetSegment();
 }
 
+/*
+*------------------------------------------------------------------------------
+* APP TASK
+*------------------------------------------------------------------------------
+*/
+
+void APP_task(void)
+{
+
+	UINT8 i;
+ 	DISABLE_UART1_RX_INTERRUPT();
+	if(app.MBdataReceived == TRUE )
+	{
+		ENABLE_UART1_RX_INTERRUPT();
 
 
+
+
+		DISABLE_UART1_RX_INTERRUPT();
+		app.MBdataReceived = FALSE;
+		ENABLE_UART1_RX_INTERRUPT();
+
+	}
+	
+	ENABLE_UART1_RX_INTERRUPT();
+
+
+}
 
 UINT8 APP_comCallBack( far UINT8 *rxPacket, far UINT8* txCode,far UINT8** txPacket)
 {
@@ -343,28 +397,11 @@ UINT8 APP_comCallBack( far UINT8 *rxPacket, far UINT8* txCode,far UINT8** txPack
 	UINT8 rxCode = rxPacket[0];
 	UINT8 length = 0;
 	
-	switch( rxCode )
-	{
-		case CMD_UPDATE_SHIPMENT_SCHEDULE:
-		{
-			SCHEDULE_UPDATE_INFO *data = (SCHEDULE_UPDATE_INFO*) ((UINT8*)rxPacket+1);
-/*			if( (data->truck <= (DEVICE_ADDRESS-1)*4 ) ||(data->truck > (DEVICE_ADDRESS)*4 ))
-				return responseHdr;
-			
-			if(data->activity == ACTIVITY_NONE)
-				return responseHdr;
-			
+	SCHEDULE_UPDATE_INFO *data = (SCHEDULE_UPDATE_INFO*) ((UINT8*)rxPacket+1);
+	updateSchedule(data, rxCode);
 
-			else
-*/
-			{
-				updateSchedule(data);
-			}
 
-		}
-		break;
-
-		case CMD_GET_COMM_STATUS:
+/*		case CMD_GET_COMM_STATUS:
 
 
 
@@ -381,9 +418,8 @@ UINT8 APP_comCallBack( far UINT8 *rxPacket, far UINT8* txCode,far UINT8** txPack
 		}
 
 		break;
+*/
 
-
-	}
 
 	return length;
 
@@ -392,7 +428,7 @@ UINT8 APP_comCallBack( far UINT8 *rxPacket, far UINT8* txCode,far UINT8** txPack
 
 
 
-void updateSchedule(SCHEDULE_UPDATE_INFO *info)
+void updateSchedule(SCHEDULE_UPDATE_INFO *info, UINT8 command)
 {
 	UINT8 i;
 	UINT8 truck;
@@ -425,8 +461,7 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 		truck_statusIndicator[truck][7] = ' ';
 
 		clearScheduleTime();
-	}
-
+	}	
 	else
 	{
 		switch( info->milestone)
@@ -637,22 +672,19 @@ void getActivitySchedule(UINT8 truck, ACTIVITY activity, ACTIVITY_SCHEDULE* acti
 #endif
 }
 
-
 void setSchedule(SCHEDULE_DATA *data)
 {
 	UINT8 i;
-/*	WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + data->truck*(sizeof(TRUCK_SCHEDULE))
-									, (UINT8*)&data,sizeof(ACTIVITY_SCHEDULE)*ACTIVITIES_SUPPORTED);
-*/
+	UINT8 *ptr = &data;
+//	WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + data->truck*(sizeof(TRUCK_SCHEDULE))
+//									, (UINT8*)&data,sizeof(ACTIVITY_SCHEDULE)*ACTIVITIES_SUPPORTED);
 
 	for( i = 0; i < sizeof(ACTIVITY_SCHEDULE)*ACTIVITIES_SUPPORTED; i++)
 	{
-		Write_b_eep(( EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + data->truck*(sizeof(TRUCK_SCHEDULE)) + i), *(data+i));
+		Write_b_eep(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + data->truck*(sizeof(TRUCK_SCHEDULE)), *(ptr+i) );
 		Busy_eep();
-	}
+	}	
 }
-
-
 
 void resetSegment()
 {
@@ -680,4 +712,108 @@ void copySrcToDst(const rom UINT8*src, UINT8* dst , UINT8 length)
 	{
 		dst[i] = src[i];
 	}
+}
+
+
+/*
+*------------------------------------------------------------------------------
+* MODBUS CALLBACK
+*------------------------------------------------------------------------------
+*/
+
+eMBErrorCode
+eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
+{
+
+    eMBErrorCode    eStatus = MB_ENOERR;
+
+
+    return eStatus;
+
+}
+
+eMBErrorCode
+eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
+                 eMBRegisterMode eMode )
+{
+
+	UINT8	starting_add = usAddress;
+	UINT8	no_regs		 = usNRegs * 2;
+	eMBErrorCode    eStatus = MB_ENOERR;
+	UINT8 i = 0;
+
+	switch(eMode)
+	{
+	case MB_REG_WRITE:
+
+   		while( no_regs > 0)
+		{
+	
+			app.eMBdata[i++] = * pucRegBuffer++;
+	
+			starting_add++;
+			no_regs	--;
+		}
+
+DISABLE_UART1_RX_INTERRUPT();
+	app.MBdataReceived = TRUE;
+ENABLE_UART1_RX_INTERRUPT();
+
+    break;
+
+ 	case MB_REG_READ: 
+
+		while(no_regs > 0)
+		{
+	
+				* pucRegBuffer++ =	'A';
+				* pucRegBuffer++ =	'B';		
+				
+				* pucRegBuffer++ = 'C';
+				* pucRegBuffer++ = 'D';
+	
+							
+	
+	
+	
+			starting_add++;
+			no_regs	--;	
+		}
+   	 break;
+	}
+	return eStatus;
+  }
+
+
+eMBErrorCode
+eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,
+               eMBRegisterMode eMode )
+{
+    return MB_ENOREG;
+}
+
+eMBErrorCode
+eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
+{
+    return MB_ENOREG;
+}
+
+/*
+*------------------------------------------------------------------------------
+* Function used to update truck number
+*------------------------------------------------------------------------------
+*/
+
+void displayTruckNumber(UINT8* buffer)
+{
+	UINT8 i;
+	UINT8 displayBuf[8] = {'0'};
+
+	for( i = 0; i < TRUCKS_SUPPORTED; i++ )
+	{
+		displayBuf[i*2] = *(buffer+i)/10 + '0';
+		displayBuf[(i*2)+1] = *(buffer+i)%10 + '0';
+	}
+
+	DigitDisplay_updateBufferPartial(displayBuf, 0, TRUCKS_SUPPORTED*2);		
 }

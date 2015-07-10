@@ -17,8 +17,8 @@
 
 
 //MMD module configuration
-#define MMD_MAX_CHARS		8
-#define MMD_MAX_SEGMENTS	4
+#define MMD_MAX_CHARS		28
+#define MMD_MAX_SEGMENTS	1
 #define MMD_MAX_ADDRESS		128
 //#define __MMD_STATIC__
 
@@ -68,7 +68,7 @@ enum
 *	Keypad Configurations
 *----------------------------------------*/
 
-//#define __FACTORY_CONFIGURATION__
+#define __FACTORY_CONFIGURATION__
 //#define __SIMULATION__
 
 //RTC CONFIGURATION

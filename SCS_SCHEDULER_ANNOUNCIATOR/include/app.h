@@ -1,6 +1,8 @@
 #include "board.h"
 
 
+#define MAX_SIZE							16
+
 #define TRUCKS_SUPPORTED					4
 #define ACTIVITIES_SUPPORTED				3
 
@@ -135,19 +137,6 @@ typedef enum
 }APP_STATE;		
 
 
-typedef enum
-{
-	CMD_TRIGGER_ACTIVITY = 0x30,
-	CMD_RESET_ALARM = 0x31,
-	CMD_SET_SCHEDULE = 0x20,
-	CMD_SET_MARQUEE = 0x21,
-	CMD_SET_TIME = 0x22,
-	CMD_SET_SEGMENT = 0x23,			//used to set the activity segment
-	CMD_CLEAR_SEGMENT = 0x24,
-	CMD_UPDATE_SHIPMENT_SCHEDULE = 0x25,
-	CMD_UPDATE_PICKING_INDICATION = 0x26,
-	CMD_GET_COMM_STATUS = 0x17
-};
 
 
 
