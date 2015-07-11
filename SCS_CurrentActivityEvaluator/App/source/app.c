@@ -170,6 +170,7 @@ void updateSchedule(UINT8 *data);
 
 	//Modbus Master
 void updateLog(far UINT8 *data,UINT8 slave);
+void updateLog_Binay(far UINT8 *data,UINT8 slave,UINT8 length);
 
 void updateCurrentActivityParameters(void);
 void updateCurrentActivityIndication(void);
@@ -333,7 +334,7 @@ void APP_init(void)
 	
 	activityStatus = RESET ;
 	
-//	updateMarquee();
+
 	updateTime();
 	updateBackLightIndication();
 
@@ -364,7 +365,7 @@ void APP_task(void)
 	if( (status == PACKET_SENT) || (status == RETRIES_DONE) )
 	{
 		
-		//check for log entry, if yes write it to modbus			
+		//check for new log entry, if yes write it to modbus			
 		if(log.readIndex != log.writeIndex)
 		{			
 			MB_construct(&packets[PACKET1],log.slaveID[log.readIndex], PRESET_MULTIPLE_REGISTERS, 
@@ -381,29 +382,17 @@ void APP_task(void)
 	}
 
 ////Modubus Slave Packet REceived
-	DISABLE_UART_RX_INTERRUPT();
-
 	if(app.DataReceived == TRUE)
 	{
 		ENABLE_UART_RX_INTERRUPT();
 
 		processReceivedData();
 
-		DISABLE_UART_RX_INTERRUPT();
+	
 		app.DataReceived = FALSE;	
-		ENABLE_UART_RX_INTERRUPT();	
+	
 	}
 
-	ENABLE_UART_RX_INTERRUPT();	
-
-#if defined (RTC_DATA_ON_UART)
-				for(i = 0; i < 7; i++)			
-				{
-					txBuffer[i] = readTimeDateBuffer[i];  //store time and date 
-				}
-				
-				COM_txBuffer(txBuffer, 7);
-#endif
 
 
 	switch( app.state)
@@ -419,7 +408,7 @@ void APP_task(void)
 				
 					app.state = APP_STATE_INACTIVE;
 					app.breakID = i;
-				//	updateMarquee();
+					updateMarquee();
 					break;
 				}
 		
@@ -431,9 +420,9 @@ void APP_task(void)
 
 			if( app.curMinute >= breaks[app.breakID].endMinute)
 			{
-				app.breakID =00;
+				app.breakID =0;
 				app.state = APP_STATE_ACTIVE;
-			//	updateMarquee();
+				updateMarquee();
 				
 				
 			}
@@ -446,26 +435,11 @@ void APP_task(void)
 	if( app.curMinute != app.prevMinute)
 	{
 /*
-
-		if( app.curMinute == 120  )
-		{
-			memset((UINT8*)scheduleTable,0,ACTIVITIES_SUPPORTED*TRUCKS_SUPPORTED);
-			hdr.deviceAddress = BROADCAST_ADDRESS;
-			hdr.length = 0;
-			hdr.cmdID = CMD_RESET;
-			COM_sendCommand(&hdr,activityParameterBuffer);
-
-			for( i = 0 ; i < ACTIVITIES_SUPPORTED ; i++)
-			{
-				resetActivitySegment(i);
-			}
-		}
-
-
 		if( updatePickingInfo() == TRUE )
 		{
 			updatePickingIndication();
 		}
+
 */
 		updateCurrentActivityParameters();
 		ClrWdt();
@@ -1350,7 +1324,7 @@ void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHE
 	else
 	{
 		deviceAddress = ((data->truck-1) /4);
-		updateLog(activityParameterBuffer,deviceAddress);
+		updateLog_Binary(activityParameterBuffer,deviceAddress,i);
 	}
 }
 
@@ -1717,5 +1691,25 @@ void updateLog(far UINT8 *data,UINT8 slave)
 		log.writeIndex = 0;
 }
 
+
+void updateLog_Binay(far UINT8 *data,UINT8 slave,UINT8 length)
+{
+	UINT8 i = 0;
+	while( length > 0)
+	{
+		log.entries[log.writeIndex][i] = (UINT16)*data << 8;
+		data++;
+		log.entries[log.writeIndex][i] |= (UINT16)*data;
+		data++;
+		i++;
+	}
+	log.regCount[log.writeIndex] = i;
+
+	log.slaveID[log.writeIndex] = slave;
+
+	log.writeIndex++;
+	if( log.writeIndex >= MAX_LOG_ENTRIES)
+		log.writeIndex = 0;
+}
 
 
