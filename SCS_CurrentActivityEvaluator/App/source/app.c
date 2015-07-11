@@ -128,6 +128,7 @@ SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED];
 
 UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8];
 
+UINT16 pickingStartTime[TRUCKS_SUPPORTED+1];
 #pragma idata
 volatile STATUS activityStatus;
 
@@ -170,7 +171,7 @@ void updateSchedule(UINT8 *data);
 
 	//Modbus Master
 void updateLog(far UINT8 *data,UINT8 slave);
-void updateLog_Binay(far UINT8 *data,UINT8 slave,UINT8 length);
+void updateLog_Binary(far UINT8 *data,UINT8 slave,UINT8 length);
 
 void updateCurrentActivityParameters(void);
 void updateCurrentActivityIndication(void);
@@ -226,10 +227,10 @@ void APP_init(void)
 			for(j = 0; j < 2 ; j++ )
 			{
 				timeStart <<= 8 ;
-				timeStart |=	Read_b_eep(( (truck - 1) * 12) + ((4 * i ) + j));	
+				timeStart |=	Read_b_eep(( (truck) * 12) + ((4 * i ) + j));	
 				Busy_eep();
 				timeEnd <<= 8 ;
-				timeEnd |=	Read_b_eep(( (truck - 1) * 12) + (((4 * i ) + j) +2));	
+				timeEnd |=	Read_b_eep(( (truck) * 12) + (((4 * i ) + j) +2));	
 				Busy_eep();
 	
 			}
@@ -239,7 +240,7 @@ void APP_init(void)
 	
 		}
 	}
-/*
+
 #ifdef __FACTORY_CONFIGURATION__
 
 
@@ -249,8 +250,8 @@ void APP_init(void)
 		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
 		{
 			as = shipmentSchedule[i][j];
-			WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE)
-									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
+		//	WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE)
+		//							, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
 
 			if( j ==0 )
 			{
@@ -264,17 +265,17 @@ void APP_init(void)
 	for( i = 0; i < BREAKS_SUPPORTED+1 ; i++)
 	{
 		as = breakSchedule[i];
-		WriteBytesEEP(EEP_BREAK_SCHEDULE_BASE_ADDRESS + i*(sizeof(ACTIVITY_SCHEDULE))
-									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
+	//	WriteBytesEEP(EEP_BREAK_SCHEDULE_BASE_ADDRESS + i*(sizeof(ACTIVITY_SCHEDULE))
+	//								, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
 		breaks[i] = as;
 
 	}
 	
 	app.delayPercentage = DELAY_PERCENTAGE;
-	WriteByteEEP((UINT16)EEP_DELAY_PERCENTAGE , app.delayPercentage);
+//	WriteByteEEP((UINT16)EEP_DELAY_PERCENTAGE , app.delayPercentage);
 	
 	app.alarmPercentage = ALARM_PERCENTAGE;
-	WriteByteEEP(EEP_ALARM_PERCENTAGE , app.alarmPercentage);
+//	WriteByteEEP(EEP_ALARM_PERCENTAGE , app.alarmPercentage);
 	
 #else
 
@@ -288,7 +289,7 @@ void APP_init(void)
 
 			if( j == 0 )
 			{
-				pickingStartTime[i] = as.startMinute;
+			//	pickingStartTime[i] = as.startMinute;
 			}
 			ClrWdt();
 		}
@@ -308,7 +309,7 @@ void APP_init(void)
 	app.alarmPercentage = ReadByteEEP(EEP_ALARM_PERCENTAGE);
 
 #endif
-*/
+
 //	updateTime();
 
 
@@ -1275,7 +1276,7 @@ void updateCurrentActivityIndication(void)
 		temp = currentActivitySegment[i].actualPercentage/100;
 		activityParameterBuffer[j++] = ( temp >= 99 ) ? (99) : temp;
 
-
+		updateLog_Binary(activityParameterBuffer,i+1 , j);
 		DelayMs(30);
 	}
 }
@@ -1692,7 +1693,7 @@ void updateLog(far UINT8 *data,UINT8 slave)
 }
 
 
-void updateLog_Binay(far UINT8 *data,UINT8 slave,UINT8 length)
+void updateLog_Binary(far UINT8 *data,UINT8 slave,UINT8 length)
 {
 	UINT8 i = 0;
 	while( length > 0)
