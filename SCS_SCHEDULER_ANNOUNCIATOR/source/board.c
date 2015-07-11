@@ -117,6 +117,7 @@ static BOOL ledState;
 void BRD_init(void)
 {
 	OSCCON = 0x70;
+
 	DelayMs(5);
 	// set all anolog channels as Digital I/O
 	ADCON0 = 0x00;
@@ -173,11 +174,6 @@ void BRD_init(void)
 	ROW_SEL_G_DIR = PORT_OUT;
 	ROW_SEL_G = SWITCH_OFF;
 
-
-	OSCTUNEbits.PLLEN = 1;
-	DelayMs(100);
-
-
 	//DATA OUT
     DISPLAY_PORT_DIRECTION = PORT_OUT;
    
@@ -186,8 +182,10 @@ void BRD_init(void)
 	SSD_DITIT_SEL_B_DIR = PORT_OUT;
 	
 
-   // Enable internal PORTB pull-ups
-    INTCON2bits.RBPU = 0;
+
+
+	OSCTUNEbits.PLLEN = 1;
+	DelayMs(100);
 
 }
 

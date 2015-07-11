@@ -1,5 +1,6 @@
-#include "board.h"
-
+#include "config.h"
+#include "mmd.h"
+#include "string.h"
 
 #define MAX_SIZE							16
 
@@ -79,7 +80,8 @@ typedef enum
 	CMD_GET_COMM_STATUS = 0x17,
 	CMD_GET_LOG = 0x11,
 	CMD_SET_RTC = 0x18,
-	CMD_GET_RTC = 0x19
+	CMD_GET_RTC = 0x19,
+	CMD_TRUCK_TIMINGS
 };
 
 /*
@@ -138,11 +140,7 @@ typedef enum
 
 
 
-
-
-
+UINT8 APP_comCallBack( far UINT8 *rxPacket,  far UINT8* txCode, far UINT8** txPacket);
 void APP_init(void);
 void APP_task(void);
-UINT8 APP_comCallBack( far UINT8 *rxPacket, far UINT8* txCode,far UINT8** txPacket);
-
 

@@ -35,13 +35,12 @@
 
 #include "board.h"
 #include "timer.h"	// Timer related functions
-#include "mb.h"
 #include "heartBeat.h"
 #include "app.h"
 #include "mmd.h"
-#include "digit_driver.h"
 #include "digitdisplay.h"
-#include "i2c_driver.h"
+#include "digit_driver.h"
+#include "mb.h"
 
 /*
 *------------------------------------------------------------------------------
@@ -161,25 +160,27 @@ extern UINT16 mmdUpdateCount;
 *------------------------------------------------------------------------------
 */
 
-#define MMD_REFRESH_PERIOD	(65535 - 20000)
-#define TICK_PERIOD	(65535 - 8000) //250us
+#define MMD_REFRESH_PERIOD	(65535 - 10000)
+#define TICK_PERIOD	(65535 - 16000)
 
 
 void main(void)
 {
-	UINT8 i,j, count, k;
-	BOOL ledStrip_On = 0;
+	UINT8 i,j, k;
 	eMBErrorCode    eStatus;
-/*
+
+#if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
-	UINT8 line[10] ="LINE "; 
-*/
+	UINT8 line[10] ="IDEONICS "; 
+#endif
+
+
 
 	BRD_init();
 	HB_init();
-	DigitDisplay_init(16);
-	MMD_init();  // Display initialization
 
+	MMD_init();  // Display initialization
+	DigitDisplay_init(16);
 	APP_init();
 
 	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
@@ -189,7 +190,27 @@ void main(void)
 	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
 	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
 
+
 	EnableInterrupts();
+
+#if defined (UART_TEST)
+	for( i = 0; i < 26; i++)
+	{
+		dataByte = xMBPortSerialPutByte( 'A' + i );
+	}
+#endif
+
+#if defined (MMD_TEST)
+	MMD_clearSegment(0);
+	mmdConfig.startAddress = 0;
+	mmdConfig.length = MMD_MAX_CHARS;
+	mmdConfig.symbolCount = strlen(line);
+	mmdConfig.symbolBuffer = line;
+	mmdConfig.scrollSpeed = 0;
+			
+	MMD_configSegment( 0 , &mmdConfig);
+#endif
+
 
 #ifdef __DISPLAY_TEST__
 
@@ -225,37 +246,23 @@ void main(void)
 
 #endif
 
-
 	while(1)
 	{
 
-		if(  heartBeatCount >= 2000 )
+		if(  heartBeatCount >= 250 )
 		{
 			//APP_task();
 			HB_task();
 			heartBeatCount = 0;
 		}
 
-		if( mmdUpdateCount >= 10 )
+		if( mmdUpdateCount >= 20 )
 		{
 			MMD_task();
 			mmdUpdateCount = 0;
 		}
 
-		if(keypadUpdate_count >=15 )
-		{
-          keypadUpdate_count = 0;
-		  count++;
-		}
-
-//		if(count >=5 )
-		{
-		  eMBPoll();
-//		  APP_task();
-          count = 0;
-		
-		}
-
+		eMBPoll();	//modbus task		
 		//ClrWdt();	
 	}
 }

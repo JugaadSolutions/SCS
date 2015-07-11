@@ -15,23 +15,6 @@ void high_interrupt (void)
 	/*
    	* Inline assembly that will jump to the ISR.
    	*/
-#ifdef __18F8722_H
-	if(PIR1bits.RC1IF == 1)
-	{
-		_asm GOTO prvvUARTRxISR _endasm
-	}
-#else
-
-	if(PIR1bits.RCIF == 1)
-	{
-		_asm GOTO UartReceiveHandler _endasm
-	}
-#endif
-
-	if(PIR2bits.TMR3IF == 1)
-	{
-		_asm GOTO prvvTIMERExpiredISR _endasm
-	}
 
 	if(INTCONbits.TMR0IF == 1)
 	{
@@ -43,6 +26,22 @@ void high_interrupt (void)
 		_asm GOTO TMR1_ISR _endasm
 	}
 
+	if(PIR1bits.RC1IF == 1)
+	{
+		_asm GOTO prvvUARTRxISR _endasm
+	}
+/*
+	if(PIR1bits.TX1IF == 1)
+	{
+		_asm GOTO prvvUARTTxReadyISR _endasm
+	}
+*/
+
+
+	if(PIR2bits.TMR3IF == 1)
+	{
+		_asm GOTO prvvTIMERExpiredISR _endasm
+	}
 
 
 

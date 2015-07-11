@@ -13,12 +13,12 @@
 
 #define __FACTORY_CONFIGURATION__
 
-#define __DISPLAY_TEST__ 
+//#define __DISPLAY_TEST__ 
 
 
 //MMD module configuration
-#define MMD_MAX_CHARS		28
-#define MMD_MAX_SEGMENTS	1
+#define MMD_MAX_CHARS		8
+#define MMD_MAX_SEGMENTS	4
 #define MMD_MAX_ADDRESS		128
 //#define __MMD_STATIC__
 
@@ -37,7 +37,7 @@
 #define UART1_BAUD			19200
 #define UART2_BAUD			19200
 //#define PASS_THROUGH
-#define UART_TEST
+//#define UART_TEST
 
 /*----------------------------------------
 *	COM module configuration
@@ -64,12 +64,18 @@ enum
 #define 	TX_PACKET_SIZE		(60)
 
 
-/*----------------------------------------
-*	Keypad Configurations
-*----------------------------------------*/
-
-#define __FACTORY_CONFIGURATION__
+//KEYPAD CONFIGURATION
 //#define __SIMULATION__
+
+
+// Enable for external eeprom access
+// Comment out this line if internal eeprom access required
+#define EEP_EXTERRNAL
+// For uart enable
+//#define EN_UART
+// Enable for hardware i2c module usage
+//#define USE_MSSP_I2C
+
 
 //RTC CONFIGURATION
 //#define TIME_DEBUG
@@ -89,17 +95,8 @@ enum
 /*----------------------------------------
 *	APP CONFIGURATION
 *----------------------------------------*/
-#define MSG_LENGTH 		20
-#define EEPROM_ADDRESS 	(0X10)
-
-
-#define EPROM_ADD_PLAN  	0
-#define EPROM_ADD_ACTUAL 	4
-#define SET_PLAN 			0x81
-#define MODIFY_PLAN 		0x82
-
-#define NO_OF_DIGITS		(0X04)
-#define MAX_COUNT			(9999)
+#define MSG_LENGTH 20
+#define EEPROM_ADDRESS 0
 
 /*
 *------------------------------------------------------------------------------

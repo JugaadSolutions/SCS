@@ -87,20 +87,21 @@
 
 #define		ROW_SEL_A				PORTDbits.RD0			// decoder digit sel A
 #define		ROW_SEL_A_DIR			TRISDbits.TRISD0
-#define		ROW_SEL_B				PORTDbits.RD1			// decoder digit sel B
+#define		ROW_SEL_B				PORTDbits.RD1		// decoder digit sel B
 #define		ROW_SEL_B_DIR			TRISDbits.TRISD1
-#define		ROW_SEL_C				PORTDbits.RD2			// decoder digit sel C
+#define		ROW_SEL_C				PORTDbits.RD2		// decoder digit sel C
 #define		ROW_SEL_C_DIR			TRISDbits.TRISD2
-#define		ROW_SEL_D				PORTDbits.RD3			// decoder digit sel D
+#define		ROW_SEL_D				PORTDbits.RD3		// decoder digit sel D
 #define		ROW_SEL_D_DIR			TRISDbits.TRISD3
-#define		ROW_SEL_E				PORTDbits.RD4			// decoder digit sel E
+#define		ROW_SEL_E				PORTDbits.RD4		// decoder digit sel E
 #define		ROW_SEL_E_DIR			TRISDbits.TRISD4
-#define		ROW_SEL_F				PORTDbits.RD5			// decoder digit sel F
+#define		ROW_SEL_F				PORTDbits.RD5		// decoder digit sel F
 #define		ROW_SEL_F_DIR			TRISDbits.TRISD5
-#define		ROW_SEL_G				PORTDbits.RD6			// decoder digit sel G
+#define		ROW_SEL_G				PORTDbits.RD6	// decoder digit sel G
 #define		ROW_SEL_G_DIR			TRISDbits.TRISD6
-#define		ROW_SEL_H				PORTDbits.RD7			// decoder digit sel G
+#define		ROW_SEL_H				PORTDbits.RD7	// decoder digit sel G
 #define		ROW_SEL_H_DIR			TRISDbits.TRISD7
+
 
 //Digit Selection 
 #define 	SSD_DIGIT_SEL_A			PORTJ
@@ -111,9 +112,6 @@
 //Display
 #define	DISPLAY_PORT               PORTH
 #define DISPLAY_PORT_DIRECTION     TRISH
-
-
-
 
 
 			
@@ -184,11 +182,11 @@
 #define DISABLE_UART2_RX_INTERRUPT()	PIE3bits.RC2IE = 0
 #define ENABLE_UART2_RX_INTERRUPT()		PIE3bits.RC2IE = 1
 
-#define DISABLE_UART1_TX_INTERRUPT()	PIE1bits.TX1IE = 0
-#define ENABLE_UART1_TX_INTERRUPT()		PIE1bits.TX1IE = 1
+#define DISABLE_UART_TX_INTERRUPT()	PIE1bits.TX1IE = 0
+#define ENABLE_UART_TX_INTERRUPT()		PIE1bits.TX1IE = 1
 
-#define DISABLE_UART1_RX_INTERRUPT()	PIE1bits.RC1IE = 0
-#define ENABLE_UART1_RX_INTERRUPT()		PIE1bits.RC1IE = 1
+#define DISABLE_UART_RX_INTERRUPT()	PIE1bits.RC1IE = 0
+#define ENABLE_UART_RX_INTERRUPT()		PIE1bits.RC1IE = 1
 
 #define ENB_485_TX()	TX_EN = 1;
 #define ENB_485_RX()	TX_EN = 0

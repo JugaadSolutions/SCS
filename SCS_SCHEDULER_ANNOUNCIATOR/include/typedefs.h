@@ -78,13 +78,9 @@ typedef double 				DOUBLE;		//32 bits 	-126(Exponent) 	128(Exponent)
 #define FALSE           0
 #endif
 
-#ifndef SUCCESS
 #define SUCCESS			1
-#endif
 
-#ifndef FAILURE			
-#define FAILURE			0
-#endif
+#define FAILURE			1
 
 #define assert( expr )
 

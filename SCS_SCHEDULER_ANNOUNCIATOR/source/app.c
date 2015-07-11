@@ -1,13 +1,11 @@
-#include "app.h"
+
 #include "mmd.h"
-#include "eeprom_interface.h"
-#include "utilities.h"
+#include "string.h"
+#include "app.h"
+#include "typedefs.h"
+#include "eep.h"
 #include "mb.h"
 #include "digit_driver.h"
-#include <string.h>
-#include "eep.h"
-#include "digitdisplay.h"
-
 
 /*
 *-----------------------------------------------------------
@@ -312,13 +310,15 @@ void APP_init(void)
 	mmdConfig.scrollSpeed = 0;
 
 
-	for(i= 1; i < TRUCKS_SUPPORTED+1 ; i++)
+	// problem is with reset modules, I am unable to fix it. Please check
+	for(i= 1; i < TRUCKS_SUPPORTED ; i++)
 	{
-		resetSchedule(i);
+//		resetSchedule(i);
 	}	
 
-	resetSegment();
+//	resetSegment();
 }
+
 
 /*
 *------------------------------------------------------------------------------
@@ -597,112 +597,113 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 }
 
 
+/*
+*------------------------------------------------------------------------------
+* MODBUS CALLBACK
+*------------------------------------------------------------------------------
+*/
 
-void resetSchedule(UINT8 truck)
+eMBErrorCode
+eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
 {
-	UINT8 j;
-	UINT8 truckNo;
-	
-	
-	truckNo = truck+((DEVICE_ADDRESS - 1) * 4);
-	for( j= 0; j < ACTIVITIES_SUPPORTED ; j++)
-	{
-		
-		scheduleStatus[truck][j].activityStatus = ACTIVITY_SCHEDULED;
-		scheduleStatus[truck][j].status = ACTIVITY_NONE;
-		
-		getScheduleTime(&scheduleTable[truck][j] ,activityTime);
 
-		loadSchedule(truck,j+1);
+    eMBErrorCode    eStatus = MB_ENOERR;
 
+    int             iRegIndex;
+/*
+    if( ( usAddress >= REG_INPUT_START )
+        && ( usAddress + usNRegs <= REG_INPUT_START + REG_INPUT_NREGS ) )
+    {
+        iRegIndex = ( int )( usAddress - usRegInputStart );
+        while( usNRegs > 0         {
+            *pucRegBuffer++ =
+                ( unsigned char )( usRegInputBuf[iRegIndex] >> 8 );
+            *pucRegBuffer++ =
+                ( unsigned char )( usRegInputBuf[iRegIndex] & 0xFF );
+            iRegIndex++;
+            usNRegs--;
+        }
+    }
+    else
+    {
+        eStatus = MB_ENOREG;
+ 
+*/
+    return eStatus;
 
-	}	
-
-	truck_statusIndicator[truck][0] = truckIndicators[truckNo].indicatorRed[0];
-	truck_statusIndicator[truck][1] = truckIndicators[truckNo].indicatorRed[1];
-	truck_statusIndicator[truck][2] = truckIndicators[truckNo].indicatorRed[2];
-	truck_statusIndicator[truck][3] = truckIndicators[truckNo].indicatorRed[3];
-
-	truck_statusIndicator[truck][4] = 'F';
-	truck_statusIndicator[truck][5] = ' ';
-	truck_statusIndicator[truck][6] = 'G';
-	truck_statusIndicator[truck][7] = ' ';
-
-	mmdConfig.startAddress = (truck-1)*32;
-	mmdConfig.length = 8;
-	mmdConfig.symbolBuffer =truck_statusIndicator[truck] ;
-	mmdConfig.symbolCount = 8;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
-
-	MMD_configSegment(truck-1, &mmdConfig);
-
-	
 }
 
-
-void getScheduleTime(ACTIVITY_SCHEDULE* as , UINT8* activityTime)
+eMBErrorCode
+eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
+                 eMBRegisterMode eMode )
 {
-	UINT16 hour;
-	UINT16 minute;
-		
-	hour = as->startMinute / 60 ;
-	minute = (as->startMinute - (UINT16)(hour * 60 ) ) % 60;
 
-	activityTime[0] = hour /10  ;
-	activityTime[1] = hour % 10;
+	UINT8	starting_add = usAddress;
+	UINT8	no_regs		 = usNRegs * 2;
+	eMBErrorCode    eStatus = MB_ENOERR;
+	UINT8 i = 0;
 
-	activityTime[2] = minute/10;
-	activityTime[3] = minute%10;
-
-	hour = as->endMinute / 60 ;
-	minute = (as->endMinute - (UINT16)(hour * 60 ) ) % 60;
-
-	activityTime[4] = hour /10  ;
-	activityTime[5] = hour % 10;
-
-	activityTime[6] = minute/10;
-	activityTime[7] = minute%10;
-}
-
-
-
-void loadSchedule(UINT8 truck, UINT8 activity)
-{
-	UINT8 i;
-	for(i = 0; i < 8 ;i++)
+	switch(eMode)
 	{
-	//	DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
-		DDR_loadDigit( ((truck-1)*24)+(activity*8)+ i + 32,activityTime[i] );
-		DelayMs(1);
+	case MB_REG_WRITE:
+
+    
+	while( no_regs > 0)
+	{
+
+		//app.valueBuffer[i++] = * pucRegBuffer++;
+
+		starting_add++;
+		no_regs	--;
 	}
-}
+//	app.valueBuffer[i++] = 0;
+    break;
 
-void clearScheduleTime()
-{
-	UINT8 i;
-	for( i = 0; i < 8;i++)
+ 	case MB_REG_READ: 
+
+	while(no_regs > 0)
 	{
-		activityTime[i] = DIGIT_CLEAR;
+
+			* pucRegBuffer++ =	'A';
+			* pucRegBuffer++ =	'B';		
+			
+			* pucRegBuffer++ = 'C';
+			* pucRegBuffer++ = 'D';
+
+						
+
+
+
+		starting_add++;
+		no_regs	--;	
 	}
-}
+   	 break;
+	}
 
 
-void setSchedule(SCHEDULE_DATA *data)
+
+	return eStatus;
+  }
+
+
+eMBErrorCode
+eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,
+               eMBRegisterMode eMode )
 {
-	UINT8 i;
-	UINT8 *ptr = &data;
-//	WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + data->truck*(sizeof(TRUCK_SCHEDULE))
-//									, (UINT8*)&data,sizeof(ACTIVITY_SCHEDULE)*ACTIVITIES_SUPPORTED);
-
-	for( i = 0; i < sizeof(ACTIVITY_SCHEDULE)*ACTIVITIES_SUPPORTED; i++)
-	{
-		Write_b_eep(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + data->truck*(sizeof(TRUCK_SCHEDULE)), *(ptr+i) );
-		Busy_eep();
-	}	
+    return MB_ENOREG;
 }
 
+eMBErrorCode
+eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
+{
+    return MB_ENOREG;
+}
 
-
+/*
+*------------------------------------------------------------------------------
+* RESET SEGMENT
+*------------------------------------------------------------------------------
+*/
 void resetSegment()
 {
 	UINT8 i;
@@ -731,90 +732,6 @@ void copySrcToDst(const rom UINT8*src, UINT8* dst , UINT8 length)
 	}
 }
 
-
-/*
-*------------------------------------------------------------------------------
-* MODBUS CALLBACK
-*------------------------------------------------------------------------------
-*/
-
-eMBErrorCode
-eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
-{
-
-    eMBErrorCode    eStatus = MB_ENOERR;
-
-
-    return eStatus;
-
-}
-
-eMBErrorCode
-eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
-                 eMBRegisterMode eMode )
-{
-
-	UINT8	starting_add = usAddress;
-	UINT8	no_regs		 = usNRegs * 2;
-	eMBErrorCode    eStatus = MB_ENOERR;
-	UINT8 i = 0;
-
-	switch(eMode)
-	{
-	case MB_REG_WRITE:
-
-   		while( no_regs > 0)
-		{
-	
-			app.eMBdata[i++] = * pucRegBuffer++;
-	
-			starting_add++;
-			no_regs	--;
-		}
-
-DISABLE_UART_RX_INTERRUPT();
-	app.MBdataReceived = TRUE;
-ENABLE_UART_RX_INTERRUPT();
-
-    break;
-
- 	case MB_REG_READ: 
-
-		while(no_regs > 0)
-		{
-	
-				* pucRegBuffer++ =	'A';
-				* pucRegBuffer++ =	'B';		
-				
-				* pucRegBuffer++ = 'C';
-				* pucRegBuffer++ = 'D';
-	
-							
-	
-	
-	
-			starting_add++;
-			no_regs	--;	
-		}
-   	 break;
-	}
-	return eStatus;
-  }
-
-
-eMBErrorCode
-eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,
-               eMBRegisterMode eMode )
-{
-    return MB_ENOREG;
-}
-
-eMBErrorCode
-eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
-{
-    return MB_ENOREG;
-}
-
 /*
 *------------------------------------------------------------------------------
 * Function used to update truck number
@@ -835,6 +752,101 @@ void displayTruckNumber(UINT8* buffer)
 	DigitDisplay_updateBufferPartial(displayBuf, 0, TRUCKS_SUPPORTED*2);		
 }
 
+/*
+*------------------------------------------------------------------------------
+* Function used to update truck number
+*------------------------------------------------------------------------------
+*/
+void resetSchedule(UINT8 truck)
+{
+	UINT8 j;
+	UINT8 truckNo;
+	
+	
+	truckNo = truck+((DEVICE_ADDRESS - 1) * 4);
+	for( j= 0; j < ACTIVITIES_SUPPORTED ; j++)
+	{
+		
+		scheduleStatus[truck][j].activityStatus = ACTIVITY_SCHEDULED;
+		scheduleStatus[truck][j].status = ACTIVITY_NONE;
+		
+		getScheduleTime(&scheduleTable[truck][j] ,activityTime);
+
+		loadSchedule(truck,j+1);
+
+
+	}	
+
+/*	truck_statusIndicator[truck][0] = truckIndicators[truckNo].indicatorRed[0];
+	truck_statusIndicator[truck][1] = truckIndicators[truckNo].indicatorRed[1];
+	truck_statusIndicator[truck][2] = truckIndicators[truckNo].indicatorRed[2];
+	truck_statusIndicator[truck][3] = truckIndicators[truckNo].indicatorRed[3];
+
+	truck_statusIndicator[truck][4] = 'F';
+	truck_statusIndicator[truck][5] = ' ';
+	truck_statusIndicator[truck][6] = 'G';
+	truck_statusIndicator[truck][7] = ' ';
+*/
+	for( j= 0; j < ACTIVITIES_SUPPORTED*2 ; j++)
+		scanDisplay.buffer[j] = '0';
+
+	DigitDisplay_updateBufferPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
+
+	mmdConfig.startAddress = (truck-1)*8;
+	mmdConfig.length = 8;
+	mmdConfig.symbolBuffer =truck_statusIndicator[truck] ;
+	mmdConfig.symbolCount = 8;
+	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
+
+	MMD_configSegment(truck-1, &mmdConfig);
+
+	
+}
+
+
+void loadSchedule(UINT8 truck, UINT8 activity)
+{
+	UINT8 i;
+	for(i = 0; i < 8 ;i++)
+	{
+	//	DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
+	//	DDR_loadDigit( ((truck-1)*24)+(activity*8)+ i + 32,activityTime[i] );
+		DelayMs(1);
+	}
+}
+
+void clearScheduleTime()
+{
+	UINT8 i;
+	for( i = 0; i < 8;i++)
+	{
+		activityTime[i] = DIGIT_CLEAR;
+	}
+}
+
+void getScheduleTime(ACTIVITY_SCHEDULE* as , UINT8* activityTime)
+{
+	UINT16 hour;
+	UINT16 minute;
+		
+	hour = as->startMinute / 60 ;
+	minute = (as->startMinute - (UINT16)(hour * 60 ) ) % 60;
+
+	activityTime[0] = hour /10  ;
+	activityTime[1] = hour % 10;
+
+	activityTime[2] = minute/10;
+	activityTime[3] = minute%10;
+
+	hour = as->endMinute / 60 ;
+	minute = (as->endMinute - (UINT16)(hour * 60 ) ) % 60;
+
+	activityTime[4] = hour /10  ;
+	activityTime[5] = hour % 10;
+
+	activityTime[6] = minute/10;
+	activityTime[7] = minute%10;
+}
 
 /*
 *------------------------------------------------------------------------------

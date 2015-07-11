@@ -127,7 +127,24 @@ BOOL DigitDisplay_updateBuffer(UINT8 *buffer);
 BOOL DigitDisplay_updateBufferBinary(UINT8 *buffer);
 
 
+/*
+*------------------------------------------------------------------------------
+*BOOL DigitDisplay_updateBufferBinaryPartial(far UINT8 *buffer, UINT8 from, UINT8 length)
+*
+* Function to reset the digit index
+*  
+* Input : buffer containing the new values for the digits,
+*			from - zero based index from where the update has to happen
+			length - number of digits that have to be updated
+* 
+* output: the display buffer is updated with the new values
+*
+* return value: boolean indicating success or failure.
+* 
+*------------------------------------------------------------------------------
+*/
 
+BOOL DigitDisplay_updateBufferBinaryPartial(far UINT8 *buffer, UINT8 from, UINT8 length);
 
 /*
 *------------------------------------------------------------------------------
