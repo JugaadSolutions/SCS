@@ -137,6 +137,7 @@ UINT8 readTimeDateBuffer[6] = {0};
 UINT8 writeTimeDateBuffer[] = {0X00, 0X30, 0X17, 0X03, 0x027, 0X12, 0X13};
 UINT8 txBuffer[7] = {0};
 UINT8 transmitTruncktime[30] = {0};
+UINT8 activityTime[8];
 
 /*
 *------------------------------------------------------------------------------
@@ -164,10 +165,15 @@ void updateTruckTime(UINT8 truck , UINT8* trucktime);
 	//manipulate hooter
 void updateAlarmIndication(ACTIVITY activity);
 void resetAlarm(void);
+
 	// Function for manupilate Truck Timing  (96 Latch Digit & 16 Scan Digit)
 void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHEDULE *as);
 void loadSchedule(UINT8 truck, UINT8 activity);
 void updateSchedule(UINT8 *data);
+void getScheduleTime(ACTIVITY_SCHEDULE* as , UINT8* activityTime);
+void setSchedule(SCHEDULE_DATA *data);
+void resetSchedule(UINT8 truck);
+void clearScheduleTime(void);
 
 	//Modbus Master
 void updateLog(far UINT8 *data,UINT8 slave);
@@ -175,13 +181,9 @@ void updateLog_Binary(far UINT8 *data,UINT8 slave,UINT8 length);
 
 void updateCurrentActivityParameters(void);
 void updateCurrentActivityIndication(void);
-	//Function for truck no, time , status
-void resetSchedule(UINT8 truck);
-void clearScheduleTime(void);
+
 
 void updateBackLightIndication(void);
-void resetSchedule(UINT8 i);
-
 BOOL updatePickingInfo(void);
 void updatePickingIndication(void);
 
@@ -310,20 +312,18 @@ void APP_init(void)
 	app.breakID = 0;
 	app.secON = TRUE;
 
-	mmdConfig.startAddress = 0;
-	mmdConfig.length = 0;
-	mmdConfig.symbolBuffer = 0;
-	mmdConfig.symbolCount = 0;
-	mmdConfig.scrollSpeed = 0;
-
 	memset((UINT8*)scheduleTable,0,ACTIVITIES_SUPPORTED*TRUCKS_SUPPORTED);
 	memset((UINT8*)&pickingInfo,0,sizeof(PICKING_INFO));
 	
 	activityStatus = RESET ;
 	
-
 	updateTime();
 	updateBackLightIndication();
+
+	for(i= 1; i < 5 ; i++)
+	{
+		resetSchedule(i);
+	}
 
 
 }
@@ -1386,7 +1386,7 @@ void updateSchedule(UINT8 *data)
 			truck_statusIndicator[truck][7] = ' ';
 */
 
-//			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);
+			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);
 			
 						
 			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_ONGOING;
@@ -1467,14 +1467,14 @@ void updateSchedule(UINT8 *data)
 * Output	: None
 *------------------------------------------------------------------------------
 */
-/*
+
 void resetSchedule(UINT8 truck)
 {
 	UINT8 j;
 	UINT8 truckNo;
 	
 	
-	truckNo = truck+((DEVICE_ADDRESS - 1) * 4);
+	truckNo = truck;
 	for( j= 0; j < ACTIVITIES_SUPPORTED ; j++)
 	{
 		
@@ -1487,7 +1487,7 @@ void resetSchedule(UINT8 truck)
 
 
 	}	
-
+/*
 	truck_statusIndicator[truck][0] = truckIndicators[truckNo].indicatorRed[0];
 	truck_statusIndicator[truck][1] = truckIndicators[truckNo].indicatorRed[1];
 	truck_statusIndicator[truck][2] = truckIndicators[truckNo].indicatorRed[2];
@@ -1505,10 +1505,10 @@ void resetSchedule(UINT8 truck)
 	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
 
 	MMD_configSegment(truck-1, &mmdConfig);
+*/
 
 	
 }
-*/
 
 /*
 *------------------------------------------------------------------------------
@@ -1528,15 +1528,71 @@ void loadSchedule(UINT8 truck, UINT8 activity)
 	UINT8 i;
 	for(i = 0; i < 8 ;i++)
 	{
-	//	DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
+		DDR_loadDigit( ( (32 + ((truck - 1) * 24) ) + (activity - 1 ) * 8) + i,activityTime[i] );
 		DelayMs(1);
 	}
 }
 
+/*
+*------------------------------------------------------------------------------
+* void getScheduleTime(ACTIVITY_SCHEDULE* as , UINT8* activityTime)
+*
+* Summary	: 
+*
+* Input		: 
+*			  
+*
+* Output	: None
+*------------------------------------------------------------------------------
+*/
 
+
+void getScheduleTime(ACTIVITY_SCHEDULE* as , UINT8* activityTime)
+{
+	UINT16 hour;
+	UINT16 minute;
+		
+	hour = as->startMinute / 60 ;
+	minute = (as->startMinute - (UINT16)(hour * 60 ) ) % 60;
+
+	activityTime[0] = hour /10  ;
+	activityTime[1] = hour % 10;
+
+	activityTime[2] = minute/10;
+	activityTime[3] = minute%10;
+
+	hour = as->endMinute / 60 ;
+	minute = (as->endMinute - (UINT16)(hour * 60 ) ) % 60;
+
+	activityTime[4] = hour /10  ;
+	activityTime[5] = hour % 10;
+
+	activityTime[6] = minute/10;
+	activityTime[7] = minute%10;
+}
 
 /*
+*------------------------------------------------------------------------------
+* void clearScheduleTime(void )
+*
+* Summary	: 
+*
+* Input		: 
+*			  
+*
+* Output	: None
+*------------------------------------------------------------------------------
+*/
+void clearScheduleTime()
+{
+	UINT8 i;
+	for( i = 0; i < 8;i++)
+	{
+		activityTime[i] = DIGIT_CLEAR;
+	}
+}
 
+/*
 
 void setSchedule(SCHEDULE_DATA *data)
 {
