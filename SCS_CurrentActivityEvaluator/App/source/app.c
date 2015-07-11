@@ -180,13 +180,10 @@ void resetSchedule(UINT8 truck);
 void clearScheduleTime(void);
 
 void updateBackLightIndication(void);
-//void resetSchedule(UINT8 i);
-
-/*
+void resetSchedule(UINT8 i);
 
 BOOL updatePickingInfo(void);
 void updatePickingIndication(void);
-*/
 
 /*
 *------------------------------------------------------------------------------
@@ -250,8 +247,6 @@ void APP_init(void)
 		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
 		{
 			as = shipmentSchedule[i][j];
-		//	WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE)
-		//							, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
 
 			if( j ==0 )
 			{
@@ -265,20 +260,15 @@ void APP_init(void)
 	for( i = 0; i < BREAKS_SUPPORTED+1 ; i++)
 	{
 		as = breakSchedule[i];
-	//	WriteBytesEEP(EEP_BREAK_SCHEDULE_BASE_ADDRESS + i*(sizeof(ACTIVITY_SCHEDULE))
-	//								, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
 		breaks[i] = as;
 
 	}
 	
 	app.delayPercentage = DELAY_PERCENTAGE;
-//	WriteByteEEP((UINT16)EEP_DELAY_PERCENTAGE , app.delayPercentage);
-	
 	app.alarmPercentage = ALARM_PERCENTAGE;
-//	WriteByteEEP(EEP_ALARM_PERCENTAGE , app.alarmPercentage);
+
 	
 #else
-
 	
 	for( i = 0 ; i < TRUCKS_SUPPORTED + 1 ; i++)
 	{
@@ -309,10 +299,6 @@ void APP_init(void)
 	app.alarmPercentage = ReadByteEEP(EEP_ALARM_PERCENTAGE);
 
 #endif
-
-//	updateTime();
-
-
 
 	//set the value of CurrentActivitySegment structure parameter
 	for(i= 0; i < ACTIVITIES_SUPPORTED; i++)
@@ -382,7 +368,7 @@ void APP_task(void)
 		}
 	}
 
-////Modubus Slave Packet REceived
+//Modubus Slave Packet REceived
 	if(app.DataReceived == TRUE)
 	{
 		ENABLE_UART_RX_INTERRUPT();
@@ -435,13 +421,13 @@ void APP_task(void)
 
 	if( app.curMinute != app.prevMinute)
 	{
-/*
+
 		if( updatePickingInfo() == TRUE )
 		{
 			updatePickingIndication();
 		}
 
-*/
+
 		updateCurrentActivityParameters();
 		ClrWdt();
 		updateCurrentActivityIndication();
@@ -737,7 +723,7 @@ void updateTruckActivity(UINT8 truck ,UINT8 activity , UINT8 milestone)
 					pickingInfo.truck = 0;
 					pickingInfo.state = 0;
 					pickingInfo.timeout = 0;		
-				//	updatePickingIndication();	
+					updatePickingIndication();	
 				}
 			}
 				
@@ -1465,16 +1451,6 @@ void updateSchedule(UINT8 *data)
 		
 	}
 
-	mmdConfig.startAddress = (truck - 1)*32;
-	mmdConfig.length = 8;
-	mmdConfig.symbolBuffer =truck_statusIndicator[truck] ;
-	mmdConfig.symbolCount = 8;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
-
-
-
-	MMD_configSegment(truck-1, &mmdConfig);
-
 
 	loadSchedule(truck,info->activity);
 }
@@ -1552,7 +1528,7 @@ void loadSchedule(UINT8 truck, UINT8 activity)
 	UINT8 i;
 	for(i = 0; i < 8 ;i++)
 	{
-//		DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
+	//	DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
 		DelayMs(1);
 	}
 }
@@ -1572,7 +1548,7 @@ void setSchedule(SCHEDULE_DATA *data)
 */
 
 
-/*
+
 BOOL updatePickingInfo()
 {
 	UINT8 i,result = FALSE;
@@ -1657,13 +1633,13 @@ void updatePickingIndication()
 		break;
 	}
 		
-	hdr.deviceAddress = 9;
-	hdr.length = i;
-	hdr.cmdID = CMD_UPDATE_PICKING_INDICATION;
-	COM_sendCommand(&hdr,activityParameterBuffer);
+//	hdr.deviceAddress = 9;
+//	hdr.length = i;
+//	hdr.cmdID = CMD_UPDATE_PICKING_INDICATION;
+//	COM_sendCommand(&hdr,activityParameterBuffer);
 
 }
-*/
+
 
 
 

@@ -1,5 +1,5 @@
 MPLINK 4.48, Linker
-Linker Map File - Created Sat Jul 11 14:17:14 2015
+Linker Map File - Created Sat Jul 11 15:28:08 2015
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -8,160 +8,160 @@ Linker Map File - Created Sat Jul 11 14:17:14 2015
            .code___init.o       code   0x000006    program   0x000002
               high_vector       code   0x000008    program   0x000032
                    .cinit    romdata   0x00003a    program   0x0000aa
-              .code_app.o       code   0x0000e4    program   0x002d2e
-              .code_MMD.o       code   0x002e12    program   0x002220
-     .code_modbusMaster.o       code   0x005032    program   0x001006
-         .code_math_fun.o       code   0x006038    program   0x000c34
-       .code_rtc_driver.o       code   0x006c6c    program   0x0009da
-    .code_mbfuncholding.o       code   0x007646    program   0x00093a
-             .code_uart.o       code   0x007f80    program   0x000782
-      .code_mbfunccoils.o       code   0x008702    program   0x000612
-     .code_digitdisplay.o       code   0x008d14    program   0x00060a
-               .code_mb.o       code   0x00931e    program   0x000606
-            .code_mbrtu.o       code   0x009924    program   0x000514
-           .romdata_MMD.o    romdata   0x009e38    program   0x0003b8
-          .code_mbutils.o       code   0x00a1f0    program   0x0003a4
-            .code_timer.o       code   0x00a594    program   0x00038a
-       .code_portserial.o       code   0x00a91e    program   0x0002c8
-       .code_mbfuncdisc.o       code   0x00abe6    program   0x000270
-      .code_mbfuncinput.o       code   0x00ae56    program   0x000258
-       .code_i2c_driver.o       code   0x00b0ae    program   0x000246
-         .romdata_mbcrc.o    romdata   0x00b2f4    program   0x000200
-      .code_mbfuncother.o       code   0x00b4f4    program   0x000166
-           .romdata_app.o    romdata   0x00b65a    program   0x000144
-            .code_mbcrc.o       code   0x00b79e    program   0x0000fc
-        .code_porttimer.o       code   0x00b89a    program   0x0000f6
-             .code_main.o       code   0x00b990    program   0x0000d8
-            .code_board.o       code   0x00ba68    program   0x0000d4
-                     PROG       code   0x00bb3c    program   0x0000a4
-               _cinit_scn       code   0x00bbe0    program   0x00009e
-                   STRING       code   0x00bc7e    program   0x00008a
-           .code_u2open.o       code   0x00bd08    program   0x00008a
-           .code_u1open.o       code   0x00bd92    program   0x000084
-          .code_write_B.o       code   0x00be16    program   0x000078
-          .code_fxm3232.o       code   0x00be8e    program   0x000070
-        .code_portevent.o       code   0x00befe    program   0x000060
-           .code_read_B.o       code   0x00bf5e    program   0x00005c
-             .stringtable    romdata   0x00bfba    program   0x00004c
-         .code_fxd3232u.o       code   0x00c006    program   0x000048
-           .code_t3open.o       code   0x00c04e    program   0x000042
-           .code_t1open.o       code   0x00c090    program   0x000042
-           .code_u2read.o       code   0x00c0d2    program   0x00003e
-           .code_u1read.o       code   0x00c110    program   0x00003e
-     .code_digit_driver.o       code   0x00c14e    program   0x00003e
-          .code_t3write.o       code   0x00c18c    program   0x000038
-          .code_t1write.o       code   0x00c1c4    program   0x000038
-          .code_t0write.o       code   0x00c1fc    program   0x000038
-           .code_t0open.o       code   0x00c234    program   0x000038
-         .code_fxd1616u.o       code   0x00c26c    program   0x00002c
-              D1KTCYXCODE       code   0x00c298    program   0x000020
-                    .code       code   0x00c2b8    program   0x000020
-             _startup_scn       code   0x00c2d8    program   0x00001c
-         .code_fxd0808u.o       code   0x00c2f4    program   0x00001c
-        .code_heartBeat.o       code   0x00c310    program   0x00001a
-              D10TCYXCODE       code   0x00c32a    program   0x000016
-  .romdata_digit_driver.o    romdata   0x00c340    program   0x00000b
-         .romdata_mbrtu.o    romdata   0x00c34b    program   0x000000
-      .romdata_fxd1616u.o    romdata   0x00c34b    program   0x000000
-      .romdata_fxd3232u.o    romdata   0x00c34b    program   0x000000
-  .romdata_modbusMaster.o    romdata   0x00c34b    program   0x000000
-      .romdata_fxd0808u.o    romdata   0x00c34b    program   0x000000
-      .romdata_busy_eep.o    romdata   0x00c34b    program   0x000000
-        .romdata___init.o    romdata   0x00c34b    program   0x000000
-         .idata_mbcrc.o_i    romdata   0x00c34b    program   0x000000
-       .romdata_t3write.o    romdata   0x00c34b    program   0x000000
-       .idata_t3write.o_i    romdata   0x00c34b    program   0x000000
-       .romdata_t1write.o    romdata   0x00c34b    program   0x000000
-       .idata_t1write.o_i    romdata   0x00c34b    program   0x000000
-       .romdata_t0write.o    romdata   0x00c34b    program   0x000000
-       .idata_t0write.o_i    romdata   0x00c34b    program   0x000000
-        .romdata_u2defs.o    romdata   0x00c34b    program   0x000000
-        .idata_u2defs.o_i    romdata   0x00c34b    program   0x000000
-        .romdata_u1defs.o    romdata   0x00c34b    program   0x000000
-        .idata_u1defs.o_i    romdata   0x00c34b    program   0x000000
-        .romdata_read_B.o    romdata   0x00c34b    program   0x000000
-        .idata_read_B.o_i    romdata   0x00c34b    program   0x000000
-        .romdata_u2read.o    romdata   0x00c34b    program   0x000000
-        .idata_u2read.o_i    romdata   0x00c34b    program   0x000000
-        .romdata_u1read.o    romdata   0x00c34b    program   0x000000
-        .idata_u1read.o_i    romdata   0x00c34b    program   0x000000
-        .romdata_t3open.o    romdata   0x00c34b    program   0x000000
-        .idata_t3open.o_i    romdata   0x00c34b    program   0x000000
-        .romdata_t1open.o    romdata   0x00c34b    program   0x000000
-        .idata_t1open.o_i    romdata   0x00c34b    program   0x000000
-       .idata_write_B.o_i    romdata   0x00c34b    program   0x000000
-        .romdata_t0open.o    romdata   0x00c34b    program   0x000000
-        .idata_t0open.o_i    romdata   0x00c34b    program   0x000000
-       .romdata_write_B.o    romdata   0x00c34b    program   0x000000
-        .romdata_u2open.o    romdata   0x00c34b    program   0x000000
-        .idata_u2open.o_i    romdata   0x00c34b    program   0x000000
-        .romdata_u1open.o    romdata   0x00c34b    program   0x000000
-        .idata_u1open.o_i    romdata   0x00c34b    program   0x000000
-       .romdata_fxm3232.o    romdata   0x00c34b    program   0x000000
-     .idata_portevent.o_i    romdata   0x00c34b    program   0x000000
-    .romdata_portserial.o    romdata   0x00c34b    program   0x000000
-    .idata_portserial.o_i    romdata   0x00c34b    program   0x000000
-     .romdata_porttimer.o    romdata   0x00c34b    program   0x000000
-     .idata_porttimer.o_i    romdata   0x00c34b    program   0x000000
-          .romdata_uart.o    romdata   0x00c34b    program   0x000000
-          .idata_uart.o_i    romdata   0x00c34b    program   0x000000
-         .romdata_timer.o    romdata   0x00c34b    program   0x000000
-    .romdata_rtc_driver.o    romdata   0x00c34b    program   0x000000
-         .romdata_c018i.o    romdata   0x00c34b    program   0x000000
-      .romdata_math_fun.o    romdata   0x00c34b    program   0x000000
-      .idata_math_fun.o_i    romdata   0x00c34b    program   0x000000
-         .romdata_board.o    romdata   0x00c34b    program   0x000000
-  .romdata_digitdisplay.o    romdata   0x00c34b    program   0x000000
-     .idata_heartBeat.o_i    romdata   0x00c34b    program   0x000001
-     .romdata_heartBeat.o    romdata   0x00c34b    program   0x000000
-    .idata_i2c_driver.o_i    romdata   0x00c34b    program   0x000000
-    .romdata_i2c_driver.o    romdata   0x00c34b    program   0x000000
-          .romdata_main.o    romdata   0x00c34b    program   0x000000
-          .idata_main.o_i    romdata   0x00c34b    program   0x000000
-.idata_interruptvector.o_i    romdata   0x00c34b    program   0x000000
-.romdata_interruptvector.o    romdata   0x00c34b    program   0x000000
-       .romdata_mbutils.o    romdata   0x00c34b    program   0x000000
-       .idata_mbutils.o_i    romdata   0x00c34b    program   0x000000
-   .romdata_mbfuncother.o    romdata   0x00c34b    program   0x000000
-   .idata_mbfuncother.o_i    romdata   0x00c34b    program   0x000000
-   .romdata_mbfuncinput.o    romdata   0x00c34b    program   0x000000
-   .idata_mbfuncinput.o_i    romdata   0x00c34b    program   0x000000
- .romdata_mbfuncholding.o    romdata   0x00c34b    program   0x000000
- .idata_mbfuncholding.o_i    romdata   0x00c34b    program   0x000000
-    .romdata_mbfuncdisc.o    romdata   0x00c34b    program   0x000000
-    .idata_mbfuncdisc.o_i    romdata   0x00c34b    program   0x000000
-     .romdata_portevent.o    romdata   0x00c34b    program   0x000000
-            .romdata_mb.o    romdata   0x00c34b    program   0x000000
-   .idata_mbfunccoils.o_i    romdata   0x00c34b    program   0x000000
-   .romdata_mbfunccoils.o    romdata   0x00c34b    program   0x000000
-         .code_busy_eep.o       code   0x00c34c    program   0x000006
-               uartdata_i    romdata   0x00c352    program   0x000084
-               mmd_data_i    romdata   0x00c3d6    program   0x0002bb
-               RTC_DATA_i    romdata   0x00c691    program   0x000010
-            MODBUS_DATA_i    romdata   0x00c6a1    program   0x000042
-           DISPLAY_DATA_i    romdata   0x00c6e3    program   0x00002b
-               APP_DATA_i    romdata   0x00c70e    program   0x0003ab
-         .idata_timer.o_i    romdata   0x00cab9    program   0x00001e
-    .idata_rtc_driver.o_i    romdata   0x00cad7    program   0x000027
-  .idata_modbusMaster.o_i    romdata   0x00cafe    program   0x000002
-         .idata_mbrtu.o_i    romdata   0x00cb00    program   0x000002
-            .idata_mb.o_i    romdata   0x00cb02    program   0x000041
-  .idata_digitdisplay.o_i    romdata   0x00cb43    program   0x000010
-      .idata_fxd0808u.o_i    romdata   0x00cb43    program   0x000000
-       .idata_fxm3232.o_i    romdata   0x00cb43    program   0x000000
-      .idata_fxd1616u.o_i    romdata   0x00cb43    program   0x000000
-      .idata_fxd3232u.o_i    romdata   0x00cb43    program   0x000000
-         .idata_board.o_i    romdata   0x00cb53    program   0x000000
-  .idata_digit_driver.o_i    romdata   0x00cb53    program   0x000000
-           .idata_app.o_i    romdata   0x00cb53    program   0x000034
-         .idata_c018i.o_i    romdata   0x00cb53    program   0x000000
-      .idata_busy_eep.o_i    romdata   0x00cb53    program   0x000000
-           .idata_MMD.o_i    romdata   0x00cb87    program   0x000000
-        .idata___init.o_i    romdata   0x00cb87    program   0x000000
-            .code_c018i.o       code   0x00cb88    program   0x000000
-           .code_u1defs.o       code   0x00cb88    program   0x000000
-           .code_u2defs.o       code   0x00cb88    program   0x000000
-  .code_interruptvector.o       code   0x00cb88    program   0x000000
+              .code_app.o       code   0x0000e4    program   0x002efe
+              .code_MMD.o       code   0x002fe2    program   0x002220
+     .code_modbusMaster.o       code   0x005202    program   0x001006
+         .code_math_fun.o       code   0x006208    program   0x000c34
+       .code_rtc_driver.o       code   0x006e3c    program   0x0009da
+    .code_mbfuncholding.o       code   0x007816    program   0x00093a
+             .code_uart.o       code   0x008150    program   0x000782
+      .code_mbfunccoils.o       code   0x0088d2    program   0x000612
+     .code_digitdisplay.o       code   0x008ee4    program   0x00060a
+               .code_mb.o       code   0x0094ee    program   0x000606
+            .code_mbrtu.o       code   0x009af4    program   0x000514
+           .romdata_MMD.o    romdata   0x00a008    program   0x0003b8
+          .code_mbutils.o       code   0x00a3c0    program   0x0003a4
+            .code_timer.o       code   0x00a764    program   0x00038a
+       .code_portserial.o       code   0x00aaee    program   0x0002c8
+       .code_mbfuncdisc.o       code   0x00adb6    program   0x000270
+      .code_mbfuncinput.o       code   0x00b026    program   0x000258
+       .code_i2c_driver.o       code   0x00b27e    program   0x000246
+         .romdata_mbcrc.o    romdata   0x00b4c4    program   0x000200
+      .code_mbfuncother.o       code   0x00b6c4    program   0x000166
+           .romdata_app.o    romdata   0x00b82a    program   0x000144
+            .code_mbcrc.o       code   0x00b96e    program   0x0000fc
+        .code_porttimer.o       code   0x00ba6a    program   0x0000f6
+             .code_main.o       code   0x00bb60    program   0x0000d8
+            .code_board.o       code   0x00bc38    program   0x0000d4
+                     PROG       code   0x00bd0c    program   0x0000a4
+               _cinit_scn       code   0x00bdb0    program   0x00009e
+                   STRING       code   0x00be4e    program   0x00008a
+           .code_u2open.o       code   0x00bed8    program   0x00008a
+           .code_u1open.o       code   0x00bf62    program   0x000084
+          .code_write_B.o       code   0x00bfe6    program   0x000078
+          .code_fxm3232.o       code   0x00c05e    program   0x000070
+        .code_portevent.o       code   0x00c0ce    program   0x000060
+           .code_read_B.o       code   0x00c12e    program   0x00005c
+             .stringtable    romdata   0x00c18a    program   0x00004c
+         .code_fxd3232u.o       code   0x00c1d6    program   0x000048
+           .code_t3open.o       code   0x00c21e    program   0x000042
+           .code_t1open.o       code   0x00c260    program   0x000042
+           .code_u2read.o       code   0x00c2a2    program   0x00003e
+           .code_u1read.o       code   0x00c2e0    program   0x00003e
+     .code_digit_driver.o       code   0x00c31e    program   0x00003e
+          .code_t3write.o       code   0x00c35c    program   0x000038
+          .code_t1write.o       code   0x00c394    program   0x000038
+          .code_t0write.o       code   0x00c3cc    program   0x000038
+           .code_t0open.o       code   0x00c404    program   0x000038
+         .code_fxd1616u.o       code   0x00c43c    program   0x00002c
+              D1KTCYXCODE       code   0x00c468    program   0x000020
+                    .code       code   0x00c488    program   0x000020
+             _startup_scn       code   0x00c4a8    program   0x00001c
+         .code_fxd0808u.o       code   0x00c4c4    program   0x00001c
+        .code_heartBeat.o       code   0x00c4e0    program   0x00001a
+              D10TCYXCODE       code   0x00c4fa    program   0x000016
+  .romdata_digit_driver.o    romdata   0x00c510    program   0x00000b
+         .romdata_mbrtu.o    romdata   0x00c51b    program   0x000000
+      .romdata_fxd1616u.o    romdata   0x00c51b    program   0x000000
+      .romdata_fxd3232u.o    romdata   0x00c51b    program   0x000000
+  .romdata_modbusMaster.o    romdata   0x00c51b    program   0x000000
+      .romdata_fxd0808u.o    romdata   0x00c51b    program   0x000000
+      .romdata_busy_eep.o    romdata   0x00c51b    program   0x000000
+        .romdata___init.o    romdata   0x00c51b    program   0x000000
+         .idata_mbcrc.o_i    romdata   0x00c51b    program   0x000000
+       .romdata_t3write.o    romdata   0x00c51b    program   0x000000
+       .idata_t3write.o_i    romdata   0x00c51b    program   0x000000
+       .romdata_t1write.o    romdata   0x00c51b    program   0x000000
+       .idata_t1write.o_i    romdata   0x00c51b    program   0x000000
+       .romdata_t0write.o    romdata   0x00c51b    program   0x000000
+       .idata_t0write.o_i    romdata   0x00c51b    program   0x000000
+        .romdata_u2defs.o    romdata   0x00c51b    program   0x000000
+        .idata_u2defs.o_i    romdata   0x00c51b    program   0x000000
+        .romdata_u1defs.o    romdata   0x00c51b    program   0x000000
+        .idata_u1defs.o_i    romdata   0x00c51b    program   0x000000
+        .romdata_read_B.o    romdata   0x00c51b    program   0x000000
+        .idata_read_B.o_i    romdata   0x00c51b    program   0x000000
+        .romdata_u2read.o    romdata   0x00c51b    program   0x000000
+        .idata_u2read.o_i    romdata   0x00c51b    program   0x000000
+        .romdata_u1read.o    romdata   0x00c51b    program   0x000000
+        .idata_u1read.o_i    romdata   0x00c51b    program   0x000000
+        .romdata_t3open.o    romdata   0x00c51b    program   0x000000
+        .idata_t3open.o_i    romdata   0x00c51b    program   0x000000
+        .romdata_t1open.o    romdata   0x00c51b    program   0x000000
+        .idata_t1open.o_i    romdata   0x00c51b    program   0x000000
+       .idata_write_B.o_i    romdata   0x00c51b    program   0x000000
+        .romdata_t0open.o    romdata   0x00c51b    program   0x000000
+        .idata_t0open.o_i    romdata   0x00c51b    program   0x000000
+       .romdata_write_B.o    romdata   0x00c51b    program   0x000000
+        .romdata_u2open.o    romdata   0x00c51b    program   0x000000
+        .idata_u2open.o_i    romdata   0x00c51b    program   0x000000
+        .romdata_u1open.o    romdata   0x00c51b    program   0x000000
+        .idata_u1open.o_i    romdata   0x00c51b    program   0x000000
+       .romdata_fxm3232.o    romdata   0x00c51b    program   0x000000
+     .idata_portevent.o_i    romdata   0x00c51b    program   0x000000
+    .romdata_portserial.o    romdata   0x00c51b    program   0x000000
+    .idata_portserial.o_i    romdata   0x00c51b    program   0x000000
+     .romdata_porttimer.o    romdata   0x00c51b    program   0x000000
+     .idata_porttimer.o_i    romdata   0x00c51b    program   0x000000
+          .romdata_uart.o    romdata   0x00c51b    program   0x000000
+          .idata_uart.o_i    romdata   0x00c51b    program   0x000000
+         .romdata_timer.o    romdata   0x00c51b    program   0x000000
+    .romdata_rtc_driver.o    romdata   0x00c51b    program   0x000000
+         .romdata_c018i.o    romdata   0x00c51b    program   0x000000
+      .romdata_math_fun.o    romdata   0x00c51b    program   0x000000
+      .idata_math_fun.o_i    romdata   0x00c51b    program   0x000000
+         .romdata_board.o    romdata   0x00c51b    program   0x000000
+  .romdata_digitdisplay.o    romdata   0x00c51b    program   0x000000
+     .idata_heartBeat.o_i    romdata   0x00c51b    program   0x000001
+     .romdata_heartBeat.o    romdata   0x00c51b    program   0x000000
+    .idata_i2c_driver.o_i    romdata   0x00c51b    program   0x000000
+    .romdata_i2c_driver.o    romdata   0x00c51b    program   0x000000
+          .romdata_main.o    romdata   0x00c51b    program   0x000000
+          .idata_main.o_i    romdata   0x00c51b    program   0x000000
+.idata_interruptvector.o_i    romdata   0x00c51b    program   0x000000
+.romdata_interruptvector.o    romdata   0x00c51b    program   0x000000
+       .romdata_mbutils.o    romdata   0x00c51b    program   0x000000
+       .idata_mbutils.o_i    romdata   0x00c51b    program   0x000000
+   .romdata_mbfuncother.o    romdata   0x00c51b    program   0x000000
+   .idata_mbfuncother.o_i    romdata   0x00c51b    program   0x000000
+   .romdata_mbfuncinput.o    romdata   0x00c51b    program   0x000000
+   .idata_mbfuncinput.o_i    romdata   0x00c51b    program   0x000000
+ .romdata_mbfuncholding.o    romdata   0x00c51b    program   0x000000
+ .idata_mbfuncholding.o_i    romdata   0x00c51b    program   0x000000
+    .romdata_mbfuncdisc.o    romdata   0x00c51b    program   0x000000
+    .idata_mbfuncdisc.o_i    romdata   0x00c51b    program   0x000000
+     .romdata_portevent.o    romdata   0x00c51b    program   0x000000
+            .romdata_mb.o    romdata   0x00c51b    program   0x000000
+   .idata_mbfunccoils.o_i    romdata   0x00c51b    program   0x000000
+   .romdata_mbfunccoils.o    romdata   0x00c51b    program   0x000000
+         .code_busy_eep.o       code   0x00c51c    program   0x000006
+               uartdata_i    romdata   0x00c522    program   0x000084
+               mmd_data_i    romdata   0x00c5a6    program   0x0002bb
+               RTC_DATA_i    romdata   0x00c861    program   0x000010
+            MODBUS_DATA_i    romdata   0x00c871    program   0x000042
+           DISPLAY_DATA_i    romdata   0x00c8b3    program   0x00002b
+               APP_DATA_i    romdata   0x00c8de    program   0x0003ab
+         .idata_timer.o_i    romdata   0x00cc89    program   0x00001e
+    .idata_rtc_driver.o_i    romdata   0x00cca7    program   0x000027
+  .idata_modbusMaster.o_i    romdata   0x00ccce    program   0x000002
+         .idata_mbrtu.o_i    romdata   0x00ccd0    program   0x000002
+            .idata_mb.o_i    romdata   0x00ccd2    program   0x000041
+  .idata_digitdisplay.o_i    romdata   0x00cd13    program   0x000010
+      .idata_fxd0808u.o_i    romdata   0x00cd13    program   0x000000
+       .idata_fxm3232.o_i    romdata   0x00cd13    program   0x000000
+      .idata_fxd1616u.o_i    romdata   0x00cd13    program   0x000000
+      .idata_fxd3232u.o_i    romdata   0x00cd13    program   0x000000
+         .idata_board.o_i    romdata   0x00cd23    program   0x000000
+  .idata_digit_driver.o_i    romdata   0x00cd23    program   0x000000
+           .idata_app.o_i    romdata   0x00cd23    program   0x000034
+         .idata_c018i.o_i    romdata   0x00cd23    program   0x000000
+      .idata_busy_eep.o_i    romdata   0x00cd23    program   0x000000
+           .idata_MMD.o_i    romdata   0x00cd57    program   0x000000
+        .idata___init.o_i    romdata   0x00cd57    program   0x000000
+            .code_c018i.o       code   0x00cd58    program   0x000000
+           .code_u1defs.o       code   0x00cd58    program   0x000000
+           .code_u2defs.o       code   0x00cd58    program   0x000000
+  .code_interruptvector.o       code   0x00cd58    program   0x000000
     .config_300001_main.o    romdata   0x300001    program   0x000001
     .config_300002_main.o    romdata   0x300002    program   0x000001
     .config_300003_main.o    romdata   0x300003    program   0x000001
@@ -286,10 +286,10 @@ Linker Map File - Created Sat Jul 11 14:17:14 2015
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x00cb86      
+                            0x000000    0x00cd56      
                             0x300001    0x300006      
                             0x300008    0x30000d      
-            52115 out of 132120 program addresses used, program memory utilization is 39%
+            52579 out of 132120 program addresses used, program memory utilization is 39%
 
 
 
@@ -298,142 +298,142 @@ Linker Map File - Created Sat Jul 11 14:17:14 2015
                 ---------  ---------  ---------  --------- ---------                
                  APP_init   0x0000e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
                  APP_task   0x0004e8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-                  BCD2HEX   0x0060c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-                 BCDtoBin   0x006a72    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-                 BRD_init   0x00ba68    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\board.c
-                 BinToBCD   0x006aa0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-                 Busy_eep   0x00c34c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
-ConvertAndDisplay16BitValue   0x006164    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-ConvertAndDisplay32BitValue   0x006530    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-ConvertAndDisplay8BitValue   0x0063f4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-           ConvertBCD2HEX   0x006038    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-  ConvertHour12to24Format   0x00729a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-  ConvertTime12to24Format   0x007140    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-  ConvertTime24to12Format   0x006fb0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-ConvertUnPackedAsciiToPacked16BitHexValue   0x006ae6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-                    D10_1   0x00c33a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                     D10x   0x00c332    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                    D1K_1   0x00c2a4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x00c2a2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-                   D3232S   0x00bb6c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                D3232SNEG   0x00bb7a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                 D3232SOK   0x00bb76    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                  D3232SX   0x00bb9a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                  DA3232S   0x00bb56    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-            DDR_loadDigit   0x00c14e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digit_driver.c
-              Delay10TCYx   0x00c32a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-              Delay1KTCYx   0x00c298    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-       DigitDisplay_DotOn   0x00904e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-    DigitDisplay_blinkOff   0x008fa2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-     DigitDisplay_blinkOn   0x008f6a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
- DigitDisplay_blinkOn_ind   0x00928c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-       DigitDisplay_clear   0x008fb0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-        DigitDisplay_init   0x008d14    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-        DigitDisplay_task   0x008d76    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-DigitDisplay_updateBuffer   0x008dfc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-DigitDisplay_updateBufferBinary   0x008e92    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-DigitDisplay_updateBufferPartial   0x0090f8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
- DigitDisplay_updateDigit   0x008ee6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-DigitDisplay_updateFields   0x0091c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+                  BCD2HEX   0x006296    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+                 BCDtoBin   0x006c42    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+                 BRD_init   0x00bc38    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\board.c
+                 BinToBCD   0x006c70    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+                 Busy_eep   0x00c51c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
+ConvertAndDisplay16BitValue   0x006334    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+ConvertAndDisplay32BitValue   0x006700    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+ConvertAndDisplay8BitValue   0x0065c4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+           ConvertBCD2HEX   0x006208    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+  ConvertHour12to24Format   0x00746a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+  ConvertTime12to24Format   0x007310    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+  ConvertTime24to12Format   0x007180    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+ConvertUnPackedAsciiToPacked16BitHexValue   0x006cb6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+                    D10_1   0x00c50a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                     D10x   0x00c502    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                    D1K_1   0x00c474    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x00c472    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+                   D3232S   0x00bd3c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                D3232SNEG   0x00bd4a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                 D3232SOK   0x00bd46    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                  D3232SX   0x00bd6a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                  DA3232S   0x00bd26    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+            DDR_loadDigit   0x00c31e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digit_driver.c
+              Delay10TCYx   0x00c4fa    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+              Delay1KTCYx   0x00c468    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+       DigitDisplay_DotOn   0x00921e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+    DigitDisplay_blinkOff   0x009172    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+     DigitDisplay_blinkOn   0x00913a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+ DigitDisplay_blinkOn_ind   0x00945c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+       DigitDisplay_clear   0x009180    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+        DigitDisplay_init   0x008ee4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+        DigitDisplay_task   0x008f46    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+DigitDisplay_updateBuffer   0x008fcc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+DigitDisplay_updateBufferBinary   0x009062    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+DigitDisplay_updateBufferPartial   0x0092c8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+ DigitDisplay_updateDigit   0x0090b6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+DigitDisplay_updateFields   0x009396    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
          EnableInterrupts   0x000032    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\interruptvector.c
-                 FXD0808U   0x00c2f4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd0808u.c
-                 FXD1616U   0x00c26c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
-                 FXD3232S   0x00bb3c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                 FXD3232U   0x00c006    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232u.c
-                 FXM1616U   0x00bba4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm1616u.asm
-                  FXM3232   0x00be8e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm3232.c
-             FontTable5x7   0x009e38    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-               GetAppTime   0x00a8ce    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                  HB_init   0x00c310    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\heartBeat.c
-                  HB_task   0x00c316    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\heartBeat.c
-                  HEX2BCD   0x006100    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-            InitializeI2C   0x00b0ae    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-            InitializeRtc   0x007526    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-                  Int2Day   0x006c6c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-                Int2Month   0x006ca4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-                  LED_MAP   0x00c340    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digit_driver.c
-             MB_construct   0x005dd8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-             MB_getStatus   0x006030    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-                  MB_init   0x005cb2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-                  MB_task   0x005032    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-         MMD_changeSymbol   0x003d38    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-         MMD_clearSegment   0x003f4e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-        MMD_configSegment   0x003234    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                 MMD_init   0x002ec0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-       MMD_refreshDisplay   0x004cac    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-       MMD_setScrollSpeed   0x003cbc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                 MMD_task   0x00428c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-               Open1USART   0x00bd92    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1open.c
-               Open2USART   0x00bd08    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2open.c
-               OpenTimer0   0x00c234    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
-               OpenTimer1   0x00c090    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
-               OpenTimer3   0x00c04e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t3open.c
-              RTC_getDate   0x0075ae    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               RTC_getDay   0x00759e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-            RTC_getDayStr   0x0075f2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              RTC_getHour   0x0075b6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-            RTC_getMinute   0x0075be    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-       RTC_getMinuteOfDay   0x0075ce    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-             RTC_getMonth   0x0075a6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-          RTC_getMonthStr   0x00761c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-            RTC_getSecond   0x0075c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               Read1USART   0x00c110    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1read.c
-               Read2USART   0x00c0d2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2read.c
-              ReadByteI2C   0x00b27e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-                  ReadI2C   0x00b1dc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-       ReadRtcTimeAndDate   0x006cea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               Read_b_eep   0x00bf5e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-                 ResetI2C   0x00b112    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-              SetHourMode   0x006f46    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-                 StartI2C   0x00b0c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-                  StopI2C   0x00b0f2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-          StoreSystemDate   0x0073f6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-           StoreSystemDay   0x0074ee    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-          StoreSystemTime   0x007300    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-                 TMR0_ISR   0x00a594    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                TMR0_init   0x00a7fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                 TMR1_ISR   0x00a686    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                TMR1_init   0x00a840    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                 TMR3_ISR   0x00a740    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                TMR3_init   0x00a888    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-            UART1_hasData   0x008628    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-               UART1_init   0x00821c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-               UART1_read   0x008662    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-           UART1_transmit   0x00841a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-              UART1_write   0x0083aa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-            UART2_hasData   0x0085ee    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-               UART2_init   0x0082e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-               UART2_read   0x0086b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-           UART2_transmit   0x008504    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-              UART2_write   0x0083e2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-                UART_task   0x00804a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-     UTL_binaryToBCDASCII   0x006bfc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-     Uart1_ReceiveHandler   0x007f80    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-    Uart1_TransmitHandler   0x008128    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-     Uart2_ReceiveHandler   0x00805e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-    Uart2_TransmitHandler   0x0081a2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-  UpdateRealTimeClockTask   0x00757a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-             WriteByteI2C   0x00b2c2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-       WriteDataToDisplay   0x004fe2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                 WriteI2C   0x00b14e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-      WriteRtcTimeAndDate   0x006e3a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              WriteTimer0   0x00c1fc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
-              WriteTimer1   0x00c1c4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
-              WriteTimer3   0x00c18c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t3write.c
-              Write_b_eep   0x00be16    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-              _2jContinue   0x00bcf4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                   _3jEnd   0x00bcfe    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-              _4jContinue   0x00bcb2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-                   _5jEnd   0x00bcbc    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-        _D10TCYXCODE_000A   0x00c334    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x00c336    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x00c338    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D1KTCYXCODE_0010   0x00c2a8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x00c2ae    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+                 FXD0808U   0x00c4c4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd0808u.c
+                 FXD1616U   0x00c43c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
+                 FXD3232S   0x00bd0c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                 FXD3232U   0x00c1d6    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232u.c
+                 FXM1616U   0x00bd74    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm1616u.asm
+                  FXM3232   0x00c05e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm3232.c
+             FontTable5x7   0x00a008    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+               GetAppTime   0x00aa9e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                  HB_init   0x00c4e0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\heartBeat.c
+                  HB_task   0x00c4e6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\heartBeat.c
+                  HEX2BCD   0x0062d0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+            InitializeI2C   0x00b27e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+            InitializeRtc   0x0076f6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+                  Int2Day   0x006e3c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+                Int2Month   0x006e74    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+                  LED_MAP   0x00c510    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digit_driver.c
+             MB_construct   0x005fa8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+             MB_getStatus   0x006200    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+                  MB_init   0x005e82    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+                  MB_task   0x005202    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+         MMD_changeSymbol   0x003f08    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+         MMD_clearSegment   0x00411e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+        MMD_configSegment   0x003404    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                 MMD_init   0x003090    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+       MMD_refreshDisplay   0x004e7c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+       MMD_setScrollSpeed   0x003e8c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                 MMD_task   0x00445c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+               Open1USART   0x00bf62    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1open.c
+               Open2USART   0x00bed8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2open.c
+               OpenTimer0   0x00c404    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
+               OpenTimer1   0x00c260    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
+               OpenTimer3   0x00c21e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t3open.c
+              RTC_getDate   0x00777e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               RTC_getDay   0x00776e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+            RTC_getDayStr   0x0077c2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              RTC_getHour   0x007786    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+            RTC_getMinute   0x00778e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+       RTC_getMinuteOfDay   0x00779e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+             RTC_getMonth   0x007776    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+          RTC_getMonthStr   0x0077ec    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+            RTC_getSecond   0x007796    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               Read1USART   0x00c2e0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1read.c
+               Read2USART   0x00c2a2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2read.c
+              ReadByteI2C   0x00b44e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+                  ReadI2C   0x00b3ac    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+       ReadRtcTimeAndDate   0x006eba    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               Read_b_eep   0x00c12e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+                 ResetI2C   0x00b2e2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+              SetHourMode   0x007116    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+                 StartI2C   0x00b296    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+                  StopI2C   0x00b2c2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+          StoreSystemDate   0x0075c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+           StoreSystemDay   0x0076be    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+          StoreSystemTime   0x0074d0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+                 TMR0_ISR   0x00a764    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                TMR0_init   0x00a9ca    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                 TMR1_ISR   0x00a856    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                TMR1_init   0x00aa10    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                 TMR3_ISR   0x00a910    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                TMR3_init   0x00aa58    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+            UART1_hasData   0x0087f8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+               UART1_init   0x0083ec    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+               UART1_read   0x008832    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+           UART1_transmit   0x0085ea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+              UART1_write   0x00857a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+            UART2_hasData   0x0087be    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+               UART2_init   0x0084b4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+               UART2_read   0x008882    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+           UART2_transmit   0x0086d4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+              UART2_write   0x0085b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+                UART_task   0x00821a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+     UTL_binaryToBCDASCII   0x006dcc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+     Uart1_ReceiveHandler   0x008150    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+    Uart1_TransmitHandler   0x0082f8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+     Uart2_ReceiveHandler   0x00822e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+    Uart2_TransmitHandler   0x008372    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+  UpdateRealTimeClockTask   0x00774a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+             WriteByteI2C   0x00b492    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+       WriteDataToDisplay   0x0051b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                 WriteI2C   0x00b31e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+      WriteRtcTimeAndDate   0x00700a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              WriteTimer0   0x00c3cc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
+              WriteTimer1   0x00c394    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
+              WriteTimer3   0x00c35c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t3write.c
+              Write_b_eep   0x00bfe6    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
+              _2jContinue   0x00bec4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x00bece    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+              _4jContinue   0x00be82    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+                   _5jEnd   0x00be8c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+        _D10TCYXCODE_000A   0x00c504    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x00c506    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x00c508    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D1KTCYXCODE_0010   0x00c478    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x00c47e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
        ___case_1_lbl00035   0x0005b0    program     static                          
        ___case_2_lbl00037   0x000628    program     static                          
       ___default_lbl00038   0x00066a    program     static                          
-         ___else_lbl00083   0x000c9c    program     static                          
+         ___else_lbl00084   0x000ca8    program     static                          
           ___for_lbl00001   0x000328    program     static                          
           ___for_lbl00002   0x00032e    program     static                          
           ___for_lbl00003   0x000324    program     static                          
@@ -470,23 +470,24 @@ DigitDisplay_updateFields   0x0091c6    program     extern C:\Users\IDEONICS-BNG
            ___if_lbl00028   0x0005a2    program     static                          
            ___if_lbl00033   0x000622    program     static                          
            ___if_lbl00036   0x000668    program     static                          
-           ___if_lbl00039   0x000692    program     static                          
-           ___if_lbl00079   0x000d86    program     static                          
-           ___if_lbl00080   0x000d86    program     static                          
-           ___if_lbl00081   0x000d8c    program     static                          
-           ___if_lbl00082   0x000d8c    program     static                          
-       ___return_lbl00000   0x00c296    program     static                          
-       ___return_lbl00000   0x00c30e    program     static                          
-       ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00000   0x00c04c    program     static                          
-       ___return_lbl00000   0x00befc    program     static                          
-       ___return_lbl00000   0x00bfae    program     static                          
+           ___if_lbl00039   0x00068c    program     static                          
+           ___if_lbl00040   0x00069e    program     static                          
+           ___if_lbl00080   0x000d96    program     static                          
+           ___if_lbl00081   0x000d96    program     static                          
+           ___if_lbl00082   0x000d9c    program     static                          
+           ___if_lbl00083   0x000d9c    program     static                          
        ___return_lbl00000   0x0004d4    program     static                          
+       ___return_lbl00000   0x000004    program     static                          
+       ___return_lbl00000   0x00c466    program     static                          
+       ___return_lbl00000   0x00c21c    program     static                          
+       ___return_lbl00000   0x00c0cc    program     static                          
        ___return_lbl00000   0x000030    program     static                          
-       ___return_lbl00001   0x00c2f2    program     static                          
-       ___return_lbl00002   0x00bc7c    program     static                          
-       ___return_lbl00023   0x000692    program     static                          
-       ___return_lbl00077   0x000d8c    program     static                          
+       ___return_lbl00000   0x00c4de    program     static                          
+       ___return_lbl00000   0x00c17e    program     static                          
+       ___return_lbl00001   0x00c4c2    program     static                          
+       ___return_lbl00002   0x00be4c    program     static                          
+       ___return_lbl00023   0x00069e    program     static                          
+       ___return_lbl00078   0x000d9c    program     static                          
    ___switchexit_lbl00029   0x00066c    program     static                          
                __config_0   0x300001    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
                __config_1   0x300002    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
@@ -501,154 +502,156 @@ DigitDisplay_updateFields   0x0091c6    program     extern C:\Users\IDEONICS-BNG
                __config_8   0x30000a    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
                __config_9   0x30000b    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
                    __init   0x000006    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\__init.c
-               __string_0   0x00c002    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_1   0x00bffe    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_10   0x00bfda    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_11   0x00bfd6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_12   0x00bfd2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_13   0x00bfce    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_14   0x00bfca    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_15   0x00bfc6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_16   0x00bfc2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_17   0x00bfbe    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_18   0x00bfba    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_2   0x00bffa    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_3   0x00bff6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_4   0x00bff2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_5   0x00bfee    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_6   0x00bfea    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_7   0x00bfe6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_8   0x00bfe2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_9   0x00bfde    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_0   0x00c1d2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_1   0x00c1ce    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_10   0x00c1aa    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_11   0x00c1a6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_12   0x00c1a2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_13   0x00c19e    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_14   0x00c19a    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_15   0x00c196    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_16   0x00c192    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_17   0x00c18e    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_18   0x00c18a    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_2   0x00c1ca    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_3   0x00c1c6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_4   0x00c1c2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_5   0x00c1be    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_6   0x00c1ba    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_7   0x00c1b6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_8   0x00c1b2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_9   0x00c1ae    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
                __tmplbl_0   0x000518    program     static                          
                __tmplbl_1   0x00050e    program     static                          
-              __tmplbl_10   0x003ca4    program     static                          
-              __tmplbl_19   0x004c98    program     static                          
+              __tmplbl_10   0x003e74    program     static                          
+              __tmplbl_19   0x004e68    program     static                          
                __tmplbl_2   0x000612    program     static                          
-              __tmplbl_20   0x004c92    program     static                          
-              __tmplbl_21   0x004c92    program     static                          
-              __tmplbl_25   0x00429a    program     static                          
+              __tmplbl_20   0x004e62    program     static                          
+              __tmplbl_21   0x004e62    program     static                          
+              __tmplbl_25   0x00446a    program     static                          
                __tmplbl_3   0x0005e2    program     static                          
-               __tmplbl_4   0x000c7a    program     static                          
-               __tmplbl_5   0x000c62    program     static                          
-            __zero_memory   0x00c2b8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
-                _do_cinit   0x00bbe0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               __tmplbl_4   0x000c86    program     static                          
+               __tmplbl_5   0x000c6e    program     static                          
+            __zero_memory   0x00c488    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+                _do_cinit   0x00bdb0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                   _false   0x00c048    program     static                          
-                 _startup   0x00c2d8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 aucCRCHi   0x00b2f4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
-                 aucCRCLo   0x00b3f4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
-            breakSchedule   0x00b65a    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-             calculateCRC   0x005e72    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-                 clearBit   0x002e88    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                compare_l   0x00c2ce    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
-          constructPacket   0x00510c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-            construct_F15   0x0052fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-            construct_F16   0x005488    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-                copy_loop   0x00bc52    program     static                          
-            copy_one_byte   0x00bc58    program     static                          
-                     done   0x00bc7c    program     static                          
-             done_copying   0x00bc66    program     static                          
-                 eMBClose   0x009638    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-               eMBDisable   0x0096b6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-                eMBEnable   0x00967a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-         eMBFuncReadCoils   0x008702    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
-eMBFuncReadDiscreteInputs   0x00abe6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncdisc.c
-eMBFuncReadHoldingRegister   0x00793a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
- eMBFuncReadInputRegister   0x00ae56    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncinput.c
-eMBFuncReadWriteMultipleHoldingRegister   0x007b92    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
-     eMBFuncReportSlaveID   0x00b5e8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncother.c
-         eMBFuncWriteCoil   0x008974    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
-eMBFuncWriteHoldingRegister   0x007646    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
-eMBFuncWriteMultipleCoils   0x008ae6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
-eMBFuncWriteMultipleHoldingRegister   0x007736    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
-                  eMBInit   0x00931e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-                  eMBPoll   0x0096fc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-               eMBRTUInit   0x009924    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-            eMBRTUReceive   0x009a9a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-               eMBRTUSend   0x009b7a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-              eMBRTUStart   0x009a68    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-               eMBRTUStop   0x009a84    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-            eMBRegCoilsCB   0x0007d2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-         eMBRegDiscreteCB   0x0007e6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-          eMBRegHoldingCB   0x0006c0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-            eMBRegInputCB   0x0006a6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-            eMBRegisterCB   0x009424    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-            eMBSetSlaveID   0x00b4f4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncother.c
-                  endloop   0x00c30a    program     static                          
-                  endloop   0x00c292    program     static                          
-      getActivitySchedule   0x001266    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-                   getBit   0x002e12    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                   _false   0x00c218    program     static                          
+                 _startup   0x00c4a8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 aucCRCHi   0x00b4c4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
+                 aucCRCLo   0x00b5c4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
+            breakSchedule   0x00b82a    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+             calculateCRC   0x006042    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+                 clearBit   0x003058    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                compare_l   0x00c49e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+          constructPacket   0x0052dc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+            construct_F15   0x0054ca    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+            construct_F16   0x005658    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+                copy_loop   0x00be22    program     static                          
+            copy_one_byte   0x00be28    program     static                          
+                     done   0x00be4c    program     static                          
+             done_copying   0x00be36    program     static                          
+                 eMBClose   0x009808    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+               eMBDisable   0x009886    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+                eMBEnable   0x00984a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+         eMBFuncReadCoils   0x0088d2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
+eMBFuncReadDiscreteInputs   0x00adb6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncdisc.c
+eMBFuncReadHoldingRegister   0x007b0a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
+ eMBFuncReadInputRegister   0x00b026    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncinput.c
+eMBFuncReadWriteMultipleHoldingRegister   0x007d62    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
+     eMBFuncReportSlaveID   0x00b7b8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncother.c
+         eMBFuncWriteCoil   0x008b44    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
+eMBFuncWriteHoldingRegister   0x007816    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
+eMBFuncWriteMultipleCoils   0x008cb6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
+eMBFuncWriteMultipleHoldingRegister   0x007906    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
+                  eMBInit   0x0094ee    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+                  eMBPoll   0x0098cc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+               eMBRTUInit   0x009af4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+            eMBRTUReceive   0x009c6a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+               eMBRTUSend   0x009d4a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+              eMBRTUStart   0x009c38    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+               eMBRTUStop   0x009c54    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+            eMBRegCoilsCB   0x0007de    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+         eMBRegDiscreteCB   0x0007f2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+          eMBRegHoldingCB   0x0006cc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+            eMBRegInputCB   0x0006b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+            eMBRegisterCB   0x0095f4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+            eMBSetSlaveID   0x00b6c4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncother.c
+                  endloop   0x00c462    program     static                          
+                  endloop   0x00c4da    program     static                          
+      getActivitySchedule   0x001276    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+                   getBit   0x002fe2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
            high_interrupt   0x000008    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\interruptvector.c
-                     idle   0x005064    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-                     jEnd   0x00bd06    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                     jEnd   0x00bcc2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-                    jLoop   0x00bce8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                    jLoop   0x00bca6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-         leftBitPackTable   0x00a1e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-   loadActivityParameters   0x0015d4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-             loadSchedule   0x002bba    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-                     loop   0x00c276    program     static                          
-                     loop   0x00c2fc    program     static                          
-                     loop   0x00c014    program     static                          
-                     loop   0x00c2e8    program     static                          
-                   loop_h   0x00c2c6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
-                   loop_l   0x00c2d0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
-                     main   0x00b990    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
-              marqueeData   0x00b690    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-                   memcpy   0x00bc7e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-                   memset   0x00bcd4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-   processActivityTrigger   0x0012f2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-             processError   0x005bae    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-      processReceivedData   0x0007fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-             processReply   0x0056e2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-           processSuccess   0x005c60    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-            process_F1_F2   0x005806    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-            process_F3_F4   0x005992    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-    process_F5_F6_F15_F16   0x005a94    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-    prveMBError2Exception   0x00a556    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
-      prvvTIMERExpiredISR   0x00b8e2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
-            prvvUARTRxISR   0x00ab3a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-       prvvUARTTxReadyISR   0x00aa8e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-     resetActivitySegment   0x0010ea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-               resetAlarm   0x000fd2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-        rightBitPackTable   0x00a1d8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-               sendPacket   0x005fa0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-                   setBit   0x002e52    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                     test   0x00bbfa    program     static                          
-    updateAlarmIndication   0x000fd6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-updateBackLightIndication   0x001810    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-updateCurrentActivityIndication   0x00217c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-updateCurrentActivityParameters   0x0019da    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-                updateLog   0x002c16    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-         updateLog_Binary   0x002d2c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-            updateMarquee   0x0018ea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-           updateSchedule   0x0026cc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-updateShipmentScheduleIndication   0x00241c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-               updateTime   0x0016e0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-      updateTruckActivity   0x000c02    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-          updateTruckTime   0x000da0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-                usMBCRC16   0x00b79e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
-      vMBPortSerialEnable   0x00a91e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-     vMBPortTimersDisable   0x00b8de    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
-      vMBPortTimersEnable   0x00b8c8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
-                 validate   0x0090b4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-        waiting_for_reply   0x0055ca    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-   waiting_for_turnaround   0x005594    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-       writeToDisplayPort   0x008fe4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-          xMBPortEventGet   0x00bf28    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
-         xMBPortEventInit   0x00befe    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
-         xMBPortEventPost   0x00bf08    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
-     xMBPortSerialGetByte   0x00aa5e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-        xMBPortSerialInit   0x00a954    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-     xMBPortSerialPutByte   0x00aa28    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-        xMBPortTimersInit   0x00b89a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
-         xMBRTUReceiveFSM   0x009c8a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-    xMBRTUTimerT35Expired   0x009de6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-        xMBRTUTransmitFSM   0x009d58    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-           xMBUtilGetBits   0x00a414    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
-           xMBUtilSetBits   0x00a1f0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
-               zero_block   0x00c2c6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+                     idle   0x005234    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+                     jEnd   0x00be92    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+                     jEnd   0x00bed6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                    jLoop   0x00be76    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+                    jLoop   0x00beb8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+         leftBitPackTable   0x00a3b4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+   loadActivityParameters   0x0015e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+             loadSchedule   0x002b88    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+                     loop   0x00c4cc    program     static                          
+                     loop   0x00c4b8    program     static                          
+                     loop   0x00c446    program     static                          
+                     loop   0x00c1e4    program     static                          
+                   loop_h   0x00c496    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+                   loop_l   0x00c4a0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+                     main   0x00bb60    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
+              marqueeData   0x00b860    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+                   memcpy   0x00be4e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+                   memset   0x00bea4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+   processActivityTrigger   0x001302    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+             processError   0x005d7e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+      processReceivedData   0x000806    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+             processReply   0x0058b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+           processSuccess   0x005e30    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+            process_F1_F2   0x0059d6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+            process_F3_F4   0x005b62    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+    process_F5_F6_F15_F16   0x005c64    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+    prveMBError2Exception   0x00a726    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
+      prvvTIMERExpiredISR   0x00bab2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
+            prvvUARTRxISR   0x00ad0a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+       prvvUARTTxReadyISR   0x00ac5e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+     resetActivitySegment   0x0010fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+               resetAlarm   0x000fe2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+        rightBitPackTable   0x00a3a8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+               sendPacket   0x006170    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+                   setBit   0x003022    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                     test   0x00bdca    program     static                          
+    updateAlarmIndication   0x000fe6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+updateBackLightIndication   0x001820    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+updateCurrentActivityIndication   0x00218c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+updateCurrentActivityParameters   0x0019ea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+                updateLog   0x002de6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+         updateLog_Binary   0x002efc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+            updateMarquee   0x0018fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+  updatePickingIndication   0x002c9a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+        updatePickingInfo   0x002be4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+           updateSchedule   0x0026de    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+updateShipmentScheduleIndication   0x00242c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+               updateTime   0x0016f0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+      updateTruckActivity   0x000c0e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+          updateTruckTime   0x000db0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+                usMBCRC16   0x00b96e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
+      vMBPortSerialEnable   0x00aaee    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+     vMBPortTimersDisable   0x00baae    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
+      vMBPortTimersEnable   0x00ba98    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
+                 validate   0x009284    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+        waiting_for_reply   0x00579a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+   waiting_for_turnaround   0x005764    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+       writeToDisplayPort   0x0091b4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+          xMBPortEventGet   0x00c0f8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
+         xMBPortEventInit   0x00c0ce    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
+         xMBPortEventPost   0x00c0d8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
+     xMBPortSerialGetByte   0x00ac2e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+        xMBPortSerialInit   0x00ab24    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+     xMBPortSerialPutByte   0x00abf8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+        xMBPortTimersInit   0x00ba6a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
+         xMBRTUReceiveFSM   0x009e5a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+    xMBRTUTimerT35Expired   0x009fb6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+        xMBRTUTransmitFSM   0x009f28    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+           xMBUtilGetBits   0x00a5e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
+           xMBUtilSetBits   0x00a3c0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
+               zero_block   0x00c496    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
                    ADCON0   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
                ADCON0bits   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
                    ADCON1   0x000fc1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
@@ -1105,8 +1108,8 @@ pxMBFrameCBTransmitterEmpty   0x000c50       data     extern C:\Users\IDEONICS-B
            ___if_lbl00002   0x000018    program     static                          
            ___if_lbl00003   0x000020    program     static                          
            ___if_lbl00004   0x000028    program     static                          
-           ___if_lbl00005   0x000030    program     static                          
        ___return_lbl00000   0x000030    program     static                          
+           ___if_lbl00005   0x000030    program     static                          
          EnableInterrupts   0x000032    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\interruptvector.c
                  APP_init   0x0000e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
           ___for_lbl00009   0x00017e    program     static                          
@@ -1115,15 +1118,15 @@ pxMBFrameCBTransmitterEmpty   0x000c50       data     extern C:\Users\IDEONICS-B
           ___for_lbl00005   0x000260    program     static                          
           ___for_lbl00006   0x000266    program     static                          
           ___for_lbl00003   0x000324    program     static                          
-          ___for_lbl00001   0x000328    program     static                          
           ___for_lbl00004   0x000328    program     static                          
+          ___for_lbl00001   0x000328    program     static                          
           ___for_lbl00002   0x00032e    program     static                          
           ___for_lbl00016   0x000330    program     static                          
           ___for_lbl00015   0x00033a    program     static                          
            ___if_lbl00014   0x0003b4    program     static                          
           ___for_lbl00012   0x0003b6    program     static                          
-          ___for_lbl00013   0x0003bc    program     static                          
           ___for_lbl00010   0x0003bc    program     static                          
+          ___for_lbl00013   0x0003bc    program     static                          
           ___for_lbl00011   0x0003c0    program     static                          
           ___for_lbl00019   0x0003c2    program     static                          
           ___for_lbl00017   0x000444    program     static                          
@@ -1150,294 +1153,297 @@ pxMBFrameCBTransmitterEmpty   0x000c50       data     extern C:\Users\IDEONICS-B
            ___if_lbl00036   0x000668    program     static                          
       ___default_lbl00038   0x00066a    program     static                          
    ___switchexit_lbl00029   0x00066c    program     static                          
-           ___if_lbl00039   0x000692    program     static                          
-       ___return_lbl00023   0x000692    program     static                          
-            eMBRegInputCB   0x0006a6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-          eMBRegHoldingCB   0x0006c0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-            eMBRegCoilsCB   0x0007d2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-         eMBRegDiscreteCB   0x0007e6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-      processReceivedData   0x0007fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-      updateTruckActivity   0x000c02    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-               __tmplbl_5   0x000c62    program     static                          
-               __tmplbl_4   0x000c7a    program     static                          
-         ___else_lbl00083   0x000c9c    program     static                          
-           ___if_lbl00080   0x000d86    program     static                          
-           ___if_lbl00079   0x000d86    program     static                          
-       ___return_lbl00077   0x000d8c    program     static                          
-           ___if_lbl00081   0x000d8c    program     static                          
-           ___if_lbl00082   0x000d8c    program     static                          
-          updateTruckTime   0x000da0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-               resetAlarm   0x000fd2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-    updateAlarmIndication   0x000fd6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-     resetActivitySegment   0x0010ea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-      getActivitySchedule   0x001266    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-   processActivityTrigger   0x0012f2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-   loadActivityParameters   0x0015d4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-               updateTime   0x0016e0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-updateBackLightIndication   0x001810    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-            updateMarquee   0x0018ea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-updateCurrentActivityParameters   0x0019da    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-updateCurrentActivityIndication   0x00217c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-updateShipmentScheduleIndication   0x00241c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-           updateSchedule   0x0026cc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-             loadSchedule   0x002bba    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-                updateLog   0x002c16    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-         updateLog_Binary   0x002d2c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-                   getBit   0x002e12    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                   setBit   0x002e52    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                 clearBit   0x002e88    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                 MMD_init   0x002ec0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-        MMD_configSegment   0x003234    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-              __tmplbl_10   0x003ca4    program     static                          
-       MMD_setScrollSpeed   0x003cbc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-         MMD_changeSymbol   0x003d38    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-         MMD_clearSegment   0x003f4e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                 MMD_task   0x00428c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-              __tmplbl_25   0x00429a    program     static                          
-              __tmplbl_20   0x004c92    program     static                          
-              __tmplbl_21   0x004c92    program     static                          
-              __tmplbl_19   0x004c98    program     static                          
-       MMD_refreshDisplay   0x004cac    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-       WriteDataToDisplay   0x004fe2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-                  MB_task   0x005032    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-                     idle   0x005064    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-          constructPacket   0x00510c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-            construct_F15   0x0052fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-            construct_F16   0x005488    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-   waiting_for_turnaround   0x005594    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-        waiting_for_reply   0x0055ca    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-             processReply   0x0056e2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-            process_F1_F2   0x005806    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-            process_F3_F4   0x005992    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-    process_F5_F6_F15_F16   0x005a94    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-             processError   0x005bae    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-           processSuccess   0x005c60    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-                  MB_init   0x005cb2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-             MB_construct   0x005dd8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-             calculateCRC   0x005e72    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-               sendPacket   0x005fa0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-             MB_getStatus   0x006030    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
-           ConvertBCD2HEX   0x006038    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-                  BCD2HEX   0x0060c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-                  HEX2BCD   0x006100    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-ConvertAndDisplay16BitValue   0x006164    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-ConvertAndDisplay8BitValue   0x0063f4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-ConvertAndDisplay32BitValue   0x006530    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-                 BCDtoBin   0x006a72    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-                 BinToBCD   0x006aa0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-ConvertUnPackedAsciiToPacked16BitHexValue   0x006ae6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-     UTL_binaryToBCDASCII   0x006bfc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
-                  Int2Day   0x006c6c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-                Int2Month   0x006ca4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-       ReadRtcTimeAndDate   0x006cea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-      WriteRtcTimeAndDate   0x006e3a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              SetHourMode   0x006f46    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-  ConvertTime24to12Format   0x006fb0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-  ConvertTime12to24Format   0x007140    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-  ConvertHour12to24Format   0x00729a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-          StoreSystemTime   0x007300    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-          StoreSystemDate   0x0073f6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-           StoreSystemDay   0x0074ee    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-            InitializeRtc   0x007526    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-  UpdateRealTimeClockTask   0x00757a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               RTC_getDay   0x00759e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-             RTC_getMonth   0x0075a6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              RTC_getDate   0x0075ae    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              RTC_getHour   0x0075b6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-            RTC_getMinute   0x0075be    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-            RTC_getSecond   0x0075c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-       RTC_getMinuteOfDay   0x0075ce    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-            RTC_getDayStr   0x0075f2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-          RTC_getMonthStr   0x00761c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-eMBFuncWriteHoldingRegister   0x007646    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
-eMBFuncWriteMultipleHoldingRegister   0x007736    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
-eMBFuncReadHoldingRegister   0x00793a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
-eMBFuncReadWriteMultipleHoldingRegister   0x007b92    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
-     Uart1_ReceiveHandler   0x007f80    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-                UART_task   0x00804a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-     Uart2_ReceiveHandler   0x00805e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-    Uart1_TransmitHandler   0x008128    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-    Uart2_TransmitHandler   0x0081a2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-               UART1_init   0x00821c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-               UART2_init   0x0082e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-              UART1_write   0x0083aa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-              UART2_write   0x0083e2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-           UART1_transmit   0x00841a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-           UART2_transmit   0x008504    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-            UART2_hasData   0x0085ee    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-            UART1_hasData   0x008628    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-               UART1_read   0x008662    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-               UART2_read   0x0086b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
-         eMBFuncReadCoils   0x008702    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
-         eMBFuncWriteCoil   0x008974    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
-eMBFuncWriteMultipleCoils   0x008ae6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
-        DigitDisplay_init   0x008d14    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-        DigitDisplay_task   0x008d76    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-DigitDisplay_updateBuffer   0x008dfc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-DigitDisplay_updateBufferBinary   0x008e92    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
- DigitDisplay_updateDigit   0x008ee6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-     DigitDisplay_blinkOn   0x008f6a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-    DigitDisplay_blinkOff   0x008fa2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-       DigitDisplay_clear   0x008fb0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-       writeToDisplayPort   0x008fe4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-       DigitDisplay_DotOn   0x00904e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-                 validate   0x0090b4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-DigitDisplay_updateBufferPartial   0x0090f8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-DigitDisplay_updateFields   0x0091c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
- DigitDisplay_blinkOn_ind   0x00928c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
-                  eMBInit   0x00931e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-            eMBRegisterCB   0x009424    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-                 eMBClose   0x009638    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-                eMBEnable   0x00967a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-               eMBDisable   0x0096b6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-                  eMBPoll   0x0096fc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
-               eMBRTUInit   0x009924    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-              eMBRTUStart   0x009a68    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-               eMBRTUStop   0x009a84    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-            eMBRTUReceive   0x009a9a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-               eMBRTUSend   0x009b7a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-         xMBRTUReceiveFSM   0x009c8a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-        xMBRTUTransmitFSM   0x009d58    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-    xMBRTUTimerT35Expired   0x009de6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
-             FontTable5x7   0x009e38    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-        rightBitPackTable   0x00a1d8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-         leftBitPackTable   0x00a1e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
-           xMBUtilSetBits   0x00a1f0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
-           xMBUtilGetBits   0x00a414    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
-    prveMBError2Exception   0x00a556    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
-                 TMR0_ISR   0x00a594    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                 TMR1_ISR   0x00a686    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                 TMR3_ISR   0x00a740    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                TMR0_init   0x00a7fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                TMR1_init   0x00a840    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-                TMR3_init   0x00a888    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-               GetAppTime   0x00a8ce    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
-      vMBPortSerialEnable   0x00a91e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-        xMBPortSerialInit   0x00a954    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-     xMBPortSerialPutByte   0x00aa28    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-     xMBPortSerialGetByte   0x00aa5e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-       prvvUARTTxReadyISR   0x00aa8e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-            prvvUARTRxISR   0x00ab3a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
-eMBFuncReadDiscreteInputs   0x00abe6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncdisc.c
- eMBFuncReadInputRegister   0x00ae56    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncinput.c
-            InitializeI2C   0x00b0ae    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-                 StartI2C   0x00b0c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-                  StopI2C   0x00b0f2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-                 ResetI2C   0x00b112    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-                 WriteI2C   0x00b14e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-                  ReadI2C   0x00b1dc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-              ReadByteI2C   0x00b27e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-             WriteByteI2C   0x00b2c2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
-                 aucCRCHi   0x00b2f4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
-                 aucCRCLo   0x00b3f4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
-            eMBSetSlaveID   0x00b4f4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncother.c
-     eMBFuncReportSlaveID   0x00b5e8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncother.c
-            breakSchedule   0x00b65a    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-              marqueeData   0x00b690    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
-                usMBCRC16   0x00b79e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
-        xMBPortTimersInit   0x00b89a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
-      vMBPortTimersEnable   0x00b8c8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
-     vMBPortTimersDisable   0x00b8de    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
-      prvvTIMERExpiredISR   0x00b8e2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
-                     main   0x00b990    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
-                 BRD_init   0x00ba68    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\board.c
-                 FXD3232S   0x00bb3c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                  DA3232S   0x00bb56    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                   D3232S   0x00bb6c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                 D3232SOK   0x00bb76    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                D3232SNEG   0x00bb7a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                  D3232SX   0x00bb9a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                 FXM1616U   0x00bba4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm1616u.asm
-                _do_cinit   0x00bbe0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     test   0x00bbfa    program     static                          
-                copy_loop   0x00bc52    program     static                          
-            copy_one_byte   0x00bc58    program     static                          
-             done_copying   0x00bc66    program     static                          
-                     done   0x00bc7c    program     static                          
-       ___return_lbl00002   0x00bc7c    program     static                          
-                   memcpy   0x00bc7e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-                    jLoop   0x00bca6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-              _4jContinue   0x00bcb2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-                   _5jEnd   0x00bcbc    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-                     jEnd   0x00bcc2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
-                   memset   0x00bcd4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                    jLoop   0x00bce8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-              _2jContinue   0x00bcf4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                   _3jEnd   0x00bcfe    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                     jEnd   0x00bd06    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-               Open2USART   0x00bd08    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2open.c
-               Open1USART   0x00bd92    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1open.c
-              Write_b_eep   0x00be16    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-                  FXM3232   0x00be8e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm3232.c
-       ___return_lbl00000   0x00befc    program     static                          
-         xMBPortEventInit   0x00befe    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
-         xMBPortEventPost   0x00bf08    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
-          xMBPortEventGet   0x00bf28    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
-               Read_b_eep   0x00bf5e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-       ___return_lbl00000   0x00bfae    program     static                          
-              __string_18   0x00bfba    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_17   0x00bfbe    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_16   0x00bfc2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_15   0x00bfc6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_14   0x00bfca    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_13   0x00bfce    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_12   0x00bfd2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_11   0x00bfd6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-              __string_10   0x00bfda    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_9   0x00bfde    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_8   0x00bfe2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_7   0x00bfe6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_6   0x00bfea    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_5   0x00bfee    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_4   0x00bff2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_3   0x00bff6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_2   0x00bffa    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_1   0x00bffe    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-               __string_0   0x00c002    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
-                 FXD3232U   0x00c006    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232u.c
-                     loop   0x00c014    program     static                          
-                   _false   0x00c048    program     static                          
-       ___return_lbl00000   0x00c04c    program     static                          
-               OpenTimer3   0x00c04e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t3open.c
-               OpenTimer1   0x00c090    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
-               Read2USART   0x00c0d2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2read.c
-               Read1USART   0x00c110    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1read.c
-            DDR_loadDigit   0x00c14e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digit_driver.c
-              WriteTimer3   0x00c18c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t3write.c
-              WriteTimer1   0x00c1c4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
-              WriteTimer0   0x00c1fc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
-               OpenTimer0   0x00c234    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
-                 FXD1616U   0x00c26c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
-                     loop   0x00c276    program     static                          
-                  endloop   0x00c292    program     static                          
-       ___return_lbl00000   0x00c296    program     static                          
-              Delay1KTCYx   0x00c298    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x00c2a2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-                    D1K_1   0x00c2a4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0010   0x00c2a8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x00c2ae    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-            __zero_memory   0x00c2b8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
-               zero_block   0x00c2c6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
-                   loop_h   0x00c2c6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
-                compare_l   0x00c2ce    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
-                   loop_l   0x00c2d0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
-                 _startup   0x00c2d8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     loop   0x00c2e8    program     static                          
-       ___return_lbl00001   0x00c2f2    program     static                          
-                 FXD0808U   0x00c2f4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd0808u.c
-                     loop   0x00c2fc    program     static                          
-                  endloop   0x00c30a    program     static                          
-       ___return_lbl00000   0x00c30e    program     static                          
-                  HB_init   0x00c310    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\heartBeat.c
-                  HB_task   0x00c316    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\heartBeat.c
-              Delay10TCYx   0x00c32a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                     D10x   0x00c332    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000A   0x00c334    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x00c336    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x00c338    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                    D10_1   0x00c33a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                  LED_MAP   0x00c340    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digit_driver.c
-                 Busy_eep   0x00c34c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
+           ___if_lbl00039   0x00068c    program     static                          
+       ___return_lbl00023   0x00069e    program     static                          
+           ___if_lbl00040   0x00069e    program     static                          
+            eMBRegInputCB   0x0006b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+          eMBRegHoldingCB   0x0006cc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+            eMBRegCoilsCB   0x0007de    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+         eMBRegDiscreteCB   0x0007f2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+      processReceivedData   0x000806    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+      updateTruckActivity   0x000c0e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+               __tmplbl_5   0x000c6e    program     static                          
+               __tmplbl_4   0x000c86    program     static                          
+         ___else_lbl00084   0x000ca8    program     static                          
+           ___if_lbl00081   0x000d96    program     static                          
+           ___if_lbl00080   0x000d96    program     static                          
+           ___if_lbl00083   0x000d9c    program     static                          
+       ___return_lbl00078   0x000d9c    program     static                          
+           ___if_lbl00082   0x000d9c    program     static                          
+          updateTruckTime   0x000db0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+               resetAlarm   0x000fe2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+    updateAlarmIndication   0x000fe6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+     resetActivitySegment   0x0010fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+      getActivitySchedule   0x001276    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+   processActivityTrigger   0x001302    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+   loadActivityParameters   0x0015e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+               updateTime   0x0016f0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+updateBackLightIndication   0x001820    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+            updateMarquee   0x0018fa    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+updateCurrentActivityParameters   0x0019ea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+updateCurrentActivityIndication   0x00218c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+updateShipmentScheduleIndication   0x00242c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+           updateSchedule   0x0026de    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+             loadSchedule   0x002b88    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+        updatePickingInfo   0x002be4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+  updatePickingIndication   0x002c9a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+                updateLog   0x002de6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+         updateLog_Binary   0x002efc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+                   getBit   0x002fe2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                   setBit   0x003022    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                 clearBit   0x003058    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                 MMD_init   0x003090    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+        MMD_configSegment   0x003404    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+              __tmplbl_10   0x003e74    program     static                          
+       MMD_setScrollSpeed   0x003e8c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+         MMD_changeSymbol   0x003f08    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+         MMD_clearSegment   0x00411e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                 MMD_task   0x00445c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+              __tmplbl_25   0x00446a    program     static                          
+              __tmplbl_21   0x004e62    program     static                          
+              __tmplbl_20   0x004e62    program     static                          
+              __tmplbl_19   0x004e68    program     static                          
+       MMD_refreshDisplay   0x004e7c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+       WriteDataToDisplay   0x0051b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+                  MB_task   0x005202    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+                     idle   0x005234    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+          constructPacket   0x0052dc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+            construct_F15   0x0054ca    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+            construct_F16   0x005658    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+   waiting_for_turnaround   0x005764    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+        waiting_for_reply   0x00579a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+             processReply   0x0058b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+            process_F1_F2   0x0059d6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+            process_F3_F4   0x005b62    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+    process_F5_F6_F15_F16   0x005c64    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+             processError   0x005d7e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+           processSuccess   0x005e30    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+                  MB_init   0x005e82    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+             MB_construct   0x005fa8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+             calculateCRC   0x006042    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+               sendPacket   0x006170    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+             MB_getStatus   0x006200    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\modbusMaster.c
+           ConvertBCD2HEX   0x006208    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+                  BCD2HEX   0x006296    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+                  HEX2BCD   0x0062d0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+ConvertAndDisplay16BitValue   0x006334    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+ConvertAndDisplay8BitValue   0x0065c4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+ConvertAndDisplay32BitValue   0x006700    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+                 BCDtoBin   0x006c42    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+                 BinToBCD   0x006c70    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+ConvertUnPackedAsciiToPacked16BitHexValue   0x006cb6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+     UTL_binaryToBCDASCII   0x006dcc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\math_fun.c
+                  Int2Day   0x006e3c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+                Int2Month   0x006e74    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+       ReadRtcTimeAndDate   0x006eba    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+      WriteRtcTimeAndDate   0x00700a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              SetHourMode   0x007116    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+  ConvertTime24to12Format   0x007180    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+  ConvertTime12to24Format   0x007310    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+  ConvertHour12to24Format   0x00746a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+          StoreSystemTime   0x0074d0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+          StoreSystemDate   0x0075c6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+           StoreSystemDay   0x0076be    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+            InitializeRtc   0x0076f6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+  UpdateRealTimeClockTask   0x00774a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               RTC_getDay   0x00776e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+             RTC_getMonth   0x007776    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              RTC_getDate   0x00777e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              RTC_getHour   0x007786    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+            RTC_getMinute   0x00778e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+            RTC_getSecond   0x007796    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+       RTC_getMinuteOfDay   0x00779e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+            RTC_getDayStr   0x0077c2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+          RTC_getMonthStr   0x0077ec    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+eMBFuncWriteHoldingRegister   0x007816    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
+eMBFuncWriteMultipleHoldingRegister   0x007906    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
+eMBFuncReadHoldingRegister   0x007b0a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
+eMBFuncReadWriteMultipleHoldingRegister   0x007d62    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncholding.c
+     Uart1_ReceiveHandler   0x008150    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+                UART_task   0x00821a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+     Uart2_ReceiveHandler   0x00822e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+    Uart1_TransmitHandler   0x0082f8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+    Uart2_TransmitHandler   0x008372    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+               UART1_init   0x0083ec    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+               UART2_init   0x0084b4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+              UART1_write   0x00857a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+              UART2_write   0x0085b2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+           UART1_transmit   0x0085ea    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+           UART2_transmit   0x0086d4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+            UART2_hasData   0x0087be    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+            UART1_hasData   0x0087f8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+               UART1_read   0x008832    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+               UART2_read   0x008882    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\uart.c
+         eMBFuncReadCoils   0x0088d2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
+         eMBFuncWriteCoil   0x008b44    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
+eMBFuncWriteMultipleCoils   0x008cb6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfunccoils.c
+        DigitDisplay_init   0x008ee4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+        DigitDisplay_task   0x008f46    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+DigitDisplay_updateBuffer   0x008fcc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+DigitDisplay_updateBufferBinary   0x009062    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+ DigitDisplay_updateDigit   0x0090b6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+     DigitDisplay_blinkOn   0x00913a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+    DigitDisplay_blinkOff   0x009172    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+       DigitDisplay_clear   0x009180    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+       writeToDisplayPort   0x0091b4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+       DigitDisplay_DotOn   0x00921e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+                 validate   0x009284    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+DigitDisplay_updateBufferPartial   0x0092c8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+DigitDisplay_updateFields   0x009396    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+ DigitDisplay_blinkOn_ind   0x00945c    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digitdisplay.c
+                  eMBInit   0x0094ee    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+            eMBRegisterCB   0x0095f4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+                 eMBClose   0x009808    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+                eMBEnable   0x00984a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+               eMBDisable   0x009886    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+                  eMBPoll   0x0098cc    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\mb.c
+               eMBRTUInit   0x009af4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+              eMBRTUStart   0x009c38    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+               eMBRTUStop   0x009c54    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+            eMBRTUReceive   0x009c6a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+               eMBRTUSend   0x009d4a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+         xMBRTUReceiveFSM   0x009e5a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+        xMBRTUTransmitFSM   0x009f28    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+    xMBRTUTimerT35Expired   0x009fb6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbrtu.c
+             FontTable5x7   0x00a008    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+        rightBitPackTable   0x00a3a8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+         leftBitPackTable   0x00a3b4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\MMD.c
+           xMBUtilSetBits   0x00a3c0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
+           xMBUtilGetBits   0x00a5e4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
+    prveMBError2Exception   0x00a726    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbutils.c
+                 TMR0_ISR   0x00a764    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                 TMR1_ISR   0x00a856    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                 TMR3_ISR   0x00a910    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                TMR0_init   0x00a9ca    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                TMR1_init   0x00aa10    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+                TMR3_init   0x00aa58    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+               GetAppTime   0x00aa9e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\timer.c
+      vMBPortSerialEnable   0x00aaee    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+        xMBPortSerialInit   0x00ab24    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+     xMBPortSerialPutByte   0x00abf8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+     xMBPortSerialGetByte   0x00ac2e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+       prvvUARTTxReadyISR   0x00ac5e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+            prvvUARTRxISR   0x00ad0a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portserial.c
+eMBFuncReadDiscreteInputs   0x00adb6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncdisc.c
+ eMBFuncReadInputRegister   0x00b026    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncinput.c
+            InitializeI2C   0x00b27e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+                 StartI2C   0x00b296    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+                  StopI2C   0x00b2c2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+                 ResetI2C   0x00b2e2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+                 WriteI2C   0x00b31e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+                  ReadI2C   0x00b3ac    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+              ReadByteI2C   0x00b44e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+             WriteByteI2C   0x00b492    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\i2c_driver.c
+                 aucCRCHi   0x00b4c4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
+                 aucCRCLo   0x00b5c4    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
+            eMBSetSlaveID   0x00b6c4    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncother.c
+     eMBFuncReportSlaveID   0x00b7b8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\functions\mbfuncother.c
+            breakSchedule   0x00b82a    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+              marqueeData   0x00b860    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c
+                usMBCRC16   0x00b96e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\rtu\mbcrc.c
+        xMBPortTimersInit   0x00ba6a    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
+      vMBPortTimersEnable   0x00ba98    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
+     vMBPortTimersDisable   0x00baae    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
+      prvvTIMERExpiredISR   0x00bab2    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\porttimer.c
+                     main   0x00bb60    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
+                 BRD_init   0x00bc38    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\board.c
+                 FXD3232S   0x00bd0c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                  DA3232S   0x00bd26    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                   D3232S   0x00bd3c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                 D3232SOK   0x00bd46    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                D3232SNEG   0x00bd4a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                  D3232SX   0x00bd6a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                 FXM1616U   0x00bd74    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm1616u.asm
+                _do_cinit   0x00bdb0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     test   0x00bdca    program     static                          
+                copy_loop   0x00be22    program     static                          
+            copy_one_byte   0x00be28    program     static                          
+             done_copying   0x00be36    program     static                          
+                     done   0x00be4c    program     static                          
+       ___return_lbl00002   0x00be4c    program     static                          
+                   memcpy   0x00be4e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+                    jLoop   0x00be76    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+              _4jContinue   0x00be82    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+                   _5jEnd   0x00be8c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+                     jEnd   0x00be92    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcpy.asm
+                   memset   0x00bea4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                    jLoop   0x00beb8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+              _2jContinue   0x00bec4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x00bece    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                     jEnd   0x00bed6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+               Open2USART   0x00bed8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2open.c
+               Open1USART   0x00bf62    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1open.c
+              Write_b_eep   0x00bfe6    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
+                  FXM3232   0x00c05e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm3232.c
+       ___return_lbl00000   0x00c0cc    program     static                          
+         xMBPortEventInit   0x00c0ce    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
+         xMBPortEventPost   0x00c0d8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
+          xMBPortEventGet   0x00c0f8    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\modbus\portevent.c
+               Read_b_eep   0x00c12e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+       ___return_lbl00000   0x00c17e    program     static                          
+              __string_18   0x00c18a    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_17   0x00c18e    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_16   0x00c192    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_15   0x00c196    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_14   0x00c19a    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_13   0x00c19e    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_12   0x00c1a2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_11   0x00c1a6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+              __string_10   0x00c1aa    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_9   0x00c1ae    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_8   0x00c1b2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_7   0x00c1b6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_6   0x00c1ba    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_5   0x00c1be    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_4   0x00c1c2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_3   0x00c1c6    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_2   0x00c1ca    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_1   0x00c1ce    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+               __string_0   0x00c1d2    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\rtc_driver.c
+                 FXD3232U   0x00c1d6    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232u.c
+                     loop   0x00c1e4    program     static                          
+                   _false   0x00c218    program     static                          
+       ___return_lbl00000   0x00c21c    program     static                          
+               OpenTimer3   0x00c21e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t3open.c
+               OpenTimer1   0x00c260    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
+               Read2USART   0x00c2a2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2read.c
+               Read1USART   0x00c2e0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1read.c
+            DDR_loadDigit   0x00c31e    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digit_driver.c
+              WriteTimer3   0x00c35c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t3write.c
+              WriteTimer1   0x00c394    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
+              WriteTimer0   0x00c3cc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
+               OpenTimer0   0x00c404    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
+                 FXD1616U   0x00c43c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
+                     loop   0x00c446    program     static                          
+                  endloop   0x00c462    program     static                          
+       ___return_lbl00000   0x00c466    program     static                          
+              Delay1KTCYx   0x00c468    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x00c472    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+                    D1K_1   0x00c474    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0010   0x00c478    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x00c47e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+            __zero_memory   0x00c488    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+               zero_block   0x00c496    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+                   loop_h   0x00c496    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+                compare_l   0x00c49e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+                   loop_l   0x00c4a0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f8722.asm
+                 _startup   0x00c4a8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     loop   0x00c4b8    program     static                          
+       ___return_lbl00001   0x00c4c2    program     static                          
+                 FXD0808U   0x00c4c4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd0808u.c
+                     loop   0x00c4cc    program     static                          
+                  endloop   0x00c4da    program     static                          
+       ___return_lbl00000   0x00c4de    program     static                          
+                  HB_init   0x00c4e0    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\heartBeat.c
+                  HB_task   0x00c4e6    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\heartBeat.c
+              Delay10TCYx   0x00c4fa    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                     D10x   0x00c502    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000A   0x00c504    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x00c506    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x00c508    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                    D10_1   0x00c50a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                  LED_MAP   0x00c510    program     extern C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\digit_driver.c
+                 Busy_eep   0x00c51c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
                __config_0   0x300001    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
                __config_1   0x300002    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
                __config_2   0x300003    program     static C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\main.c
