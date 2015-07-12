@@ -36,6 +36,9 @@
 #define DISPLAY_REFRESH_PERIOD	2	//period of refresh in milliseconds
 
 
+
+
+
 /*
 *------------------------------------------------------------------------------
 * ENUMERATIONS
@@ -47,6 +50,15 @@ typedef enum
 	MAX_DIGITS = 8
 }DIGITDISPLAY_CONFIG;
 
+enum
+{
+	DIGIT_A = 10,
+	DIGIT_C = 11,
+	DIGIT_P = 12,
+	DIGIT_L = 13,
+	DIGIT_DASH = 14,
+	DIGIT_SPACE = 15
+};
 
 
 /*

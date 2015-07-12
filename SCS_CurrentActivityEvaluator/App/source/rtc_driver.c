@@ -510,7 +510,7 @@ void StoreSystemDay(UINT8 day)
 *
 *------------------------------------------------------------------------------
 */
-void InitializeRtc(void)
+void RTC_Init(void)
 {
 	UINT8 tempVar;
 	// Read seconds register contents
@@ -533,9 +533,9 @@ void InitializeRtc(void)
 	WriteRtcTimeAndDate((UINT8*)&stRtcRegs);			// Set RTC
 */
 #ifdef TIME_DEBUG
-	stRtcRegs.mSeconds	= 0;							// second = 00
-	stRtcRegs.mMinute  	= 50;							// minute = 29
-	stRtcRegs.mHour  	= 6;
+	stRtcRegs.mSeconds	= 0;							// second 
+	stRtcRegs.mMinute  	= 50;							// minute 
+	stRtcRegs.mHour  	= 6;							// hour
 #endif
 	// Setup task to run
 //#ifdef TIME_DEBUG
@@ -558,7 +558,7 @@ void InitializeRtc(void)
 *------------------------------------------------------------------------------
 */
 
-void UpdateRealTimeClockTask(void)
+void RTC_Task(void)
 {
 	static UINT8 prevSec = 0;
 

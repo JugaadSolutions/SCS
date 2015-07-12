@@ -123,10 +123,10 @@ extern BOOL TimeClockMode;
 * Public Function Prototypes (extern)
 *------------------------------------------------------------------------------
 */
-extern void InitializeRtc(void);
+
 extern void ReadRtcTimeAndDate(UINT8 * buff);
 extern void WriteRtcTimeAndDate(UINT8 *buff);
-extern void UpdateRealTimeClockTask(void);
+extern void RTC_Task(void);
 extern void StoreSystemTime(UINT8 *databuffer);
 extern void StoreSystemDate(UINT8 *databuffer);
 extern void StoreSystemDay(UINT8 day);
@@ -139,7 +139,7 @@ extern void ConvertTime12to24Format(DATE_TIME *pstRtcData12,DATE_TIME *pstRtcDat
 extern UINT8 ConvertHour12to24Format(UINT8 hour12,UINT8 amPm);
 extern void ReadRtcEEPROM(UINT8 * buff);
 extern void WriteRtcEEPROM(UINT8 *buff);
-
+extern void RTC_Init(void);
 extern UINT16 RTC_getMinuteOfDay(void);
 extern UINT8* RTC_getMonthStr(void);
 extern UINT8* RTC_getDayStr(void);

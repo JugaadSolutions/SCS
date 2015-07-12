@@ -185,9 +185,7 @@ void main(void)
 	DigitDisplay_init(16);
 	MMD_init();  // Display initialization
 
-
-
-	//COM_init(CMD_SOP,CMD_EOP,RESP_SOP,RESP_EOP,APP_comCallBack);
+	RTC_Init(); //RTC Initialization
 	
 	APP_init();
 
@@ -229,7 +227,7 @@ void main(void)
 
 		if(  heartBeatCount >= 550)
 		{
-		
+			RTC_Task();
 			HB_task();
 			heartBeatCount = 0;
 		}
@@ -246,10 +244,7 @@ void main(void)
           AppUpdate_count = 0;
 		
 		}
-
-	//	COM1_task();
-		//ClrWdt();	
-			MB_task();
+		MB_task();
 
 		if(eMBUpdate_count >= 10)
 		{

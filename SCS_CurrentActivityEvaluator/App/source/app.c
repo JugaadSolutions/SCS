@@ -42,8 +42,8 @@ typedef struct _APP
 	//Modbus Slave buffer
 	UINT8 eMBdata[NO_OF_DATA];     //store modbus receive data
 	UINT8 DataReceived;				//flag for check modbus receive complete 
-	//Modbus Master
-	UINT8 regCount[MAX_LOG_ENTRIES];     // Buffer used to hold the number of 16bits counts in data pack
+	
+	UINT8 regCount[MAX_LOG_ENTRIES];// //Modbus Master Buffer used to hold the number of 16bits counts in data pack
 
 	APP_STATE state;
 	UINT16 curMinute;
@@ -69,7 +69,7 @@ static rom ACTIVITY_SCHEDULE  breakSchedule[BREAKS_SUPPORTED+1]={
 {1000 , 1010,10},
 {1170 , 1200,30},
 {1300 , 1310,10},
-{00 , 300,300},
+{0 , 300,300},
 };
 
 
@@ -109,35 +109,39 @@ const rom UINT8 marqueeData[MARQUEES_SUPPORTED+1][MARQUEE_SEGMENT_CHARS]={
 };
 
 APP app = {0};
-//Modbus Master
-LOG log = {0};
+
+LOG log = {0}; // Useb by Modbus Master
 
 ACTIVITY_SCHEDULE breaks[BREAKS_SUPPORTED+1] = {0};
 
-UINT8 marquee[MARQUEE_SEGMENT_CHARS];
-UINT8 time_backlight[TIME_SEGMENT_CHARS + BACKLIGHT_SEGMENT_CHARS];
+UINT8 marquee[MARQUEE_SEGMENT_CHARS] = {0};
+UINT8 time_backlight[TIME_SEGMENT_CHARS + BACKLIGHT_SEGMENT_CHARS] = {0};
 
-CurrentActivitySegment currentActivitySegment[CURRENT_ACTIVITY_SEGMENTS];
+CurrentActivitySegment currentActivitySegment[CURRENT_ACTIVITY_SEGMENTS] = {0};
 PICKING_INFO pickingInfo ;
-UINT8 activityParameterBuffer[ ACTIVITY_PARAMETER_BUFFER_SIZE];
+UINT8 activityParameterBuffer[ ACTIVITY_PARAMETER_BUFFER_SIZE] = {0};
 
-MMD_Config mmdConfig;
+MMD_Config mmdConfig = {0};
 
-ACTIVITY_STATUS scheduleTable[TRUCKS_SUPPORTED][ACTIVITIES_SUPPORTED];
-SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED];
+ACTIVITY_STATUS scheduleTable[TRUCKS_SUPPORTED][ACTIVITIES_SUPPORTED] = {0};
+SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
 
-UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8];
+UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8] = {0};
 
-UINT16 pickingStartTime[TRUCKS_SUPPORTED+1];
-#pragma idata
-volatile STATUS activityStatus;
-
-
+UINT16 pickingStartTime[TRUCKS_SUPPORTED+1] = {0};
+volatile STATUS activityStatus = 0;
 UINT8 readTimeDateBuffer[6] = {0};
 UINT8 writeTimeDateBuffer[] = {0X00, 0X30, 0X17, 0X03, 0x027, 0X12, 0X13};
 UINT8 txBuffer[7] = {0};
 UINT8 transmitTruncktime[30] = {0};
 UINT8 activityTime[8];
+
+
+#pragma idata
+
+
+
+
 
 /*
 *------------------------------------------------------------------------------
@@ -202,13 +206,17 @@ void updatePickingIndication(void);
 void APP_init(void)
 {
 	UINT8 i, j, k, truck;
-	UINT16 timeStart, timeEnd;
+	UINT16 timeStart = 0, timeEnd = 0;
 
 	ACTIVITY_SCHEDULE as;
 
 	eMBErrorCode    eStatus;
 
+
+#ifndef TIME_DEBUG
 	WriteRtcTimeAndDate(writeTimeDateBuffer);
+#endif
+
 
 	//modbus configuration
 	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
@@ -217,6 +225,8 @@ void APP_init(void)
 	//modbus master initialization
 	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
 
+
+#ifndef TIME_DEBUG
 	//store the truck timings in the shipment schedule structure 
 	for(k = 0 ; k < TRUCKS_SUPPORTED ; k++)
 	{
@@ -239,6 +249,7 @@ void APP_init(void)
 	
 		}
 	}
+#endif
 
 #ifdef __FACTORY_CONFIGURATION__
 
@@ -632,7 +643,7 @@ void processReceivedData (void)
 				{
 					transmitTruncktime[i] = app.eMBdata[i]; 
 				}
-					updateLog (transmitTruncktime , slaveID );
+				updateLog (transmitTruncktime , slaveID );
 			}
 
 			updateTruckTime( truck , trucktime);
@@ -991,14 +1002,21 @@ void updateTime(void)
 
 	UINT8 i;
 	UINT16 hour ,minute;
-	ReadRtcTimeAndDate(readTimeDateBuffer);	//Read RTC data and store it in buffer
-	hour= (UINT16)readTimeDateBuffer[2];
-	minute = (UINT16)readTimeDateBuffer[1];
+
 #ifdef TIME_DEBUG
+	hour = RTC_getHour();
+	minute = RTC_getMinute();
+	
 	app.curMinute = hour*60 + minute;
 	UTL_binaryToBCDASCII(hour , &time_backlight[TIME_HOUR_INDEX]);
 	UTL_binaryToBCDASCII(minute , &time_backlight[TIME_MINUTE_INDEX]);
 #else
+
+	ReadRtcTimeAndDate(readTimeDateBuffer);	//Read RTC data and store it in buffer
+	hour= (UINT16)readTimeDateBuffer[2];
+	minute = (UINT16)readTimeDateBuffer[1];
+
+
 	app.curMinute = ((UINT16)BCDtoBin(hour))*60 + (UINT16)BCDtoBin(minute);
 	UTL_binaryToBCDASCII(BCDtoBin(hour) , &time_backlight[TIME_HOUR_INDEX]);
 	UTL_binaryToBCDASCII(BCDtoBin(minute) , &time_backlight[TIME_MINUTE_INDEX]);
@@ -1353,17 +1371,7 @@ void updateSchedule(UINT8 *data)
 			(scheduleStatus[truck][i]).activityStatus = ACTIVITY_CANCELLED;
 		}
 
-/*		truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
-		truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
-		truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
-		truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
 
-		truck_statusIndicator[truck][4] = SYM_CANCEL;
-		truck_statusIndicator[truck][5] = SYM_CANCEL;
-		truck_statusIndicator[truck][6] = ' ';
-		truck_statusIndicator[truck][7] = ' ';
-		clearScheduleTime();
-*/
 
 	}
 
@@ -1375,16 +1383,7 @@ void updateSchedule(UINT8 *data)
 			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)				//if activity is not scheduled ignore cmd
 				return ;
 			
-/*			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorGreen[0];
-			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorGreen[1];
-			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorGreen[2];
-			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorGreen[3];
 
-			truck_statusIndicator[truck][4] = ' ';
-			truck_statusIndicator[truck][5] = SYM_ONGOING;
-			truck_statusIndicator[truck][6] = ' ';
-			truck_statusIndicator[truck][7] = ' ';
-*/
 
 			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);
 			
@@ -1397,14 +1396,7 @@ void updateSchedule(UINT8 *data)
 			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_ONGOING)				//if activity is not scheduled ignore cmd
 				return ;
 
-/*			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
-			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
-			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
-			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
 
-
-			clearScheduleTime();
-*/
 			loadSchedule(truck,info->activity);
 
 			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_COMPLETED;
@@ -1652,47 +1644,8 @@ BOOL updatePickingInfo()
 
 void updatePickingIndication()
 {
-	UINT8 i = 0,result = FALSE;
-	switch( pickingInfo.state)
-	{
-		case 0:
-		activityParameterBuffer[i++] = 0;	
-		activityParameterBuffer[i++] = 0;
-		activityParameterBuffer[i++] = 0;
-		activityParameterBuffer[i++] = 0;
-				
-		break;
-		case 1:
-		activityParameterBuffer[i++] = 1;	
-		activityParameterBuffer[i++] = 0;
-		activityParameterBuffer[i++] = 0;
-		activityParameterBuffer[i++] = 0;
-			
-		break;
-
-		case 2:
-		activityParameterBuffer[i++] = 0;	
-		activityParameterBuffer[i++] = 1;
-		activityParameterBuffer[i++] = 0;
-		activityParameterBuffer[i++] = 0;
-		break;
 
 
-		case 3:
-		activityParameterBuffer[i++] = 0;	
-		activityParameterBuffer[i++] = 0;
-		activityParameterBuffer[i++] = 1;
-		activityParameterBuffer[i++] = 1;
-		break;
-
-		default:
-		break;
-	}
-		
-//	hdr.deviceAddress = 9;
-//	hdr.length = i;
-//	hdr.cmdID = CMD_UPDATE_PICKING_INDICATION;
-//	COM_sendCommand(&hdr,activityParameterBuffer);
 
 }
 
@@ -1728,7 +1681,7 @@ void updateLog(far UINT8 *data,UINT8 slave)
 void updateLog_Binary(far UINT8 *data,UINT8 slave,UINT8 length)
 {
 	UINT8 i = 0;
-	while( length > 0)
+	while( --length > 0)
 	{
 		log.entries[log.writeIndex][i] = (UINT16)*data << 8;
 		data++;

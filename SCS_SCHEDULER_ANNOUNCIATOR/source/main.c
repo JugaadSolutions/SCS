@@ -181,7 +181,6 @@ void main(void)
 
 	MMD_init();  // Display initialization
 	DigitDisplay_init(16);
-	APP_init();
 
 	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
 	TMR1_init(MMD_REFRESH_PERIOD,MMD_refreshDisplay);
@@ -189,6 +188,9 @@ void main(void)
 	//modbus configuration
 	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
 	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
+
+	APP_init();
+
 
 
 	EnableInterrupts();
@@ -198,6 +200,17 @@ void main(void)
 	{
 		dataByte = xMBPortSerialPutByte( 'A' + i );
 	}
+#endif
+
+#ifdef __DISPLAY_TEST__
+
+	for(i = 32; i < 96 ; i++ )
+		for( k = 0; k < 10 ; k++)
+		{
+				DDR_loadDigit(i,k);
+				DelayMs(100);
+		}
+
 #endif
 
 #if defined (MMD_TEST)
@@ -212,46 +225,13 @@ void main(void)
 #endif
 
 
-#ifdef __DISPLAY_TEST__
 
-	for(i = 32; i < 56 ; i++ )
-		for( k = 0; k < 10 ; k++)
-			{
-				DDR_loadDigit(i,k);
-				DelayMs(100);
-
-
-			}
-
-	for(i = 56; i < 90 ; i++ )
-		for( k = 0; k < 10 ; k++)
-			{
-				DDR_loadDigit(i,k);
-				DelayMs(100);
-			}
-
-	for(i = 90; i < 114 ; i++ )
-		for( k = 0; k < 10 ; k++)
-			{
-				DDR_loadDigit(i,k);
-				DelayMs(100);
-			}
-
-	for(i = 114; i < 138 ; i++ )
-		for( k = 0; k < 10 ; k++)
-			{
-				DDR_loadDigit(i,k);
-				DelayMs(100);
-			}
-
-#endif
 
 	while(1)
 	{
-
 		if(  heartBeatCount >= 250 )
 		{
-			//APP_task();
+			APP_task();
 			HB_task();
 			heartBeatCount = 0;
 		}

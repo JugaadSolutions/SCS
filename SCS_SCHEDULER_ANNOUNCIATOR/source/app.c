@@ -6,6 +6,8 @@
 #include "eep.h"
 #include "mb.h"
 #include "digit_driver.h"
+#include "utilities.h"
+#include "digitdisplay.h"
 
 /*
 *-----------------------------------------------------------
@@ -75,26 +77,7 @@ typedef struct _DISPLAY_SCANNING
 }DISPLAY_SCANNING;
 
 
-const rom TRUCK_INDICATOR_DATA truckIndicators[TRUCKS_SUPPORTED*4 + 1]={
-{{' ',' ',' ',' '},{' ',' ',' ',' '}},
-{{'0',' ','1',' '},{' ','0',' ','1'}},
-{{'0',' ','2',' '},{' ','0',' ','2'}},
-{{'0',' ','3',' '},{' ','0',' ','3'}},
-{{'0',' ','4',' '},{' ','0',' ','4'}},
-{{'0',' ','5',' '},{' ','0',' ','5'}},
-{{'0',' ','6',' '},{' ','0',' ','6'}},
-{{'0',' ','7',' '},{' ','0',' ','7'}},
 
-{{'0',' ','8',' '},{' ','0',' ','8'}},
-{{'0',' ','9',' '},{' ','0',' ','9'}},
-{{'1',' ','0',' '},{' ','1',' ','0'}},
-{{'1',' ','1',' '},{' ','1',' ','1'}},
-{{'1',' ','2',' '},{' ','1',' ','2'}},
-{{'1',' ','3',' '},{' ','1',' ','3'}},
-{{'1',' ','4',' '},{' ','1',' ','4'}},
-{{'1',' ','5',' '},{' ','1',' ','5'}},
-{{'1',' ','6',' '},{' ','1',' ','6'}},
-};
 
 
 /*
@@ -198,31 +181,35 @@ ACTIVITY_SCHEDULE scheduleTable[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
 
 SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
 
-UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8] = {0};
+UINT8 truckNo[TRUCKS_SUPPORTED * 2] = {0};		//buffer for truck nos
+UINT8 truckStatus[TRUCKS_SUPPORTED * 2] = {0};	//buffer for truck status
 UINT8 activityTime[8 ]= {0};
 
 DISPLAY_SCANNING scanDisplay = {0};
 
 
-ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED*4+1][ACTIVITIES_SUPPORTED]
+ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED]
 ={
 {{0, 0,0},{0 , 0,0},{0 , 0, 0}},
-{{(UINT16)1340, (UINT16)1400,(UINT16)60},{(UINT16)1350, (UINT16)1410,(UINT16)60},{(UINT16)350 ,(UINT16)385 ,(UINT16)35}},
-{{(UINT16)330 , (UINT16)380 ,(UINT16)50},{(UINT16)340 , (UINT16)390 ,(UINT16)50},{(UINT16)390 ,(UINT16)425 ,(UINT16)35}},
-{{(UINT16)380 , (UINT16)460 ,(UINT16)80},{(UINT16)390 , (UINT16)470 ,(UINT16)80},{(UINT16)485 ,(UINT16)520 ,(UINT16)35}},
-{{(UINT16)460 , (UINT16)540 ,(UINT16)80},{(UINT16)470 , (UINT16)550 ,(UINT16)80},{(UINT16)565 ,(UINT16)600 ,(UINT16)35}},
+#if DEVICE_ADDRESS==1
 {{(UINT16)540 , (UINT16)610 ,(UINT16)70},{(UINT16)550 , (UINT16)620 ,(UINT16)70},{(UINT16)630 ,(UINT16)665 ,(UINT16)35}},
 {{(UINT16)610 , (UINT16)670 ,(UINT16)60},{(UINT16)620 , (UINT16)680 ,(UINT16)60},{(UINT16)685 ,(UINT16)720 ,(UINT16)35}},
 {{(UINT16)670 , (UINT16)760 ,(UINT16)90},{(UINT16)680 , (UINT16)770 ,(UINT16)90},{(UINT16)770 ,(UINT16)805 ,(UINT16)35}},
 {{(UINT16)760 , (UINT16)820 ,(UINT16)60},{(UINT16)770 , (UINT16)830 ,(UINT16)60},{(UINT16)835 ,(UINT16)870 ,(UINT16)35}},
+
+#elif DEVICE_ADDRESS==2
 {{(UINT16)820 , (UINT16)880 ,(UINT16)60},{(UINT16)830 , (UINT16)890 ,(UINT16)60},{(UINT16)905 ,(UINT16)940 ,(UINT16)35}},
 {{(UINT16)880 , (UINT16)950 ,(UINT16)70},{(UINT16)890 , (UINT16)960 ,(UINT16)70},{(UINT16)965 ,(UINT16)1000 ,(UINT16)35}},
 {{(UINT16)950 , (UINT16)1020 ,(UINT16)70},{(UINT16)960 , (UINT16)1030 ,(UINT16)70},{(UINT16)1030 ,(UINT16)1065,(UINT16)35}},
 {{(UINT16)1020 , (UINT16)1080,(UINT16)60},{(UINT16)1030 , (UINT16)1090,(UINT16)60},{(UINT16)1105,(UINT16)1140,(UINT16)35}},
+
+#elif DEVICE_ADDRESS==3
 {{(UINT16)1080, (UINT16)1140,(UINT16)60},{(UINT16)1090, (UINT16)1150,(UINT16)60},{(UINT16)1175,(UINT16)1210,(UINT16)35}},
 {{(UINT16)1140, (UINT16)1220,(UINT16)80},{(UINT16)1150, (UINT16)1230,(UINT16)80},{(UINT16)1235,(UINT16)1270,(UINT16)35}},
 {{(UINT16)1220, (UINT16)1280,(UINT16)60},{(UINT16)1230, (UINT16)1290,(UINT16)60},{(UINT16)1305,(UINT16)1340,(UINT16)35}},
 {{(UINT16)1280, (UINT16)1340,(UINT16)60},{(UINT16)1290, (UINT16)1350,(UINT16)60},{(UINT16)1365,(UINT16)1400,(UINT16)35}},
+
+#endif
 };
 
 #pragma idata
@@ -255,6 +242,8 @@ void processMBdata(void);
 //function used to update the truck timings in the array of the structure
 void updateTruckTime(UINT8 truck , UINT8* trucktime); 
 
+void getActivitySchedule(UINT8 truck, ACTIVITY activity, ACTIVITY_SCHEDULE* activitySchedule);
+
 
 
 
@@ -271,6 +260,8 @@ void APP_init(void)
 	UINT8 truck;
 	UINT8 buffer[4];
 
+
+#ifndef __FACTORY_CONFIGURATION__
 	//load truck timings from EEPROM into the shipment schedule array of struct
 	for(k = 0 ; k < TRUCKS_SUPPORTED ; k++)
 	{
@@ -293,14 +284,15 @@ void APP_init(void)
 	
 		}
 	}
+#endif
 
-	//buffer used to store truck number
-	for( i = 0; i < 4; i++ )
-		buffer[i] = ((((DEVICE_ADDRESS-1)*4)+i) + 1);
-
-	//update the truck number 
-	displayTruckNumber(buffer);
-
+	for( i = 1 ; i < TRUCKS_SUPPORTED + 1 ; i++)
+	{
+		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
+		{
+			getActivitySchedule(i + ((DEVICE_ADDRESS) *4), j, &scheduleTable[i][j]);
+		}
+	}
 	
 	
 	mmdConfig.startAddress = 0;
@@ -310,13 +302,13 @@ void APP_init(void)
 	mmdConfig.scrollSpeed = 0;
 
 
-	// problem is with reset modules, I am unable to fix it. Please check
+	
 	for(i= 1; i < TRUCKS_SUPPORTED ; i++)
 	{
-//		resetSchedule(i);
+		resetSchedule(i);
 	}	
 
-//	resetSegment();
+	resetSegment();
 }
 
 
@@ -425,7 +417,7 @@ void processMBdata(void)
 		case CMD_TRUCK_TIMINGS	:
 
 			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
-			truck = (truck) - (DEVICE_ADDRESS-1)*4;
+			truck = (truck) - (DEVICE_ADDRESS)*4 + 1;
 			for(i = 0 ; i < 6 ; i++)
 			{
 				trucktime[i] = (UINT16)( ( (app.eMBdata[3 + (i * 4)] - '0' )* 10 ) + (app.eMBdata[4 + (i * 4)] - '0' ) ) * 60
@@ -435,6 +427,25 @@ void processMBdata(void)
 
 			updateTruckTime( truck , trucktime);
 
+		break;
+
+
+		case CMD_UPDATE_SHIPMENT_SCHEDULE:
+		{
+			SCHEDULE_UPDATE_INFO *data = (SCHEDULE_UPDATE_INFO*) ((UINT8*)app.eMBdata[1]);
+			if( (data->truck <= (DEVICE_ADDRESS*4 +1) ) ||(data->truck > (DEVICE_ADDRESS+1)*4 ))
+				break;	
+			
+			if(data->activity == ACTIVITY_NONE)
+				break;
+			
+
+			else
+			{
+				updateSchedule(data);
+			}
+
+		}
 		break;
 
 		default:
@@ -447,10 +458,13 @@ void processMBdata(void)
 void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 {
 	UINT8 i;
-	UINT8 truck;
+	UINT8 truck,truckStatusIndex;
 	UINT8 activityCompleteFlag = TRUE;
 	INT8 delayedActivity = 0xFF;
-	truck = info->truck -((DEVICE_ADDRESS - 1) * 4);
+
+	truck = info->truck -(DEVICE_ADDRESS * 4);
+	truckStatusIndex =  (truck - 1) * 2;
+	
 
 
 	if( info->activity == ACTIVITY_CANCEL)
@@ -467,22 +481,15 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 		}
 
 		
-/*		truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
-		truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
-		truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
-		truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
+		truckStatus[truckStatusIndex] = DIGIT_DASH;
+		truckStatus[truckStatusIndex + 1] = DIGIT_DASH;
 
-		truck_statusIndicator[truck][4] = SYM_CANCEL;
-		truck_statusIndicator[truck][5] = SYM_CANCEL;
-		truck_statusIndicator[truck][6] = ' ';
-		truck_statusIndicator[truck][7] = ' ';
-*/
-		scanDisplay.buffer[truck*2] = info->truckStatus[0];
-		scanDisplay.buffer[(truck*2)+1]	= info->truckStatus[1];
+		
 
-		DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
+		DigitDisplay_updateBufferBinaryPartial(truckStatus, 8, TRUCKS_SUPPORTED*2);
 
 		clearScheduleTime();
+		loadSchedule(truck,info->activity);
 	}
 
 	else
@@ -492,21 +499,12 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 			case MILESTONE_START:
 			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)				//if activity is not scheduled ignore cmd
 				return ;
-			
-/*			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorGreen[0];
-			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorGreen[1];
-			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorGreen[2];
-			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorGreen[3];
 
-			truck_statusIndicator[truck][4] = ' ';
-			truck_statusIndicator[truck][5] = SYM_ONGOING;
-			truck_statusIndicator[truck][6] = ' ';
-			truck_statusIndicator[truck][7] = ' ';
-*/
 
 			//store the status of the truck
-			scanDisplay.buffer[truck*2] = info->truckStatus[0];
-			scanDisplay.buffer[(truck*2)+1]	= info->truckStatus[1];
+			truckStatus[truckStatusIndex] = DIGIT_A;
+			truckStatus[truckStatusIndex + 1] = DIGIT_SPACE;
+
 	
 			//update it into display buffer
 			DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
@@ -523,27 +521,17 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_ONGOING)				//if activity is not scheduled ignore cmd
 				return ;
 
-/*			truck_statusIndicator[truck][0] = truckIndicators[info->truck].indicatorRed[0];
-			truck_statusIndicator[truck][1] = truckIndicators[info->truck].indicatorRed[1];
-			truck_statusIndicator[truck][2] = truckIndicators[info->truck].indicatorRed[2];
-			truck_statusIndicator[truck][3] = truckIndicators[info->truck].indicatorRed[3];
-*/
 
-			//store the status of the truck
-			scanDisplay.buffer[truck*2] = info->truckStatus[0];
-			scanDisplay.buffer[(truck*2)+1]	= info->truckStatus[1];
+			
 	
-			//update it into display buffer
-			DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
-
+			
 			clearScheduleTime();
 			loadSchedule(truck,info->activity);
 
 			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_COMPLETED;
 			scheduleStatus[truck][info->activity - 1].status = info->status;
 
-			truck_statusIndicator[truck][5] = SYM_COMPLETE;
-
+		
 			for(i = 0; i  < ACTIVITIES_SUPPORTED ; i++)
 			{
 				if( scheduleStatus[truck][i].activityStatus == ACTIVITY_ONGOING )			
@@ -563,16 +551,37 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 
 			if( i < ACTIVITIES_SUPPORTED )
 			{
-				truck_statusIndicator[truck][4] = SYM_COMPLETE;
-				truck_statusIndicator[truck][6] = i+SYM_PICKING;
-				truck_statusIndicator[truck][7] = i+SYM_PICKING;
+				//store the status of the truck
+				truckStatus[truckStatusIndex] = DIGIT_C;
+				switch(i)
+				{
+					case 0 : //delayed due to picking
+						truckStatus[truckStatusIndex + 1] = DIGIT_P;
+					break;
+					case 1 : //delayed due to staging
+						truckStatus[truckStatusIndex + 1] = 5;//'S' in seven segment
+					break;
+
+					case 2 : //delayed due to loading
+						truckStatus[truckStatusIndex + 1] = DIGIT_L;
+					break;
+				}
+				
+	
+		
+				
 			}
 			else
 			{
-				truck_statusIndicator[truck][4] = ' ';
-				truck_statusIndicator[truck][6] = ' ';
-				truck_statusIndicator[truck][7] = ' ';
+					//store the status of the truck
+				truckStatus[truckStatusIndex] = DIGIT_C;
+				truckStatus[truckStatusIndex + 1] = DIGIT_SPACE;
 			}
+
+			//update it into display buffer
+				DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
+
+		
 			
 			break;
 
@@ -583,14 +592,6 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 		
 	}
 
-/*	mmdConfig.startAddress = (truck - 1)*32;
-	mmdConfig.length = 8;
-	mmdConfig.symbolBuffer =truck_statusIndicator[truck] ;
-	mmdConfig.symbolCount = 8;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
-
-	MMD_configSegment(truck-1, &mmdConfig);
-*/
 
 
 	loadSchedule(truck,info->activity);
@@ -759,46 +760,36 @@ void displayTruckNumber(UINT8* buffer)
 */
 void resetSchedule(UINT8 truck)
 {
-	UINT8 j;
-	UINT8 truckNo;
+	UINT8 i,j;
+
 	
-	
-	truckNo = truck+((DEVICE_ADDRESS - 1) * 4);
-	for( j= 0; j < ACTIVITIES_SUPPORTED ; j++)
+	//buffer used to store truck number
+	for( i = 0; i < TRUCKS_SUPPORTED ; i++ )
 	{
-		
-		scheduleStatus[truck][j].activityStatus = ACTIVITY_SCHEDULED;
-		scheduleStatus[truck][j].status = ACTIVITY_NONE;
-		
-		getScheduleTime(&scheduleTable[truck][j] ,activityTime);
 
-		loadSchedule(truck,j+1);
+		truckNo[i++] = ((DEVICE_ADDRESS*4)+i+1)/10;
+		truckNo[i] = ((DEVICE_ADDRESS*4)+i+1) % 10;
+	}
+
+	DigitDisplay_updateBufferBinaryPartial(truckNo,0,TRUCKS_SUPPORTED);
 
 
-	}	
+	for( i = 1 ; i < TRUCKS_SUPPORTED ; i++)
+	{
+		for( j= 0; j < ACTIVITIES_SUPPORTED ; j++)
+		{
+			
+			scheduleStatus[i][j].activityStatus = ACTIVITY_SCHEDULED;
+			scheduleStatus[i][j].status = ACTIVITY_NONE;
+			
+			getScheduleTime(&scheduleTable[i][j] ,activityTime);
+	
+			loadSchedule(i,j+1);
+	
+	
+		}	
+	}
 
-/*	truck_statusIndicator[truck][0] = truckIndicators[truckNo].indicatorRed[0];
-	truck_statusIndicator[truck][1] = truckIndicators[truckNo].indicatorRed[1];
-	truck_statusIndicator[truck][2] = truckIndicators[truckNo].indicatorRed[2];
-	truck_statusIndicator[truck][3] = truckIndicators[truckNo].indicatorRed[3];
-
-	truck_statusIndicator[truck][4] = 'F';
-	truck_statusIndicator[truck][5] = ' ';
-	truck_statusIndicator[truck][6] = 'G';
-	truck_statusIndicator[truck][7] = ' ';
-*/
-	for( j= 0; j < ACTIVITIES_SUPPORTED*2 ; j++)
-		scanDisplay.buffer[j] = '0';
-
-	DigitDisplay_updateBufferPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
-
-	mmdConfig.startAddress = (truck-1)*8;
-	mmdConfig.length = 8;
-	mmdConfig.symbolBuffer =truck_statusIndicator[truck] ;
-	mmdConfig.symbolCount = 8;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
-
-	MMD_configSegment(truck-1, &mmdConfig);
 
 	
 }
@@ -809,8 +800,7 @@ void loadSchedule(UINT8 truck, UINT8 activity)
 	UINT8 i;
 	for(i = 0; i < 8 ;i++)
 	{
-	//	DDR_loadDigit( ((truck-1)*32)+(activity*8)+ i,activityTime[i] );
-	//	DDR_loadDigit( ((truck-1)*24)+(activity*8)+ i + 32,activityTime[i] );
+		DDR_loadDigit( ((truck)*32)+(activity*8)+ i,activityTime[i] );
 		DelayMs(1);
 	}
 }
@@ -895,5 +885,12 @@ void updateTruckTime(UINT8 truck , UINT8* trucktime)
 		shipmentSchedule[truck+1 ][i].duration = timeEnd - timeStart;
 
 	}
+
+}
+
+void getActivitySchedule(UINT8 truck, ACTIVITY activity, ACTIVITY_SCHEDULE* activitySchedule)
+{
+
+	*activitySchedule = shipmentSchedule[truck][activity-1];
 
 }

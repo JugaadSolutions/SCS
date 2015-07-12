@@ -68,6 +68,18 @@ static const UINT8 SEVENSEGMENT[] ={0x3f,0x06,0x5b,0x4f,0x66,
 									0x6d,0x7d,0x07,0x7f,0x6f,
 									0x77,0x39,0x73,0x38,0x40,0x00};
 
+enum
+{
+	DIGIT_A = 10,
+	DIGIT_C = 11,
+	DIGIT_P = 12,
+	DIGIT_L = 13,
+	DIGIT_DASH = 14,
+	DIGIT_CLEAR = 15
+};
+
+
+
 #pragma idata	DISPLAY_DATA
 DigitDisplay digitDisplay = {0};
 #pragma idata
@@ -117,7 +129,7 @@ BOOL DigitDisplay_init( UINT8 noDigits )
 
 #ifdef __DISPLAY_TEST__
 
-for(j = 0; j < 16 ; j++)
+for(j = 0; j < DIGIT_SPACE + 1 ; j++)
 {
 	for( i = 0; i < 16 ; i++)
 	{
