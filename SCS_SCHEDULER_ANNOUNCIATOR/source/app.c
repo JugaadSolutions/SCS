@@ -67,7 +67,7 @@ typedef struct _APP
 	UINT8 secON;
 	//Modbus buffer
 	UINT8 eMBdata[MAX_SIZE];
-	BOOL MBdataReceived;
+	BOOL DataReceived;
 }APP;
 
 typedef struct _DISPLAY_SCANNING
@@ -323,7 +323,7 @@ void APP_task(void)
 
 	UINT8 i;
  	DISABLE_UART_RX_INTERRUPT();
-	if(app.MBdataReceived == TRUE )
+	if(app.DataReceived == TRUE )
 	{
 		ENABLE_UART_RX_INTERRUPT();
 
@@ -331,7 +331,7 @@ void APP_task(void)
 		processMBdata();
 
 		DISABLE_UART_RX_INTERRUPT();
-		app.MBdataReceived = FALSE;
+		app.DataReceived = FALSE;
 		ENABLE_UART_RX_INTERRUPT();
 
 	}
@@ -652,12 +652,12 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
 	while( no_regs > 0)
 	{
 
-		//app.valueBuffer[i++] = * pucRegBuffer++;
+		app.eMBdata[i++] = * pucRegBuffer++;
 
 		starting_add++;
 		no_regs	--;
 	}
-//	app.valueBuffer[i++] = 0;
+	app.DataReceived = TRUE;
     break;
 
  	case MB_REG_READ: 
@@ -670,10 +670,6 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
 			
 			* pucRegBuffer++ = 'C';
 			* pucRegBuffer++ = 'D';
-
-						
-
-
 
 		starting_add++;
 		no_regs	--;	
