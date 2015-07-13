@@ -50,7 +50,7 @@ enum RECEIVER_STATE
 * Private Variables (static)
 *------------------------------------------------------------------------------
 */
-#pragma idata uartdata
+#pragma idata UART_DATA
 UART uart[2] = {0,0,0,{0}};
 
 #pragma idata
@@ -297,7 +297,7 @@ void UART2_init(unsigned long baudRate)
 	TXSTA2bits.CSRC = 0;
 	PIE3bits.RC2IE = 1;
 
-//	IPR1bits.TXIP = 1;	//make transmit interrupt high priority
+	IPR1bits.TXIP = 1;	//make transmit interrupt high priority
 
 
 
@@ -520,6 +520,7 @@ BOOL UART2_hasData(void)
 }
 
 #endif 
+
 BOOL UART1_hasData(void)
 {
 	BOOL result = FALSE;

@@ -33,13 +33,12 @@
 /*----------------------------------------
 *	USART Configuration
 *----------------------------------------*/
-#define ACTIVE_USARTS		1
 #define UART2_ACTIVE
 #define UART1_BAUD			19200
 #define UART2_BAUD			19200
 //#define PASS_THROUGH
-#define UART_TEST
-
+//#define UART_TEST
+#define UART2TEST
 /*----------------------------------------
 *	COM module configuration
 *----------------------------------------*/
@@ -55,14 +54,8 @@
 #define RESP_EOP	0xDD
 
 
-enum
-{
-	CMD_PACKET_SIZE = 30,
-	RESP_PACKET_SIZE = 30
-};
-
-#define 	RX_PACKET_SIZE		(30)	
-#define 	TX_PACKET_SIZE		(30)
+#define 	RX_PACKET_SIZE		(60)	
+#define 	TX_PACKET_SIZE		(60)
 
 
 /*----------------------------------------
@@ -99,8 +92,8 @@ enum
 /*---------------------------------
 *	MODBUS MASTER CONFIGURATION
 ----------------------------------*/
-#define BAUD_RATE	 		9600
-#define TIMEOUT		 		1
+#define BAUD_RATE	 		19200
+#define TIMEOUT		 		3
 #define POLLING 			1 // the scan rate
 #define RETRY_COUNT			10
 #define SLAVE_ID			1
@@ -110,8 +103,8 @@ enum
 // The total amount of available memory on the master to store data
 #define TOTAL_NO_OF_REGISTERS 1
 
-#define	MAX_LOG_ENTRIES  15
-#define	LOG_BUFF_SIZE 	 16
+#define	MAX_LOG_ENTRIES  10
+#define	LOG_BUFF_SIZE 	 40
 /*
 *------------------------------------------------------------------------------
 * Public Data Types

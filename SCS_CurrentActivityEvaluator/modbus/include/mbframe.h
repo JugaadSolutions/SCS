@@ -61,8 +61,8 @@ PR_BEGIN_EXTERN_C
  */
 
 /* ----------------------- Defines ------------------------------------------*/
-#define MB_PDU_SIZE_MAX     253 /*!< Maximum size of a PDU. */
-#define MB_PDU_SIZE_MIN     1   /*!< Function Code */
+#define MB_PDU_SIZE_MAX     100 /*!< Maximum size of a PDU. */
+#define MB_PDU_SIZE_MIN     2   /*!< Function Code */
 #define MB_PDU_FUNC_OFF     0   /*!< Offset of function code in PDU. */
 #define MB_PDU_DATA_OFF     1   /*!< Offset for response data in PDU. */
 

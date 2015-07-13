@@ -507,7 +507,7 @@ void updateSchedule(SCHEDULE_UPDATE_INFO *info)
 
 	
 			//update it into display buffer
-			DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
+			DigitDisplay_updateBufferBinaryPartial(truckStatus, 8, TRUCKS_SUPPORTED*2);
 
 
 			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);

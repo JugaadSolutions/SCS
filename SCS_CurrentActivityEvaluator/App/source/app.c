@@ -42,8 +42,7 @@ typedef struct _APP
 	//Modbus Slave buffer
 	UINT8 eMBdata[NO_OF_DATA];     //store modbus receive data
 	UINT8 DataReceived;				//flag for check modbus receive complete 
-	
-	UINT8 regCount[MAX_LOG_ENTRIES];// //Modbus Master Buffer used to hold the number of 16bits counts in data pack
+
 
 	APP_STATE state;
 	UINT16 curMinute;
@@ -123,7 +122,7 @@ UINT8 activityParameterBuffer[ ACTIVITY_PARAMETER_BUFFER_SIZE] = {0};
 
 MMD_Config mmdConfig = {0};
 
-ACTIVITY_STATUS scheduleTable[TRUCKS_SUPPORTED][ACTIVITIES_SUPPORTED] = {0};
+ACTIVITY_STATUS scheduleTable[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
 SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
 
 //UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8] = {0};
@@ -139,7 +138,6 @@ UINT8 txBuffer[7] = {0};
 UINT8 transmitTruncktime[30] = {0};
 UINT8 activityTime[8];
 
-DISPLAY_SCANNING scanDisplay = {0};
 
 #pragma idata
 
@@ -156,9 +154,9 @@ DISPLAY_SCANNING scanDisplay = {0};
 void setSchedule(SCHEDULE_DATA *data);
 */
 void resetActivitySegment(UINT8 i);
-void getActivitySchedule(UINT8 truck, ACTIVITY activity, ACTIVITY_SCHEDULE* activitySchedule);
-BOOL processActivityTrigger( ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as);
-void loadActivityParameters(UINT8 segment,ACTIVITY_SCHEDULE* scheduleData,ACTIVITY_TRIGGER_DATA*data );
+void getActivitySchedule(UINT8 truck, ACTIVITY activity, far ACTIVITY_SCHEDULE* activitySchedule);
+BOOL processActivityTrigger( far ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as);
+void loadActivityParameters(UINT8 segment,far ACTIVITY_SCHEDULE* scheduleData,far ACTIVITY_TRIGGER_DATA*data );
 
 void APP_resetCounter_Buffer(void);
 	// Function for manipulate Receive Data
@@ -175,11 +173,11 @@ void updateAlarmIndication(ACTIVITY activity);
 void resetAlarm(void);
 
 	// Function for manupilate Truck Timing  (96 Latch Digit & 16 Scan Digit)
-void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHEDULE *as);
+void updateShipmentScheduleIndication(far ACTIVITY_TRIGGER_DATA *data,far 	ACTIVITY_SCHEDULE *as);
 void loadSchedule(UINT8 truck, UINT8 activity);
-void updateSchedule(UINT8 *data);
-void getScheduleTime(ACTIVITY_SCHEDULE* as , UINT8* activityTime);
-void setSchedule(SCHEDULE_DATA *data);
+void updateSchedule(far  UINT8 *data);
+void getScheduleTime(far ACTIVITY_SCHEDULE* as , far UINT8* activityTime);
+void setSchedule(far SCHEDULE_DATA *data);
 void resetSchedule(UINT8 truck);
 void clearScheduleTime(void);
 
@@ -371,7 +369,7 @@ void APP_task(void)
 		if(log.readIndex != log.writeIndex)
 		{			
 			MB_construct(&packets[PACKET1],log.slaveID[log.readIndex], PRESET_MULTIPLE_REGISTERS, 
-								STARTING_ADDRESS,log.regCount[log.readIndex], log.entries[log.readIndex]);	
+ 								STARTING_ADDRESS,log.regCount[log.readIndex], log.entries[log.readIndex]);	
 
 			log.readIndex++;
 		
@@ -443,9 +441,9 @@ void APP_task(void)
 		}
 
 
-		updateCurrentActivityParameters();
+	//	updateCurrentActivityParameters();
 		ClrWdt();
-		updateCurrentActivityIndication();
+	//	updateCurrentActivityIndication();
 		app.prevMinute = app.curMinute;
 	}
 
@@ -703,22 +701,22 @@ void processReceivedData (void)
 void updateTruckActivity(UINT8 truck ,UINT8 activity , UINT8 milestone)
 {
 	ACTIVITY_SCHEDULE as;
-	ACTIVITY_TRIGGER_DATA *data ;
+	ACTIVITY_TRIGGER_DATA data ;
 
-	data->truck = truck;
-	data->activity = activity;
-	data->mileStone = milestone;
+	data.truck = truck;
+	data.activity = activity;
+	data.mileStone = milestone;
 	
-	if( (data->activity == ACTIVITY_CANCEL) && (data->mileStone == MILESTONE_NONE) )
+	if( (data.activity == ACTIVITY_CANCEL) && (data.mileStone == MILESTONE_NONE) )
 	{
-		updateShipmentScheduleIndication(data , 0);
+		updateShipmentScheduleIndication(&data , 0);
 		ClrWdt();
 	}
 	else
 	{
-		getActivitySchedule(data->truck ,data->activity, &as);
+		getActivitySchedule(data.truck ,data.activity, &as);
 	
-		if( processActivityTrigger(data,as ) == TRUE)
+		if( processActivityTrigger(&data,as ) == TRUE)
 		{
 	
 			updateCurrentActivityParameters();
@@ -727,13 +725,13 @@ void updateTruckActivity(UINT8 truck ,UINT8 activity , UINT8 milestone)
 			updateCurrentActivityIndication();
 			ClrWdt();
 
-			updateShipmentScheduleIndication(data,&as);
+			updateShipmentScheduleIndication(&data,&as);
 			ClrWdt();
 	
-			if( data->mileStone == MILESTONE_START)
+			if( data.mileStone == MILESTONE_START)
 			{
-				updateAlarmIndication(data->activity);
-				if( data->truck == pickingInfo.truck )
+				updateAlarmIndication(data.activity);
+				if( data.truck == pickingInfo.truck )
 				{
 					pickingInfo.truck = 0;
 					pickingInfo.state = 0;
@@ -886,7 +884,7 @@ void resetActivitySegment(UINT8 i)
 * Output	: None
 *------------------------------------------------------------------------------
 */
-void getActivitySchedule(UINT8 truck, ACTIVITY activity, ACTIVITY_SCHEDULE* activitySchedule)
+void getActivitySchedule(UINT8 truck, ACTIVITY activity,far  ACTIVITY_SCHEDULE* activitySchedule)
 {
 #ifdef __FACTORY_CONFIGURATION__
 
@@ -909,10 +907,11 @@ void getActivitySchedule(UINT8 truck, ACTIVITY activity, ACTIVITY_SCHEDULE* acti
 * Output	: None
 *------------------------------------------------------------------------------
 */
-BOOL processActivityTrigger( ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as)
+BOOL processActivityTrigger( far ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as)
 {
 	UINT8 i , j;
 	BOOL result= FALSE;
+
 	if( data->truck > TRUCKS_SUPPORTED )
 	{
 		return result;
@@ -925,7 +924,7 @@ BOOL processActivityTrigger( ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as)
 		if( data->truck  != currentActivitySegment[data->activity-1].no )			//if truck numbers don't match ignore
 			return FALSE;
 		
-		if ( scheduleTable[data->truck -1][data->activity - 1] != ACTIVITY_ONGOING) 	//if the particular activity has not started ignore
+		if ( scheduleTable[data->truck ][data->activity - 1] != ACTIVITY_ONGOING) 	//if the particular activity has not started ignore
 			return FALSE;
 
 		if( currentActivitySegment[data->activity-1].planSchedule.endMinute <= app.curMinute )
@@ -937,7 +936,7 @@ BOOL processActivityTrigger( ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as)
 			activityStatus = ON_TIME;
 		}
 		resetActivitySegment(data->activity -1 );										//reset the activity segment
-		scheduleTable[data->truck-1][data->activity-1] = ACTIVITY_COMPLETED;			//update scheduleTable
+		scheduleTable[data->truck][data->activity-1] = ACTIVITY_COMPLETED;			//update scheduleTable
 
 		result = TRUE;								
 				
@@ -947,12 +946,12 @@ BOOL processActivityTrigger( ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as)
 			if(currentActivitySegment[data->activity-1].free != TRUE )			// if activity segment not free ignore
 					return FALSE;
 	
-			if( scheduleTable[data->truck -1][data->activity - 1] != ACTIVITY_SCHEDULED	)	
+			if( scheduleTable[data->truck][data->activity - 1] != ACTIVITY_SCHEDULED	)	
 					return FALSE;
 
 			loadActivityParameters(data->activity-1, &as,data );
 
-			scheduleTable[data->truck-1][data->activity-1] = ACTIVITY_ONGOING;		//update scheduleTable 
+			scheduleTable[data->truck][data->activity-1] = ACTIVITY_ONGOING;		//update scheduleTable 
 
 
 
@@ -976,10 +975,10 @@ BOOL processActivityTrigger( ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as)
 * Output	: None
 *------------------------------------------------------------------------------
 */
-void loadActivityParameters(UINT8 segment,ACTIVITY_SCHEDULE* scheduleData,ACTIVITY_TRIGGER_DATA*data )
+void loadActivityParameters(UINT8 segment,far ACTIVITY_SCHEDULE* scheduleData,far ACTIVITY_TRIGGER_DATA*data )
 {
 	currentActivitySegment[segment].no = data->truck;
-	currentActivitySegment[segment].activity = data->activity;
+	currentActivitySegment[segment].activity = data->activity ;
 	currentActivitySegment[segment].planSchedule = *scheduleData;
 	currentActivitySegment[segment].actualSchedule.startMinute = app.curMinute;
 	currentActivitySegment[segment].free = FALSE;
@@ -1259,7 +1258,7 @@ void updateCurrentActivityParameters(void)
 void updateCurrentActivityIndication(void)
 {
 	UINT8 i,j,temp;
-	
+	UINT8 length;
 
 
 	if( app.state == APP_STATE_ACTIVE )
@@ -1284,6 +1283,7 @@ void updateCurrentActivityIndication(void)
 		temp = currentActivitySegment[i].actualPercentage/100;
 		activityParameterBuffer[j++] = ( temp >= 99 ) ? (99) : temp;
 
+		length = (j/2 == 0 ? j/2 : j/2 + 1 );
 		updateLog_Binary(activityParameterBuffer,i+1 , j);
 		DelayMs(30);
 	}
@@ -1302,13 +1302,13 @@ void updateCurrentActivityIndication(void)
 *------------------------------------------------------------------------------
 */
 
-void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHEDULE *as)
+void updateShipmentScheduleIndication(far ACTIVITY_TRIGGER_DATA *data,far 	ACTIVITY_SCHEDULE *as)
 {
 	UINT8 i = 0;
 	UINT8 deviceAddress;
 	UINT8 cmd;
 	UINT8 length;
-	if ( (data->truck-1) >= 4 )
+	if ( data->truck > 4 )
 	{
 		activityParameterBuffer[i++] = CMD_UPDATE_SHIPMENT_SCHEDULE;
 	}
@@ -1326,14 +1326,15 @@ void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHE
 		activityParameterBuffer[i++] = (app.curMinute )&0xFF;
 	}
 
-	if ( (data->truck-1) < 4 )
+	if ( (data->truck) <= 4 )
 	{
 		updateSchedule(activityParameterBuffer);
 	}
 	else
 	{
-		deviceAddress = ((data->truck-1) /4);
-		updateLog_Binary(activityParameterBuffer,deviceAddress,i);
+		length = (i/2 == 0 ? i/2 : i/2 + 1 );
+		deviceAddress = ( ((data->truck) - 1 ) /4);
+		updateLog_Binary(activityParameterBuffer,deviceAddress,length);
 	}
 }
 
@@ -1343,7 +1344,7 @@ void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHE
 *------------------------------------------------------------------------------
 */
 
-void displayTruckNumber(UINT8* buffer)
+void displayTruckNumber(far UINT8* buffer)
 {
 	UINT8 i;
 	UINT8 displayBuf[8] = {'0'};
@@ -1369,7 +1370,7 @@ void displayTruckNumber(UINT8* buffer)
 *------------------------------------------------------------------------------
 */
 
-void updateSchedule(UINT8 *data)
+void updateSchedule(far UINT8 *data)
 {
 	UINT8 i;
 	UINT8 truck,truckStatusIndex;
@@ -1419,7 +1420,7 @@ void updateSchedule(UINT8 *data)
 
 	
 			//update it into display buffer
-			DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
+			DigitDisplay_updateBufferBinaryPartial(truckStatus, 8, TRUCKS_SUPPORTED*2);
 
 			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);	
 						
@@ -1587,7 +1588,7 @@ void loadSchedule(UINT8 truck, UINT8 activity)
 */
 
 
-void getScheduleTime(ACTIVITY_SCHEDULE* as , UINT8* activityTime)
+void getScheduleTime(far ACTIVITY_SCHEDULE* as ,far  UINT8* activityTime)
 {
 	UINT16 hour;
 	UINT16 minute;
@@ -1729,7 +1730,7 @@ void updateLog(far UINT8 *data,UINT8 slave)
 void updateLog_Binary(far UINT8 *data,UINT8 slave,UINT8 length)
 {
 	UINT8 i = 0;
-	while( --length > 0)
+	while(length-- > 0)
 	{
 		log.entries[log.writeIndex][i] = (UINT16)*data << 8;
 		data++;

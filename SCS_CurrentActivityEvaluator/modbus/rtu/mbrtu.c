@@ -45,7 +45,7 @@
 
 /* ----------------------- Defines ------------------------------------------*/
 #define MB_SER_PDU_SIZE_MIN     4       /*!< Minimum size of a Modbus RTU frame. */
-#define MB_SER_PDU_SIZE_MAX     250     /*!< Maximum size of a Modbus RTU frame. */
+#define MB_SER_PDU_SIZE_MAX     100     /*!< Maximum size of a Modbus RTU frame. */
 #define MB_SER_PDU_SIZE_CRC     2       /*!< Size of CRC field in PDU. */
 #define MB_SER_PDU_ADDR_OFF     0       /*!< Offset of slave address in Ser-PDU. */
 #define MB_SER_PDU_PDU_OFF      1       /*!< Offset of Modbus-PDU in Ser-PDU. */
@@ -67,18 +67,18 @@ typedef enum
 
 /* ----------------------- Static variables ---------------------------------*/
 
-#pragma udata RTU_DATA
+#pragma idata RTU_DATA
 
 static volatile eMBSndState eSndState = 0;
 static volatile eMBRcvState eRcvState = 0 ;
 
-volatile UCHAR  ucRTUBuf[MB_SER_PDU_SIZE_MAX];
+volatile UCHAR  ucRTUBuf[MB_SER_PDU_SIZE_MAX] = {0};
 
-static volatile UCHAR *pucSndBufferCur;
-static volatile USHORT usSndBufferCount;
+static volatile UCHAR *pucSndBufferCur =0;
+static volatile USHORT usSndBufferCount =0;
 
-static volatile USHORT usRcvBufferPos;
-#pragma udata
+static volatile USHORT usRcvBufferPos =0;
+#pragma idata
 
 /* ----------------------- Start implementation -----------------------------*/
 eMBErrorCode

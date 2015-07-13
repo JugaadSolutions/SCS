@@ -14,24 +14,24 @@
 
 
 #pragma idata MODBUS_DATA
-unsigned char state;
-unsigned char retry_count;
-unsigned char TxEnablePin;
+unsigned char state = 0;
+unsigned char retry_count = 0;
+unsigned char TxEnablePin = 0;
 
 // frame[] is used to receive and transmit packages. 
 // The maximum number of bytes in a modbus packet is 256 bytes
 // This is limited to the serial buffer of 64 bytes
 unsigned char frame[BUFFER_SIZE] = {0}; 
 static unsigned char buffer = 0;
-long timeout; // timeout interval
-long polling; // turnaround delay interval
-unsigned int T1_5; // inter character time out in microseconds
-unsigned int frameDelay; // frame time out in microseconds
-unsigned long delayStart; // init variable for turnaround and timeout delay
-unsigned int total_no_of_packets; 
-Packet* packetArray; // packet starting address
-Packet* packet; // current packet
-unsigned int* register_array; // pointer to masters register array
+long timeout = 0; // timeout interv = al
+long polling = 0; // turnaround delay interval
+unsigned int T1_5 =0; // inter character time out in microseconds
+unsigned int frameDelay =0; // frame time out in microseconds
+unsigned long delayStart =0; // init variable for turnaround and timeout delay
+unsigned int total_no_of_packets =0; 
+Packet* packetArray =0; // packet starting address
+Packet* packet =0; // current packet
+unsigned int* register_array =0; // pointer to masters register array
 
 MBErrorCode MB_STATUS = MB_TXDONE;
 #pragma idata

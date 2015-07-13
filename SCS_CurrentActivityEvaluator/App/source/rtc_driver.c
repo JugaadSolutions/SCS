@@ -88,7 +88,7 @@
 UINT8 RegistersRTC[7] = {0};  // Buffer for second,minute,.....,year
 BOOL TimeClockUpdateRequired = FALSE;
 DATE_TIME stRtcRegs = {0};
-BOOL TimeClockMode;		//24 hr / 12 hr mode
+BOOL TimeClockMode= 0;		//24 hr / 12 hr mode
 #pragma idata
 
 
@@ -534,8 +534,8 @@ void RTC_Init(void)
 */
 #ifdef TIME_DEBUG
 	stRtcRegs.mSeconds	= 0;							// second 
-	stRtcRegs.mMinute  	= 50;							// minute 
-	stRtcRegs.mHour  	= 6;							// hour
+	stRtcRegs.mMinute  	= 5;							// minute 
+	stRtcRegs.mHour  	= 12;							// hour
 #endif
 	// Setup task to run
 //#ifdef TIME_DEBUG
@@ -563,7 +563,7 @@ void RTC_Task(void)
 	static UINT8 prevSec = 0;
 
 #ifdef TIME_DEBUG
-//	if (++stRtcRegs.mSeconds == 60)
+	if (++stRtcRegs.mSeconds == 60)
 	{
 		stRtcRegs.mSeconds = 0;
 		if (++stRtcRegs.mMinute == 60)

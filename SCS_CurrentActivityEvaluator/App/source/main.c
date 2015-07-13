@@ -219,7 +219,13 @@ void main(void)
 
 #endif
 
-
+#ifdef UART2TEST
+	for(i = 0 ; i < 26 ; i++)
+	{
+		 UART2_write(i + 'A');
+		 UART2_transmit();		
+	}	
+#endif
 
 
 	while(1)
@@ -244,6 +250,7 @@ void main(void)
           AppUpdate_count = 0;
 		
 		}
+
 		MB_task();
 
 		if(eMBUpdate_count >= 10)

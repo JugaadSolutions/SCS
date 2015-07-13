@@ -133,8 +133,8 @@ void BRD_init(void)
 	TX1_EN_DIR 		= PORT_OUT;
 	TX1_EN 			= SWITCH_OFF;
 
-//	TX2_EN_DIR 		= PORT_OUT;
-//	TX2_EN 			= SWITCH_OFF;
+	TX2_EN_DIR 		= PORT_OUT;
+	TX2_EN 			= SWITCH_OFF;
 
 	// Configure Serial port
 	SER2_TX_DIR 		=  PORT_OUT;
