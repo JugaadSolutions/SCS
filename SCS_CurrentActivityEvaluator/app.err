@@ -1,3 +1,3 @@
-Warning[2054] C:\Sagar\Repository\SCS\SCS_CurrentActivityEvaluator\App\source\app.c 649 : suspicious pointer conversion
-Warning[2054] C:\Sagar\Repository\SCS\SCS_CurrentActivityEvaluator\App\source\app.c 1388 : suspicious pointer conversion
-Warning[2054] C:\Sagar\Repository\SCS\SCS_CurrentActivityEvaluator\App\source\app.c 1476 : suspicious pointer conversion
+Warning[2054] C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c 653 : suspicious pointer conversion
+Warning[2054] C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c 1424 : suspicious pointer conversion
+Warning[2054] C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_CurrentActivityEvaluator\App\source\app.c 1524 : suspicious pointer conversion

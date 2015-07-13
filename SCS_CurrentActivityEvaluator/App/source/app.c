@@ -126,7 +126,10 @@ MMD_Config mmdConfig = {0};
 ACTIVITY_STATUS scheduleTable[TRUCKS_SUPPORTED][ACTIVITIES_SUPPORTED] = {0};
 SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
 
-UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8] = {0};
+//UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8] = {0};
+
+UINT8 truckNo[TRUCKS_SUPPORTED * 2] = {0};		//buffer for truck nos
+UINT8 truckStatus[TRUCKS_SUPPORTED * 2] = {0};	//buffer for truck status
 
 UINT16 pickingStartTime[TRUCKS_SUPPORTED+1] = {0};
 volatile STATUS activityStatus = 0;
@@ -136,6 +139,7 @@ UINT8 txBuffer[7] = {0};
 UINT8 transmitTruncktime[30] = {0};
 UINT8 activityTime[8];
 
+DISPLAY_SCANNING scanDisplay = {0};
 
 #pragma idata
 
@@ -186,7 +190,7 @@ void updateLog_Binary(far UINT8 *data,UINT8 slave,UINT8 length);
 void updateCurrentActivityParameters(void);
 void updateCurrentActivityIndication(void);
 
-
+void displayTruckNumber(UINT8* buffer);
 void updateBackLightIndication(void);
 BOOL updatePickingInfo(void);
 void updatePickingIndication(void);
@@ -1333,7 +1337,25 @@ void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHE
 	}
 }
 
+/*
+*------------------------------------------------------------------------------
+* Function used to update truck number
+*------------------------------------------------------------------------------
+*/
 
+void displayTruckNumber(UINT8* buffer)
+{
+	UINT8 i;
+	UINT8 displayBuf[8] = {'0'};
+
+	for( i = 0; i < TRUCKS_SUPPORTED; i++ )
+	{
+		displayBuf[i*2] = *(buffer+i)/10 + '0';
+		displayBuf[(i*2)+1] = *(buffer+i)%10 + '0';
+	}
+
+	DigitDisplay_updateBufferPartial(displayBuf, 0, TRUCKS_SUPPORTED*2);		
+}
 /*
 *------------------------------------------------------------------------------
 * void updateSchedule(SCHEDULE_UPDATE_INFO *info)
@@ -1350,13 +1372,14 @@ void updateShipmentScheduleIndication(ACTIVITY_TRIGGER_DATA *data,	ACTIVITY_SCHE
 void updateSchedule(UINT8 *data)
 {
 	UINT8 i;
-	UINT8 truck;
+	UINT8 truck,truckStatusIndex;
 	SCHEDULE_UPDATE_INFO *info; 
 	UINT8 activityCompleteFlag = TRUE;
 	INT8 delayedActivity = 0xFF;
 	info = (SCHEDULE_UPDATE_INFO*) data;
 	truck = info->truck ;
-
+	truckStatusIndex =  (truck - 1) * 2;
+	
 
 	if( info->activity == ACTIVITY_CANCEL)
 	{
@@ -1371,6 +1394,13 @@ void updateSchedule(UINT8 *data)
 			(scheduleStatus[truck][i]).activityStatus = ACTIVITY_CANCELLED;
 		}
 
+		truckStatus[truckStatusIndex] = DIGIT_DASH;
+		truckStatus[truckStatusIndex + 1] = DIGIT_DASH;
+
+		DigitDisplay_updateBufferBinaryPartial(truckStatus, 8, TRUCKS_SUPPORTED*2);
+
+		clearScheduleTime();
+		loadSchedule(truck,info->activity);
 
 
 	}
@@ -1382,11 +1412,16 @@ void updateSchedule(UINT8 *data)
 			case MILESTONE_START:
 			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)				//if activity is not scheduled ignore cmd
 				return ;
-			
 
+			//store the status of the truck
+			truckStatus[truckStatusIndex] = DIGIT_A;
+			truckStatus[truckStatusIndex + 1] = DIGIT_SPACE;
 
-			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);
-			
+	
+			//update it into display buffer
+			DigitDisplay_updateBufferBinaryPartial(scanDisplay.buffer, 8, TRUCKS_SUPPORTED*2);
+
+			getScheduleTime(&scheduleTable[truck][info->activity-1] , activityTime);	
 						
 			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_ONGOING;
 			scheduleStatus[truck][info->activity - 1].status = info->status;
@@ -1396,13 +1431,11 @@ void updateSchedule(UINT8 *data)
 			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_ONGOING)				//if activity is not scheduled ignore cmd
 				return ;
 
-
+			clearScheduleTime();
 			loadSchedule(truck,info->activity);
 
 			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_COMPLETED;
 			scheduleStatus[truck][info->activity - 1].status = info->status;
-
-			truck_statusIndicator[truck][5] = SYM_COMPLETE;
 
 			for(i = 0; i  < ACTIVITIES_SUPPORTED ; i++)
 			{
@@ -1423,15 +1456,29 @@ void updateSchedule(UINT8 *data)
 
 			if( i < ACTIVITIES_SUPPORTED )
 			{
-				truck_statusIndicator[truck][4] = SYM_COMPLETE;
-				truck_statusIndicator[truck][6] = i+SYM_PICKING;
-				truck_statusIndicator[truck][7] = i+SYM_PICKING;
+					//store the status of the truck
+				truckStatus[truckStatusIndex] = DIGIT_C;
+				switch(i)
+				{
+					case 0 : //delayed due to picking
+						truckStatus[truckStatusIndex + 1] = DIGIT_P;
+					break;
+					case 1 : //delayed due to staging
+						truckStatus[truckStatusIndex + 1] = 5;//'S' in seven segment
+					break;
+
+					case 2 : //delayed due to loading
+						truckStatus[truckStatusIndex + 1] = DIGIT_L;
+					break;
+				}
+				
+	
 			}
 			else
 			{
-				truck_statusIndicator[truck][4] = ' ';
-				truck_statusIndicator[truck][6] = ' ';
-				truck_statusIndicator[truck][7] = ' ';
+					//store the status of the truck
+				truckStatus[truckStatusIndex] = DIGIT_C;
+				truckStatus[truckStatusIndex + 1] = DIGIT_SPACE;
 			}
 			
 			break;
@@ -1446,6 +1493,7 @@ void updateSchedule(UINT8 *data)
 
 	loadSchedule(truck,info->activity);
 }
+
 
 /*
 *------------------------------------------------------------------------------

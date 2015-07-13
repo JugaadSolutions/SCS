@@ -17,6 +17,7 @@
 #include "rtc_driver.h"
 #include "math_fun.h"
 #include "digit_driver.h"
+#include "digitdisplay.h"
 
 /*
 *------------------------------------------------------------------------------
@@ -219,6 +220,11 @@ typedef struct _SCHEDULE_UPDATE_INFO
 	UINT8 curMinute_LSB;
 }SCHEDULE_UPDATE_INFO;
  
+typedef struct _DISPLAY_SCANNING
+{
+	//used to store status of truck
+	UINT8 buffer[TRUCKS_SUPPORTED*2];
+}DISPLAY_SCANNING;
 
 typedef struct _SCHEDULE_DATA
 {

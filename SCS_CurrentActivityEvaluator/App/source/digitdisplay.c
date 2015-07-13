@@ -68,16 +68,6 @@ static const UINT8 SEVENSEGMENT[] ={0x3f,0x06,0x5b,0x4f,0x66,
 									0x6d,0x7d,0x07,0x7f,0x6f,
 									0x77,0x39,0x73,0x38,0x40,0x00};
 
-enum
-{
-	DIGIT_A = 10,
-	DIGIT_C = 11,
-	DIGIT_P = 12,
-	DIGIT_L = 13,
-	DIGIT_DASH = 14,
-	DIGIT_CLEAR = 15
-};
-
 
 
 #pragma idata	DISPLAY_DATA
@@ -275,6 +265,33 @@ BOOL DigitDisplay_updateBufferBinary(UINT8 *buffer)
 	
 }
 
+/*
+*------------------------------------------------------------------------------
+*BOOL DigitDisplay_updateBufferBinaryPartial(far UINT8 *buffer, UINT8 from, UINT8 length)
+*
+* Function to reset the digit index
+*  
+* Input : buffer containing the new values for the digits,
+*			from - zero based index from where the update has to happen
+			length - number of digits that have to be updated
+* 
+* output: the display buffer is updated with the new values
+*
+* return value: boolean indicating success or failure.
+* 
+*------------------------------------------------------------------------------
+*/
+
+BOOL DigitDisplay_updateBufferBinaryPartial(far UINT8 *buffer, UINT8 from, UINT8 length)
+{
+	UINT8 i = 0,j=0;
+
+	for ( i = from ; i < from+length ; i++,j++)
+		digitDisplay.buffer[STATIC][i] = buffer[j];
+
+	digitDisplay.digitIndex = 0;
+	return SUCCESS;
+}
 
 
 /*
