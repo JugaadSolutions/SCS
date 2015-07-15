@@ -55,7 +55,7 @@ enum RECEIVER_STATE
 
 
 #pragma idata UART_DATA
-UART uart[ACTIVE_USARTS] = {0,0,0,{0}};
+UART uart[ACTIVE_USARTS] = {0};
 
 #pragma idata
 /*
@@ -392,7 +392,8 @@ BOOL UART1_transmit(void)
 	return FALSE;
 */
 
-	UINT8 i,data;
+	UINT8 i;
+	volatile UINT8 data;
 #ifdef __RS485__
 	TX1_EN = 1;	//enable the tx control for rs485 communication
 #endif

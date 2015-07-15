@@ -74,6 +74,8 @@ void showUImsg( UINT8* msg );
 
 void storeCMDinBuffer(UINT8 *buffer, UINT8 command);
 
+void manageStation(void);
+
 
 void UI_init(void)
 {
@@ -140,6 +142,7 @@ void UI_task(void)
 			{
 				if(APP_activityValid(ui.buffer) == VALID)
 				{
+					manageStation();
 					setUImsg(UI_MSG_ACTIVITY);
 					ui.state = UI_ACTIVITY;
 				}
@@ -542,6 +545,7 @@ void UI_task(void)
 			if(APP_activityValid(ui.buffer) == VALID)
 			{	
 				APP_cancelTruck(ui.buffer);
+				manageStation();
 				storeCMDinBuffer(ui.buffer, CMD_CANCEL_TRUCK);
 			
 				//store into log
@@ -650,6 +654,12 @@ UINT8 mapKey(UINT8 scancode, UINT8 duration)
 				|| (keypressed =='\x0C') || (keypressed =='\x0E') )
 				keypressed = 0xFF;
 
+		}
+		else
+		{
+			if( (keypressed == '\xA') || (keypressed =='\x0B')
+				|| (keypressed =='\x0C') )
+				keypressed = 0xFF;
 		}
 
 		break;
@@ -839,3 +849,15 @@ void storeCMDinBuffer(UINT8 *buffer, UINT8 command)
 }
 
 		
+void manageStation(void)
+{
+	UINT8 i,temp = 0;
+
+	if( ui.bufferIndex == 1 )
+	{
+		temp = ui.buffer[0];
+		ui.buffer[0] = '0';
+		ui.buffer[1] = temp;
+	}
+
+}

@@ -102,6 +102,13 @@ void idle(void)
 		current_connection = packet->connection;
 		
 		//if (!current_connection)
+
+
+
+
+
+
+
 		if( current_connection != 1 )
 		{			
 			// If all the connection attributes are false return
