@@ -18,7 +18,7 @@
 #include "math_fun.h"
 #include "digit_driver.h"
 #include "digitdisplay.h"
-
+#include "uart.h"
 /*
 *------------------------------------------------------------------------------
 * Private Macros
@@ -48,8 +48,10 @@
 #define CURRENT_ACTIVITY_SEGMENTS			3
 
 #define TRUCKS_SUPPORTED					16
+#define TRUCKS_SUPPORTED_BOARD				4
 #define ACTIVITIES_SUPPORTED				3
 #define BREAKS_SUPPORTED					8
+#define TRUCK_STATUS_BASE					8
 
 
 

@@ -116,14 +116,18 @@ static BOOL ledState;
 */
 void BRD_init(void)
 {
-	OSCCON = 0x70;
-	DelayMs(5);
+
+
 	// set all anolog channels as Digital I/O
 	ADCON0 = 0x00;
 	ADCON1 = 0x0F;
 	ADCON2 = 0xB5;
 
 	MEMCON = 0x80;
+
+	OSCCON = 0x70;
+	OSCTUNEbits.PLLEN = 1;
+	DelayMs(5);
 
 	// Configure heart beat LED output
 	HEART_BEAT_DIR 	= PORT_OUT;
@@ -185,13 +189,10 @@ void BRD_init(void)
 	HOOTER_DIR       = PORT_OUT;
 	HOOTER  		 = SWITCH_OFF;
 
-	OSCTUNEbits.PLLEN = 1;
-	DelayMs(100);
-
 
 
    // Enable internal PORTB pull-ups
-    INTCON2bits.RBPU = 0;
+   // INTCON2bits.RBPU = 1;
 
 
 //for mobus testing

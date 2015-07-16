@@ -166,7 +166,7 @@ extern UINT16 AppUpdate_count;
 */
 
 #define MMD_REFRESH_PERIOD	(65535 - 20000)
-#define TICK_PERIOD	(65535 - 8000) //	500us
+#define TICK_PERIOD	(65535 - 8000)  //	500us
 
 
 void main(void)
@@ -176,17 +176,35 @@ void main(void)
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
-	UINT8 line[16] ="DENSO - BREAK "; 
+	UINT8 line[] ="  BREAK "; 
 #endif
 
 
+
+
 	BRD_init();
+
+#ifdef __DIGIT_DISPLAY_TEST__
+
+	for(i = 128; i > 32 ; i-- )
+	{
+		for( k = 0; k < 11 ; k++)
+			{
+				DDR_loadDigit(i,k);
+				DelayMs(100);
+			}
+	}
+#endif
+
+
+
+
 	HB_init();
-	DigitDisplay_init(16);
+	DigitDisplay_init(NO_OF_DIGIT);
 	MMD_init();  // Display initialization
 
 	RTC_Init(); //RTC Initialization
-	
+
 	APP_init();
 
 	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
@@ -195,17 +213,7 @@ void main(void)
 
 	EnableInterrupts();
 
-#ifdef __DIGIT_DISPLAY_TEST__
 
-	for(i = 32; i < 128 ; i++ )
-	{
-		for( k = 0; k < 10 ; k++)
-			{
-				DDR_loadDigit(i,k);
-				DelayMs(75);
-			}
-	}
-#endif
 
 #if defined (MMD_TEST)
 	MMD_clearSegment(0);
@@ -213,7 +221,7 @@ void main(void)
 	mmdConfig.length = MMD_MAX_CHARS;
 	mmdConfig.symbolCount = strlen(line);
 	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_HIGH;
+	mmdConfig.scrollSpeed = 0;//SCROLL_SPEED_LOW;
 			
 	MMD_configSegment( 0 , &mmdConfig);
 
@@ -231,7 +239,7 @@ void main(void)
 	while(1)
 	{
 
-		if(  heartBeatCount >= 550)
+		if(  heartBeatCount >= 500)
 		{
 			RTC_Task();
 			HB_task();
@@ -244,7 +252,7 @@ void main(void)
 			mmdUpdateCount = 0;
 		}
 
-		if(AppUpdate_count >=550 )
+		if(AppUpdate_count >=500 )
 		{
 		  APP_task();
           AppUpdate_count = 0;

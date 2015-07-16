@@ -8,21 +8,24 @@
 */
 
 
-#define DEVICE_ADDRESS			0x02
+#define DEVICE_ADDRESS			1
 
 
 #define __FACTORY_CONFIGURATION__
 
+/*----------------------------------------
+* Display Configuration (MMD , Scan Digit , Latch Digit)
+*----------------------------------------*/
+#define MMD_MAX_CHARS		28
+#define MMD_MAX_SEGMENTS	1
+#define MMD_MAX_ADDRESS		30
+#define NO_OF_DIGIT			16
+//#define __MMD_STATIC__
+#define MMD_TEST
+//#define COMMON_CATHODE
 //#define __DISPLAY_TEST__ 
 
-
-//MMD module configuration
-#define MMD_MAX_CHARS		8
-#define MMD_MAX_SEGMENTS	4
-#define MMD_MAX_ADDRESS		128
-//#define __MMD_STATIC__
-
-
+//#define __DIGIT_DISPLAY_TEST__
 /*----------------------------------------
 *	TIMER Configuration
 *----------------------------------------*/

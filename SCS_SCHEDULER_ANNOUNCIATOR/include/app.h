@@ -2,11 +2,11 @@
 #include "mmd.h"
 #include "string.h"
 
-#define MAX_SIZE							16
+#define MAX_SIZE							40
 
 #define TRUCKS_SUPPORTED					4
 #define ACTIVITIES_SUPPORTED				3
-
+#define TRUCK_STATUS_BASE					8
 
 #define ACTIVITY_PARAMETER_BUFFER_SIZE		16
 

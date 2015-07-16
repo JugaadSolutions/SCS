@@ -289,7 +289,7 @@ BOOL DigitDisplay_updateBufferBinaryPartial(far UINT8 *buffer, UINT8 from, UINT8
 	UINT8 i = 0,j=0;
 
 	for ( i = from ; i < from+length ; i++,j++)
-		digitDisplay.buffer[STATIC][i] = buffer[j];
+		digitDisplay.buffer[STATIC][i] = SEVENSEGMENT[buffer[j]];
 
 	digitDisplay.digitIndex = 0;
 	return SUCCESS;
@@ -494,6 +494,7 @@ static void writeToDisplayPort( UINT8 value )
 {
 	UINT8 shift = 1;
 	SSD_DIGIT_SEL_A = 0X00;
+	SSD_DIGIT_SEL_B = 0x00;
 	
 	Delay10us(1);
 

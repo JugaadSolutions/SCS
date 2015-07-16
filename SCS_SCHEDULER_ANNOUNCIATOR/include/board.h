@@ -77,37 +77,37 @@
 #define		HEART_BEAT_DIR			TRISGbits.TRISG0
 
 // MMD PORTS
-#define 	DISPLAY_CONTROL				PORTFbits.RF0
-#define 	DISPLAY_CONTROL_DIRECTION	TRISFbits.TRISF0
+#define 	DISPLAY_CONTROL				PORTCbits.RC0
+#define 	DISPLAY_CONTROL_DIRECTION	TRISCbits.TRISC0
 
 #define		DATA_PORT				PORTA	//LATD	 				// 7seg display data (DB0-DB7)
 #define 	DATA_PORT_DIR			TRISA
-#define		DIGIT_PORT				PORTE	//LATB	 				// digit drivers(upto 128 digits)
-#define		DIGIT_PORT_DIR			TRISE	//LATB	 				// digit drivers(upto 128 digits)
+#define		DIGIT_PORT				PORTB	//LATB	 				// digit drivers(upto 128 digits)
+#define		DIGIT_PORT_DIR			TRISB	//LATB	 				// digit drivers(upto 128 digits)
 
-#define		ROW_SEL_A				PORTDbits.RD0			// decoder digit sel A
-#define		ROW_SEL_A_DIR			TRISDbits.TRISD0
-#define		ROW_SEL_B				PORTDbits.RD1		// decoder digit sel B
-#define		ROW_SEL_B_DIR			TRISDbits.TRISD1
-#define		ROW_SEL_C				PORTDbits.RD2		// decoder digit sel C
-#define		ROW_SEL_C_DIR			TRISDbits.TRISD2
-#define		ROW_SEL_D				PORTDbits.RD3		// decoder digit sel D
-#define		ROW_SEL_D_DIR			TRISDbits.TRISD3
-#define		ROW_SEL_E				PORTDbits.RD4		// decoder digit sel E
-#define		ROW_SEL_E_DIR			TRISDbits.TRISD4
-#define		ROW_SEL_F				PORTDbits.RD5		// decoder digit sel F
-#define		ROW_SEL_F_DIR			TRISDbits.TRISD5
-#define		ROW_SEL_G				PORTDbits.RD6	// decoder digit sel G
-#define		ROW_SEL_G_DIR			TRISDbits.TRISD6
-#define		ROW_SEL_H				PORTDbits.RD7	// decoder digit sel G
-#define		ROW_SEL_H_DIR			TRISDbits.TRISD7
+#define		ROW_SEL_A				PORTJbits.RJ0			// decoder digit sel A
+#define		ROW_SEL_A_DIR			TRISJbits.TRISJ0
+#define		ROW_SEL_B				PORTJbits.RJ1		// decoder digit sel B
+#define		ROW_SEL_B_DIR			TRISJbits.TRISJ1
+#define		ROW_SEL_C				PORTJbits.RJ2		// decoder digit sel C
+#define		ROW_SEL_C_DIR			TRISJbits.TRISJ2
+#define		ROW_SEL_D				PORTJbits.RJ3		// decoder digit sel D
+#define		ROW_SEL_D_DIR			TRISJbits.TRISJ3
+#define		ROW_SEL_E				PORTJbits.RJ4		// decoder digit sel E
+#define		ROW_SEL_E_DIR			TRISJbits.TRISJ4
+#define		ROW_SEL_F				PORTJbits.RJ5		// decoder digit sel F
+#define		ROW_SEL_F_DIR			TRISJbits.TRISJ5
+#define		ROW_SEL_G				PORTJbits.RJ6	// decoder digit sel G
+#define		ROW_SEL_G_DIR			TRISJbits.TRISJ6
+#define		ROW_SEL_H				PORTJbits.RJ7	// decoder digit sel G
+#define		ROW_SEL_H_DIR			TRISJbits.TRISJ7
 
 
 //Digit Selection 
-#define 	SSD_DIGIT_SEL_A			PORTJ
-#define		SSD_DITIT_SEL_A_DIR		TRISH
-#define 	SSD_DIGIT_SEL_B			PORTB
-#define		SSD_DITIT_SEL_B_DIR		TRISB
+#define 	SSD_DIGIT_SEL_A			PORTD
+#define		SSD_DITIT_SEL_A_DIR		TRISD
+#define 	SSD_DIGIT_SEL_B			PORTF
+#define		SSD_DITIT_SEL_B_DIR		TRISF
 
 //Display
 #define	DISPLAY_PORT               PORTH

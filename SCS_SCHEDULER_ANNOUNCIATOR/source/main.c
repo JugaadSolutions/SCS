@@ -160,8 +160,8 @@ extern UINT16 mmdUpdateCount;
 *------------------------------------------------------------------------------
 */
 
-#define MMD_REFRESH_PERIOD	(65535 - 10000)
-#define TICK_PERIOD	(65535 - 16000)
+#define MMD_REFRESH_PERIOD	(65535 - 20000) 
+#define TICK_PERIOD	(65535 - 8000)
 
 
 void main(void)
@@ -171,16 +171,30 @@ void main(void)
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
-	UINT8 line[10] ="IDEONICS "; 
+	UINT8 line[] ="PICKINGABCDEFGHIJKLMNOPQRST"; 
 #endif
 
 
 
 	BRD_init();
+
+#ifdef __DIGIT_DISPLAY_TEST__
+
+	for(i = 128; i > 32 ; i-- )
+	{
+		for( k = 0; k < 11 ; k++)
+			{
+				DDR_loadDigit(i,k);
+				DelayMs(100);
+			}
+	}
+#endif
+
+
 	HB_init();
 
 	MMD_init();  // Display initialization
-	DigitDisplay_init(16);
+	DigitDisplay_init(NO_OF_DIGIT);
 
 	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
 	TMR1_init(MMD_REFRESH_PERIOD,MMD_refreshDisplay);
@@ -202,16 +216,6 @@ void main(void)
 	}
 #endif
 
-#ifdef __DISPLAY_TEST__
-
-	for(i = 32; i < 96 ; i++ )
-		for( k = 0; k < 10 ; k++)
-		{
-				DDR_loadDigit(i,k);
-				DelayMs(100);
-		}
-
-#endif
 
 #if defined (MMD_TEST)
 	MMD_clearSegment(0);
@@ -229,7 +233,7 @@ void main(void)
 
 	while(1)
 	{
-		if(  heartBeatCount >= 250 )
+		if(  heartBeatCount >= 500 )
 		{
 			APP_task();
 			HB_task();

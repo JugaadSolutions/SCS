@@ -56,6 +56,7 @@
 */
 
 extern void DDR_loadDigit(UINT8 digit, UINT8 data);
+extern void DDR_loadDigit_test(UINT8 digit, UINT8 data);
 
 #endif
 /*

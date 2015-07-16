@@ -119,9 +119,9 @@ BOOL DigitDisplay_init( UINT8 noDigits )
 
 #ifdef __DISPLAY_TEST__
 
-for(j = 0; j < DIGIT_SPACE + 1 ; j++)
+for(j = 0; j < NO_OF_DIGIT ; j++)
 {
-	for( i = 0; i < 16 ; i++)
+	for( i = 0; i < DIGIT_SPACE + 1  ; i++)
 	{
 		writeToDisplayPort( SEVENSEGMENT[i] | (0x80) )	;
 		DelayMs(100);
@@ -287,7 +287,7 @@ BOOL DigitDisplay_updateBufferBinaryPartial(far UINT8 *buffer, UINT8 from, UINT8
 	UINT8 i = 0,j=0;
 
 	for ( i = from ; i < from+length ; i++,j++)
-		digitDisplay.buffer[STATIC][i] = buffer[j];
+		digitDisplay.buffer[STATIC][i] = SEVENSEGMENT[buffer[j]];
 
 	digitDisplay.digitIndex = 0;
 	return SUCCESS;
@@ -469,7 +469,7 @@ static void writeToDisplayPort( UINT8 value )
 	DIGIT_PORT_B = ~(0XFF);
 		
 
-	Delay10us(1);
+	Delay10us(5);
 
 	DATA_1_PORT = value;
 
@@ -486,7 +486,7 @@ static void writeToDisplayPort( UINT8 value )
 	}
 
 	
-	Delay10us(1);
+	Delay10us(5);
 
 }
 

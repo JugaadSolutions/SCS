@@ -83,12 +83,7 @@ const rom UINT8 LED_MAP[11] = {0xbf,0x86,0xdb,0xcf,0xe6,0xed,0xfd,0x87,0xff,0xef
 */
 void DDR_loadDigit(UINT8 digit, UINT8 data)
 {
-/*
-	if( digit >=64 )
-	{
-		digit+=128;
-	}
-*/
+
 	DISABLE_TMR1_INTERRUPT();
 	DISPLAY_CONTROL = DISPLAY_DISABLE;	//disable the display
 	DIGIT_PORT = digit;					//set the address
@@ -97,7 +92,20 @@ void DDR_loadDigit(UINT8 digit, UINT8 data)
 	Delay10us(50);						//delay for the data to stabilize
 	DISPLAY_CONTROL = DISPLAY_DISABLE;	//disable it again
 	ENABLE_TMR1_INTERRUPT();
+	
 }
+
+
+void DDR_loadDigit_test(UINT8 digit, UINT8 data)
+{
+
+//	UART1_write(digit);
+//	UART1_transmit();
+//	UART1_write(LED_MAP[data]);
+//	UART1_transmit();
+	
+}
+
 /*
 *  End of digit_driver.c
 */

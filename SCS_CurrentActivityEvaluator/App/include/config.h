@@ -8,7 +8,7 @@
 */
 
 
-#define DEVICE_ADDRESS			0x01
+#define DEVICE_ADDRESS			0x04
 
 #define __FACTORY_CONFIGURATION__
 
@@ -16,11 +16,12 @@
 * Display Configuration (MMD , Scan Digit , Latch Digit)
 *----------------------------------------*/
 //MMD module configuration
-#define MMD_MAX_CHARS		16
+#define MMD_MAX_CHARS		11
 #define MMD_MAX_SEGMENTS	2
-#define MMD_MAX_ADDRESS		32
+#define MMD_MAX_ADDRESS		30
+#define NO_OF_DIGIT			16
 //#define __MMD_STATIC__
-//#define MMD_TEST
+#define MMD_TEST
 //#define __DISPLAY_TEST__
 //#define COMMON_CATHODE
 //#define __DIGIT_DISPLAY_TEST__
@@ -38,7 +39,7 @@
 #define UART2_BAUD			19200
 //#define PASS_THROUGH
 //#define UART_TEST
-#define UART2TEST
+///#define UART2TEST
 /*----------------------------------------
 *	COM module configuration
 *----------------------------------------*/
@@ -67,13 +68,13 @@
 /*----------------------------------------
 *	RTC CONFIGURATION
 *----------------------------------------*/
-#define TIME_DEBUG
+//#define TIME_DEBUG
 
 //#define RTC_DS1307
 //#define RTC_DS3232
 
 //#define __SET_RTC__
-//#define RTC_DATA_ON_UART
+#define RTC_DATA_ON_UART
 
 
 //#define __ERROR_DEBUG__

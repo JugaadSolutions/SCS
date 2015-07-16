@@ -83,7 +83,7 @@ enum
 #define TIMEOUT		 		1
 #define POLLING 			1 // the scan rate
 #define RETRY_COUNT			10
-#define SLAVE_ID			1
+#define SLAVE_ID			4
 #define STARTING_ADDRESS	0
 
 
