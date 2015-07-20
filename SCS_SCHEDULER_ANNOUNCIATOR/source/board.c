@@ -180,9 +180,6 @@ void BRD_init(void)
 	//DIGIT SELECTION
 	SSD_DITIT_SEL_A_DIR = PORT_OUT;
 	SSD_DITIT_SEL_B_DIR = PORT_OUT;
-	
-
-
 
 	OSCTUNEbits.PLLEN = 1;
 	DelayMs(100);

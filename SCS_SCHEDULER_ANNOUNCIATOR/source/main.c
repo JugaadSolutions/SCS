@@ -196,6 +196,7 @@ void main(void)
 	MMD_init();  // Display initialization
 	DigitDisplay_init(NO_OF_DIGIT);
 
+
 	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
 	TMR1_init(MMD_REFRESH_PERIOD,MMD_refreshDisplay);
 

@@ -68,9 +68,11 @@ typedef struct _APP
 	//Modbus buffer
 	UINT8 eMBdata[MAX_SIZE];
 	BOOL DataReceived;
+
+
 }APP;
 
-
+extern 	UINT8 timeCount;
 /*
 *-----------------------------------------------------------
 * shipment announciator
@@ -322,6 +324,8 @@ void APP_task(void)
 	}
 	
 	ENABLE_UART_RX_INTERRUPT();
+
+
 
 
 }

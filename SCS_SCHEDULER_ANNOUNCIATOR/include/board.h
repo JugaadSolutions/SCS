@@ -113,7 +113,6 @@
 #define	DISPLAY_PORT               PORTH
 #define DISPLAY_PORT_DIRECTION     TRISH
 
-
 			
 /*
 *------------------------------------------------------------------------------
