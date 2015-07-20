@@ -337,7 +337,7 @@ void APP_init(void)
 
 	resetSchedule();
 
-
+/*
 	time_backlight[BACKLIGHT_TRUCK_INDEX] = SYM_ALL;
 	time_backlight[BACKLIGHT_STATUS_INDEX] = SYM_ALL;
 	time_backlight[BACKLIGHT_PICKING_INDEX] = SYM_ALL;
@@ -351,7 +351,7 @@ void APP_init(void)
 	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
 
 	MMD_configSegment(1, &mmdConfig);
-
+*/
 
 
 }

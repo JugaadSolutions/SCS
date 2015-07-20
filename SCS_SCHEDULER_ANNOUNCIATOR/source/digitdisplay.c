@@ -117,7 +117,7 @@ BOOL DigitDisplay_init( UINT8 noDigits )
 	digitDisplay.noDigits = noDigits;				//set no of digits 
 	for( i = 0; i < digitDisplay.noDigits; i++)
 	{
-		digitDisplay.buffer[BLINK][i] = SEVENSEGMENT[10];		//clear buffer to be used  during blink mode
+		digitDisplay.buffer[BLINK][i] = SEVENSEGMENT[15];		//clear buffer to be used  during blink mode
 	}
 	digitDisplay.dispBuffer = digitDisplay.buffer[STATIC];	//set initial display buffer to data(i.e. buffer[0])
 

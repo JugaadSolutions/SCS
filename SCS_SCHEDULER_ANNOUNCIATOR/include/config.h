@@ -8,7 +8,7 @@
 */
 
 
-#define DEVICE_ADDRESS			1
+#define DEVICE_ADDRESS			2
 
 
 #define __FACTORY_CONFIGURATION__

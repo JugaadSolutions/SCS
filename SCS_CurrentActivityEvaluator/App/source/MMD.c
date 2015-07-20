@@ -166,7 +166,7 @@ typedef struct _MMD_Segment
 
 
 
-void WriteDataToDisplay(UINT8 digit, UINT8 data);
+
 void makeBitMap(UINT8 id , UINT8 row );
 
 
@@ -292,8 +292,7 @@ BOOL MMD_configSegment( UINT8 id,  MMD_Config *config )
 		{
 			
 			curSymbol = mmdSegment[id].symbolBuffer[mmdSegment[id].curSymbolIndex++]-32;
-			if( (curSymbol < 0) || (curSymbol > 0x63 ))
-				curSymbol = 0;
+
 			if(mmdSegment[id].curSymbolIndex >= mmdSegment[id].symbolCount)
 				mmdSegment[id].curSymbolIndex = 0;
 
@@ -314,8 +313,7 @@ BOOL MMD_configSegment( UINT8 id,  MMD_Config *config )
 		for( i = 0; i < mmdSegment[id].length ; i++)
 		{
 			curSymbol = mmdSegment[id].symbolBuffer[mmdSegment[id].curSymbolIndex++]-32;
-	        if( (curSymbol < 0) || (curSymbol > 0x63 ))
-				curSymbol = 0;
+
 			if(mmdSegment[id].curSymbolIndex >= mmdSegment[id].symbolCount)
 				mmdSegment[id].curSymbolIndex = 0;
 			for( j = 0; j < ROWS_PER_SYMBOL ; j++)
@@ -440,8 +438,7 @@ void MMD_task(void)
 					
 				mmdSegment[i].DispDataBuffer[j][k-1] <<= 1;
 				curSymbol = mmdSegment[i].symbolBuffer[mmdSegment[i].curSymbolIndex]-32;
-				 if( (curSymbol < 0) || (curSymbol > 0x63 ))
-					curSymbol = 0;	
+	
 				curRowData	 = FontTable5x7[curSymbol][j];
 				if( getBit(curRowData,7-mmdSegment[i].shiftCount) == 1 )
 				{
@@ -501,14 +498,8 @@ void MMD_refreshDisplay(void)
 			dataByte = mmdSegment[i].DispBuffer[mmdSegment[i].curDispBuffer][iSRState][j];
 
 			addr = mmdSegment[i].startAddress + j;					//set the address
-/*
-			if( addr >=64 )	//workaround for PCB flaw 
-			{				//- pins 39 & 40 are interchanged in 10 pin connector 
-				addr +=128;
-			}
-*/
-			//DISPLAY_CONTROL = DISPLAY_DISABLE;
-
+		  	DISPLAY_CONTROL = DISPLAY_DISABLE;
+			Delay10us(1);
 			DIGIT_PORT = addr;
 			DATA_PORT = ~dataByte;
 			DISPLAY_CONTROL = DISPLAY_ENABLE;	//enable the display					
@@ -637,33 +628,5 @@ void MMD_refreshDisplay(void)
 
 	
 
-
-
-/*
-*------------------------------------------------------------------------------
-* void WriteDataToDisplay(UINT8 digit, UINT8 data)
-*
-* Summary	: Write one byte data on the bus
-*
-* Input		: UINT8 digit - digit number to write the data
-*			  UINT8 dataByte - data byte for the digit
-*
-* Output	: None
-*------------------------------------------------------------------------------
-*/
-void WriteDataToDisplay(UINT8 digit, UINT8 data)
-{
-	if( digit >=64 )
-	{
-		digit+=128;
-	}
-	DISPLAY_CONTROL = DISPLAY_DISABLE;	//disable the display
-	DIGIT_PORT = digit;					//set the address
-	DATA_PORT = data;					// write data
-	DISPLAY_CONTROL = DISPLAY_ENABLE;	//enable the display
-	Delay10us(10);						//delay for the data to stabilize
-	DISPLAY_CONTROL = DISPLAY_DISABLE;	//disable it again
-
-}
 
 

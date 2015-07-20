@@ -176,7 +176,10 @@ void main(void)
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
-	UINT8 line[] ="  BREAK "; 
+	UINT8 line[] = {SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
+					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
+					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
+					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL};
 #endif
 
 
@@ -219,7 +222,7 @@ void main(void)
 	MMD_clearSegment(0);
 	mmdConfig.startAddress = 0;
 	mmdConfig.length = MMD_MAX_CHARS;
-	mmdConfig.symbolCount = strlen(line);
+	mmdConfig.symbolCount = 28; //strlen(line);
 	mmdConfig.symbolBuffer = line;
 	mmdConfig.scrollSpeed = 0;//SCROLL_SPEED_LOW;
 			
@@ -254,7 +257,7 @@ void main(void)
 
 		if(AppUpdate_count >=500 )
 		{
-		  APP_task();
+		//  APP_task();
           AppUpdate_count = 0;
 		
 		}

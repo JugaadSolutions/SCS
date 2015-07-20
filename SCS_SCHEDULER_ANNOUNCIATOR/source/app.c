@@ -68,11 +68,9 @@ typedef struct _APP
 	//Modbus buffer
 	UINT8 eMBdata[MAX_SIZE];
 	BOOL DataReceived;
-
-
 }APP;
 
-extern 	UINT8 timeCount;
+
 /*
 *-----------------------------------------------------------
 * shipment announciator
@@ -168,7 +166,7 @@ UINT8 segmentBuffer[28];
 UINT8 activityParameterBuffer[ ACTIVITY_PARAMETER_BUFFER_SIZE] = {0};
 
 MMD_Config mmdConfig= {0};
-UINT8 line[10] ="LINE "; 
+
 
 ACTIVITY_SCHEDULE scheduleTable[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
 
@@ -295,7 +293,7 @@ void APP_init(void)
 	resetSchedule();
 	
 
-	resetSegment();
+//	resetSegment();
 }
 
 
@@ -324,8 +322,6 @@ void APP_task(void)
 	}
 	
 	ENABLE_UART_RX_INTERRUPT();
-
-
 
 
 }

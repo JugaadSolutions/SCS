@@ -88,7 +88,7 @@ void DDR_loadDigit(UINT8 digit, UINT8 data)
 	DIGIT_PORT = digit;					//set the address
 	DATA_PORT = ~LED_MAP[data];					// write data
 	DISPLAY_CONTROL = DISPLAY_ENABLE;	//enable the display
-	Delay10us(50);						//delay for the data to stabilize
+	DelayMs(1);						//delay for the data to stabilize
 	DISPLAY_CONTROL = DISPLAY_DISABLE;	//disable it again
 	ENABLE_TMR1_INTERRUPT();
 }

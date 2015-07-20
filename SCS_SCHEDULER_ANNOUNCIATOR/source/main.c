@@ -171,7 +171,11 @@ void main(void)
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
-	UINT8 line[] ="PICKINGABCDEFGHIJKLMNOPQRST"; 
+	UINT8 line[] = {SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
+					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
+					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
+					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL};
+
 #endif
 
 
@@ -195,7 +199,6 @@ void main(void)
 
 	MMD_init();  // Display initialization
 	DigitDisplay_init(NO_OF_DIGIT);
-
 
 	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
 	TMR1_init(MMD_REFRESH_PERIOD,MMD_refreshDisplay);
@@ -222,7 +225,7 @@ void main(void)
 	MMD_clearSegment(0);
 	mmdConfig.startAddress = 0;
 	mmdConfig.length = MMD_MAX_CHARS;
-	mmdConfig.symbolCount = strlen(line);
+	mmdConfig.symbolCount = 28;
 	mmdConfig.symbolBuffer = line;
 	mmdConfig.scrollSpeed = 0;
 			
@@ -241,7 +244,7 @@ void main(void)
 			heartBeatCount = 0;
 		}
 
-		if( mmdUpdateCount >= 20 )
+		if( mmdUpdateCount >= 10 )
 		{
 			MMD_task();
 			mmdUpdateCount = 0;

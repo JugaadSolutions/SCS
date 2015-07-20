@@ -67,5 +67,5 @@ extern void MMD_clearSegment( UINT8 segmentID);
 extern void MMD_updateSegmentFromTo( UINT8 segmentID , UINT8 fromSymbolIndex , UINT8 toSymbolIndex, UINT8 *data);
 extern void MMD_refreshDisplay(void);
 extern void MMD_task(void);
-void WriteDataToDisplay(UINT8 digit, UINT8 data);
+
 void MMD_changeSymbol( UINT8 segmentID , UINT8 symbolID);
