@@ -176,10 +176,7 @@ void main(void)
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
-	UINT8 line[] = {SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
-					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
-					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
-					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL};
+	UINT8 line[] = "DENSO-BREAK ";
 #endif
 
 
@@ -220,11 +217,11 @@ void main(void)
 
 #if defined (MMD_TEST)
 	MMD_clearSegment(0);
-	mmdConfig.startAddress = 0;
-	mmdConfig.length = MMD_MAX_CHARS;
-	mmdConfig.symbolCount = 28; //strlen(line);
+	mmdConfig.startAddress = MARQUEE_SEGMENT_START_ADDRESS;
+	mmdConfig.length = MARQUEE_SEGMENT_LENGTH;
+	mmdConfig.symbolCount = strlen(line);
 	mmdConfig.symbolBuffer = line;
-	mmdConfig.scrollSpeed = 0;//SCROLL_SPEED_LOW;
+	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
 			
 	MMD_configSegment( 0 , &mmdConfig);
 
@@ -249,7 +246,7 @@ void main(void)
 			heartBeatCount = 0;
 		}
 
-		if( mmdUpdateCount >= 10 )
+		if( mmdUpdateCount >= 50 )
 		{
 			MMD_task();
 			mmdUpdateCount = 0;
@@ -257,15 +254,16 @@ void main(void)
 
 		if(AppUpdate_count >=500 )
 		{
-		//  APP_task();
+		  APP_task();
           AppUpdate_count = 0;
 		
 		}
 
-		MB_task();
+			MB_task();
 
 		if(eMBUpdate_count >= 10)
 		{
+		
 			eMBPoll();	//modbus task
 			eMBUpdate_count = 0;
 		}

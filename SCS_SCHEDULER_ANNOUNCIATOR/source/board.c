@@ -185,7 +185,7 @@ void BRD_init(void)
 
 
 	OSCTUNEbits.PLLEN = 1;
-	DelayMs(100);
+	DelayMs(50);
 
 }
 

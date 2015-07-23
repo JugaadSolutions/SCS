@@ -16,9 +16,9 @@
 * Display Configuration (MMD , Scan Digit , Latch Digit)
 *----------------------------------------*/
 //MMD module configuration
-#define MMD_MAX_CHARS		28
-#define MMD_MAX_SEGMENTS	1
-#define MMD_MAX_ADDRESS		28
+#define MMD_MAX_CHARS		15
+#define MMD_MAX_SEGMENTS	2
+#define MMD_MAX_ADDRESS		30
 #define NO_OF_DIGIT			16
 //#define __MMD_STATIC__
 #define MMD_TEST
@@ -68,13 +68,13 @@
 /*----------------------------------------
 *	RTC CONFIGURATION
 *----------------------------------------*/
-//#define TIME_DEBUG
+#define TIME_DEBUG
 
 //#define RTC_DS1307
 //#define RTC_DS3232
 
 //#define __SET_RTC__
-#define RTC_DATA_ON_UART
+//#define RTC_DATA_ON_UART
 
 
 //#define __ERROR_DEBUG__

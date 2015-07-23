@@ -22,7 +22,7 @@ typedef enum
 	BLINK 
 }DISPLAY_MODE;
 
-#define MAX_DIGITS_ROW (12)
+#define MAX_DIGITS_ROW (17)
 /*
 *------------------------------------------------------------------------------
 * INCLUDES
@@ -159,7 +159,7 @@ void DigitDisplay_task(void)
 			writeToDisplayPort( digitDisplay.dispBuffer[digitDisplay.digitIndex]); 
 							
 			digitDisplay.digitIndex++;	
-			if(digitDisplay.digitIndex >= MAX_DIGITS_ROW )
+			if(digitDisplay.digitIndex >= digitDisplay.noDigits )
 			{
 				digitDisplay.digitIndex = 0;
 			}
@@ -170,7 +170,7 @@ void DigitDisplay_task(void)
 			writeToDisplayPort( digitDisplay.dispBuffer[digitDisplay.digitIndex]); 
 								
 			digitDisplay.digitIndex++;	
-			if(digitDisplay.digitIndex >= MAX_DIGITS_ROW )
+			if(digitDisplay.digitIndex >= digitDisplay.noDigits )
 			{
 				digitDisplay.digitIndex = 0;
 			}
@@ -453,7 +453,7 @@ static void writeToDisplayPort( UINT8 value )
 	}
 	else if( digitDisplay.digitIndex >= 8)
 	{
-		shift <<= digitDisplay.digitIndex;
+		shift <<= (digitDisplay.digitIndex - 8);
 		DIGIT_PORT_B = ~shift;
 	}
 
@@ -469,7 +469,7 @@ static void writeToDisplayPort( UINT8 value )
 	DIGIT_PORT_B = ~(0XFF);
 		
 
-	Delay10us(5);
+	Delay10us(10);
 
 	DATA_1_PORT = value;
 
@@ -481,12 +481,12 @@ static void writeToDisplayPort( UINT8 value )
 	}
 	else if( digitDisplay.digitIndex >= 8)
 	{
-		shift <<= digitDisplay.digitIndex;
+		shift <<= (digitDisplay.digitIndex - 8);
 		DIGIT_PORT_B = shift;
 	}
 
 	
-	Delay10us(5);
+	Delay10us(10);
 
 }
 
@@ -560,7 +560,7 @@ BOOL DigitDisplay_updateBufferPartial(far UINT8 *buffer, UINT8 from, UINT8 lengt
 	{
 		if( buffer[i] == ' ')
 		{
-			digitDisplay.buffer[STATIC][i] = SEVENSEGMENT[10];
+			digitDisplay.buffer[STATIC][i] = SEVENSEGMENT[15];
 		}
 		else
 		{

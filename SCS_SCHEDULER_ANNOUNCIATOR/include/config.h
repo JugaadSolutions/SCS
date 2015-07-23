@@ -8,7 +8,7 @@
 */
 
 
-#define DEVICE_ADDRESS			2
+#define DEVICE_ADDRESS			1
 
 
 #define __FACTORY_CONFIGURATION__
@@ -18,7 +18,7 @@
 *----------------------------------------*/
 #define MMD_MAX_CHARS		28
 #define MMD_MAX_SEGMENTS	1
-#define MMD_MAX_ADDRESS		30
+#define MMD_MAX_ADDRESS		28
 #define NO_OF_DIGIT			16
 //#define __MMD_STATIC__
 #define MMD_TEST

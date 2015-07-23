@@ -210,15 +210,15 @@ void APP_init(void)
 {
 	UINT8 i, j, k, truck;
 	UINT16 timeStart = 0, timeEnd = 0;
+	UINT8 test[] = "ABCDEF";
 
 	ACTIVITY_SCHEDULE as;
 
 	eMBErrorCode    eStatus;
 
 
-#ifndef TIME_DEBUG
-	WriteRtcTimeAndDate(writeTimeDateBuffer);
-#endif
+//	WriteRtcTimeAndDate(writeTimeDateBuffer);
+
 
 
 	//modbus configuration
@@ -229,7 +229,6 @@ void APP_init(void)
 	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
 
 
-/*
 	//store the truck timings in the shipment schedule structure 
 	for(k = 0 ; k < TRUCKS_SUPPORTED ; k++)
 	{
@@ -252,7 +251,7 @@ void APP_init(void)
 	
 		}
 	}
-*/
+
 
 
 #ifdef __FACTORY_CONFIGURATION__
@@ -332,27 +331,20 @@ void APP_init(void)
 	
 	activityStatus = RESET ;
 	
-	updateTime();
+//	updateTime();
 //	updateBackLightIndication();
 
 	resetSchedule();
-
 /*
-	time_backlight[BACKLIGHT_TRUCK_INDEX] = SYM_ALL;
-	time_backlight[BACKLIGHT_STATUS_INDEX] = SYM_ALL;
-	time_backlight[BACKLIGHT_PICKING_INDEX] = SYM_ALL;
-	time_backlight[BACKLIGHT_STAGING_INDEX] = SYM_ALL;
-	time_backlight[BACKLIGHT_LOADING_INDEX] = SYM_ALL;
-
-	mmdConfig.startAddress =TIME_SEGMENT_START_ADDRESS ;
+	mmdConfig.startAddress = TIME_SEGMENT_START_ADDRESS ;
 	mmdConfig.length = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
-	mmdConfig.symbolBuffer = time_backlight;
+	mmdConfig.symbolBuffer = test;
 	mmdConfig.symbolCount = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
 	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
 
 	MMD_configSegment(1, &mmdConfig);
-*/
 
+*/
 
 }
 
@@ -732,11 +724,14 @@ void updateTruckActivity(UINT8 truck ,UINT8 activity , UINT8 milestone)
 	
 	if( (data.activity == ACTIVITY_CANCEL) && (data.mileStone == MILESTONE_NONE) )
 	{
+
 		updateShipmentScheduleIndication(&data , 0);
 		ClrWdt();
 	}
 	else
 	{
+		if( app.state == APP_STATE_INACTIVE )
+			return;
 		getActivitySchedule(data.truck ,data.activity, &as);
 	
 		if( processActivityTrigger(&data,as ) == TRUE)
@@ -1407,9 +1402,6 @@ void updateSchedule(far UINT8 *data)
 
 		DigitDisplay_updateBufferBinaryPartial(truckStatus, TRUCK_STATUS_BASE + truckStatusIndex, 2);
 
-		clearScheduleTime();
-		loadSchedule(truck,info->activity);
-
 
 	}
 
@@ -1418,8 +1410,8 @@ void updateSchedule(far UINT8 *data)
 		switch( info->milestone)
 		{
 			case MILESTONE_START:
-			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)				//if activity is not scheduled ignore cmd
-				return ;
+		//	if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)				//if activity is not scheduled ignore cmd
+		//		return ;
 
 			//store the status of the truck
 			truckStatus[index] = DIGIT_A;
@@ -1436,8 +1428,8 @@ void updateSchedule(far UINT8 *data)
 			break;
 
 			case MILESTONE_END:
-			if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_ONGOING)				//if activity is not scheduled ignore cmd
-				return ;
+	//		if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_ONGOING)				//if activity is not scheduled ignore cmd
+	//			return ;
 
 			clearScheduleTime();
 			loadSchedule(truck,info->activity);
@@ -1564,11 +1556,13 @@ void resetSchedule(void)
 void loadSchedule(UINT8 truck, UINT8 activity)
 {
 	UINT8 i;
+
 	for(i = 0; i < 8 ;i++)
 	{
 		DDR_loadDigit( ( (32 + ((truck - 1) * 24) ) + (activity - 1 ) * 8) + i,activityTime[i] );
 		DelayMs(1);
 	}
+
 }
 
 /*

@@ -22,7 +22,7 @@ typedef enum
 	BLINK 
 }DISPLAY_MODE;
 
-#define MAX_DIGITS_ROW (6)
+#define MAX_DIGITS_ROW (16)
 
 /*
 *------------------------------------------------------------------------------
@@ -496,7 +496,7 @@ static void writeToDisplayPort( UINT8 value )
 	SSD_DIGIT_SEL_A = 0X00;
 	SSD_DIGIT_SEL_B = 0x00;
 	
-	Delay10us(1);
+	Delay10us(5);
 
 	DISPLAY_PORT = value;
 	
@@ -506,7 +506,7 @@ static void writeToDisplayPort( UINT8 value )
 	{
 		SSD_DIGIT_SEL_B = ( shift << (digitDisplay.digitIndex - 8));
 	}
-
+	Delay10us(5);
 	
 }
 #endif
