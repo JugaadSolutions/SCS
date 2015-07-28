@@ -67,18 +67,18 @@ typedef enum
 
 /* ----------------------- Static variables ---------------------------------*/
 
-#pragma udata RTU_DATA
+#pragma idata RTU_DATA
 
 static volatile eMBSndState eSndState = 0;
 static volatile eMBRcvState eRcvState = 0 ;
 
-volatile UCHAR  ucRTUBuf[MB_SER_PDU_SIZE_MAX];
+volatile UCHAR  ucRTUBuf[MB_SER_PDU_SIZE_MAX] = {0};
 
 static volatile UCHAR *pucSndBufferCur;
 static volatile USHORT usSndBufferCount;
 
-static volatile USHORT usRcvBufferPos;
-#pragma udata
+static volatile USHORT usRcvBufferPos = 0;
+#pragma idata
 
 /* ----------------------- Start implementation -----------------------------*/
 eMBErrorCode

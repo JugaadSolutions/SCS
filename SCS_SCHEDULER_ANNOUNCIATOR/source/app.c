@@ -158,7 +158,7 @@ const rom UINT8 PROGRESS_DATA[37][6]
 */
 
 
-#pragma idata app_data
+#pragma idata APP_DATA
 
 APP app = {0} ;
 UINT8 segmentBuffer[28];
@@ -402,7 +402,7 @@ void processMBdata(void)
 		case CMD_TRUCK_TIMINGS	:
 
 			truck = ( (app.eMBdata[1] - '0' )* 10 ) + (app.eMBdata[2] - '0' );
-			truck = (truck) - (DEVICE_ADDRESS)*4 + 1;
+			truck = (truck) - (DEVICE_ADDRESS*4);
 			for(i = 0 ; i < 6 ; i++)
 			{
 				trucktime[i] = (UINT16)( ( (app.eMBdata[3 + (i * 4)] - '0' )* 10 ) + (app.eMBdata[4 + (i * 4)] - '0' ) ) * 60
@@ -472,8 +472,8 @@ void updateSchedule(far SCHEDULE_UPDATE_INFO *info)
 
 		DigitDisplay_updateBufferBinaryPartial(truckStatus, TRUCK_STATUS_BASE + truckStatusIndex, 2);
 
-		clearScheduleTime();
-		loadSchedule(truck,info->activity);
+		//clearScheduleTime();
+		//loadSchedule(truck,info->activity);
 	}
 
 	else
@@ -575,7 +575,7 @@ void updateSchedule(far SCHEDULE_UPDATE_INFO *info)
 
 
 
-	loadSchedule(truck,info->activity);
+	//loadSchedule(truck,info->activity);
 }
 
 
@@ -812,12 +812,16 @@ void updateTruckTime(UINT8 truck ,far UINT8* trucktime)
 {
 	UINT8 i , j ,k;
 	UINT16 timeStart,timeEnd ;
+	UINT8 data = 0;
+	UINT8 address = 0;
 
 	for(i = 0 ; i < 6 ; i++)
 	{
 		for(j = 0 ; j < 2 ; j++)
 		{
-			Write_b_eep(( (truck) * 12) + ((2 * i ) + j)  , *(trucktime +((2 * i) + (1 - j) ) ) );	
+			address = ( (truck) * 12) + ((2 * i ) + j) ;
+			data = *(trucktime +((2 * i) + (1 - j) ) ) ;
+			Write_b_eep( address, data );	
 			Busy_eep();
 		}
 	}

@@ -11,14 +11,14 @@
 #define DEVICE_ADDRESS			1
 
 
-#define __FACTORY_CONFIGURATION__
+//#define __FACTORY_CONFIGURATION__
 
 /*----------------------------------------
 * Display Configuration (MMD , Scan Digit , Latch Digit)
 *----------------------------------------*/
-#define MMD_MAX_CHARS		28
-#define MMD_MAX_SEGMENTS	1
-#define MMD_MAX_ADDRESS		28
+#define MMD_MAX_CHARS		14
+#define MMD_MAX_SEGMENTS	2
+#define MMD_MAX_ADDRESS		128
 #define NO_OF_DIGIT			16
 //#define __MMD_STATIC__
 #define MMD_TEST

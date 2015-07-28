@@ -180,5 +180,8 @@ void prvvUARTTxReadyISR( void )
 #pragma interrupt prvvUARTRxISR
 void prvvUARTRxISR( void )
 {
+	DISABLE_TMR1_INTERRUPT();
     pxMBFrameCBByteReceived(  );
+	ENABLE_TMR1_INTERRUPT();
+
 }

@@ -160,7 +160,7 @@ extern UINT16 mmdUpdateCount;
 *------------------------------------------------------------------------------
 */
 
-#define MMD_REFRESH_PERIOD	(65535 - 20000) 
+#define MMD_REFRESH_PERIOD	(65535 - 12000) 
 #define TICK_PERIOD	(65535 - 8000)
 
 
@@ -168,6 +168,7 @@ void main(void)
 {
 	UINT8 i,j, k;
 	eMBErrorCode    eStatus;
+	UINT8 count = 0;
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
@@ -205,10 +206,10 @@ void main(void)
 	DigitDisplay_init(NO_OF_DIGIT);
 
 	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
-	TMR1_init(MMD_REFRESH_PERIOD,MMD_refreshDisplay);
+	TMR1_init(MMD_REFRESH_PERIOD, MMD_refreshDisplay);
 
 	//modbus configuration
-	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
+	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE );
 	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
 
 	APP_init();
@@ -229,7 +230,7 @@ void main(void)
 	MMD_clearSegment(0);
 	mmdConfig.startAddress = 0;
 	mmdConfig.length = MMD_MAX_CHARS;
-	mmdConfig.symbolCount = 28;
+	mmdConfig.symbolCount =14;
 	mmdConfig.symbolBuffer = line;
 	mmdConfig.scrollSpeed = 0;
 			
@@ -243,15 +244,22 @@ void main(void)
 	{
 		if(  heartBeatCount >= 500 )
 		{
-			APP_task();
+
 			HB_task();
 			heartBeatCount = 0;
 		}
 
 		if( mmdUpdateCount >= 10 )
-		{
+		{	
 			MMD_task();
 			mmdUpdateCount = 0;
+			count++;
+		}
+
+		if( count >= 2 )
+		{
+			APP_task();
+			count = 0;
 		}
 
 		eMBPoll();	//modbus task		

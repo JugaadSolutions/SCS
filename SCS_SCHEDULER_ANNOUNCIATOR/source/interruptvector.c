@@ -16,6 +16,16 @@ void high_interrupt (void)
    	* Inline assembly that will jump to the ISR.
    	*/
 
+	if(PIR1bits.RC1IF == 1)
+	{
+		_asm GOTO prvvUARTRxISR _endasm
+	}
+
+	if(PIR2bits.TMR3IF == 1)
+	{
+		_asm GOTO prvvTIMERExpiredISR _endasm
+	}
+
 	if(INTCONbits.TMR0IF == 1)
 	{
   		_asm GOTO TMR0_ISR _endasm
@@ -25,25 +35,6 @@ void high_interrupt (void)
 	{
 		_asm GOTO TMR1_ISR _endasm
 	}
-
-	if(PIR1bits.RC1IF == 1)
-	{
-		_asm GOTO prvvUARTRxISR _endasm
-	}
-/*
-	if(PIR1bits.TX1IF == 1)
-	{
-		_asm GOTO prvvUARTTxReadyISR _endasm
-	}
-*/
-
-
-	if(PIR2bits.TMR3IF == 1)
-	{
-		_asm GOTO prvvTIMERExpiredISR _endasm
-	}
-
-
 
 }
 /*

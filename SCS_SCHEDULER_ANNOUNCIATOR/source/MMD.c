@@ -508,7 +508,6 @@ void MMD_refreshDisplay(void)
 			Delay10us(1);
 			DISPLAY_CONTROL = DISPLAY_DISABLE;	//disable the display					
 
-
 		}
 	}
 

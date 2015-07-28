@@ -138,6 +138,12 @@ void UI_task(void)
 		{
 			if(ui.bufferIndex > 0)
 			{
+				if( ui.bufferIndex < 2 )
+				{
+					ui.buffer[1] = ui.buffer[0];
+					ui.buffer[0] = '0';
+				}
+					
 				if(APP_activityValid(ui.buffer) == VALID)
 				{
 					setUImsg(UI_MSG_ACTIVITY);
@@ -537,27 +543,38 @@ void UI_task(void)
 		}
 		else if( keypressed == '\x0E')
 		{
-			ui.buffer[ui.bufferIndex] = '\0';
 
-			if(APP_activityValid(ui.buffer) == VALID)
-			{	
-				APP_cancelTruck(ui.buffer);
-				storeCMDinBuffer(ui.buffer, CMD_CANCEL_TRUCK);
-			
-				//store into log
-				App_updateLog(ui.buffer);	
-	
-				setUImsg(UI_MSG_TRUCK_NO);
-				clearUIBuffer();
-				clearUIInput();
-				ui.state = UI_GET_TRUCK_NO;
-			}
-			else
+			if( ui.bufferIndex > 0 )
 			{
-				setUImsg(UI_MSG_CANCEL_TRUCK);
-				clearUIBuffer();
-				clearUIInput();
-				ui.state = UI_CANCEL_TRUCK;
+
+				if( ui.bufferIndex < 2 )
+				{
+					ui.buffer[1] = ui.buffer[0];
+					ui.buffer[0] = '0';
+				}
+
+				ui.buffer[ui.bufferIndex] = '\0';
+	
+				if(APP_activityValid(ui.buffer) == VALID)
+				{	
+					APP_cancelTruck(ui.buffer);
+					storeCMDinBuffer(ui.buffer, CMD_CANCEL_TRUCK);
+				
+					//store into log
+					App_updateLog(ui.buffer);	
+		
+					setUImsg(UI_MSG_TRUCK_NO);
+					clearUIBuffer();
+					clearUIInput();
+					ui.state = UI_GET_TRUCK_NO;
+				}
+				else
+				{
+					setUImsg(UI_MSG_CANCEL_TRUCK);
+					clearUIBuffer();
+					clearUIInput();
+					ui.state = UI_CANCEL_TRUCK;
+				}
 			}
 		}
 		//store truck number
@@ -650,6 +667,12 @@ UINT8 mapKey(UINT8 scancode, UINT8 duration)
 				|| (keypressed =='\x0C') || (keypressed =='\x0E') )
 				keypressed = 0xFF;
 
+		}
+		else
+		{
+			if( (keypressed == '\xA') || (keypressed =='\x0B')
+				|| (keypressed =='\x0C') )
+				keypressed = 0xFF;
 		}
 
 		break;

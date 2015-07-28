@@ -145,6 +145,149 @@ ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File011]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\app.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File012]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\board.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File013]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\heartBeat.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File014]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\interruptvector.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File015]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\keypad.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File016]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\lcd.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File017]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\main.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File018]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\modbusMaster.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File019]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\timer.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File020]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\UI.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File021]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\obj\uart.o
+Folder=Intermediary
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File022]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_TERMINAL\output\SCS_TERMINAL.cof
 Folder=Output
 DeviceName=PIC18F46K22
@@ -157,7 +300,7 @@ SuiteArgsString=
 ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /W
 TraceCmdString=
 DebugOptions=/z__MPLAB_DEBUG=1
-[File012]
+[File023]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_TERMINAL\output\SCS_TERMINAL.hex
 Folder=Output
 DeviceName=PIC18F46K22
@@ -170,6 +313,32 @@ SuiteArgsString=
 ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /W
 TraceCmdString=
 DebugOptions=/z__MPLAB_DEBUG=1
+[File024]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\output\SCS_TERMINAL.cof
+Folder=Output
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={96C98149-AA1B-4CF9-B967-FAE79CAB663C}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mplink.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /W
+TraceCmdString=
+DebugOptions=/z__MPLAB_DEBUG=1
+[File025]
+Location=D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\output\SCS_TERMINAL.hex
+Folder=Output
+DeviceName=PIC18F46K22
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={96C98149-AA1B-4CF9-B967-FAE79CAB663C}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mplink.exe
+PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
+SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\keypad.c|source\lcd.c|source\main.c|source\modbusMaster.c|source\timer.c|source\UI.c|source\uart.c||<obj>||<lib>||<lkr>|18f46k22_g.lkr||
+SuiteArgsString=
+ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /W
+TraceCmdString=
+DebugOptions=/z__MPLAB_DEBUG=1
 [TOOL_LOC_STAMPS]
-tool_loc{96C98149-AA1B-4CF9-B967-FAE79CAB663C}=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mplink.exe
-tool_loc{E56A1C86-9D32-4DF6-8C34-FE0388B1B644}=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.exe
+tool_loc{96C98149-AA1B-4CF9-B967-FAE79CAB663C}=C:\Program Files\Microchip\mplabc18\v3.46\bin\mplink.exe
+tool_loc{E56A1C86-9D32-4DF6-8C34-FE0388B1B644}=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
