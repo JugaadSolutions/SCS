@@ -215,6 +215,8 @@ void BRD_init(void)
 	LAMP7 = SWITCH_ON;
 	LAMP8 = SWITCH_ON;
 */
+
+
 }
 
 	

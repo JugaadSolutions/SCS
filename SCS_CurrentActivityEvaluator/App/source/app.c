@@ -86,6 +86,8 @@ const rom UINT8 marqueeData[MARQUEES_SUPPORTED+1][MARQUEE_SEGMENT_CHARS]={
 
 #pragma idata APP_DATA
 
+MMD_Config mmdConfig = {0};
+
  ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED]
 ={
 {{0, 0,0},{0 , 0,0},{0 , 0, 0}},
@@ -120,7 +122,7 @@ CurrentActivitySegment currentActivitySegment[CURRENT_ACTIVITY_SEGMENTS] = {0};
 PICKING_INFO pickingInfo ;
 UINT8 activityParameterBuffer[ ACTIVITY_PARAMETER_BUFFER_SIZE] = {0};
 
-MMD_Config mmdConfig = {0};
+
 
 
 SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
@@ -228,7 +230,7 @@ void APP_init(void)
 	//modbus master initialization
 	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
 
-
+/*
 	//store the truck timings in the shipment schedule structure 
 	for(k = 0 ; k < TRUCKS_SUPPORTED ; k++)
 	{
@@ -252,7 +254,7 @@ void APP_init(void)
 		}
 	}
 
-
+*/
 
 #ifdef __FACTORY_CONFIGURATION__
 
@@ -660,7 +662,8 @@ void processReceivedData (void)
 				{
 					transmitTruncktime[i] = app.eMBdata[i]; 
 				}
-				updateLog (transmitTruncktime , slaveID );
+				transmitTruncktime[i] = '\0';
+				updateLog_Binary (transmitTruncktime , slaveID,14 );
 			}
 
 			updateTruckTime( truck , trucktime);
@@ -774,7 +777,7 @@ void updateTruckActivity(UINT8 truck ,UINT8 activity , UINT8 milestone)
 * Input		: truck , 
 *			  
 *
-* Output	: None
+ * Output	: None
 *
 *
 *
@@ -1058,7 +1061,7 @@ void updateTime(void)
 	}
 
 
-	mmdConfig.startAddress = TIME_SEGMENT_START_ADDRESS ;
+	mmdConfig.startAddress =  TIME_SEGMENT_START_ADDRESS ;
 	mmdConfig.length = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
 	mmdConfig.symbolBuffer = time_backlight;
 	mmdConfig.symbolCount = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
@@ -1303,8 +1306,8 @@ void updateCurrentActivityIndication(void)
 		temp = currentActivitySegment[i].actualPercentage/100;
 		activityParameterBuffer[j++] = ( temp >= 99 ) ? (99) : temp;
 
-		length = (j/2 == 0 ? j/2 : j/2 + 1 );
-		updateLog_Binary(activityParameterBuffer,i+1 , j);
+		length = (j%2 == 0 ? j/2 : j/2 + 1 );
+		updateLog_Binary(activityParameterBuffer,i+1 , length);
 		DelayMs(30);
 	}
 }
@@ -1492,7 +1495,7 @@ void updateSchedule(far UINT8 *data)
 	}
 
 
-	loadSchedule(truck,info->activity);
+//	loadSchedule(truck,info->activity);
 }
 
 
@@ -1623,18 +1626,6 @@ void clearScheduleTime()
 		activityTime[i] = DIGIT_CLEAR;
 	}
 }
-
-/*
-
-void setSchedule(SCHEDULE_DATA *data)
-{
-	UINT8 i;
-	WriteBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + data->truck*(sizeof(TRUCK_SCHEDULE))
-									, (UINT8*)&data,sizeof(ACTIVITY_SCHEDULE)*ACTIVITIES_SUPPORTED);
-}
-
-*/
-
 
 
 BOOL updatePickingInfo()

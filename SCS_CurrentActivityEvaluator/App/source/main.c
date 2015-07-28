@@ -166,7 +166,7 @@ extern UINT16 AppUpdate_count;
 */
 
 #define MMD_REFRESH_PERIOD	(65535 - 20000)
-#define TICK_PERIOD	(65535 - 8000)  //	500us
+#define TICK_PERIOD	(65535 - 8000)  //	250us
 
 
 void main(void)
@@ -176,7 +176,8 @@ void main(void)
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
-	UINT8 line[] = "DENSO-BREAK ";
+	UINT8 line[] = "ABCEFGHIJK";
+//	UINT8 line1[]= "LMNOPQABCDE";
 #endif
 
 
@@ -224,6 +225,16 @@ void main(void)
 	mmdConfig.scrollSpeed = SCROLL_SPEED_LOW;
 			
 	MMD_configSegment( 0 , &mmdConfig);
+/*
+	MMD_clearSegment(1);
+	mmdConfig.startAddress = 10;
+	mmdConfig.length = 11;//MARQUEE_SEGMENT_LENGTH;
+	mmdConfig.symbolCount = 11;
+	mmdConfig.symbolBuffer = line1;
+	mmdConfig.scrollSpeed = 0;//SCROLL_SPEED_LOW;
+			
+	MMD_configSegment( 1 , &mmdConfig);
+*/
 
 #endif
 
@@ -246,7 +257,7 @@ void main(void)
 			heartBeatCount = 0;
 		}
 
-		if( mmdUpdateCount >= 50 )
+		if( mmdUpdateCount >= 40 )
 		{
 			MMD_task();
 			mmdUpdateCount = 0;
@@ -259,12 +270,11 @@ void main(void)
 		
 		}
 
-			MB_task();
-
-		if(eMBUpdate_count >= 10)
+		if(eMBUpdate_count >= 50)
 		{
 		
 			eMBPoll();	//modbus task
+			MB_task();
 			eMBUpdate_count = 0;
 		}
 	}

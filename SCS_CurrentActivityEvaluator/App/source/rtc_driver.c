@@ -534,8 +534,8 @@ void RTC_Init(void)
 */
 #ifdef TIME_DEBUG
 	stRtcRegs.mSeconds	= 0;							// second 
-	stRtcRegs.mMinute  	= 5;							// minute 
-	stRtcRegs.mHour  	= 12;							// hour
+	stRtcRegs.mMinute  	= 35;							// minute 
+	stRtcRegs.mHour  	= 22;							// hour
 #endif
 	// Setup task to run
 //#ifdef TIME_DEBUG

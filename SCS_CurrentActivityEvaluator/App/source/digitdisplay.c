@@ -465,28 +465,22 @@ static void writeToDisplayPort( UINT8 value )
 {
 	UINT8 shift = 0x01;
 
-	DIGIT_PORT_A = ~(0XFF);		//switch off display
-	DIGIT_PORT_B = ~(0XFF);
-		
+	DIGIT_PORT_A = 0x00;		//switch off display
+	DIGIT_PORT_B = 0x00;
 
-	Delay10us(10);
-
+	Delay10us(5);
 	DATA_1_PORT = value;
 
 	if(digitDisplay.digitIndex < 8)
 	{
-		shift <<= digitDisplay.digitIndex;	
-		DIGIT_PORT_A = shift;
+		DIGIT_PORT_A = (shift << digitDisplay.digitIndex);	
 
 	}
 	else if( digitDisplay.digitIndex >= 8)
 	{
-		shift <<= (digitDisplay.digitIndex - 8);
-		DIGIT_PORT_B = shift;
+		DIGIT_PORT_B = (shift << (digitDisplay.digitIndex - 8) );
 	}
-
-	
-	Delay10us(10);
+	Delay10us(5);
 
 }
 

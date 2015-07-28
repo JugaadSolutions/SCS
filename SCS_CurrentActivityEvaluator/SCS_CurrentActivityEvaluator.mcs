@@ -11,7 +11,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File001]
@@ -24,7 +24,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File002]
@@ -37,7 +37,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File003]
@@ -50,7 +50,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File004]
@@ -63,7 +63,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File005]
@@ -76,7 +76,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File006]
@@ -89,7 +89,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File007]
@@ -102,7 +102,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File008]
@@ -115,7 +115,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File009]
@@ -128,7 +128,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File010]
@@ -141,7 +141,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File011]
@@ -154,7 +154,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File012]
@@ -167,7 +167,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File013]
@@ -180,7 +180,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File014]
@@ -193,7 +193,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File015]
@@ -206,7 +206,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File016]
@@ -219,7 +219,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File017]
@@ -232,7 +232,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File018]
@@ -245,7 +245,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File019]
@@ -258,7 +258,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File020]
@@ -271,7 +271,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File021]
@@ -284,7 +284,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File022]
@@ -297,7 +297,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File023]
@@ -310,7 +310,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File024]
@@ -323,7 +323,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File025]
@@ -336,7 +336,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc18\v3.46\bin\mcc18.e
 PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|.\modbus\rtu;.\modbus;.\modbus\include;.\App\include;C:\Program Files (x86)\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
 SOLK=<src>|App\source\app.c|App\source\board.c|App\source\digit_driver.c|App\source\digitdisplay.c|App\source\heartBeat.c|App\source\i2c_driver.c|App\source\interruptvector.c|App\source\main.c|App\source\math_fun.c|App\source\MMD.c|App\source\rtc_driver.c|App\source\timer.c|App\source\uart.c|modbus\porttimer.c|modbus\portserial.c|modbus\portevent.c|modbus\mb.c|modbus\functions\mbfunccoils.c|modbus\functions\mbfuncdisc.c|modbus\functions\mbfuncholding.c|modbus\functions\mbfuncinput.c|modbus\functions\mbfuncother.c|modbus\functions\mbutils.c|modbus\rtu\mbcrc.c|modbus\rtu\mbrtu.c|App\source\modbusMaster.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
 SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+ToolArgsString=-O-
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File026]

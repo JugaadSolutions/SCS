@@ -53,7 +53,7 @@ typedef struct _MMD_Config
 {
 	UINT8 startAddress;
 	UINT8 length;
-	UINT8 *symbolBuffer;
+	far UINT8 *symbolBuffer;
 	UINT8 symbolCount;
 	SCROLL_SPEED scrollSpeed;
 }MMD_Config;

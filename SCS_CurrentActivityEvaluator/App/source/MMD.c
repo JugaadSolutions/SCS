@@ -499,7 +499,7 @@ void MMD_refreshDisplay(void)
 
 			addr = mmdSegment[i].startAddress + j;					//set the address
 		  	DISPLAY_CONTROL = DISPLAY_DISABLE;
-			Delay10us(1);
+
 			DIGIT_PORT = addr;
 			DATA_PORT = ~dataByte;
 			DISPLAY_CONTROL = DISPLAY_ENABLE;	//enable the display					
