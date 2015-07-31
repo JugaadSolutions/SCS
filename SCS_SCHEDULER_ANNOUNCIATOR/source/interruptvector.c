@@ -1,6 +1,6 @@
 #include "board.h"
 #include "timer.h"
-#include "port.h"
+#include "uart.h"
 
 /*
  * For PIC18xxxx devices, the low interrupt vector is found at 000000018h.
@@ -18,12 +18,7 @@ void high_interrupt (void)
 
 	if(PIR1bits.RC1IF == 1)
 	{
-		_asm GOTO prvvUARTRxISR _endasm
-	}
-
-	if(PIR2bits.TMR3IF == 1)
-	{
-		_asm GOTO prvvTIMERExpiredISR _endasm
+		_asm GOTO Uart1_ReceiveHandler _endasm
 	}
 
 	if(INTCONbits.TMR0IF == 1)

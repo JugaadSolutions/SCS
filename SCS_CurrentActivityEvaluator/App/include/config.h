@@ -55,8 +55,8 @@
 #define RESP_EOP	0xDD
 
 
-#define 	RX_PACKET_SIZE		(60)	
-#define 	TX_PACKET_SIZE		(60)
+#define 	RX_PACKET_SIZE		(50)	
+#define 	TX_PACKET_SIZE		(50)
 
 
 /*----------------------------------------
@@ -93,18 +93,18 @@
 /*---------------------------------
 *	MODBUS MASTER CONFIGURATION
 ----------------------------------*/
-#define BAUD_RATE	 		19200
-#define TIMEOUT		 		3
-#define POLLING 			1 // the scan rate
-#define RETRY_COUNT			10
-#define SLAVE_ID			1
+#define BAUD_RATE	 		19200	// modbus master serial baud rate
+#define TIMEOUT		 		10   	// the timeout period is 200msec * 3 = 0.6sec
+#define POLLING 			20  	// the scan rate 200msec * 20 = 4sec
+#define RETRY_COUNT			5		// number of retries incase of no or error response
+#define SLAVE_ID			1		// server ID
 #define STARTING_ADDRESS	0
 
 
 // The total amount of available memory on the master to store data
 #define TOTAL_NO_OF_REGISTERS 1
 
-#define	MAX_LOG_ENTRIES  10
+#define	MAX_LOG_ENTRIES  15
 #define	LOG_BUFF_SIZE 	 40
 /*
 *------------------------------------------------------------------------------

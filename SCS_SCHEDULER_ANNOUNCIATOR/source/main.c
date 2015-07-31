@@ -160,7 +160,7 @@ extern UINT16 mmdUpdateCount;
 *------------------------------------------------------------------------------
 */
 
-#define MMD_REFRESH_PERIOD	(65535 - 12000) 
+#define MMD_REFRESH_PERIOD	(65535 - 20000) 
 #define TICK_PERIOD	(65535 - 8000)
 
 
@@ -209,8 +209,7 @@ void main(void)
 	TMR1_init(MMD_REFRESH_PERIOD, MMD_refreshDisplay);
 
 	//modbus configuration
-	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE );
-	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
+	eStatus = eMBInit( ( UCHAR )DEVICE_ADDRESS, UART1_BAUD );
 
 	APP_init();
 
@@ -262,7 +261,11 @@ void main(void)
 			count = 0;
 		}
 
-		eMBPoll();	//modbus task		
+//		if( comUpdateCount >= 1 )
+		{
+			eMBPoll();	//modbus task		
+			comUpdateCount = 0;
+		}
 		//ClrWdt();	
 	}
 }

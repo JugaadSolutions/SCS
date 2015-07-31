@@ -31,14 +31,8 @@
 #ifndef _MB_H
 #define _MB_H
 
-#include "port.h"
-
-#ifdef __cplusplus
-PR_BEGIN_EXTERN_C
-#endif
-
-#include "mbport.h"
-#include "mbproto.h"
+#include "mb.h"
+#include "typedefs.h"
 
 /*! \defgroup modbus Modbus
  * \code #include "mb.h" \endcode
@@ -66,28 +60,142 @@ PR_BEGIN_EXTERN_C
  * \endcode
  */
 
-/* ----------------------- Defines ------------------------------------------*/
-
-/*! \ingroup modbus
- * \brief Use the default Modbus TCP port (502)
+/*!
+ * Constants which defines the format of a modbus frame. The example is
+ * shown for a Modbus RTU/ASCII frame. Note that the Modbus PDU is not
+ * dependent on the underlying transport.
+ *
+ * <code>
+ * <------------------------ MODBUS SERIAL LINE PDU (1) ------------------->
+ *              <----------- MODBUS PDU (1') ---------------->
+ *  +-----------+---------------+----------------------------+-------------+
+ *  | Address   | Function Code | Data                       | CRC/LRC     |
+ *  +-----------+---------------+----------------------------+-------------+
+ *  |           |               |                                   |
+ * (2)        (3/2')           (3')                                (4)
+ *
+ * (1)  ... MB_SER_PDU_SIZE_MAX = 256
+ * (2)  ... MB_SER_PDU_ADDR_OFF = 0
+ * (3)  ... MB_SER_PDU_PDU_OFF  = 1
+ * (4)  ... MB_SER_PDU_SIZE_CRC = 2
+ *
+ * (1') ... MB_PDU_SIZE_MAX     = 253
+ * (2') ... MB_PDU_FUNC_OFF     = 0
+ * (3') ... MB_PDU_DATA_OFF     = 2
+ * </code>
  */
-#define MB_TCP_PORT_USE_DEFAULT 0   
+
+/* ----------------------- Defines ------------------------------------------*/
+#define MB_PDU_SIZE_MAX     253 /*!< Maximum size of a PDU. */
+#define MB_PDU_SIZE_MIN     1   /*!< Function Code */
+#define MB_PDU_FUNC_OFF     1   /*!< Offset of function code in PDU. */
+#define MB_PDU_DATA_OFF     2   /*!< Offset for response data in PDU. */
+#define MB_PDU_SLAVE_ID		0	// slave ID
+
+
+/* ----------------------- Defines ------------------------------------------*/
+#define MB_ADDRESS_BROADCAST    				( 0 )   /*! Modbus broadcast address. */
+#define MB_ADDRESS_MIN          				( 1 )   /*! Smallest possible slave address. */
+#define MB_ADDRESS_MAX          				( 247 ) /*! Biggest possible slave address. */
+#define MB_FUNC_NONE                          	(  0 )
+#define MB_FUNC_READ_COILS                    	(  1 )
+#define MB_FUNC_READ_DISCRETE_INPUTS          	(  2 )
+#define MB_FUNC_WRITE_SINGLE_COIL             	(  5 )
+#define MB_FUNC_WRITE_MULTIPLE_COILS          	( 15 )
+#define MB_FUNC_READ_HOLDING_REGISTER         	(  3 )
+#define MB_FUNC_READ_INPUT_REGISTER           	(  4 )
+#define MB_FUNC_WRITE_REGISTER                	(  6 )
+#define MB_FUNC_WRITE_MULTIPLE_REGISTERS      	( 16 )
+#define MB_FUNC_READWRITE_MULTIPLE_REGISTERS  	( 23 )
+#define MB_FUNC_DIAG_READ_EXCEPTION           	(  7 )
+#define MB_FUNC_DIAG_DIAGNOSTIC               	(  8 )
+#define MB_FUNC_DIAG_GET_COM_EVENT_CNT        	( 11 )
+#define MB_FUNC_DIAG_GET_COM_EVENT_LOG        	( 12 )
+#define MB_FUNC_OTHER_REPORT_SLAVEID          	( 17 )
+#define MB_FUNC_ERROR                         	( 128 )
+
+/* ----------------------- Defines ------------------------------------------*/
+#define MB_SER_PDU_SIZE_MIN     	6       /*!< Minimum size of a Modbus RTU frame. */
+#define MB_SER_PDU_SIZE_MAX     	50     /*!< Maximum size of a Modbus RTU frame. */
+#define MB_SER_PDU_SIZE_CRC     	2       /*!< Size of CRC field in PDU. */
+#define MB_SER_PDU_ADDR_OFF     	2       /*!< Offset of starting address in Ser-PDU. */
+#define MB_SER_PDU_PDU_OFF      	1       /*!< Offset of Modbus-PDU in Ser-PDU. */
+#define MB_SER_PDU_REG_COUNT_OFF	5	
+
+/*! \brief Maximum number of Modbus functions codes the protocol stack
+ *    should support.
+ *
+ * The maximum number of supported Modbus functions must be greater than
+ * the sum of all enabled functions in this file and custom function
+ * handlers. If set to small adding more functions will fail.
+ */
+#define MB_FUNC_HANDLERS_MAX                    ( 16 )
+
+/*! \brief Number of bytes which should be allocated for the <em>Report Slave ID
+ *    </em>command.
+ *
+ * This number limits the maximum size of the additional segment in the
+ * report slave id function. See eMBSetSlaveID(  ) for more information on
+ * how to set this value. It is only used if MB_FUNC_OTHER_REP_SLAVEID_ENABLED
+ * is set to <code>1</code>.
+ */
+#define MB_FUNC_OTHER_REP_SLAVEID_BUF           ( 32 )
+
+/*! \brief If the <em>Report Slave ID</em> function should be enabled. */
+#define MB_FUNC_OTHER_REP_SLAVEID_ENABLED       (  1 )
+
+/*! \brief If the <em>Read Input Registers</em> function should be enabled. */
+#define MB_FUNC_READ_INPUT_ENABLED              (  1 )
+
+/*! \brief If the <em>Read Holding Registers</em> function should be enabled. */
+#define MB_FUNC_READ_HOLDING_ENABLED            (  1 )
+
+/*! \brief If the <em>Write Single Register</em> function should be enabled. */
+#define MB_FUNC_WRITE_HOLDING_ENABLED           (  1 )
+
+/*! \brief If the <em>Write Multiple registers</em> function should be enabled. */
+#define MB_FUNC_WRITE_MULTIPLE_HOLDING_ENABLED  (  1 )
+
+/*! \brief If the <em>Read Coils</em> function should be enabled. */
+#define MB_FUNC_READ_COILS_ENABLED              (  1 )
+
+/*! \brief If the <em>Write Coils</em> function should be enabled. */
+#define MB_FUNC_WRITE_COIL_ENABLED              (  1 )
+
+/*! \brief If the <em>Write Multiple Coils</em> function should be enabled. */
+#define MB_FUNC_WRITE_MULTIPLE_COILS_ENABLED    (  1 )
+
+/*! \brief If the <em>Read Discrete Inputs</em> function should be enabled. */
+#define MB_FUNC_READ_DISCRETE_INPUTS_ENABLED    (  1 )
+
+/*! \brief If the <em>Read/Write Multiple Registers</em> function should be enabled. */
+#define MB_FUNC_READWRITE_HOLDING_ENABLED       (  1 )
 
 /* ----------------------- Type definitions ---------------------------------*/
-
-/*! \ingroup modbus
- * \brief Modbus serial transmission modes (RTU/ASCII).
- *
- * Modbus serial supports two transmission modes. Either ASCII or RTU. RTU
- * is faster but has more hardware requirements and requires a network with
- * a low jitter. ASCII is slower and more reliable on slower links (E.g. modems)
- */
     typedef enum
 {
-    MB_RTU,                     /*!< RTU transmission mode. */
-    MB_ASCII,                   /*!< ASCII transmission mode. */
-    MB_TCP                      /*!< TCP mode. */
-} eMBMode;
+    MB_EX_NONE = 0x00,
+    MB_EX_ILLEGAL_FUNCTION = 0x01,
+    MB_EX_ILLEGAL_DATA_ADDRESS = 0x02,
+    MB_EX_ILLEGAL_DATA_VALUE = 0x03,
+    MB_EX_SLAVE_DEVICE_FAILURE = 0x04,
+    MB_EX_ACKNOWLEDGE = 0x05,
+    MB_EX_SLAVE_BUSY = 0x06,
+    MB_EX_MEMORY_PARITY_ERROR = 0x08,
+    MB_EX_GATEWAY_PATH_FAILED = 0x0A,
+    MB_EX_GATEWAY_TGT_FAILED = 0x0B
+} eMBException;
+
+
+typedef enum
+{
+	COM_START,
+	COM_IN_PACKET_COLLECTION,
+	COM_FRAME_RECEIVED,
+	COM_EXECUTE
+	
+}eMBstate;
+
 
 /*! \ingroup modbus
  * \brief If register should be written or read.
@@ -118,8 +226,44 @@ typedef enum
     MB_ENORES,                  /*!< insufficient resources. */
     MB_EIO,                     /*!< I/O error. */
     MB_EILLSTATE,               /*!< protocol stack in illegal state. */
-    MB_ETIMEDOUT                /*!< timeout error occurred. */
+    MB_ETIMEDOUT ,               /*!< timeout error occurred. */
+	MB_ERR
 } eMBErrorCode;
+
+
+/*
+*------------------------------------------------------------------------------
+* Public Data Types
+*------------------------------------------------------------------------------
+*/
+
+typedef struct _MB_SLAVE
+{
+	//used to store the state of modbus slave
+	eMBstate 		state;	
+
+	//used to store the frame interval
+	ULONG           usTimerT35_50us;
+
+	//used to store intercharacter delay
+	USHORT			uTimerT15;
+
+	UINT32			prevAppTime;
+	UINT32			curAppTime;
+
+	UINT8 			timeout;
+	UINT8 			prevState ;
+
+	//RTU buffer
+	UCHAR			ucRTUBuf[MB_SER_PDU_SIZE_MAX];
+
+	//RTU buffer index
+	USHORT 			usRcvBufferPos;
+
+	//used to store RTU slave ID
+	UCHAR    		ucMBAddress;
+		
+}sMB_SLAVE;
 
 
 /* ----------------------- Function prototypes ------------------------------*/
@@ -148,63 +292,9 @@ typedef enum
  *        slave addresses are in the range 1 - 247.
  *    - eMBErrorCode::MB_EPORTERR IF the porting layer returned an error.
  */
-eMBErrorCode    eMBInit( eMBMode eMode, UCHAR ucSlaveAddress,
-                         UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity );
+eMBErrorCode
+eMBInit( UCHAR ucSlaveAddress, ULONG ulBaudRate );
 
-/*! \ingroup modbus
- * \brief Initialize the Modbus protocol stack for Modbus TCP.
- *
- * This function initializes the Modbus TCP Module. Please note that
- * frame processing is still disabled until eMBEnable( ) is called.
- *
- * \param usTCPPort The TCP port to listen on.
- * \return If the protocol stack has been initialized correctly the function
- *   returns eMBErrorCode::MB_ENOERR. Otherwise one of the following error
- *   codes is returned:
- *    - eMBErrorCode::MB_EINVAL If the slave address was not valid. Valid
- *        slave addresses are in the range 1 - 247.
- *    - eMBErrorCode::MB_EPORTERR IF the porting layer returned an error.
- */
-eMBErrorCode    eMBTCPInit( USHORT usTCPPort );
-
-/*! \ingroup modbus
- * \brief Release resources used by the protocol stack.
- *
- * This function disables the Modbus protocol stack and release all
- * hardware resources. It must only be called when the protocol stack 
- * is disabled. 
- *
- * \note Note all ports implement this function. A port which wants to 
- *   get an callback must define the macro MB_PORT_HAS_CLOSE to 1.
- *
- * \return If the resources where released it return eMBErrorCode::MB_ENOERR.
- *   If the protocol stack is not in the disabled state it returns
- *   eMBErrorCode::MB_EILLSTATE.
- */
-eMBErrorCode    eMBClose( void );
-
-/*! \ingroup modbus
- * \brief Enable the Modbus protocol stack.
- *
- * This function enables processing of Modbus frames. Enabling the protocol
- * stack is only possible if it is in the disabled state.
- *
- * \return If the protocol stack is now in the state enabled it returns 
- *   eMBErrorCode::MB_ENOERR. If it was not in the disabled state it 
- *   return eMBErrorCode::MB_EILLSTATE.
- */
-eMBErrorCode    eMBEnable( void );
-
-/*! \ingroup modbus
- * \brief Disable the Modbus protocol stack.
- *
- * This function disables processing of Modbus frames.
- *
- * \return If the protocol stack has been disabled it returns 
- *  eMBErrorCode::MB_ENOERR. If it was not in the enabled state it returns
- *  eMBErrorCode::MB_EILLSTATE.
- */
-eMBErrorCode    eMBDisable( void );
 
 /*! \ingroup modbus
  * \brief The main pooling loop of the Modbus protocol stack.
@@ -242,28 +332,8 @@ eMBErrorCode    eMBSetSlaveID( UCHAR ucSlaveID, BOOL xIsRunning,
                                UCHAR const *pucAdditional,
                                USHORT usAdditionalLen );
 
-/*! \ingroup modbus
- * \brief Registers a callback handler for a given function code.
- *
- * This function registers a new callback handler for a given function code.
- * The callback handler supplied is responsible for interpreting the Modbus PDU and
- * the creation of an appropriate response. In case of an error it should return
- * one of the possible Modbus exceptions which results in a Modbus exception frame
- * sent by the protocol stack. 
- *
- * \param ucFunctionCode The Modbus function code for which this handler should
- *   be registers. Valid function codes are in the range 1 to 127.
- * \param pxHandler The function handler which should be called in case
- *   such a frame is received. If \c NULL a previously registered function handler
- *   for this function code is removed.
- *
- * \return eMBErrorCode::MB_ENOERR if the handler has been installed. If no
- *   more resources are available it returns eMBErrorCode::MB_ENORES. In this
- *   case the values in mbconfig.h should be adjusted. If the argument was not
- *   valid it returns eMBErrorCode::MB_EINVAL.
- */
-eMBErrorCode    eMBRegisterCB( UCHAR ucFunctionCode, 
-                               pxMBFunctionHandler pxHandler );
+
+
 
 /* ----------------------- Callback -----------------------------------------*/
 
@@ -411,7 +481,6 @@ eMBErrorCode    eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress,
 eMBErrorCode    eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress,
                                   USHORT usNDiscrete );
 
-#ifdef __cplusplus
-PR_END_EXTERN_C
-#endif
+USHORT          usMBCRC16( UCHAR * pucFrame, USHORT usLen );
+
 #endif

@@ -232,8 +232,6 @@ void updateTruckTime(UINT8 truck , UINT8* trucktime);
 void getActivitySchedule(UINT8 truck, ACTIVITY activity,far ACTIVITY_SCHEDULE* activitySchedule);
 
 
-
-
 /*
 *------------------------------------------------------------------------------
 * APP init
@@ -242,10 +240,11 @@ void getActivitySchedule(UINT8 truck, ACTIVITY activity,far ACTIVITY_SCHEDULE* a
 
 void APP_init(void)
 {
-	UINT8 i = 0,j, k;
+	UINT8 i = 2,j = 1, k = 2;
 	UINT16 timeStart, timeEnd;
 	UINT8 truck;
 	UINT8 buffer[4];
+	UINT8 maxValue = 0;
 
 
 #ifndef __FACTORY_CONFIGURATION__
@@ -385,14 +384,15 @@ void processMBdata(void)
 
 			UTL_binaryToBCDASCII( data->actualPercentage , &segmentBuffer[PARAMETER_ACTUAL_PERCENTAGE_INDEX] );
 
-			mmdConfig.startAddress = 0;
+/*			mmdConfig.startAddress = 0;
 			mmdConfig.length = 28;
 			mmdConfig.symbolCount = 28;
 			mmdConfig.symbolBuffer = segmentBuffer;
 			mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
 			
 			MMD_configSegment( 0 , &mmdConfig);
-			break;	
+			break;
+*/	
 		}
 
 		case CMD_CLEAR_SEGMENT:

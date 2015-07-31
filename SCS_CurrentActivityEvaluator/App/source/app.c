@@ -458,9 +458,9 @@ void APP_task(void)
 		}
 
 
-	//	updateCurrentActivityParameters();
+		updateCurrentActivityParameters();
 		ClrWdt();
-	//	updateCurrentActivityIndication();
+		updateCurrentActivityIndication();
 		app.prevMinute = app.curMinute;
 	}
 
