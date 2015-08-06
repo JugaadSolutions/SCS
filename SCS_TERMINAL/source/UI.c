@@ -268,7 +268,7 @@ void UI_task(void)
 		if(keypressed == '\x08')
 		{
 			setUImsg(UI_MSG_ACTIVITY);
-			clearUIBuffer();
+			//clearUIBuffer();
 			ui.state = UI_ACTIVITY;
 		}
 
@@ -298,7 +298,7 @@ void UI_task(void)
 		if( keypressed == '\x08')
 		{
 			setUImsg(UI_MSG_ACTIVITY);
-			clearUIBuffer();
+			//clearUIBuffer();
 			ui.state = UI_ACTIVITY;
 		}
 
@@ -328,7 +328,7 @@ void UI_task(void)
 		if( keypressed == '\x08')
 		{
 			setUImsg(UI_MSG_ACTIVITY);
-			clearUIBuffer();
+			//clearUIBuffer();
 			ui.state = UI_ACTIVITY;
 		}
 

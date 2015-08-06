@@ -1,5 +1,5 @@
 MPLINK 4.48, Linker
-Linker Map File - Created Tue Jul 28 15:52:20 2015
+Linker Map File - Created Wed Aug 05 18:44:26 2015
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -21,80 +21,80 @@ Linker Map File - Created Tue Jul 28 15:52:20 2015
                low_vector       code   0x000018    program   0x000014
                    .cinit    romdata   0x00002c    program   0x000092
      .code_modbusMaster.o       code   0x0000be    program   0x001006
-               .code_UI.o       code   0x0010c4    program   0x000c22
-              .code_app.o       code   0x001ce6    program   0x0007f8
-             .code_uart.o       code   0x0024de    program   0x000602
-              .code_lcd.o       code   0x002ae0    program   0x000454
-           .code_keypad.o       code   0x002f34    program   0x00026e
-                      ISR       code   0x0031a2    program   0x0001be
-                   STDLIB       code   0x003360    program   0x0000ea
-             .code_main.o       code   0x00344a    program   0x0000b0
-             .stringtable    romdata   0x0034fa    program   0x0000ad
-        .romdata_u2open.o    romdata   0x0035a7    program   0x000000
-        .idata_u2open.o_i    romdata   0x0035a7    program   0x000000
-        .romdata_u1open.o    romdata   0x0035a7    program   0x000000
-        .idata_u1open.o_i    romdata   0x0035a7    program   0x000000
-      .romdata_fxd3232u.o    romdata   0x0035a7    program   0x000000
-      .romdata_fxd1616u.o    romdata   0x0035a7    program   0x000000
-          .romdata_uart.o    romdata   0x0035a7    program   0x000000
-          .idata_uart.o_i    romdata   0x0035a7    program   0x000000
-         .romdata_timer.o    romdata   0x0035a7    program   0x000000
-        .idata_t0open.o_i    romdata   0x0035a7    program   0x000000
-        .romdata_t0open.o    romdata   0x0035a7    program   0x000000
-        .idata_u1read.o_i    romdata   0x0035a7    program   0x000000
-        .romdata_u1read.o    romdata   0x0035a7    program   0x000000
-        .idata_u2read.o_i    romdata   0x0035a7    program   0x000000
-        .romdata_u2read.o    romdata   0x0035a7    program   0x000000
-        .idata_u1defs.o_i    romdata   0x0035a7    program   0x000000
-        .romdata_u1defs.o    romdata   0x0035a7    program   0x000000
-        .idata_u2defs.o_i    romdata   0x0035a7    program   0x000000
-        .romdata_u2defs.o    romdata   0x0035a7    program   0x000000
-       .idata_t0write.o_i    romdata   0x0035a7    program   0x000000
-       .romdata_t0write.o    romdata   0x0035a7    program   0x000000
-        .romdata___init.o    romdata   0x0035a7    program   0x000000
-         .romdata_c018i.o    romdata   0x0035a7    program   0x000000
-     .romdata_heartBeat.o    romdata   0x0035a7    program   0x000000
-.idata_interruptvector.o_i    romdata   0x0035a7    program   0x000000
-.romdata_interruptvector.o    romdata   0x0035a7    program   0x000000
-     .idata_heartBeat.o_i    romdata   0x0035a7    program   0x000001
-         .romdata_board.o    romdata   0x0035a7    program   0x000000
-        .idata_keypad.o_i    romdata   0x0035a7    program   0x000000
-        .romdata_keypad.o    romdata   0x0035a7    program   0x000000
-           .idata_lcd.o_i    romdata   0x0035a7    program   0x000000
-          .idata_main.o_i    romdata   0x0035a7    program   0x000000
-          .romdata_main.o    romdata   0x0035a7    program   0x000000
-         .idata_timer.o_i    romdata   0x0035a7    program   0x000000
-  .romdata_modbusMaster.o    romdata   0x0035a7    program   0x000000
-            .code_timer.o       code   0x0035a8    program   0x0000a8
-                     PROG       code   0x003650    program   0x0000a4
-               _cinit_scn       code   0x0036f4    program   0x00009e
-                   STRING       code   0x003792    program   0x000090
-           .code_u2open.o       code   0x003822    program   0x000078
-           .code_u1open.o       code   0x00389a    program   0x000072
-         .code_fxd3232u.o       code   0x00390c    program   0x000048
-           .code_u2read.o       code   0x003954    program   0x00003e
-           .code_u1read.o       code   0x003992    program   0x00003e
-            .code_board.o       code   0x0039d0    program   0x00003c
-          .code_t0write.o       code   0x003a0c    program   0x000038
-           .code_t0open.o       code   0x003a44    program   0x000038
-         .code_fxd1616u.o       code   0x003a7c    program   0x00002c
-              D1KTCYXCODE       code   0x003aa8    program   0x000020
-                    .code       code   0x003ac8    program   0x000020
-             _startup_scn       code   0x003ae8    program   0x00001c
-        .code_heartBeat.o       code   0x003b04    program   0x00001a
-              D10TCYXCODE       code   0x003b1e    program   0x000016
-           .romdata_lcd.o    romdata   0x003b34    program   0x000011
-            .romdata_UI.o    romdata   0x003b45    program   0x000010
-                UI_DATA_i    romdata   0x003b55    program   0x000048
-              UART_DATA_i    romdata   0x003b9d    program   0x000086
-             TIMER_DATA_i    romdata   0x003c23    program   0x00001f
-            MODBUS_DATA_i    romdata   0x003c42    program   0x000042
-               LOG_DATA_i    romdata   0x003c84    program   0x0001e3
-               LCD_DATA_i    romdata   0x003e67    program   0x000022
-            KEYPAD_DATA_i    romdata   0x003e89    program   0x000049
-               APP_DATA_i    romdata   0x003ed2    program   0x000089
-           .idata_app.o_i    romdata   0x003f5b    program   0x00000b
-            .idata_UI.o_i    romdata   0x003f66    program   0x00001e
+               .code_UI.o       code   0x0010c4    program   0x000c1c
+              .code_app.o       code   0x001ce0    program   0x0007f8
+             .code_uart.o       code   0x0024d8    program   0x000602
+              .code_lcd.o       code   0x002ada    program   0x000454
+           .code_keypad.o       code   0x002f2e    program   0x00026e
+                      ISR       code   0x00319c    program   0x0001be
+                   STDLIB       code   0x00335a    program   0x0000ea
+             .code_main.o       code   0x003444    program   0x0000b0
+             .stringtable    romdata   0x0034f4    program   0x0000ad
+        .romdata_u2open.o    romdata   0x0035a1    program   0x000000
+        .idata_u2open.o_i    romdata   0x0035a1    program   0x000000
+        .romdata_u1open.o    romdata   0x0035a1    program   0x000000
+        .idata_u1open.o_i    romdata   0x0035a1    program   0x000000
+      .romdata_fxd3232u.o    romdata   0x0035a1    program   0x000000
+      .romdata_fxd1616u.o    romdata   0x0035a1    program   0x000000
+          .romdata_uart.o    romdata   0x0035a1    program   0x000000
+          .idata_uart.o_i    romdata   0x0035a1    program   0x000000
+         .romdata_timer.o    romdata   0x0035a1    program   0x000000
+        .idata_t0open.o_i    romdata   0x0035a1    program   0x000000
+        .romdata_t0open.o    romdata   0x0035a1    program   0x000000
+        .idata_u1read.o_i    romdata   0x0035a1    program   0x000000
+        .romdata_u1read.o    romdata   0x0035a1    program   0x000000
+        .idata_u2read.o_i    romdata   0x0035a1    program   0x000000
+        .romdata_u2read.o    romdata   0x0035a1    program   0x000000
+        .idata_u1defs.o_i    romdata   0x0035a1    program   0x000000
+        .romdata_u1defs.o    romdata   0x0035a1    program   0x000000
+        .idata_u2defs.o_i    romdata   0x0035a1    program   0x000000
+        .romdata_u2defs.o    romdata   0x0035a1    program   0x000000
+       .idata_t0write.o_i    romdata   0x0035a1    program   0x000000
+       .romdata_t0write.o    romdata   0x0035a1    program   0x000000
+        .romdata___init.o    romdata   0x0035a1    program   0x000000
+         .romdata_c018i.o    romdata   0x0035a1    program   0x000000
+     .romdata_heartBeat.o    romdata   0x0035a1    program   0x000000
+.idata_interruptvector.o_i    romdata   0x0035a1    program   0x000000
+.romdata_interruptvector.o    romdata   0x0035a1    program   0x000000
+     .idata_heartBeat.o_i    romdata   0x0035a1    program   0x000001
+         .romdata_board.o    romdata   0x0035a1    program   0x000000
+        .idata_keypad.o_i    romdata   0x0035a1    program   0x000000
+        .romdata_keypad.o    romdata   0x0035a1    program   0x000000
+           .idata_lcd.o_i    romdata   0x0035a1    program   0x000000
+          .idata_main.o_i    romdata   0x0035a1    program   0x000000
+          .romdata_main.o    romdata   0x0035a1    program   0x000000
+         .idata_timer.o_i    romdata   0x0035a1    program   0x000000
+  .romdata_modbusMaster.o    romdata   0x0035a1    program   0x000000
+            .code_timer.o       code   0x0035a2    program   0x0000a8
+                     PROG       code   0x00364a    program   0x0000a4
+               _cinit_scn       code   0x0036ee    program   0x00009e
+                   STRING       code   0x00378c    program   0x000090
+           .code_u2open.o       code   0x00381c    program   0x000078
+           .code_u1open.o       code   0x003894    program   0x000072
+         .code_fxd3232u.o       code   0x003906    program   0x000048
+           .code_u2read.o       code   0x00394e    program   0x00003e
+           .code_u1read.o       code   0x00398c    program   0x00003e
+            .code_board.o       code   0x0039ca    program   0x00003c
+          .code_t0write.o       code   0x003a06    program   0x000038
+           .code_t0open.o       code   0x003a3e    program   0x000038
+         .code_fxd1616u.o       code   0x003a76    program   0x00002c
+              D1KTCYXCODE       code   0x003aa2    program   0x000020
+                    .code       code   0x003ac2    program   0x000020
+             _startup_scn       code   0x003ae2    program   0x00001c
+        .code_heartBeat.o       code   0x003afe    program   0x00001a
+              D10TCYXCODE       code   0x003b18    program   0x000016
+           .romdata_lcd.o    romdata   0x003b2e    program   0x000011
+            .romdata_UI.o    romdata   0x003b3f    program   0x000010
+                UI_DATA_i    romdata   0x003b4f    program   0x000048
+              UART_DATA_i    romdata   0x003b97    program   0x000086
+             TIMER_DATA_i    romdata   0x003c1d    program   0x00001f
+            MODBUS_DATA_i    romdata   0x003c3c    program   0x000042
+               LOG_DATA_i    romdata   0x003c7e    program   0x0001e3
+               LCD_DATA_i    romdata   0x003e61    program   0x000022
+            KEYPAD_DATA_i    romdata   0x003e83    program   0x000049
+               APP_DATA_i    romdata   0x003ecc    program   0x000090
+           .idata_app.o_i    romdata   0x003f5c    program   0x00000b
+            .idata_UI.o_i    romdata   0x003f67    program   0x00001e
     .config_300001_main.o    romdata   0x300001    program   0x000001
     .config_300002_main.o    romdata   0x300002    program   0x000001
     .config_300003_main.o    romdata   0x300003    program   0x000001
@@ -110,8 +110,8 @@ Linker Map File - Created Tue Jul 28 15:52:20 2015
                  .tmpdata      udata   0x000014       data   0x000008
                 DELAYDAT1      udata   0x00001c       data   0x000001
                    .stack      udata   0x000060       data   0x0000a0
-                 APP_DATA      idata   0x000100       data   0x000089
-                 LOG_DATA      idata   0x000189       data   0x0001e3
+                 APP_DATA      idata   0x000100       data   0x000090
+                 LOG_DATA      idata   0x000190       data   0x0001e3
               MODBUS_DATA      idata   0x000600       data   0x000042
                 UART_DATA      idata   0x000a00       data   0x000086
                   UI_DATA      idata   0x000c00       data   0x000048
@@ -173,112 +173,112 @@ Linker Map File - Created Tue Jul 28 15:52:20 2015
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000015      
-                            0x000018    0x003f83      
+                            0x000018    0x003f84      
                             0x300001    0x300003      
                             0x300005    0x300006      
                             0x300008    0x30000d      
-            16269 out of 29720 program addresses used, program memory utilization is 54%
+            16270 out of 29720 program addresses used, program memory utilization is 54%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-        APP_activityValid   0x001f50    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-          APP_cancelTruck   0x0024a2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-        APP_checkPassword   0x001f14    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-                 APP_init   0x001ce6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-        APP_manageLoading   0x0022f8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-        APP_managePicking   0x001fbc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-        APP_manageStaging   0x00214e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-                 APP_task   0x001d74    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-      APP_validateLoading   0x002428    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-      APP_validatePicking   0x0020dc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-      APP_validateStaging   0x00227e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-            App_updateLog   0x001e10    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-               BOARD_init   0x0039d0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\board.c
-                    D10_1   0x003b2e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                     D10x   0x003b26    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                    D1K_1   0x003ab4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x003ab2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-                   D3232S   0x003680    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                D3232SNEG   0x00368e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                 D3232SOK   0x00368a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                  D3232SX   0x0036ae    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                  DA3232S   0x00366a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-              Delay10TCYx   0x003b1e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-              Delay1KTCYx   0x003aa8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+        APP_activityValid   0x001f4a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+          APP_cancelTruck   0x00249c    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+        APP_checkPassword   0x001f0e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+                 APP_init   0x001ce0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+        APP_manageLoading   0x0022f2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+        APP_managePicking   0x001fb6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+        APP_manageStaging   0x002148    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+                 APP_task   0x001d6e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+      APP_validateLoading   0x002422    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+      APP_validatePicking   0x0020d6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+      APP_validateStaging   0x002278    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+            App_updateLog   0x001e0a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+               BOARD_init   0x0039ca    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\board.c
+                    D10_1   0x003b28    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                     D10x   0x003b20    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                    D1K_1   0x003aae    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x003aac    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+                   D3232S   0x00367a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                D3232SNEG   0x003688    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                 D3232SOK   0x003684    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                  D3232SX   0x0036a8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                  DA3232S   0x003664    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+              Delay10TCYx   0x003b18    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+              Delay1KTCYx   0x003aa2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
          EnableInterrupts   0x000022    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\interruptvector.c
-                 FXD1616U   0x003a7c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
-                 FXD3232S   0x003650    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                 FXD3232U   0x00390c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232u.c
-                 FXM1616U   0x0036b8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm1616u.asm
-               GetAppTime   0x0035f0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
-                  HB_init   0x003b04    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\heartBeat.c
-                  HB_task   0x003b0a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\heartBeat.c
-                  InitLcd   0x002c3c    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-              KEYPAD_init   0x002f34    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
-              KEYPAD_read   0x002fd2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
-             KEYPAD_reset   0x003050    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
-              KEYPAD_task   0x002f46    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
-                LCD_clear   0x002dc0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-                 LCD_init   0x002e60    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-              LCD_putChar   0x002dce    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-         LCD_setBackSpace   0x002daa    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-         LCD_writeCommand   0x002ba0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-            LCD_writeData   0x002bee    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+                 FXD1616U   0x003a76    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
+                 FXD3232S   0x00364a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                 FXD3232U   0x003906    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232u.c
+                 FXM1616U   0x0036b2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm1616u.asm
+               GetAppTime   0x0035ea    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
+                  HB_init   0x003afe    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\heartBeat.c
+                  HB_task   0x003b04    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\heartBeat.c
+                  InitLcd   0x002c36    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+              KEYPAD_init   0x002f2e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+              KEYPAD_read   0x002fcc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+             KEYPAD_reset   0x00304a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+              KEYPAD_task   0x002f40    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+                LCD_clear   0x002dba    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+                 LCD_init   0x002e5a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+              LCD_putChar   0x002dc8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+         LCD_setBackSpace   0x002da4    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+         LCD_writeCommand   0x002b9a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+            LCD_writeData   0x002be8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
              MB_construct   0x000e64    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
              MB_getStatus   0x0010bc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
                   MB_init   0x000d3e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
                   MB_task   0x0000be    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
-               Open1USART   0x00389a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1open.c
-               Open2USART   0x003822    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2open.c
-               OpenTimer0   0x003a44    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
-               Read1USART   0x003992    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1read.c
-               Read2USART   0x003954    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2read.c
-             ResetAppTime   0x003640    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
-               TIMER0_ISR   0x0031a2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
-              TIMER0_init   0x0035a8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
-            UART1_hasData   0x002a06    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-               UART1_init   0x002698    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-               UART1_read   0x002a40    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-           UART1_transmit   0x002800    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-              UART1_write   0x002790    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-            UART2_hasData   0x0029cc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-               UART2_init   0x002758    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-               UART2_read   0x002a90    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-           UART2_transmit   0x0028e6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-              UART2_write   0x0027c8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+               Open1USART   0x003894    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1open.c
+               Open2USART   0x00381c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2open.c
+               OpenTimer0   0x003a3e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
+               Read1USART   0x00398c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1read.c
+               Read2USART   0x00394e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2read.c
+             ResetAppTime   0x00363a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
+               TIMER0_ISR   0x00319c    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
+              TIMER0_init   0x0035a2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
+            UART1_hasData   0x002a00    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+               UART1_init   0x002692    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+               UART1_read   0x002a3a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+           UART1_transmit   0x0027fa    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+              UART1_write   0x00278a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+            UART2_hasData   0x0029c6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+               UART2_init   0x002752    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+               UART2_read   0x002a8a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+           UART2_transmit   0x0028e0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+              UART2_write   0x0027c2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
                   UI_init   0x0010c4    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
                   UI_task   0x0010f8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-     Uart1_ReceiveHandler   0x003296    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-    Uart1_TransmitHandler   0x0025a8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-     Uart2_ReceiveHandler   0x0024de    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-    Uart2_TransmitHandler   0x002620    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-              WriteTimer0   0x003a0c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
-              _2jContinue   0x0037b2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                   _3jEnd   0x0037bc    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-        _D10TCYXCODE_000A   0x003b28    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x003b2a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x003b2c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D1KTCYXCODE_0010   0x003ab8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x003abe    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+     Uart1_ReceiveHandler   0x003290    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+    Uart1_TransmitHandler   0x0025a2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+     Uart2_ReceiveHandler   0x0024d8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+    Uart2_TransmitHandler   0x00261a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+              WriteTimer0   0x003a06    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
+              _2jContinue   0x0037ac    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x0037b6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+        _D10TCYXCODE_000A   0x003b22    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x003b24    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x003b26    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D1KTCYXCODE_0010   0x003ab2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x003ab8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
            ___if_lbl00001   0x000010    program     static                          
            ___if_lbl00003   0x000020    program     static                          
-           ___if_lbl00003   0x002b50    program     static                          
+           ___if_lbl00003   0x002b4a    program     static                          
        ___return_lbl00000   0x000004    program     static                          
        ___return_lbl00000   0x000010    program     static                          
-       ___return_lbl00000   0x003952    program     static                          
-       ___return_lbl00000   0x003aa6    program     static                          
-       ___return_lbl00000   0x002b58    program     static                          
-       ___return_lbl00001   0x003b02    program     static                          
+       ___return_lbl00000   0x00394c    program     static                          
+       ___return_lbl00000   0x003aa0    program     static                          
+       ___return_lbl00000   0x002b52    program     static                          
+       ___return_lbl00001   0x003afc    program     static                          
        ___return_lbl00002   0x000020    program     static                          
-       ___return_lbl00002   0x003790    program     static                          
-       ___return_lbl00004   0x002b98    program     static                          
-       ___return_lbl00005   0x002be6    program     static                          
-       ___return_lbl00006   0x002c34    program     static                          
-        ___while_lbl00001   0x002b04    program     static                          
-        ___while_lbl00002   0x002b52    program     static                          
+       ___return_lbl00002   0x00378a    program     static                          
+       ___return_lbl00004   0x002b92    program     static                          
+       ___return_lbl00005   0x002be0    program     static                          
+       ___return_lbl00006   0x002c2e    program     static                          
+        ___while_lbl00001   0x002afe    program     static                          
+        ___while_lbl00002   0x002b4c    program     static                          
                __config_0   0x300001    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
                __config_1   0x300002    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
               __config_10   0x30000d    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
@@ -291,93 +291,93 @@ Linker Map File - Created Tue Jul 28 15:52:20 2015
                __config_8   0x30000b    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
                __config_9   0x30000c    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
                    __init   0x000012    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\__init.c
-               __string_0   0x00359d    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_1   0x003593    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              __string_10   0x003526    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              __string_11   0x00351b    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              __string_12   0x00350d    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              __string_13   0x003504    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              __string_14   0x0034fa    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_2   0x003585    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_3   0x003577    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_4   0x003569    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_5   0x00355d    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_6   0x003551    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_7   0x003545    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_8   0x00353b    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_9   0x00352b    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-            __zero_memory   0x003ac8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
-                _do_cinit   0x0036f4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               __string_0   0x003597    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_1   0x00358d    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              __string_10   0x003520    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              __string_11   0x003515    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              __string_12   0x003507    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              __string_13   0x0034fe    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              __string_14   0x0034f4    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_2   0x00357f    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_3   0x003571    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_4   0x003563    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_5   0x003557    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_6   0x00354b    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_7   0x00353f    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_8   0x003535    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_9   0x003525    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+            __zero_memory   0x003ac2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+                _do_cinit   0x0036ee    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                   _false   0x00394e    program     static                          
-                 _startup   0x003ae8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     atoi   0x003360    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                  busyLcd   0x002ae0    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+                   _false   0x003948    program     static                          
+                 _startup   0x003ae2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     atoi   0x00335a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                  busyLcd   0x002ada    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
              calculateCRC   0x000efe    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
-              clearScreen   0x003b34    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-            clearUIBuffer   0x001a88    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-             clearUIInput   0x001aae    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                compare_l   0x003ade    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+              clearScreen   0x003b2e    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+            clearUIBuffer   0x001a82    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+             clearUIInput   0x001aa8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                compare_l   0x003ad8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
           constructPacket   0x000198    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
             construct_F15   0x000386    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
             construct_F16   0x000514    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
-                copy_loop   0x003766    program     static                          
-            copy_one_byte   0x00376c    program     static                          
-               dataPortIn   0x002f14    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-              dataPortOut   0x002f24    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-                     done   0x003790    program     static                          
-             done_copying   0x00377a    program     static                          
-                  endloop   0x003aa2    program     static                          
-                  getData   0x001a2a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               getStation   0x001996    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                copy_loop   0x003760    program     static                          
+            copy_one_byte   0x003766    program     static                          
+               dataPortIn   0x002f0e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+              dataPortOut   0x002f1e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+                     done   0x00378a    program     static                          
+             done_copying   0x003774    program     static                          
+                  endloop   0x003a9c    program     static                          
+                  getData   0x001a24    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               getStation   0x001990    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
            high_interrupt   0x000008    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\interruptvector.c
                      idle   0x0000f0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
-                     jEnd   0x0037c4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                     jEnd   0x00341e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                     jEnd   0x0037f0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
-                     jEnd   0x003820    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
-                 jEndLoop   0x003406    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                    jLoop   0x003816    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
-                    jLoop   0x0037e6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
-                    jLoop   0x0037a6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                    jLoop   0x0033b8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                  jSkipWS   0x00338e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                 jSkipWS1   0x0033a0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                 jTstSign   0x0033a4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                jTstSign1   0x0033b0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                jTstSign2   0x0033b6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                jTstSign3   0x0033b8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                   keyMap   0x003b45    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                     loop   0x003af8    program     static                          
-                     loop   0x003a86    program     static                          
-                     loop   0x00391a    program     static                          
-                   loop_h   0x003ad6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
-                   loop_l   0x003ae0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+                     jEnd   0x0037be    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                     jEnd   0x003418    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                     jEnd   0x0037ea    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
+                     jEnd   0x00381a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
+                 jEndLoop   0x003400    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                    jLoop   0x003810    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
+                    jLoop   0x0037e0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
+                    jLoop   0x0037a0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                    jLoop   0x0033b2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                  jSkipWS   0x003388    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                 jSkipWS1   0x00339a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                 jTstSign   0x00339e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                jTstSign1   0x0033aa    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                jTstSign2   0x0033b0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                jTstSign3   0x0033b2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                   keyMap   0x003b3f    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                     loop   0x003af2    program     static                          
+                     loop   0x003a80    program     static                          
+                     loop   0x003914    program     static                          
+                   loop_h   0x003ad0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+                   loop_l   0x003ada    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
             low_interrupt   0x000018    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\interruptvector.c
-                     main   0x00344a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
-                   mapKey   0x00184e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                   memset   0x003792    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                     main   0x003444    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
+                   mapKey   0x001848    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                   memset   0x00378c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
              processError   0x000c3a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
              processReply   0x00076e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
            processSuccess   0x000cec    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
             process_F1_F2   0x000892    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
             process_F3_F4   0x000a1e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
     process_F5_F6_F15_F16   0x000b20    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
-                 putUImsg   0x001bb8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-    rawWriteCommand8ToLcd   0x002b70    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-               scanKeypad   0x003060    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+                 putUImsg   0x001bb2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+    rawWriteCommand8ToLcd   0x002b6a    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+               scanKeypad   0x00305a    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
                sendPacket   0x00102c    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
-                 setUImsg   0x001b2c    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                showUImsg   0x001ad0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-         storeCMDinBuffer   0x001c40    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                   strcmp   0x0037c6    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
-                   strlen   0x003806    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
-                     test   0x00370e    program     static                          
+                 setUImsg   0x001b26    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                showUImsg   0x001aca    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+         storeCMDinBuffer   0x001c3a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                   strcmp   0x0037c0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
+                   strlen   0x003800    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
+                     test   0x003708    program     static                          
                   timeout   0x000006    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
         waiting_for_reply   0x000656    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
    waiting_for_turnaround   0x000620    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
-               writetoLCD   0x002e70    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-               zero_block   0x003ad6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+               writetoLCD   0x002e6a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+               zero_block   0x003ad0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
                    ADCON0   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
                ADCON0bits   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
                    ADCON1   0x000fc1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
@@ -857,7 +857,7 @@ Linker Map File - Created Tue Jul 28 15:52:20 2015
                       lcd   0x000e1f       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
                  ledState   0x000e71       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\heartBeat.c
                  ledState   0x000f37       data     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\board.c
-                      log   0x000189       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+                      log   0x000190       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
             mbUpdateCount   0x000e18       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
                    oldKey   0x000c90       data     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
                    packet   0x000e58       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
@@ -914,158 +914,158 @@ Linker Map File - Created Tue Jul 28 15:52:20 2015
              MB_getStatus   0x0010bc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
                   UI_init   0x0010c4    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
                   UI_task   0x0010f8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                   mapKey   0x00184e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               getStation   0x001996    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                  getData   0x001a2a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-            clearUIBuffer   0x001a88    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-             clearUIInput   0x001aae    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                showUImsg   0x001ad0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                 setUImsg   0x001b2c    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                 putUImsg   0x001bb8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-         storeCMDinBuffer   0x001c40    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-                 APP_init   0x001ce6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-                 APP_task   0x001d74    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-            App_updateLog   0x001e10    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-        APP_checkPassword   0x001f14    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-        APP_activityValid   0x001f50    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-        APP_managePicking   0x001fbc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-      APP_validatePicking   0x0020dc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-        APP_manageStaging   0x00214e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-      APP_validateStaging   0x00227e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-        APP_manageLoading   0x0022f8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-      APP_validateLoading   0x002428    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-          APP_cancelTruck   0x0024a2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-     Uart2_ReceiveHandler   0x0024de    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-    Uart1_TransmitHandler   0x0025a8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-    Uart2_TransmitHandler   0x002620    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-               UART1_init   0x002698    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-               UART2_init   0x002758    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-              UART1_write   0x002790    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-              UART2_write   0x0027c8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-           UART1_transmit   0x002800    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-           UART2_transmit   0x0028e6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-            UART2_hasData   0x0029cc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-            UART1_hasData   0x002a06    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-               UART1_read   0x002a40    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-               UART2_read   0x002a90    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-                  busyLcd   0x002ae0    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-        ___while_lbl00001   0x002b04    program     static                          
-           ___if_lbl00003   0x002b50    program     static                          
-        ___while_lbl00002   0x002b52    program     static                          
-       ___return_lbl00000   0x002b58    program     static                          
-    rawWriteCommand8ToLcd   0x002b70    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-       ___return_lbl00004   0x002b98    program     static                          
-         LCD_writeCommand   0x002ba0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-       ___return_lbl00005   0x002be6    program     static                          
-            LCD_writeData   0x002bee    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-       ___return_lbl00006   0x002c34    program     static                          
-                  InitLcd   0x002c3c    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-         LCD_setBackSpace   0x002daa    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-                LCD_clear   0x002dc0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-              LCD_putChar   0x002dce    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-                 LCD_init   0x002e60    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-               writetoLCD   0x002e70    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-               dataPortIn   0x002f14    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-              dataPortOut   0x002f24    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-              KEYPAD_init   0x002f34    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
-              KEYPAD_task   0x002f46    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
-              KEYPAD_read   0x002fd2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
-             KEYPAD_reset   0x003050    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
-               scanKeypad   0x003060    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
-               TIMER0_ISR   0x0031a2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
-     Uart1_ReceiveHandler   0x003296    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
-                     atoi   0x003360    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                  jSkipWS   0x00338e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                 jSkipWS1   0x0033a0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                 jTstSign   0x0033a4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                jTstSign1   0x0033b0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                jTstSign2   0x0033b6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                jTstSign3   0x0033b8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                    jLoop   0x0033b8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                 jEndLoop   0x003406    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                     jEnd   0x00341e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
-                     main   0x00344a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
-              __string_14   0x0034fa    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              __string_13   0x003504    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              __string_12   0x00350d    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              __string_11   0x00351b    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              __string_10   0x003526    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_9   0x00352b    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_8   0x00353b    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_7   0x003545    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_6   0x003551    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_5   0x00355d    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_4   0x003569    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_3   0x003577    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_2   0x003585    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_1   0x003593    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-               __string_0   0x00359d    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
-              TIMER0_init   0x0035a8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
-               GetAppTime   0x0035f0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
-             ResetAppTime   0x003640    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
-                 FXD3232S   0x003650    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                  DA3232S   0x00366a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                   D3232S   0x003680    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                 D3232SOK   0x00368a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                D3232SNEG   0x00368e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                  D3232SX   0x0036ae    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
-                 FXM1616U   0x0036b8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm1616u.asm
-                _do_cinit   0x0036f4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     test   0x00370e    program     static                          
-                copy_loop   0x003766    program     static                          
-            copy_one_byte   0x00376c    program     static                          
-             done_copying   0x00377a    program     static                          
-                     done   0x003790    program     static                          
-       ___return_lbl00002   0x003790    program     static                          
-                   memset   0x003792    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                    jLoop   0x0037a6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-              _2jContinue   0x0037b2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                   _3jEnd   0x0037bc    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                     jEnd   0x0037c4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
-                   strcmp   0x0037c6    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
-                    jLoop   0x0037e6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
-                     jEnd   0x0037f0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
-                   strlen   0x003806    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
-                    jLoop   0x003816    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
-                     jEnd   0x003820    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
-               Open2USART   0x003822    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2open.c
-               Open1USART   0x00389a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1open.c
-                 FXD3232U   0x00390c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232u.c
-                     loop   0x00391a    program     static                          
-                   _false   0x00394e    program     static                          
-       ___return_lbl00000   0x003952    program     static                          
-               Read2USART   0x003954    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2read.c
-               Read1USART   0x003992    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1read.c
-               BOARD_init   0x0039d0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\board.c
-              WriteTimer0   0x003a0c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
-               OpenTimer0   0x003a44    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
-                 FXD1616U   0x003a7c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
-                     loop   0x003a86    program     static                          
-                  endloop   0x003aa2    program     static                          
-       ___return_lbl00000   0x003aa6    program     static                          
-              Delay1KTCYx   0x003aa8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x003ab2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-                    D1K_1   0x003ab4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0010   0x003ab8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x003abe    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
-            __zero_memory   0x003ac8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
-               zero_block   0x003ad6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
-                   loop_h   0x003ad6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
-                compare_l   0x003ade    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
-                   loop_l   0x003ae0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
-                 _startup   0x003ae8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     loop   0x003af8    program     static                          
-       ___return_lbl00001   0x003b02    program     static                          
-                  HB_init   0x003b04    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\heartBeat.c
-                  HB_task   0x003b0a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\heartBeat.c
-              Delay10TCYx   0x003b1e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                     D10x   0x003b26    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000A   0x003b28    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x003b2a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x003b2c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                    D10_1   0x003b2e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-              clearScreen   0x003b34    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
-                   keyMap   0x003b45    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                   mapKey   0x001848    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               getStation   0x001990    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                  getData   0x001a24    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+            clearUIBuffer   0x001a82    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+             clearUIInput   0x001aa8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                showUImsg   0x001aca    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                 setUImsg   0x001b26    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                 putUImsg   0x001bb2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+         storeCMDinBuffer   0x001c3a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+                 APP_init   0x001ce0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+                 APP_task   0x001d6e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+            App_updateLog   0x001e0a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+        APP_checkPassword   0x001f0e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+        APP_activityValid   0x001f4a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+        APP_managePicking   0x001fb6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+      APP_validatePicking   0x0020d6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+        APP_manageStaging   0x002148    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+      APP_validateStaging   0x002278    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+        APP_manageLoading   0x0022f2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+      APP_validateLoading   0x002422    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+          APP_cancelTruck   0x00249c    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+     Uart2_ReceiveHandler   0x0024d8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+    Uart1_TransmitHandler   0x0025a2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+    Uart2_TransmitHandler   0x00261a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+               UART1_init   0x002692    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+               UART2_init   0x002752    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+              UART1_write   0x00278a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+              UART2_write   0x0027c2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+           UART1_transmit   0x0027fa    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+           UART2_transmit   0x0028e0    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+            UART2_hasData   0x0029c6    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+            UART1_hasData   0x002a00    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+               UART1_read   0x002a3a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+               UART2_read   0x002a8a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+                  busyLcd   0x002ada    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+        ___while_lbl00001   0x002afe    program     static                          
+           ___if_lbl00003   0x002b4a    program     static                          
+        ___while_lbl00002   0x002b4c    program     static                          
+       ___return_lbl00000   0x002b52    program     static                          
+    rawWriteCommand8ToLcd   0x002b6a    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+       ___return_lbl00004   0x002b92    program     static                          
+         LCD_writeCommand   0x002b9a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+       ___return_lbl00005   0x002be0    program     static                          
+            LCD_writeData   0x002be8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+       ___return_lbl00006   0x002c2e    program     static                          
+                  InitLcd   0x002c36    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+         LCD_setBackSpace   0x002da4    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+                LCD_clear   0x002dba    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+              LCD_putChar   0x002dc8    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+                 LCD_init   0x002e5a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+               writetoLCD   0x002e6a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+               dataPortIn   0x002f0e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+              dataPortOut   0x002f1e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+              KEYPAD_init   0x002f2e    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+              KEYPAD_task   0x002f40    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+              KEYPAD_read   0x002fcc    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+             KEYPAD_reset   0x00304a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+               scanKeypad   0x00305a    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\keypad.c
+               TIMER0_ISR   0x00319c    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
+     Uart1_ReceiveHandler   0x003290    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\uart.c
+                     atoi   0x00335a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                  jSkipWS   0x003388    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                 jSkipWS1   0x00339a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                 jTstSign   0x00339e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                jTstSign1   0x0033aa    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                jTstSign2   0x0033b0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                jTstSign3   0x0033b2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                    jLoop   0x0033b2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                 jEndLoop   0x003400    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                     jEnd   0x003418    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\atoi.asm
+                     main   0x003444    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
+              __string_14   0x0034f4    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              __string_13   0x0034fe    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              __string_12   0x003507    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              __string_11   0x003515    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              __string_10   0x003520    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_9   0x003525    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_8   0x003535    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_7   0x00353f    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_6   0x00354b    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_5   0x003557    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_4   0x003563    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_3   0x003571    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_2   0x00357f    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_1   0x00358d    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+               __string_0   0x003597    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
+              TIMER0_init   0x0035a2    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
+               GetAppTime   0x0035ea    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
+             ResetAppTime   0x00363a    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\timer.c
+                 FXD3232S   0x00364a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                  DA3232S   0x003664    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                   D3232S   0x00367a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                 D3232SOK   0x003684    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                D3232SNEG   0x003688    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                  D3232SX   0x0036a8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232s.asm
+                 FXM1616U   0x0036b2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxm1616u.asm
+                _do_cinit   0x0036ee    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     test   0x003708    program     static                          
+                copy_loop   0x003760    program     static                          
+            copy_one_byte   0x003766    program     static                          
+             done_copying   0x003774    program     static                          
+                     done   0x00378a    program     static                          
+       ___return_lbl00002   0x00378a    program     static                          
+                   memset   0x00378c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                    jLoop   0x0037a0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+              _2jContinue   0x0037ac    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x0037b6    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                     jEnd   0x0037be    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                   strcmp   0x0037c0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
+                    jLoop   0x0037e0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
+                     jEnd   0x0037ea    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strcmp.asm
+                   strlen   0x003800    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
+                    jLoop   0x003810    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
+                     jEnd   0x00381a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\strlen.asm
+               Open2USART   0x00381c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2open.c
+               Open1USART   0x003894    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1open.c
+                 FXD3232U   0x003906    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd3232u.c
+                     loop   0x003914    program     static                          
+                   _false   0x003948    program     static                          
+       ___return_lbl00000   0x00394c    program     static                          
+               Read2USART   0x00394e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u2read.c
+               Read1USART   0x00398c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\u1read.c
+               BOARD_init   0x0039ca    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\board.c
+              WriteTimer0   0x003a06    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
+               OpenTimer0   0x003a3e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
+                 FXD1616U   0x003a76    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
+                     loop   0x003a80    program     static                          
+                  endloop   0x003a9c    program     static                          
+       ___return_lbl00000   0x003aa0    program     static                          
+              Delay1KTCYx   0x003aa2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x003aac    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+                    D1K_1   0x003aae    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0010   0x003ab2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x003ab8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d1ktcyx.asm
+            __zero_memory   0x003ac2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+               zero_block   0x003ad0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+                   loop_h   0x003ad0    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+                compare_l   0x003ad8    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+                   loop_l   0x003ada    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f46k22.asm
+                 _startup   0x003ae2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     loop   0x003af2    program     static                          
+       ___return_lbl00001   0x003afc    program     static                          
+                  HB_init   0x003afe    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\heartBeat.c
+                  HB_task   0x003b04    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\heartBeat.c
+              Delay10TCYx   0x003b18    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                     D10x   0x003b20    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000A   0x003b22    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x003b24    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x003b26    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                    D10_1   0x003b28    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+              clearScreen   0x003b2e    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
+                   keyMap   0x003b3f    program     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\UI.c
                __config_0   0x300001    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
                __config_1   0x300002    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
                __config_2   0x300003    program     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\main.c
@@ -1113,7 +1113,7 @@ Linker Map File - Created Tue Jul 28 15:52:20 2015
                   __tmp_0   0x000014       data     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\lcd.c
             DelayCounter1   0x00001c       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\delays\delayd1.asm
                       app   0x000100       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
-                      log   0x000189       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
+                      log   0x000190       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\app.c
                     frame   0x000600       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
                    buffer   0x000640       data     static D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c
                 MB_STATUS   0x000641       data     extern D:\jo\Ideonics\Repository\SCS\SCS_TERMINAL\source\modbusMaster.c

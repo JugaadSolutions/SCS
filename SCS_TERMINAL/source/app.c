@@ -62,9 +62,9 @@ typedef struct _APP
 {
 	UINT8 password[5];
 	UINT8 logonPassword[5];
-	UINT8 truckState[MAX_NO_OF_TRUCKS][MAX_STATES];	//used to store the state of each truck
+	UINT8 truckState[MAX_NO_OF_TRUCKS+1][MAX_STATES];	//used to store the state of each truck
 	UINT8 regCount[MAX_LOG_ENTRIES];     // Buffer used to hold the number of 16bits counts in data pack
-	UINT8 cancelTruck[MAX_NO_OF_TRUCKS]; // Buffer used to hold the truck status
+	UINT8 cancelTruck[MAX_NO_OF_TRUCKS+1]; // Buffer used to hold the truck status
 }APP;																			//This object contains all the varibles used in this application
 
 
