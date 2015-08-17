@@ -4,6 +4,7 @@
 * Include Files
 *------------------------------------------------------------------------------
 */
+#include "mutex.h"
 #include "app.h"
 
 /*
@@ -139,6 +140,7 @@ UINT8 writeTimeDateBuffer[] = {0X00, 0X00, 0X16, 0X03, 0x027, 0X12, 0X13};
 UINT8 txBuffer[7] = {0};
 UINT8 transmitTruncktime[30] = {0};
 UINT8 activityTime[8];
+UINT16 trucktime[6];
 
 #pragma idata
 
@@ -168,7 +170,7 @@ void updateTime(void);
 void updateMarquee(void);
 void APP_ASCIIconversion(void);
 	//manipulate trucktime
-void updateTruckTime(UINT8 truck , far UINT8* trucktime);
+void updateTruckTime(UINT8 truck , far UINT16* trucktime);
 	//manipulate hooter
 void updateAlarmIndication(ACTIVITY activity);
 void resetAlarm(void);
@@ -218,18 +220,7 @@ void APP_init(void)
 
 	eMBErrorCode    eStatus;
 
-
 //	WriteRtcTimeAndDate(writeTimeDateBuffer);
-
-
-
-	//modbus configuration
-	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
-	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
-
-	//modbus master initialization
-	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
-
 /*
 	//store the truck timings in the shipment schedule structure 
 	for(k = 0 ; k < TRUCKS_SUPPORTED ; k++)
@@ -255,6 +246,16 @@ void APP_init(void)
 	}
 
 */
+
+
+	//modbus configuration
+	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
+	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
+
+	//modbus master initialization
+	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
+
+
 
 #ifdef __FACTORY_CONFIGURATION__
 
@@ -334,19 +335,9 @@ void APP_init(void)
 	activityStatus = RESET ;
 	
 //	updateTime();
-//	updateBackLightIndication();
+	updateBackLightIndication();
 
 	resetSchedule();
-/*
-	mmdConfig.startAddress = TIME_SEGMENT_START_ADDRESS ;
-	mmdConfig.length = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
-	mmdConfig.symbolBuffer = test;
-	mmdConfig.symbolCount = TIME_SEGMENT_CHARS+BACKLIGHT_SEGMENT_CHARS;
-	mmdConfig.scrollSpeed = SCROLL_SPEED_NONE;
-
-	MMD_configSegment(1, &mmdConfig);
-
-*/
 
 }
 
@@ -366,11 +357,13 @@ void APP_task(void)
 {
 	UINT8 i,j;
 	MBErrorCode status;
+	static UINT8 count = 0;
 	
 	updateTime();
 
 	status = MB_getStatus();
-//Modubus Master 
+
+	//Modubus Master 
 	if( (status == PACKET_SENT) || (status == RETRIES_DONE) )
 	{
 		
@@ -389,6 +382,7 @@ void APP_task(void)
 	
 		}
 	}
+
 
 //Modubus Slave Packet REceived
 	if(app.DataReceived == TRUE)
@@ -449,19 +443,26 @@ void APP_task(void)
 			return;
 	}
 
-	if( app.curMinute != app.prevMinute)
+	count++;
+	
+	if( count >= 30 )
 	{
-
-		if( updatePickingInfo() == TRUE )
+		if( app.curMinute != app.prevMinute)
 		{
-		//	updatePickingIndication();
+	
+			if( updatePickingInfo() == TRUE )
+			{
+			//	updatePickingIndication();
+			}
+	
+	
+			updateCurrentActivityParameters();
+			ClrWdt();
+			updateCurrentActivityIndication();
+			app.prevMinute = app.curMinute;
 		}
 
-
-		updateCurrentActivityParameters();
-		ClrWdt();
-		updateCurrentActivityIndication();
-		app.prevMinute = app.curMinute;
+		count = 0;
 	}
 
 }
@@ -567,7 +568,6 @@ void processReceivedData (void)
 	UINT8 truck ;
 	UINT8 activity;
 	UINT8 milestone;
-	UINT16 trucktime[6];
 	UINT8 slaveID = 0;
 
 
@@ -742,11 +742,11 @@ void updateTruckActivity(UINT8 truck ,UINT8 activity , UINT8 milestone)
 	
 			updateCurrentActivityParameters();
 			ClrWdt();
-	
-			updateCurrentActivityIndication();
-			ClrWdt();
 
 			updateShipmentScheduleIndication(&data,&as);
+			ClrWdt();
+
+			updateCurrentActivityIndication();
 			ClrWdt();
 	
 			if( data.mileStone == MILESTONE_START)
@@ -784,18 +784,20 @@ void updateTruckActivity(UINT8 truck ,UINT8 activity , UINT8 milestone)
 *
 *------------------------------------------------------------------------------
 */
-void updateTruckTime(UINT8 truck , far UINT8* trucktime)
+void updateTruckTime(UINT8 truck , far UINT16* trucktime)
 {
+	UINT8 lock = 0;
 	UINT8 i , j ,k;
 	UINT16 timeStart,timeEnd ;
-
+	UINT8* temp;
+	temp = (UINT8*)trucktime;
 
 
 	for(i = 0 ; i < 6 ; i++)
 	{
 		for(j = 0 ; j < 2 ; j++)
 		{
-			Write_b_eep(( (truck - 1) * 12) + ((2 * i ) + j)  , *(trucktime +((2 * i) + (1 - j) ) ) );	
+			Write_b_eep(( (truck - 1) * 12) + ((2 * i ) + j)  , *(temp +((2 * i) + (1 - j) ) ) );	
 			Busy_eep();
 		}
 	}
@@ -819,7 +821,15 @@ void updateTruckTime(UINT8 truck , far UINT8* trucktime)
 		if(truck - 1 < TRUCKS_SUPPORTED_BOARD)
 		{
 			getScheduleTime(&shipmentSchedule[truck][i] ,activityTime);
+			do
+			{
+				ENTER_CRITICAL_SECTION();
+				//Aquire the lock
+				lock = mutex_lock(  );
+				EXIT_CRITICAL_SECTION();
+			}while( lock == 0 );
 			loadSchedule(truck,i+1);
+			mutex_unlock(  );	
 		}
 
 	}
@@ -1290,22 +1300,29 @@ void updateCurrentActivityIndication(void)
 
 
 	for(; i < ACTIVITIES_SUPPORTED; i++)
-	{
-		j = 0;
-		activityParameterBuffer[j++] = CMD_SET_SEGMENT ;
-		activityParameterBuffer[j++] = currentActivitySegment[i].no;
-		activityParameterBuffer[j++] = currentActivitySegment[i].activity;
-		activityParameterBuffer[j++] = currentActivitySegment[i].status;
-		activityParameterBuffer[j++] = currentActivitySegment[i].planProgress;
-
-		temp = (currentActivitySegment[i].planPercentage/100);
-		activityParameterBuffer[j++] = (temp >= 99) ? (99) : temp;
-
-		activityParameterBuffer[j++] = currentActivitySegment[i].actualProgress;
-
-		temp = currentActivitySegment[i].actualPercentage/100;
-		activityParameterBuffer[j++] = ( temp >= 99 ) ? (99) : temp;
-
+	{		
+		if( currentActivitySegment[i].free == TRUE)	
+		{
+			j = 0;
+			activityParameterBuffer[j++] = CMD_CLEAR_SEGMENT;	
+		}
+		else
+		{
+			j = 0;
+			activityParameterBuffer[j++] = CMD_SET_SEGMENT ;
+			activityParameterBuffer[j++] = currentActivitySegment[i].no;
+			activityParameterBuffer[j++] = currentActivitySegment[i].activity;
+			activityParameterBuffer[j++] = currentActivitySegment[i].status;
+			activityParameterBuffer[j++] = currentActivitySegment[i].planProgress;
+	
+			temp = (currentActivitySegment[i].planPercentage/100);
+			activityParameterBuffer[j++] = (temp >= 99) ? (99) : temp;
+	
+			activityParameterBuffer[j++] = currentActivitySegment[i].actualProgress;
+	
+			temp = currentActivitySegment[i].actualPercentage/100;
+			activityParameterBuffer[j++] = ( temp >= 99 ) ? (99) : temp;
+		}
 		length = (j%2 == 0 ? j/2 : j/2 + 1 );
 		updateLog_Binary(activityParameterBuffer,i+1 , length);
 		DelayMs(30);
@@ -1378,6 +1395,7 @@ void updateShipmentScheduleIndication(far ACTIVITY_TRIGGER_DATA *data,far 	ACTIV
 void updateSchedule(far UINT8 *data)
 {
 	UINT8 i;
+	UINT8 lock = 0;
 	UINT8 truck,truckStatusIndex ,index;
 	SCHEDULE_UPDATE_INFO *info; 
 	UINT8 activityCompleteFlag = TRUE;
@@ -1413,8 +1431,7 @@ void updateSchedule(far UINT8 *data)
 		switch( info->milestone)
 		{
 			case MILESTONE_START:
-		//	if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_SCHEDULED)				//if activity is not scheduled ignore cmd
-		//		return ;
+
 
 			//store the status of the truck
 			truckStatus[index] = DIGIT_A;
@@ -1431,11 +1448,19 @@ void updateSchedule(far UINT8 *data)
 			break;
 
 			case MILESTONE_END:
-	//		if( scheduleStatus[truck][info->activity - 1].activityStatus != ACTIVITY_ONGOING)				//if activity is not scheduled ignore cmd
-	//			return ;
 
 			clearScheduleTime();
+
+			do
+			{
+				ENTER_CRITICAL_SECTION();
+				//Aquire the lock
+				lock = mutex_lock(  );
+				EXIT_CRITICAL_SECTION();
+			}while( lock == 0 );
 			loadSchedule(truck,info->activity);
+			//release the lock
+			mutex_unlock(  );				
 
 			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_COMPLETED;
 			scheduleStatus[truck][info->activity - 1].status = info->status;
@@ -1457,11 +1482,11 @@ void updateSchedule(far UINT8 *data)
 				}
 			}
 
-			if( i < ACTIVITIES_SUPPORTED )
+			if( delayedActivity < ACTIVITIES_SUPPORTED )
 			{
 					//store the status of the truck
 				truckStatus[index] = DIGIT_C;
-				switch(i)
+				switch(delayedActivity)
 				{
 					case 0 : //delayed due to picking
 						truckStatus[index + 1] = DIGIT_P;
@@ -1515,6 +1540,7 @@ void updateSchedule(far UINT8 *data)
 void resetSchedule(void)
 {
 	UINT8 i,j;
+	UINT8 lock = 0;
 
 	//buffer used to store truck number
 	for( i = 0; i < TRUCKS_SUPPORTED_BOARD ; i++ )
@@ -1535,8 +1561,17 @@ void resetSchedule(void)
 			scheduleStatus[i][j].status = ACTIVITY_NONE;
 			
 			getScheduleTime(&shipmentSchedule[i][j] ,activityTime);
-	
+
+			do
+			{
+				ENTER_CRITICAL_SECTION();
+				//Aquire the lock
+				lock = mutex_lock(  );
+				EXIT_CRITICAL_SECTION();
+			}while( lock == 0 );	
 			loadSchedule(i,j+1);
+			//release the lock
+			mutex_unlock(  );	
 	
 		}	
 	}
@@ -1744,4 +1779,33 @@ void COM_txBuffer(UINT8 *txData, UINT8 length)
 
 }
 
+/*---------------------------------------------------------------------------------------------------------------
+* void APP_writeModbus( void )
+*----------------------------------------------------------------------------------------------------------------
+*/
+
+void APP_writeModbus( void )
+{
+//	status = MB_getStatus();
+
+	//Modubus Master 
+//	if( (status == PACKET_SENT) || (status == RETRIES_DONE) )
+	{
+		
+		//check for new log entry, if yes write it to modbus			
+		if(log.readIndex != log.writeIndex)
+		{			
+			MB_construct(&packets[PACKET1],log.slaveID[log.readIndex], PRESET_MULTIPLE_REGISTERS, 
+ 								STARTING_ADDRESS,log.regCount[log.readIndex], log.entries[log.readIndex]);	
+
+			log.readIndex++;
+		
+			// check for the overflow
+			if( log.readIndex >= MAX_LOG_ENTRIES )
+				log.readIndex = 0;
+								
+	
+		}
+	}
+}
 

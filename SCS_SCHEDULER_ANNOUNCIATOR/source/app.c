@@ -8,6 +8,7 @@
 #include "digit_driver.h"
 #include "utilities.h"
 #include "digitdisplay.h"
+#include "mutex.h"
 
 /*
 *-----------------------------------------------------------
@@ -446,10 +447,12 @@ void updateSchedule(far SCHEDULE_UPDATE_INFO *info)
 	UINT8 truck,truckStatusIndex,index;
 	UINT8 activityCompleteFlag = TRUE;
 	INT8 delayedActivity = 0xFF;
+	UINT8 lock = 0;
 
 	truck = info->truck - (DEVICE_ADDRESS * 4);
 	truckStatusIndex =  (truck - 1) * 2;
 	index = 0;
+
 	
 
 
@@ -508,7 +511,19 @@ void updateSchedule(far SCHEDULE_UPDATE_INFO *info)
 	
 			
 			clearScheduleTime();
+
+			do
+			{
+				ENTER_CRITICAL_SECTION();
+				//Aquire the lock
+				lock = mutex_lock(  );
+				EXIT_CRITICAL_SECTION();
+			}while( lock == 0 );
+
 			loadSchedule(truck,info->activity);
+			//release the lock
+			mutex_unlock(  );	
+
 
 			scheduleStatus[truck][info->activity - 1].activityStatus = ACTIVITY_COMPLETED;
 			scheduleStatus[truck][info->activity - 1].status = info->status;
@@ -718,6 +733,7 @@ void copySrcToDst(const rom UINT8*src, UINT8* dst , UINT8 length)
 void resetSchedule( void )
 {
 	UINT8 i,j;
+	UINT8 lock = 0;
 
 	
 	//buffer used to store truck number
@@ -740,9 +756,18 @@ void resetSchedule( void )
 			scheduleStatus[i][j].status = ACTIVITY_NONE;
 			
 			getScheduleTime(&scheduleTable[i][j] ,activityTime);
-	
+
+			do
+			{
+				ENTER_CRITICAL_SECTION();
+				//Aquire the lock
+				lock = mutex_lock(  );
+				EXIT_CRITICAL_SECTION();
+			}while( lock == 0 );
+
 			loadSchedule(i,j+1);
-	
+			//release the lock
+			mutex_unlock(  );	
 		}	
 	}
 	
@@ -754,8 +779,10 @@ void loadSchedule(UINT8 truck, UINT8 activity)
 	UINT8 i;
 	for(i = 0; i < 8 ;i++)
 	{
+
 		DDR_loadDigit( ( (32 + ((truck - 1) * 24) ) + (activity - 1 ) * 8) + i,activityTime[i] );
 		DelayMs(1);
+
 	}
 }
 
@@ -814,6 +841,7 @@ void updateTruckTime(UINT8 truck ,far UINT8* trucktime)
 	UINT16 timeStart,timeEnd ;
 	UINT8 data = 0;
 	UINT8 address = 0;
+	UINT8 lock = 0;
 
 	for(i = 0 ; i < 6 ; i++)
 	{
@@ -842,6 +870,19 @@ void updateTruckTime(UINT8 truck ,far UINT8* trucktime)
 		shipmentSchedule[truck+1 ][i].endMinute = timeEnd ;
 		shipmentSchedule[truck+1 ][i].duration = timeEnd - timeStart;
 
+//		if(truck - 1 < TRUCKS_SUPPORTED_BOARD)
+		{
+			getScheduleTime(&shipmentSchedule[truck][i] ,activityTime);
+			do
+			{
+				ENTER_CRITICAL_SECTION();
+				//Aquire the lock
+				lock = mutex_lock(  );
+				EXIT_CRITICAL_SECTION();
+			}while( lock == 0 );
+			loadSchedule(truck,i+1);
+			mutex_unlock(  );	
+		}
 	}
 
 }

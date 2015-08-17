@@ -257,20 +257,20 @@ void main(void)
 			heartBeatCount = 0;
 		}
 
-		if( mmdUpdateCount >= 40 )
+		if( mmdUpdateCount >= 20 )
 		{
 			MMD_task();
 			mmdUpdateCount = 0;
 		}
 
-		if(AppUpdate_count >=500 )
+		if(AppUpdate_count >=500)
 		{
 		  APP_task();
           AppUpdate_count = 0;
 		
 		}
 
-		if(eMBUpdate_count >= 50)
+		if(eMBUpdate_count >= 10)
 		{
 		
 			eMBPoll();	//modbus task

@@ -36,7 +36,7 @@
 *----------------------------------------*/
 #define UART2_ACTIVE
 #define UART1_BAUD			19200
-#define UART2_BAUD			9600
+#define UART2_BAUD			19200
 //#define PASS_THROUGH
 //#define UART_TEST
 ///#define UART2TEST
@@ -68,7 +68,7 @@
 /*----------------------------------------
 *	RTC CONFIGURATION
 *----------------------------------------*/
-#define TIME_DEBUG
+//#define TIME_DEBUG
 
 //#define RTC_DS1307
 //#define RTC_DS3232
@@ -95,7 +95,7 @@
 ----------------------------------*/
 #define BAUD_RATE	 		19200	// modbus master serial baud rate
 #define TIMEOUT		 		10   	// the timeout period is 200msec * 3 = 0.6sec
-#define POLLING 			20  	// the scan rate 200msec * 20 = 4sec
+#define POLLING 			10  	// the scan rate 200msec * 10 = 2sec
 #define RETRY_COUNT			5		// number of retries incase of no or error response
 #define SLAVE_ID			1		// server ID
 #define STARTING_ADDRESS	0

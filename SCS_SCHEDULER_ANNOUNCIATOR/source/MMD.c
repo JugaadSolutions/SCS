@@ -1,5 +1,6 @@
 #include "mmd.h"
 #include "string.h"
+#include "mutex.h"
 
 
 rom const UINT8 FontTable5x7[][8]= {			// ASCII	DEC
@@ -384,6 +385,8 @@ void MMD_task(void)
 	UINT8 i , j , k;
 	UINT8 curSymbol,curRowData;
 
+
+
 	for( i = 0; i < MMD_MAX_SEGMENTS ; i++)
 	{
 		if( mmdSegment[i].scrollSpeed != SCROLL_SPEED_NONE)
@@ -472,6 +475,8 @@ void MMD_task(void)
 		ENABLE_TMR1_INTERRUPT();
 	}
 
+
+
 }				
 
 UINT8 iSRState = 0;
@@ -479,6 +484,10 @@ void MMD_refreshDisplay(void)
 {
 	UINT8 dataByte,addr;
 	UINT8 i,j;
+
+	//aquire the lock
+	if( mutex_lock(  ) == FALSE )
+		return;
 
 	//MMD_CONTROL = 0;	//disable the display
 	ROW_SEL_A = 0;
@@ -623,6 +632,9 @@ void MMD_refreshDisplay(void)
 		}
 #endif
 	}
+
+	//unlock the mutex
+	mutex_unlock(  );
 }
 
 

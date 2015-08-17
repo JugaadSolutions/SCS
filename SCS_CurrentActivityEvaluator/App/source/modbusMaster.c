@@ -2,7 +2,7 @@
 #include "board.h"
 #include "uart.h"
 #include "timer.h"
-
+#include "app.h"
 // SimpleModbusMasterV2rev2
 
 // state machine states
@@ -67,6 +67,9 @@ void MB_task()
 			if(MB_STATUS == MB_NOERR)
 				MB_STATUS = MB_TXDONE;
 
+			//construct modubs packet
+		//	APP_writeModbus(  );
+
 			idle();
 		}
 		break;
@@ -80,6 +83,8 @@ void MB_task()
 		}
 		break;
 	}
+
+
 }
 
 void idle(void)

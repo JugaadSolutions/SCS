@@ -480,6 +480,11 @@ void MMD_refreshDisplay(void)
 	UINT8 dataByte,addr;
 	UINT8 i,j;
 
+
+	//aquire the lock
+	if( mutex_lock(  ) == FALSE )
+		return;
+
 	//MMD_CONTROL = 0;	//disable the display
 	ROW_SEL_A = 0;
 	ROW_SEL_B = 0;
@@ -622,6 +627,10 @@ void MMD_refreshDisplay(void)
 		}
 #endif
 	}
+
+
+	//release the lock
+	mutex_unlock(  );
 }
 
 

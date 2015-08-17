@@ -468,7 +468,7 @@ static void writeToDisplayPort( UINT8 value )
 	DIGIT_PORT_A = 0x00;		//switch off display
 	DIGIT_PORT_B = 0x00;
 
-	Delay10us(5);
+	Delay10us(1);
 	DATA_1_PORT = value;
 
 	if(digitDisplay.digitIndex < 8)
@@ -480,7 +480,7 @@ static void writeToDisplayPort( UINT8 value )
 	{
 		DIGIT_PORT_B = (shift << (digitDisplay.digitIndex - 8) );
 	}
-	Delay10us(5);
+//	Delay10us(5);
 
 }
 
