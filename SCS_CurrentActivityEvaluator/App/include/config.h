@@ -68,7 +68,7 @@
 /*----------------------------------------
 *	RTC CONFIGURATION
 *----------------------------------------*/
-//#define TIME_DEBUG
+#define TIME_DEBUG
 
 //#define RTC_DS1307
 //#define RTC_DS3232
@@ -96,7 +96,7 @@
 #define BAUD_RATE	 		19200	// modbus master serial baud rate
 #define TIMEOUT		 		10   	// the timeout period is 200msec * 3 = 0.6sec
 #define POLLING 			10  	// the scan rate 200msec * 10 = 2sec
-#define RETRY_COUNT			5		// number of retries incase of no or error response
+#define RETRY_COUNT			1		// number of retries incase of no or error response
 #define SLAVE_ID			1		// server ID
 #define STARTING_ADDRESS	0
 

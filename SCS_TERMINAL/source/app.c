@@ -14,6 +14,7 @@
 #include "string.h"
 #include "eep.h"
 #include "ui.h"
+#include "stdlib.h"
 
 
 //#define SIMULATION

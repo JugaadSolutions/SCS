@@ -22,7 +22,7 @@
 #define NO_OF_DIGIT			16
 //#define __MMD_STATIC__
 #define MMD_TEST
-//#define COMMON_CATHODE
+#define COMMON_CATHODE
 //#define __DISPLAY_TEST__ 
 
 //#define __DIGIT_DISPLAY_TEST__
