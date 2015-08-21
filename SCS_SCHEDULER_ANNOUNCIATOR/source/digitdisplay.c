@@ -49,12 +49,12 @@ typedef struct _DigitDisplay
 {
 	DISPLAY_MODE mode;
 	UINT8 buffer[2][MAX_DIGITS];	//buffer containing data to be displayed
-	UINT8 noDigits;			//no of digits used in the application
-	UINT8 digitIndex;	// index of the current digit to be displayed
-	UINT16 blinkCount;	//counter to be used in blink mode
-	UINT16 blinkPeriod;	//blink period represented in counts
-	UINT8* dispBuffer; // pointer to current display buffer
-	UINT16 blinkIndex; //counter used to blink perticular digit
+	UINT8 noDigits;					//no of digits used in the application
+	UINT8 digitIndex;				// index of the current digit to be displayed
+	UINT16 blinkCount;				//counter to be used in blink mode
+	UINT16 blinkPeriod;				//blink period represented in counts
+	UINT8* dispBuffer;				// pointer to current display buffer
+	UINT16 blinkIndex; 				//counter used to blink perticular digit
 	
 }DigitDisplay;
 
@@ -68,7 +68,7 @@ typedef struct _DigitDisplay
 //0,1,2,3,4,5,6,7,8,9,A,C,P,L,-
 static const UINT8 SEVENSEGMENT[] ={0x3f,0x06,0x5b,0x4f,0x66,
 									0x6d,0x7d,0x07,0x7f,0x6f,
-									0x77,0x39,0x73,0x38,0x80,0x00};
+									0x77,0x39,0x73,0x38,0x40,0x00};
 
 
 

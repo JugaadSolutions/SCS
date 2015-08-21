@@ -232,7 +232,6 @@ void updateTruckTime(UINT8 truck , UINT8* trucktime);
 
 void getActivitySchedule(UINT8 truck, ACTIVITY activity,far ACTIVITY_SCHEDULE* activitySchedule);
 
-
 /*
 *------------------------------------------------------------------------------
 * APP init
@@ -246,6 +245,7 @@ void APP_init(void)
 	UINT8 truck;
 	UINT8 buffer[4];
 	UINT8 maxValue = 0;
+
 
 
 #ifndef __FACTORY_CONFIGURATION__
@@ -419,7 +419,7 @@ void processMBdata(void)
 		case CMD_UPDATE_SHIPMENT_SCHEDULE:
 		{
 			SCHEDULE_UPDATE_INFO *data = (SCHEDULE_UPDATE_INFO*) ((UINT8*)&app.eMBdata[1]);
-			if( (data->truck <= (DEVICE_ADDRESS*4 +1) ) ||(data->truck > (DEVICE_ADDRESS+1)*4 ))
+			if( (data->truck < (DEVICE_ADDRESS*4 +1) ) ||(data->truck > (DEVICE_ADDRESS+1)*4 ))
 				break;	
 			
 			if(data->activity == ACTIVITY_NONE)
@@ -546,11 +546,11 @@ void updateSchedule(far SCHEDULE_UPDATE_INFO *info)
 				}
 			}
 
-			if( i < ACTIVITIES_SUPPORTED )
+			if( delayedActivity < ACTIVITIES_SUPPORTED )
 			{
 				//store the status of the truck
 				truckStatus[index] = DIGIT_C;
-				switch(i)
+				switch(delayedActivity)
 				{
 					case 0 : //delayed due to picking
 						truckStatus[index + 1] = DIGIT_P;
