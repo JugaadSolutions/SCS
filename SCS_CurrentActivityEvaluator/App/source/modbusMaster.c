@@ -67,9 +67,6 @@ void MB_task()
 			if(MB_STATUS == MB_NOERR)
 				MB_STATUS = MB_TXDONE;
 
-			//construct modubs packet
-		//	APP_writeModbus(  );
-
 			idle();
 		}
 		break;

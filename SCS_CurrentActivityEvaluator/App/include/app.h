@@ -268,7 +268,7 @@ typedef struct _LOG
 UINT8 APP_comCallBack( far UINT8 *rxPacket,  far UINT8* txCode, far UINT8** txPacket);
 void APP_init(void);
 void APP_task(void);
-void APP_writeModbus( void );
+
 
 #endif
 

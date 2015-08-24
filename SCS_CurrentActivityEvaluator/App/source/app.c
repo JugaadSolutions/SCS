@@ -265,8 +265,6 @@ void APP_init(void)
 	{
 		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
 		{
-		//	as = shipmentSchedule[i][j];
-		//	scheduleTable[i][j] = as;
 			if( j ==0 )
 			{
 				pickingStartTime[i] = as.startMinute;
@@ -511,7 +509,6 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
 
 		app.DataReceived = TRUE;
 
-	//	app.valueBuffer[i++] = 0;
 	    break;
 	
 	 	case MB_REG_READ: 
@@ -834,6 +831,7 @@ void updateTruckTime(UINT8 truck , far UINT16* trucktime)
 
 	}
 }
+
 /*
 *------------------------------------------------------------------------------
 *void resetAlarm(void);
@@ -920,6 +918,7 @@ void resetActivitySegment(UINT8 i)
 * Output	: None
 *------------------------------------------------------------------------------
 */
+
 void getActivitySchedule(UINT8 truck, ACTIVITY activity, far ACTIVITY_SCHEDULE* activitySchedule)
 {
 
@@ -939,6 +938,7 @@ void getActivitySchedule(UINT8 truck, ACTIVITY activity, far ACTIVITY_SCHEDULE* 
 * Output	: None
 *------------------------------------------------------------------------------
 */
+
 BOOL processActivityTrigger( far ACTIVITY_TRIGGER_DATA* data, ACTIVITY_SCHEDULE as)
 {
 	UINT8 i , j;
@@ -1334,6 +1334,7 @@ void updateCurrentActivityIndication(void)
 		updateLog_Binary(activityParameterBuffer,i+1 , length);
 		DelayMs(30);
 	}
+
 }
 
 /*
@@ -1526,8 +1527,6 @@ void updateSchedule(far UINT8 *data)
 		
 	}
 
-
-//	loadSchedule(truck,info->activity);
 }
 
 
@@ -1660,6 +1659,7 @@ void getScheduleTime(far ACTIVITY_SCHEDULE* as ,far  UINT8* activityTime)
 * Output	: None
 *------------------------------------------------------------------------------
 */
+
 void clearScheduleTime()
 {
 	UINT8 i;
@@ -1784,35 +1784,5 @@ void COM_txBuffer(UINT8 *txData, UINT8 length)
 
 	UART1_transmit();
 
-}
-
-/*---------------------------------------------------------------------------------------------------------------
-* void APP_writeModbus( void )
-*----------------------------------------------------------------------------------------------------------------
-*/
-
-void APP_writeModbus( void )
-{
-//	status = MB_getStatus();
-
-	//Modubus Master 
-//	if( (status == PACKET_SENT) || (status == RETRIES_DONE) )
-	{
-		
-		//check for new log entry, if yes write it to modbus			
-		if(log.readIndex != log.writeIndex)
-		{			
-			MB_construct(&packets[PACKET1],log.slaveID[log.readIndex], PRESET_MULTIPLE_REGISTERS, 
- 								STARTING_ADDRESS,log.regCount[log.readIndex], log.entries[log.readIndex]);	
-
-			log.readIndex++;
-		
-			// check for the overflow
-			if( log.readIndex >= MAX_LOG_ENTRIES )
-				log.readIndex = 0;
-								
-	
-		}
-	}
 }
 
