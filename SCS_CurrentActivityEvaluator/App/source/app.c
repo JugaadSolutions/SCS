@@ -112,7 +112,8 @@ MMD_Config mmdConfig = {0};
 
 APP app = {0};
 
-LOG log = {0}; // Useb by Modbus Master
+// Useb by Modbus Master
+LOG log = {0}; 
 
 ACTIVITY_SCHEDULE breaks[BREAKS_SUPPORTED+1] = {0};
 
@@ -124,20 +125,18 @@ PICKING_INFO pickingInfo ;
 UINT8 activityParameterBuffer[ ACTIVITY_PARAMETER_BUFFER_SIZE] = {0};
 
 
-
-
 SCHEDULE_STATUS scheduleStatus[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED] = {0};
-
-//UINT8 truck_statusIndicator[TRUCKS_SUPPORTED+1][8] = {0};
 
 UINT8 truckNo[TRUCKS_SUPPORTED_BOARD * 2] = {0};		//buffer for truck nos
 UINT8 truckStatus[2] = {0};	//buffer for truck status
 
 UINT16 pickingStartTime[TRUCKS_SUPPORTED+1] = {0};
 volatile STATUS activityStatus = 0;
+
 UINT8 readTimeDateBuffer[6] = {0};
 UINT8 writeTimeDateBuffer[] = {0X00, 0X00, 0X16, 0X03, 0x027, 0X12, 0X13};
 UINT8 txBuffer[7] = {0};
+
 UINT8 transmitTruncktime[30] = {0};
 UINT8 activityTime[8];
 UINT16 trucktime[6];
@@ -214,14 +213,20 @@ void APP_init(void)
 {
 	UINT8 i, j, k, truck;
 	UINT16 timeStart = 0, timeEnd = 0;
-	UINT8 test[] = "ABCDEF";
 
 	ACTIVITY_SCHEDULE as;
 
 	eMBErrorCode    eStatus;
 
-//	WriteRtcTimeAndDate(writeTimeDateBuffer);
-/*
+	//modbus configuration
+	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
+	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
+
+	//modbus master initialization
+	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
+
+#ifndef __FACTORY_CONFIGURATION__
+
 	//store the truck timings in the shipment schedule structure 
 	for(k = 0 ; k < TRUCKS_SUPPORTED ; k++)
 	{
@@ -245,22 +250,8 @@ void APP_init(void)
 		}
 	}
 
-*/
+#endif
 
-
-	//modbus configuration
-	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
-	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
-
-	//modbus master initialization
-	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
-
-
-
-#ifdef __FACTORY_CONFIGURATION__
-
-
-	
 	for( i = 1 ; i < TRUCKS_SUPPORTED  ; i++)
 	{
 		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
@@ -280,42 +271,6 @@ void APP_init(void)
 		breaks[i] = as;
 
 	}
-	
-	app.delayPercentage = DELAY_PERCENTAGE;
-	app.alarmPercentage = ALARM_PERCENTAGE;
-
-	
-#else
-	
-	for( i = 0 ; i < TRUCKS_SUPPORTED + 1 ; i++)
-	{
-		for(j = 0 ; j < ACTIVITIES_SUPPORTED ; j++)
-		{
-			ReadBytesEEP(EEP_SHIPMENT_SCHEDULE_BASE_ADDRESS + i*(sizeof(TRUCK_SCHEDULE))+ j*sizeof(ACTIVITY_SCHEDULE)
-									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
-
-			if( j == 0 )
-			{
-				pickingStartTime[i] = as.startMinute;
-			}
-			ClrWdt();
-		}
-	}
-
-
-	for( i = 0; i < BREAKS_SUPPORTED+1 ; i++)
-	{
-		
-		ReadBytesEEP(EEP_BREAK_SCHEDULE_BASE_ADDRESS + i*(sizeof(ACTIVITY_SCHEDULE))
-									, (UINT8*)&as,sizeof(ACTIVITY_SCHEDULE));
-		breaks[i] = as;
-
-	}
-
-	app.delayPercentage = ReadByteEEP(EEP_DELAY_PERCENTAGE);
-	app.alarmPercentage = ReadByteEEP(EEP_ALARM_PERCENTAGE);
-
-#endif
 
 	//set the value of CurrentActivitySegment structure parameter
 	for(i= 0; i < ACTIVITIES_SUPPORTED; i++)
@@ -323,17 +278,22 @@ void APP_init(void)
 		resetActivitySegment(i);
 	}
 	
+	//manupilate the value of app structure .	
 	app.state = APP_STATE_ACTIVE;
 	app.breakID = 0;
 	app.secON = TRUE;
+	app.delayPercentage = DELAY_PERCENTAGE;
+	app.alarmPercentage = ALARM_PERCENTAGE;
 
-//	memset((UINT8*)scheduleTable,0,ACTIVITIES_SUPPORTED*TRUCKS_SUPPORTED);
+
+
 	memset((UINT8*)&pickingInfo,0,sizeof(PICKING_INFO));
 	
 	activityStatus = RESET ;
 	
+	//function to set MMD value.
 	updateTime();
-//	updateMarquee();
+	updateMarquee();
 	updateBackLightIndication();
 
 	resetSchedule();
@@ -443,7 +403,7 @@ void APP_task(void)
 
 	count++;
 	
-	if( count >= 30 )
+	if( count >= 40 )
 	{
 		if( app.curMinute != app.prevMinute)
 		{
