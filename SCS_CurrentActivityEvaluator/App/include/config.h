@@ -8,28 +8,50 @@
 */
 
 
+/*----------------------------------------
+*	BOARD MOULE CONFIG
+*----------------------------------------*/
+#define MHz_32					(32000000UL)	// Hz
+#define MHz_16					(16000000UL)	// Hz
+#define MHz_8					(8000000UL)	// Hz
+
+/*----------------------------------------
+*	OSCILLATOR CONFIG
+*----------------------------------------*/
+
+#define SYSTEM_CLOCK			(MHz_32)
+
+
+/*----------------------------------------
+*	TIMER CONFIG
+*----------------------------------------*/
+#define FULLSCALE_16BIT				(65535)
+#define TIMER0_TIMEOUT_DURATION 	(1000UL)			//1ms
+#define TIMESTAMP_DURATION 		(200)			
+
+/*----------------------------------------
+*	DEVICE CONFIG
+*----------------------------------------*/
+#define __FACTORY_CONFIGURATION__
+
 #define DEVICE_ADDRESS			0x04
 
-#define __FACTORY_CONFIGURATION__
+
 
 /*----------------------------------------
 * Display Configuration (MMD , Scan Digit , Latch Digit)
 *----------------------------------------*/
 //MMD module configuration
-#define MMD_MAX_CHARS		11
+#define MMD_MAX_CHARS		12
 #define MMD_MAX_SEGMENTS	2
-#define MMD_MAX_ADDRESS		22
+#define MMD_MAX_ADDRESS		24
 #define NO_OF_DIGIT			16
 //#define __MMD_STATIC__
-#define MMD_TEST
+//#define MMD_TEST
 //#define __DISPLAY_TEST__
 //#define COMMON_CATHODE
 //#define __DIGIT_DISPLAY_TEST__
-/*----------------------------------------
-*	TIMER Configuration
-*----------------------------------------*/
-
-#define TIMESTAMP_DURATION 		(200)			
+			
 
 /*----------------------------------------
 *	USART Configuration
@@ -46,7 +68,7 @@
 
 //#define __NO_CHECKSUM__
 #define __BCC_XOR__
-#define __RESPONSE_ENABLED__
+//#define __RESPONSE_ENABLED__
 //#define __LOOP_BACK__
 #define BROADCAST_ADDRESS		0xFF
 #define CMD_SOP	0xAA
@@ -96,7 +118,7 @@
 #define BAUD_RATE	 		19200	// modbus master serial baud rate
 #define TIMEOUT		 		10   	// the timeout period is 200msec * 3 = 0.6sec
 #define POLLING 			10  	// the scan rate 200msec * 10 = 2sec
-#define RETRY_COUNT			1		// number of retries incase of no or error response
+#define RETRY_COUNT			5		// number of retries incase of no or error response
 #define SLAVE_ID			1		// server ID
 #define STARTING_ADDRESS	0
 

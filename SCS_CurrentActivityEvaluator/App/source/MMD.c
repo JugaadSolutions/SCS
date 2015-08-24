@@ -1,5 +1,6 @@
 #include "mmd.h"
 #include "string.h"
+#include "mutex.h"
 
 
 rom const UINT8 FontTable5x7[][8]= {			// ASCII	DEC
@@ -485,6 +486,8 @@ void MMD_refreshDisplay(void)
 	if( mutex_lock(  ) == FALSE )
 		return;
 
+	DISPLAY_CONTROL = DISPLAY_DISABLE;
+	Delay10us(1);	
 	//MMD_CONTROL = 0;	//disable the display
 	ROW_SEL_A = 0;
 	ROW_SEL_B = 0;
@@ -494,6 +497,9 @@ void MMD_refreshDisplay(void)
 	ROW_SEL_F = 0;
 	ROW_SEL_G = 0;
 	ROW_SEL_H = 0;
+
+	DISPLAY_CONTROL = DISPLAY_ENABLE;	//enable the display					
+	Delay10us(1);
 	
 	for( i = 0 ; i < MMD_MAX_SEGMENTS ; i++)
 	{
@@ -504,13 +510,13 @@ void MMD_refreshDisplay(void)
 
 			addr = mmdSegment[i].startAddress + j;					//set the address
 		  	DISPLAY_CONTROL = DISPLAY_DISABLE;
-
+			Delay10us(1);
 			DIGIT_PORT = addr;
 			DATA_PORT = ~dataByte;
 			DISPLAY_CONTROL = DISPLAY_ENABLE;	//enable the display					
 			Delay10us(1);
 			DISPLAY_CONTROL = DISPLAY_DISABLE;	//disable the display					
-
+			Delay10us(1);
 
 		}
 	}

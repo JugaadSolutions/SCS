@@ -248,7 +248,7 @@ void main(void)
 			heartBeatCount = 0;
 		}
 
-		if( mmdUpdateCount >= 10 )
+		if( mmdUpdateCount >= 20 )
 		{	
 			MMD_task();
 			mmdUpdateCount = 0;

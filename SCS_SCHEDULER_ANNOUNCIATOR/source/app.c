@@ -281,7 +281,7 @@ void APP_init(void)
 		}
 	}
 	
-/*	
+	
 	mmdConfig.startAddress = 0;
 	mmdConfig.length = 0;
 	mmdConfig.symbolBuffer = 0;
@@ -289,11 +289,11 @@ void APP_init(void)
 	mmdConfig.scrollSpeed = 0;
 
 
-*/	
+	
 	resetSchedule();
 	
 
-//	resetSegment();
+	resetSegment();
 }
 
 
@@ -385,7 +385,7 @@ void processMBdata(void)
 
 			UTL_binaryToBCDASCII( data->actualPercentage , &segmentBuffer[PARAMETER_ACTUAL_PERCENTAGE_INDEX] );
 
-/*			mmdConfig.startAddress = 0;
+			mmdConfig.startAddress = 0;
 			mmdConfig.length = 28;
 			mmdConfig.symbolCount = 28;
 			mmdConfig.symbolBuffer = segmentBuffer;
@@ -393,7 +393,7 @@ void processMBdata(void)
 			
 			MMD_configSegment( 0 , &mmdConfig);
 			break;
-*/	
+	
 		}
 
 		case CMD_CLEAR_SEGMENT:

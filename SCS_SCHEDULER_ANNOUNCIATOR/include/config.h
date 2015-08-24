@@ -11,18 +11,18 @@
 #define DEVICE_ADDRESS			1
 
 
-//#define __FACTORY_CONFIGURATION__
+#define __FACTORY_CONFIGURATION__
 
 /*----------------------------------------
 * Display Configuration (MMD , Scan Digit , Latch Digit)
 *----------------------------------------*/
-#define MMD_MAX_CHARS		14
-#define MMD_MAX_SEGMENTS	2
-#define MMD_MAX_ADDRESS		128
+#define MMD_MAX_CHARS		28
+#define MMD_MAX_SEGMENTS	1
+#define MMD_MAX_ADDRESS		28
 #define NO_OF_DIGIT			16
 //#define __MMD_STATIC__
-#define MMD_TEST
-#define COMMON_CATHODE
+//#define MMD_TEST
+//#define COMMON_CATHODE
 //#define __DISPLAY_TEST__ 
 
 //#define __DIGIT_DISPLAY_TEST__
@@ -35,7 +35,7 @@
 /*----------------------------------------
 *	USART Configuration
 *----------------------------------------*/
-#define ACTIVE_USARTS		2
+#define ACTIVE_USARTS		1
 //#define UART2_ACTIVE
 #define UART1_BAUD			19200
 #define UART2_BAUD			19200
@@ -48,7 +48,7 @@
 
 //#define __NO_CHECKSUM__
 #define __BCC_XOR__
-#define __RESPONSE_ENABLED__
+//#define __RESPONSE_ENABLED__
 //#define __LOOP_BACK__
 #define BROADCAST_ADDRESS		0xFF
 #define CMD_SOP	0xAA

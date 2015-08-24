@@ -116,10 +116,7 @@ extern UINT16 eMBUpdate_count;
 *------------------------------------------------------------------------------
 */
 void EnableInterrupts(void);
-extern UINT16 heartBeatCount ;
-extern UINT16 comUpdateCount ;
-extern UINT16 mmdUpdateCount;
-extern UINT16 AppUpdate_count;
+
 /*
 *------------------------------------------------------------------------------
 * Private Variables (static)
@@ -166,12 +163,11 @@ extern UINT16 AppUpdate_count;
 */
 
 #define MMD_REFRESH_PERIOD	(65535 - 20000)
-#define TICK_PERIOD	(65535 - 8000)  //	250us
-
 
 void main(void)
 {
-	UINT8 i,j,k, count;
+	UINT8 i,j,k;
+	unsigned long temp;
 	BOOL ledStrip_On = 0;
 
 #if defined (MMD_TEST)
@@ -179,9 +175,6 @@ void main(void)
 	UINT8 line[] = "ABCEFGHIJK";
 //	UINT8 line1[]= "LMNOPQABCDE";
 #endif
-
-
-
 
 	BRD_init();
 
@@ -208,7 +201,7 @@ void main(void)
 
 	APP_init();
 
-	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
+	TMR0_init(tickPeriod ,DigitDisplay_task);	//initialize timer0
 	TMR1_init(MMD_REFRESH_PERIOD,MMD_refreshDisplay);
 
 
@@ -246,11 +239,13 @@ void main(void)
 	}	
 #endif
 
+	//Heart Beat to blink at every 500ms
+	temp = (500UL *1000UL)/TIMER0_TIMEOUT_DURATION;
 
 	while(1)
 	{
 
-		if(  heartBeatCount >= 500)
+		if(  heartBeatCount >= temp)
 		{
 			RTC_Task();
 			HB_task();
@@ -263,7 +258,7 @@ void main(void)
 			mmdUpdateCount = 0;
 		}
 
-		if(AppUpdate_count >=500)
+		if(AppUpdate_count >= temp )
 		{
 		  APP_task();
           AppUpdate_count = 0;

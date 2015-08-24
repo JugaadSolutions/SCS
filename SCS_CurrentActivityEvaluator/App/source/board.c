@@ -69,14 +69,14 @@
 * Public Variables
 *------------------------------------------------------------------------------
 */
-
+	UINT16 tickPeriod = 0;
 /*
 *------------------------------------------------------------------------------
 * Private Variables (static)
 *------------------------------------------------------------------------------
 */
 
-static BOOL ledState;
+	static BOOL ledState;
 
 /*
 *------------------------------------------------------------------------------
@@ -117,6 +117,36 @@ static BOOL ledState;
 void BRD_init(void)
 {
 
+	unsigned long clock, temp;
+
+	//Store sytem clock
+	clock = SYSTEM_CLOCK;
+
+	switch(clock)
+	{
+		case MHz_32:
+		default:
+				OSCCON = 0X70; 		//internal oscillator 64MHz
+				OSCTUNEbits.PLLEN = 1;	//PLL Enable
+		break;
+
+		case MHz_16:
+				OSCCON = 0X60; 		//internal oscillator 32MHz
+				OSCTUNEbits.PLLEN = 1;	//PLL Enable
+		break;
+		
+		case MHz_8:
+				OSCCON = 0X70; 		//internal oscillator 16MHz
+				OSCTUNEbits.PLLEN = 0;	//PLL Enable
+		break;
+	}
+
+	//calculating tick period for timer-0
+	temp = clock >> 2;	
+	temp *= (TIMER0_TIMEOUT_DURATION/1000);
+	temp /= 1000;		
+
+	tickPeriod = (FULLSCALE_16BIT - (UINT16)temp);
 
 	// set all anolog channels as Digital I/O
 	ADCON0 = 0x00;
@@ -125,8 +155,6 @@ void BRD_init(void)
 
 	MEMCON = 0x80;
 
-	OSCCON = 0x70;
-	OSCTUNEbits.PLLEN = 1;
 	DelayMs(5);
 
 	// Configure heart beat LED output

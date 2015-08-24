@@ -334,7 +334,8 @@ void APP_init(void)
 	
 	activityStatus = RESET ;
 	
-//	updateTime();
+	updateTime();
+//	updateMarquee();
 	updateBackLightIndication();
 
 	resetSchedule();
@@ -358,11 +359,10 @@ void APP_task(void)
 	UINT8 i,j;
 	MBErrorCode status;
 	static UINT8 count = 0;
-	
-	updateTime();
 
 	status = MB_getStatus();
 
+	updateTime();
 	//Modubus Master 
 	if( (status == PACKET_SENT) || (status == RETRIES_DONE) )
 	{
@@ -419,7 +419,7 @@ void APP_task(void)
 				
 					app.state = APP_STATE_INACTIVE;
 					app.breakID = i;
-				//	updateMarquee();
+					updateMarquee();
 					break;
 				}
 		
@@ -433,7 +433,7 @@ void APP_task(void)
 			{
 				app.breakID =0;
 				app.state = APP_STATE_ACTIVE;
-			//	updateMarquee();
+				updateMarquee();
 				
 				
 			}
@@ -452,7 +452,7 @@ void APP_task(void)
 	
 			if( updatePickingInfo() == TRUE )
 			{
-			//	updatePickingIndication();
+				updatePickingIndication();
 			}
 	
 	
@@ -1080,6 +1080,7 @@ void updateTime(void)
 	MMD_configSegment(1, &mmdConfig);
 
 
+
 }
 
 
@@ -1135,6 +1136,7 @@ void updateBackLightIndication(void)
 
 	MMD_configSegment(1, &mmdConfig);
 
+
 }
 
 void updateMarquee(void)
@@ -1144,22 +1146,27 @@ void updateMarquee(void)
 
 	MMD_clearSegment(0);
 
-	for( i = 0; i < MARQUEE_SEGMENT_CHARS; i++)
+	if( app.breakID  == 0)
 	{
-		marquee[i] = ' ';
+		for( i = 0; i < MARQUEE_SEGMENT_LENGTH; i++)
+		{
+			marquee[i] = ' ';
+		}
 	}
-
-	i = 0;
-	mData = marqueeData[app.breakID];
-	while(*mData !='\0')
+	else
 	{
-		marquee[i] = *mData;
-		mData++;
-		i++;
-	}
-	if( i <= (MARQUEE_SEGMENT_LENGTH + 5 ))
-	{
-		marquee[i++] = ' ';
+		i = 0;
+		mData = marqueeData[app.breakID];
+		while(*mData !='\0')
+		{
+			marquee[i] = *mData;
+			mData++;
+			i++;
+		}
+		if( i <= (MARQUEE_SEGMENT_LENGTH + 5 ))
+		{
+			marquee[i++] = ' ';
+		}
 	}
 
 	mmdConfig.startAddress = MARQUEE_SEGMENT_START_ADDRESS;
