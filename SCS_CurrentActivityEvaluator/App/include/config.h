@@ -42,9 +42,9 @@
 * Display Configuration (MMD , Scan Digit , Latch Digit)
 *----------------------------------------*/
 //MMD module configuration
-#define MMD_MAX_CHARS		12
+#define MMD_MAX_CHARS		11
 #define MMD_MAX_SEGMENTS	2
-#define MMD_MAX_ADDRESS		24
+#define MMD_MAX_ADDRESS		22
 #define NO_OF_DIGIT			16
 //#define __MMD_STATIC__
 //#define MMD_TEST
@@ -57,8 +57,8 @@
 *	USART Configuration
 *----------------------------------------*/
 #define UART2_ACTIVE
-#define UART1_BAUD			19200
-#define UART2_BAUD			19200
+#define UART1_BAUD			9600
+#define UART2_BAUD			9600
 //#define PASS_THROUGH
 //#define UART_TEST
 ///#define UART2TEST
@@ -92,7 +92,7 @@
 *----------------------------------------*/
 //#define TIME_DEBUG
 
-#define RTC_DS1307
+//#define RTC_DS1307
 //#define RTC_DS3232
 
 //#define __SET_RTC__

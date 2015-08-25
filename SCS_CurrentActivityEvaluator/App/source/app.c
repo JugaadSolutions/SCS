@@ -136,7 +136,7 @@ UINT16 pickingStartTime[TRUCKS_SUPPORTED+1] = {0};
 volatile STATUS activityStatus = 0;
 
 UINT8 readTimeDateBuffer[6] = {0};
-UINT8 writeTimeDateBuffer[] = {0X00, 0X00, 0X16, 0X03, 0x027, 0X12, 0X13};
+UINT8 writeTimeDateBuffer[] = {0X00, 0X05, 0X06, 0X03, 0x027, 0X12, 0X13};
 UINT8 txBuffer[7] = {0};
 
 UINT8 transmitTruncktime[30] = {0};
@@ -226,6 +226,11 @@ void APP_init(void)
 
 	//modbus master initialization
 	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
+
+#ifdef __SET_RTC__
+
+		WriteRtcTimeAndDate(writeTimeDateBuffer);  //update RTC
+#endif
 
 #ifndef __FACTORY_CONFIGURATION__
 
@@ -405,7 +410,7 @@ void APP_task(void)
 
 	count++;
 	
-	if( count >= 40 )
+	if( count >= 50 )
 	{
 		if( app.curMinute != app.prevMinute)
 		{
@@ -1110,7 +1115,7 @@ void updateMarquee(void)
 
 	if( app.breakID  == 0)
 	{
-		for( i = 0; i < MARQUEE_SEGMENT_LENGTH; i++)
+		for( i = 0; i < MARQUEE_SEGMENT_CHARS ; i++)
 		{
 			marquee[i] = ' ';
 		}
@@ -1125,7 +1130,7 @@ void updateMarquee(void)
 			mData++;
 			i++;
 		}
-		if( i <= (MARQUEE_SEGMENT_LENGTH + 5 ))
+		if( i <= (MARQUEE_SEGMENT_CHARS ))
 		{
 			marquee[i++] = ' ';
 		}
@@ -1529,17 +1534,8 @@ void resetSchedule(void)
 			scheduleStatus[i][j].status = ACTIVITY_NONE;
 			
 			getScheduleTime(&shipmentSchedule[i][j] ,activityTime);
-
-			do
-			{
-				ENTER_CRITICAL_SECTION();
-				//Aquire the lock
-				lock = mutex_lock(  );
-				EXIT_CRITICAL_SECTION();
-			}while( lock == 0 );	
-			loadSchedule(i,j+1);
-			//release the lock
-			mutex_unlock(  );	
+	
+			loadSchedule(i,j+1);	
 	
 		}	
 	}

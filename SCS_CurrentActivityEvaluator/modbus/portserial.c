@@ -145,6 +145,14 @@ xMBPortSerialGetByte( CHAR * pucByte )
      * by the protocol stack after pxMBFrameCBByteReceived( ) has been called.
      */
 	volatile unsigned char data;
+
+	if(RCSTA1bits.OERR == 1)
+	{
+		RCSTA1bits.CREN = 0;
+		Delay10us(1);
+		RCSTA1bits.CREN = 1;
+	}
+
 #ifdef __18F8722
 	data = Read1USART();
 #else

@@ -173,7 +173,6 @@ void main(void)
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
 	UINT8 line[] = "ABCEFGHIJK";
-//	UINT8 line1[]= "LMNOPQABCDE";
 #endif
 
 	BRD_init();
@@ -252,7 +251,7 @@ void main(void)
 			heartBeatCount = 0;
 		}
 
-		if( mmdUpdateCount >= 20 )
+		if( mmdUpdateCount >= 40 )
 		{
 			MMD_task();
 			mmdUpdateCount = 0;
