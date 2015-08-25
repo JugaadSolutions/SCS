@@ -23,14 +23,7 @@ enum
   TOTAL_NO_OF_PACKETS // leave this last entry
 };
 
-// Create an array of Packets to be configured
-Packet packets[TOTAL_NO_OF_PACKETS];
 
-// Masters register array
-unsigned int regs[TOTAL_NO_OF_REGISTERS];
-
-MBErrorCode PACKET_SENT = 1;
-MBErrorCode RETRIES_DONE = 4;
 /*
 *------------------------------------------------------------------------------
 * app - the app structure. 
@@ -87,6 +80,15 @@ const rom UINT8 marqueeData[MARQUEES_SUPPORTED+1][MARQUEE_SEGMENT_CHARS]={
 
 #pragma idata APP_DATA
 
+// Create an array of Packets to be configured
+Packet packets[TOTAL_NO_OF_PACKETS]= {0};
+
+// Masters register array
+unsigned int regs[TOTAL_NO_OF_REGISTERS] = {0};
+
+MBErrorCode PACKET_SENT = 1;
+MBErrorCode RETRIES_DONE = 4;
+
 MMD_Config mmdConfig = {0};
 
  ACTIVITY_SCHEDULE shipmentSchedule[TRUCKS_SUPPORTED+1][ACTIVITIES_SUPPORTED]
@@ -121,7 +123,7 @@ UINT8 marquee[MARQUEE_SEGMENT_CHARS] = {0};
 UINT8 time_backlight[TIME_SEGMENT_CHARS + BACKLIGHT_SEGMENT_CHARS] = {0};
 
 CurrentActivitySegment currentActivitySegment[CURRENT_ACTIVITY_SEGMENTS] = {0};
-PICKING_INFO pickingInfo ;
+PICKING_INFO pickingInfo = {0} ;
 UINT8 activityParameterBuffer[ ACTIVITY_PARAMETER_BUFFER_SIZE] = {0};
 
 
@@ -138,8 +140,8 @@ UINT8 writeTimeDateBuffer[] = {0X00, 0X00, 0X16, 0X03, 0x027, 0X12, 0X13};
 UINT8 txBuffer[7] = {0};
 
 UINT8 transmitTruncktime[30] = {0};
-UINT8 activityTime[8];
-UINT16 trucktime[6];
+UINT8 activityTime[8] = {0};
+UINT16 trucktime[6] = {0};
 
 #pragma idata
 

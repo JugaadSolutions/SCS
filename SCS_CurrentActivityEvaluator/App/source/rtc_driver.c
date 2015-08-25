@@ -89,6 +89,7 @@ UINT8 RegistersRTC[7] = {0};  // Buffer for second,minute,.....,year
 BOOL TimeClockUpdateRequired = FALSE;
 DATE_TIME stRtcRegs = {0};
 BOOL TimeClockMode= 0;		//24 hr / 12 hr mode
+UINT8 prevSec = 0;
 #pragma idata
 
 
@@ -103,6 +104,7 @@ BOOL TimeClockMode= 0;		//24 hr / 12 hr mode
 * Public Constants
 *------------------------------------------------------------------------------
 */
+/*
 const rom UINT8 * DayStr[7]  =  {{"Sun"},
 				   				{"Mon"},
 				   				{"Tue"},
@@ -124,6 +126,7 @@ const rom UINT8 * MonthStr[12] ={{"Jan"},
 								{"Oct"},
 								{"Nov"},
 								{"Dec"}};
+*/
 
 /*
 *------------------------------------------------------------------------------
@@ -158,7 +161,7 @@ const rom UINT8 * MonthStr[12] ={{"Jan"},
 */
 const rom INT8* Int2Day(UINT8 day)
 {
-	return (const rom INT8*)DayStr[day-1];
+//	return (const rom INT8*)DayStr[day-1];
 }
 
 /*
@@ -176,7 +179,7 @@ const rom INT8* Int2Day(UINT8 day)
 */
 const rom INT8* Int2Month(UINT8 month)
 {
-	return (const rom INT8*)MonthStr[ConvertBCD2HEX(month)-1];
+//	return (const rom INT8*)MonthStr[ConvertBCD2HEX(month)-1];
 }
 
 
@@ -560,7 +563,7 @@ void RTC_Init(void)
 
 void RTC_Task(void)
 {
-	static UINT8 prevSec = 0;
+	
 
 #ifdef TIME_DEBUG
 	if (++stRtcRegs.mSeconds == 60)
@@ -642,12 +645,12 @@ UINT16 RTC_getMinuteOfDay(void)
 
 UINT8* RTC_getDayStr(void)
 {
-	return DayStr[stRtcRegs.mDay];
+//	return DayStr[stRtcRegs.mDay];
 }
 
 UINT8* RTC_getMonthStr(void)
 {
-	return MonthStr[stRtcRegs.mMonth];
+//	return MonthStr[stRtcRegs.mMonth];
 }
 
 /*

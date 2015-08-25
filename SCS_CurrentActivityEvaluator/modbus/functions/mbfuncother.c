@@ -44,8 +44,12 @@
 #if MB_FUNC_OTHER_REP_SLAVEID_ENABLED > 0
 
 /* ----------------------- Static variables ---------------------------------*/
-static UCHAR    ucMBSlaveID[MB_FUNC_OTHER_REP_SLAVEID_BUF];
-static USHORT   usMBSlaveIDLen;
+
+
+#pragma idata RTU_DATA
+static UCHAR    ucMBSlaveID[MB_FUNC_OTHER_REP_SLAVEID_BUF] = {0};
+static USHORT   usMBSlaveIDLen = 0;
+#pragma idata
 
 /* ----------------------- Start implementation -----------------------------*/
 

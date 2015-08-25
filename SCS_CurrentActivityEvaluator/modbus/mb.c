@@ -59,8 +59,7 @@
 
 /* ----------------------- Static variables ---------------------------------*/
 
-static UCHAR    ucMBAddress;
-static eMBMode  eMBCurrentMode;
+
 
 static enum
 {
@@ -72,26 +71,17 @@ static enum
 /* Functions pointer which are initialized in eMBInit( ). Depending on the
  * mode (RTU or ASCII) the are set to the correct implementations.
  */
-static peMBFrameSend peMBFrameSendCur;
-static pvMBFrameStart pvMBFrameStartCur;
-static pvMBFrameStop pvMBFrameStopCur;
-static peMBFrameReceive peMBFrameReceiveCur;
-static pvMBFrameClose pvMBFrameCloseCur;
 
-/* Callback functions required by the porting layer. They are called when
- * an external event has happend which includes a timeout or the reception
- * or transmission of a character.
- */
-far rom BOOL( *pxMBFrameCBByteReceived ) ( void );
-far rom BOOL( *pxMBFrameCBTransmitterEmpty ) ( void );
-far rom BOOL( *pxMBPortCBTimerExpired ) ( void );
+#pragma idata RTU_DATA
+static UCHAR    ucMBAddress = 0 ;
+static eMBMode  eMBCurrentMode = 0;
 
-far rom BOOL( *pxMBFrameCBReceiveFSMCur ) ( void );
-far rom BOOL( *pxMBFrameCBTransmitFSMCur ) ( void );
+static peMBFrameSend peMBFrameSendCur = 0;
+static pvMBFrameStart pvMBFrameStartCur  = 0;
+static pvMBFrameStop pvMBFrameStopCur = 0;
+static peMBFrameReceive peMBFrameReceiveCur = 0;
+static pvMBFrameClose pvMBFrameCloseCur = 0;
 
-/* An array of Modbus functions handlers which associates Modbus function
- * codes with implementing functions.
- */
 static xMBFunctionHandler xFuncHandlers[MB_FUNC_HANDLERS_MAX] = {
 #if MB_FUNC_OTHER_REP_SLAVEID_ENABLED > 0
     {MB_FUNC_OTHER_REPORT_SLAVEID, eMBFuncReportSlaveID},
@@ -124,6 +114,24 @@ static xMBFunctionHandler xFuncHandlers[MB_FUNC_HANDLERS_MAX] = {
     {MB_FUNC_READ_DISCRETE_INPUTS, eMBFuncReadDiscreteInputs},
 #endif
 };
+far rom BOOL( *pxMBFrameCBByteReceived ) ( void ) = 0;
+far rom BOOL( *pxMBFrameCBTransmitterEmpty ) ( void )  =0;
+far rom BOOL( *pxMBPortCBTimerExpired ) ( void )  =0;
+
+far rom BOOL( *pxMBFrameCBReceiveFSMCur ) ( void ) = 0;
+far rom BOOL( *pxMBFrameCBTransmitFSMCur ) ( void ) = 0;
+
+#pragma idata
+/* Callback functions required by the porting layer. They are called when
+ * an external event has happend which includes a timeout or the reception
+ * or transmission of a character.
+ */
+
+
+/* An array of Modbus functions handlers which associates Modbus function
+ * codes with implementing functions.
+ */
+
 
 /* ----------------------- Start implementation -----------------------------*/
 eMBErrorCode
