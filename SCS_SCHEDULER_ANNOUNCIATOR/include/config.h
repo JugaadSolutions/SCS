@@ -8,10 +8,34 @@
 */
 
 
-#define DEVICE_ADDRESS			1
+/*----------------------------------------
+*	BOARD MOULE CONFIG
+*----------------------------------------*/
+#define MHz_32					(32000000UL)	// Hz
+#define MHz_16					(16000000UL)	// Hz
+#define MHz_8					(8000000UL)	// Hz
+
+/*----------------------------------------
+*	OSCILLATOR CONFIG
+*----------------------------------------*/
+
+#define SYSTEM_CLOCK			(MHz_32)
 
 
+/*----------------------------------------
+*	TIMER CONFIG
+*----------------------------------------*/
+#define FULLSCALE_16BIT				(65535)
+#define TIMER0_TIMEOUT_DURATION 	(1000UL)			//1ms
+#define TIMESTAMP_DURATION 		(200)			
+
+/*----------------------------------------
+*	DEVICE CONFIG
+*----------------------------------------*/
 #define __FACTORY_CONFIGURATION__
+
+#define DEVICE_ADDRESS			0x01
+
 
 /*----------------------------------------
 * Display Configuration (MMD , Scan Digit , Latch Digit)
@@ -26,18 +50,13 @@
 //#define __DISPLAY_TEST__ 
 
 //#define __DIGIT_DISPLAY_TEST__
-/*----------------------------------------
-*	TIMER Configuration
-*----------------------------------------*/
-
-#define TIMESTAMP_DURATION 		(200)			
 
 /*----------------------------------------
 *	USART Configuration
 *----------------------------------------*/
 #define ACTIVE_USARTS		1
 //#define UART2_ACTIVE
-#define UART1_BAUD			19200
+#define UART1_BAUD			9600
 #define UART2_BAUD			19200
 //#define PASS_THROUGH
 //#define UART_TEST
@@ -67,39 +86,30 @@ enum
 #define 	TX_PACKET_SIZE		(60)
 
 
-//KEYPAD CONFIGURATION
+/*----------------------------------------
+*	Keypad Configurations
+*----------------------------------------*/
+
 //#define __SIMULATION__
 
-
-// Enable for external eeprom access
-// Comment out this line if internal eeprom access required
-#define EEP_EXTERRNAL
-// For uart enable
-//#define EN_UART
-// Enable for hardware i2c module usage
-//#define USE_MSSP_I2C
-
-
-//RTC CONFIGURATION
+/*----------------------------------------
+*	RTC CONFIGURATION
+*----------------------------------------*/
 //#define TIME_DEBUG
 
 //#define RTC_DS1307
-#define RTC_DS3232
+//#define RTC_DS3232
 
 //#define __SET_RTC__
+//#define RTC_DATA_ON_UART
 
-
-//APPLICATION CONFIGURATION
-#define MSG_MAX_CHARS 60
-#define MAX_TRANSITIONS 20
 
 //#define __ERROR_DEBUG__
 
 /*----------------------------------------
 *	APP CONFIGURATION
 *----------------------------------------*/
-#define MSG_LENGTH 20
-#define EEPROM_ADDRESS 0
+
 
 /*
 *------------------------------------------------------------------------------

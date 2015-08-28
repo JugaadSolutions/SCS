@@ -2,188 +2,6 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\app.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File001]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\board.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File002]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\heartBeat.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File003]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\interruptvector.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File004]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\main.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File005]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\MMD.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File006]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\timer.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File007]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\digit_driver.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File008]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\digitdisplay.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File009]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\utilities.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File010]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\mb.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File011]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\mbfunc.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File012]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\uart.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File013]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\mutex.o
-Folder=Intermediary
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
-TraceCmdString=
-DebugOptions=
-[File014]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\app.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -196,7 +14,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File015]
+[File001]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\board.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -209,7 +27,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File016]
+[File002]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\heartBeat.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -222,7 +40,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File017]
+[File003]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\interruptvector.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -235,7 +53,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File018]
+[File004]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\main.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -248,7 +66,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File019]
+[File005]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\MMD.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -261,7 +79,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File020]
+[File006]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\timer.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -274,7 +92,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File021]
+[File007]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\digit_driver.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -287,7 +105,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File022]
+[File008]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\digitdisplay.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -300,7 +118,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File023]
+[File009]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\utilities.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -313,7 +131,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File024]
+[File010]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\mb.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -326,7 +144,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File025]
+[File011]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\mbfunc.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -339,7 +157,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File026]
+[File012]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\uart.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -352,7 +170,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File027]
+[File013]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\obj\mutex.o
 Folder=Intermediary
 DeviceName=PIC18F8722
@@ -365,33 +183,7 @@ SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
 DebugOptions=
-[File028]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\output\SCS_Announciator.cof
-Folder=Output
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={96C98149-AA1B-4CF9-B967-FAE79CAB663C}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mplink.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=/w /o"$(BINDIR_)$(TARGETBASE).cof"
-TraceCmdString=
-DebugOptions=
-[File029]
-Location=D:\jo\Ideonics\Repository\SCS\SCS_SCHEDULER_ANNOUNCIATOR\output\SCS_Announciator.hex
-Folder=Output
-DeviceName=PIC18F8722
-LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
-LanguageToolID={96C98149-AA1B-4CF9-B967-FAE79CAB663C}
-LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mplink.exe
-PPAD=$(BINDIR)|output||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|modbus\include;modbus\source;include;C:\Program Files\Microchip\mplabc18\v3.46\h||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.46\lib||$(LKRDIR)||
-SOLK=<src>|source\app.c|source\board.c|source\heartBeat.c|source\interruptvector.c|source\main.c|source\MMD.c|source\timer.c|source\digit_driver.c|source\digitdisplay.c|source\utilities.c|modbus\source\mb.c|modbus\source\mbfunc.c|source\uart.c|source\mutex.c||<obj>||<lib>||<lkr>|18f8722_g.lkr||
-SuiteArgsString=
-ToolArgsString=/w /o"$(BINDIR_)$(TARGETBASE).cof"
-TraceCmdString=
-DebugOptions=
-[File030]
+[File014]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\output\SCS_Announciator.cof
 Folder=Output
 DeviceName=PIC18F8722
@@ -404,7 +196,7 @@ SuiteArgsString=
 ToolArgsString=/w /o"$(BINDIR_)$(TARGETBASE).cof"
 TraceCmdString=
 DebugOptions=
-[File031]
+[File015]
 Location=C:\Users\IDEONICS-BNG\Documents\GitHub\SCS\SCS_SCHEDULER_ANNOUNCIATOR\output\SCS_Announciator.hex
 Folder=Output
 DeviceName=PIC18F8722

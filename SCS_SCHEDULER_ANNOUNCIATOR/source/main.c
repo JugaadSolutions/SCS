@@ -112,9 +112,6 @@ extern UINT16 keypadUpdate_count;
 *------------------------------------------------------------------------------
 */
 void EnableInterrupts(void);
-extern UINT16 heartBeatCount ;
-extern UINT16 comUpdateCount ;
-extern UINT16 mmdUpdateCount;
 /*
 *------------------------------------------------------------------------------
 * Private Variables (static)
@@ -168,19 +165,11 @@ void main(void)
 {
 	UINT8 i,j, k;
 	eMBErrorCode    eStatus;
-	UINT8 count = 0;
+	unsigned long temp;
 
 #if defined (MMD_TEST)
 	MMD_Config mmdConfig= {0};
 	UINT8 line[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZAB"};
-
-					/*
-					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
-					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
-					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,
-					SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL,SYM_ALL};
-
-					*/
 #endif
 
 
@@ -205,7 +194,7 @@ void main(void)
 	MMD_init();  // Display initialization
 	DigitDisplay_init(NO_OF_DIGIT);
 
-	TMR0_init(TICK_PERIOD,DigitDisplay_task);	//initialize timer0
+	TMR0_init(tickPeriod,DigitDisplay_task);	//initialize timer0
 	TMR1_init(MMD_REFRESH_PERIOD, MMD_refreshDisplay);
 
 	//modbus configuration
@@ -237,11 +226,12 @@ void main(void)
 #endif
 
 
-
+	//Heart Beat to blink at every 500ms
+	temp = (500UL *1000UL)/TIMER0_TIMEOUT_DURATION;
 
 	while(1)
 	{
-		if(  heartBeatCount >= 500 )
+		if(  heartBeatCount >= temp )
 		{
 
 			HB_task();
@@ -252,16 +242,15 @@ void main(void)
 		{	
 			MMD_task();
 			mmdUpdateCount = 0;
-			count++;
 		}
 
-		if( count >= 2 )
+		if( AppUpdate_count >= temp  )
 		{
 			APP_task();
-			count = 0;
+            AppUpdate_count = 0;
 		}
 
-//		if( comUpdateCount >= 1 )
+		if( comUpdateCount >= 10 )
 		{
 			eMBPoll();	//modbus task		
 			comUpdateCount = 0;

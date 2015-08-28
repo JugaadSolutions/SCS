@@ -58,6 +58,13 @@
 *------------------------------------------------------------------------------
 */
 
+extern UINT16 tickPeriod;
+extern UINT16 heartBeatCount;
+extern UINT16 AppUpdate_count ;
+extern UINT16 comUpdateCount;
+extern UINT16 mmdUpdateCount ;
+extern UINT16 eMBUpdate_count  ;
+
 /*
 *------------------------------------------------------------------------------
 * Public Function Prototypes (extern)

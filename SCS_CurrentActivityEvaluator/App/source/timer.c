@@ -6,17 +6,20 @@ typedef struct _TMR
 	void (*func)(void);
 }TMR;
 
-TMR tmr[3] = { 0 , 0 };
 
 
+#pragma idata TIMER_DATA
+TMR tmr[2] = { 0 , 0 };
 UINT16 count = 0;
 UINT16 heartBeatCount  =0 ;
 UINT16 AppUpdate_count  =0 ;
 UINT16 comUpdateCount = 0;
 UINT16 mmdUpdateCount = 0;
 UINT16 eMBUpdate_count  =0 ;
+
 INT16 timeStampUpdateCount = TIMESTAMP_DURATION;
 UINT32 AppTimestamp = 0;
+#pragma idata
 /*
 *------------------------------------------------------------------------------
 * void TMR0_ISR(void)

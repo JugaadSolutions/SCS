@@ -475,8 +475,6 @@ void updateSchedule(far SCHEDULE_UPDATE_INFO *info)
 
 		DigitDisplay_updateBufferBinaryPartial(truckStatus, TRUCK_STATUS_BASE + truckStatusIndex, 2);
 
-		//clearScheduleTime();
-		//loadSchedule(truck,info->activity);
 	}
 
 	else
@@ -757,17 +755,9 @@ void resetSchedule( void )
 			
 			getScheduleTime(&scheduleTable[i][j] ,activityTime);
 
-			do
-			{
-				ENTER_CRITICAL_SECTION();
-				//Aquire the lock
-				lock = mutex_lock(  );
-				EXIT_CRITICAL_SECTION();
-			}while( lock == 0 );
-
 			loadSchedule(i,j+1);
-			//release the lock
-			mutex_unlock(  );	
+			DelayMs(50);
+	
 		}	
 	}
 	
@@ -781,7 +771,7 @@ void loadSchedule(UINT8 truck, UINT8 activity)
 	{
 
 		DDR_loadDigit( ( (32 + ((truck - 1) * 24) ) + (activity - 1 ) * 8) + i,activityTime[i] );
-		DelayMs(1);
+		DelayMs(10);
 
 	}
 }

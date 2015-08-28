@@ -220,9 +220,8 @@ void APP_init(void)
 
 	eMBErrorCode    eStatus;
 
-	//modbus configuration
-	eStatus = eMBInit( MB_RTU, ( UCHAR )DEVICE_ADDRESS, 0, UART1_BAUD, MB_PAR_NONE);
-	eStatus = eMBEnable(  );	/* Enable the Modbus Protocol Stack. */
+	//modbus slave configuration
+	eStatus = eMBInit( ( UCHAR )DEVICE_ADDRESS, UART1_BAUD );
 
 	//modbus master initialization
 	MB_init(BAUD_RATE, TIMEOUT, POLLING, RETRY_COUNT, packets, TOTAL_NO_OF_PACKETS, regs);
@@ -1535,7 +1534,8 @@ void resetSchedule(void)
 			
 			getScheduleTime(&shipmentSchedule[i][j] ,activityTime);
 	
-			loadSchedule(i,j+1);	
+			loadSchedule(i,j+1);
+			DelayMs(80);	
 	
 		}	
 	}
@@ -1562,7 +1562,7 @@ void loadSchedule(UINT8 truck, UINT8 activity)
 	for(i = 0; i < 8 ;i++)
 	{
 		DDR_loadDigit( ( (32 + ((truck - 1) * 24) ) + (activity - 1 ) * 8) + i,activityTime[i] );
-		DelayMs(1);
+		DelayMs(20);
 	}
 
 }

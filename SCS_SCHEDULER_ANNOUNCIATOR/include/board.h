@@ -129,8 +129,6 @@
 
 
 
-#define SYSTEM_CLOCK			(32000000UL)	// 8MHz internal oscillator	
-
 #define PERIPHERAL_CLOCK			(SYSTEM_CLOCK / 4)UL
 
 #define PERIPHERAL_CLOCK_PERIOD 	(1 / PERIPHERAL_CLOCK)UL

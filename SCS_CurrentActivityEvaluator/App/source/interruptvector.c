@@ -1,7 +1,6 @@
 #include "board.h"
 #include "timer.h"
 #include "uart.h"
-#include "port.h"
 /*
  * For PIC18xxxx devices, the low interrupt vector is found at 000000018h.
  * Change the default code section to the absolute code section named
@@ -9,7 +8,7 @@
  */
 
 
-#pragma code high_vector = 0x08
+#pragma code low_vector = 0x08
 void high_interrupt (void)
 {
 	/*
@@ -20,12 +19,6 @@ void high_interrupt (void)
   		_asm GOTO TMR0_ISR _endasm
 	}
 
-	if(PIR2bits.TMR3IF == 1)
-	{
-		_asm GOTO prvvTIMERExpiredISR _endasm
-	}
-
-
 	if(PIR1bits.TMR1IF == 1)
 	{
 		_asm GOTO TMR1_ISR _endasm
@@ -35,7 +28,7 @@ void high_interrupt (void)
 	if(PIR1bits.RC1IF == 1)
 	{
 	//	_asm GOTO Uart1_ReceiveHandler _endasm
-		_asm GOTO prvvUARTRxISR _endasm
+		_asm GOTO Uart1_ReceiveHandler _endasm
 	}
 #else
 

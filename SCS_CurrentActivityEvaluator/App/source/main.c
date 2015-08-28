@@ -163,6 +163,7 @@ void EnableInterrupts(void);
 */
 
 #define MMD_REFRESH_PERIOD	(65535 - 20000)
+#define TICK_PERIOD	(65535 - 8000)
 
 void main(void)
 {

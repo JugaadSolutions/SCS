@@ -255,6 +255,7 @@ MBErrorCode waiting_for_reply(void)
 #endif
 	{
 		unsigned char overflowFlag = 0;
+		//Delay10us(1);
 #if defined (__18f4520)
 		while(UART_hasData())
 #else

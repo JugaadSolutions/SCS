@@ -115,9 +115,9 @@
 /*---------------------------------
 *	MODBUS MASTER CONFIGURATION
 ----------------------------------*/
-#define BAUD_RATE	 		19200	// modbus master serial baud rate
-#define TIMEOUT		 		10   	// the timeout period is 200msec * 3 = 0.6sec
-#define POLLING 			10  	// the scan rate 200msec * 10 = 2sec
+#define BAUD_RATE	 		9600	// modbus master serial baud rate
+#define TIMEOUT		 		20   	// the timeout period is 200msec * 5 = 1sec
+#define POLLING 			20  	// the scan rate 200msec * 10 = 2sec
 #define RETRY_COUNT			5		// number of retries incase of no or error response
 #define SLAVE_ID			1		// server ID
 #define STARTING_ADDRESS	0

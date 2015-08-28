@@ -171,7 +171,7 @@ typedef struct _MMD_Segment
 void makeBitMap(UINT8 id , UINT8 row );
 
 
-#pragma idata mmd_data
+#pragma idata MMD_DATA
 MMD_Segment mmdSegment[MMD_MAX_SEGMENTS]= {0};
 #pragma udata
 

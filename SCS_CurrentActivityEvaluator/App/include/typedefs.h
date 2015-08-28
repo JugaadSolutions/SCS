@@ -64,6 +64,15 @@ typedef	unsigned long 		UINT32;		//32 bits 	0 				4,294,967,295
 typedef float 				FLOAT;		//32 bits 	-126(Exponent)	128(Exponent)
 typedef double 				DOUBLE;		//32 bits 	-126(Exponent) 	128(Exponent)
 
+typedef unsigned char 		UCHAR;
+typedef char 				CHAR;
+
+typedef unsigned short		USHORT;
+typedef short 				SHORT;
+
+typedef unsigned long 		ULONG;
+typedef long  				LONG;
+
 /*
 *------------------------------------------------------------------------------
 * Public Macros
